@@ -1,0 +1,122 @@
+Brief
+Ni ska nu börja förbereda er inför projektstart utifrån ett Agilt perspektiv. För att komma igång behöver ni bygga en struktur för hur ni ska arbeta, var/när ni kommunicerar tillsammans med hur pass hög kapacitet ni faktiskt kommer att ha under veckan.
+Ni ska med andra ord sätta upp era “Spelregler”.
+ 
+ 
+Följande delar behöver beslutas:
+Sätt upp er mötesstruktur för stand ups, review, retro, sprintplanering
+Stand ups: (två gånger i veckan)
+Vad jag ska göra idag?
+Vad gjorde jag under veckan?
+Hinder? (schema), jobbrelaterad...
+Vad man behöver för hjälp?
+Review: (reflektion med PO)
+Vad man har gjort?
+ vilka stories har man gjort och inte gjort?
+Om man ligger efter sprintarna/stories?
+Retro: (reflektion inom utvecklarteamet
+Reflektion inom utvecklarteamet?
+Vada har gått bra?
+Vad har inte gått mindre bra?
+Vad kan vi utveckla?
+Sprintplanering:
+Vad vi ska göra
+Sprint varje vecka
+ 
+ 
+Vilket verktyg kommer att användas.
+GitHub
+ 
+Vilket kommunikationsverktyg ska användas och vilka regler har ni i kommunikationen.
+Discord
+Skriv tydlig och konkret i kanalen
+ 
+Utse vem som är Scrum master och preferenser kring denna roll.
+David och Adam
+Nyat och Toleen
+Jens och Oscar
+Emil och Tova
+Preferenser:
+Lagledarroll. Inleder bojlerrum och checkpoints med Arnar på måndagar.
+Avstämning kring projektmetodiken på torsdagar med Andreas (Agil Coach), alla ska vara med
+ 
+Hur mycket kapacitet teamet har för första sprinten.
+5 timmar plus bojlerrum i veckan
+ 
+Metod för arbetsfördelning och prioritering.
+GitHub Board
+Kravlista
+ 
+Samtlig information skriver ni ner i ett dokument.
+ 
+ 
+Endpoint
+På måndag går vi igenom respektive grupp som får redovisa sin struktur för projektet.
+Vi kommer därefter påbörja projektet.
+Bedömning
+Dokumentet kommer att användas som en del av underlaget i kursen Agila metoder i färdigheten.
+ 
+ 
+ 
+ 
+ 
+Kravlista
+Följande punkter är absoluta krav som måste genomsyra och uppfyllas i projektet.
+Responsiv - appen ska fungera helt och hållet på alla storlekar av skärm
+HTML5 och CSS3
+Inga stora JS-ramverk får förekomma, ex. JQuery, Reach, Angular mfl.
+Semantisk HTML - grundläggande tillgänglighetsanpassning
+Användarens interaktioner i systemet ska loggas till Google Analytics
+Funktionalitet
+Följande grundläggande funktioner måste finnas med i beta-versionen:
+ 
+Användaren ska kunna skapa flera olika anteckningar i sin anteckningsbok ---18.9 poäng
+ 2. Som användare vill jag kunna skapa en anteckning så att jag kan skriva ner det jag behöver spara --Betyg: 3
+ 5. Som användare vill jag kunna skapa flera olika anteckningar --Betyg:
+ 6. Som användare vill jag kunna bläddra bland mina olika anteckningar på ett smidigt sätt --Betyg:
+ 1. Som användare vill jag mötas av en informationssida som berättar om systemet första gången jag besöker Quire -- Betyg: 5.9
+Användaren ska i varje anteckning kunna skriva så mycket text som hen önskar samt kunna formatera denna med enklare formatering såsom rubriker, punktlistor fetstil osv. 32.8 poäng
+3. Som användare vill jag kunna skapa rubriker, punktlistor, numrerade listor samt göra text kursiv eller fetstil -- Betyg: 6.4
+7. Som användare vill jag att varje anteckning har en titel så att jag vet vad den handlar om --Betyg:
+14. Som användare vill jag kunna lägga in bilder i mina anteckningar --Betyg:
+15. Som användare vill jag kunna klistra in markdown i en anteckning och att den formaterar sig korrekt --Betyg:
+19. Som användare vill jag kunna skapa egna mallar där jag kan ställa in valfria typsnitt utifrån de som finns i Google fonts --Betyg:
+Användaren ska kunna favoritmarkera vissa anteckningar för att kunna hitta dem enklare -- 32.3 poäng
+ 11. Som användare vill jag kunna markera en anteckning som favorit så jag enkelt kan hitta till den igen när jag behöver den --Betyg:
+ 12. Som användare vill jag kunna lägga taggar på mina anteckningar och kunna plocka fram alla anteckningar med en viss tag --Betyg:
+ 13. Som användare vill jag kunna söka bland mina anteckningar för att enklare hitta en viss anteckning --Betyg:
+16. Som användare vill jag kunna exportera en anteckning som markdown --Betyg:
+Det ska gå att göra enklare inställningar kring val av typsnitt och färger för applikationen som helhet-- 32.2 poäng
+ 9. Som användare vill jag kunna välja bland några olika mallar för att ställa in typsnitt för rubriker och brödtext i applikationen så det känns bra att skriva mina texter
+ 18. Som användare vill jag kunna välja olika mallar för varje anteckning
+ 10. Som användare vill jag kunna skriva ut en anteckning och att den då ser ut som på skärmen när jag skrev den, men utan menyer och verktygskontroller i appen
+ 4. Som ägare av systemet vill jag få insikter i hur tjänsten används genom att statistik kring användningen lagras i Google Analytics på en grundläggande nivå -- Betyg: 8.3
+Det ska gå att skriva ut anteckningar och att de ser hyfsat snygga ut i utskriften
+ 
+ 
+Överigt: -- 15 poäng
+ 8. Som användare vill jag kunna se när jag skapade en anteckning så jag vet hur gammal den är
+ 17. Som användare vill jag kunna se enklare statistik kring min anteckningsbok så jag vet hur jag använder den och har använt den senaste tiden
+ 
+ 
+ 
+    Stories:
+5.9
+3
+6.4
+8.3
+4.7
+5.3
+3.6
+4.9
+7.6
+9.7
+5.9
+9.4
+8.3
+6
+8.5
+8.7
+10.1
+7.6
+8.3
