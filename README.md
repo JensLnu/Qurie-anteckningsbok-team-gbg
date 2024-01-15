@@ -16,3 +16,7 @@
 - git checkout feature/{namn på branch med kebab-case}
 - git pull origin main
 - lös merge-conflicts
+- gå till main / git checkout main
+- git merge feature/{namn på branch med kebab-case}
+- Inga konflikter här eftersom du mergade main till din branch först...visst?
+- git push -u origin main
