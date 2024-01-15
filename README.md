@@ -20,3 +20,7 @@
 - git merge feature/{namn på branch med kebab-case}
 - Inga konflikter här eftersom du mergade main till din branch först...visst?
 - git push -u origin main
+
+## När storyn är färdig
+- Upprepa steg för färdig feature om du inte redan gjort det
+- git branch -d feature/{namn på branch med kebab-case} eller -D om den inte vill med sig
