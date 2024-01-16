@@ -1,6 +1,7 @@
 const addBtn = document.querySelector('.add-btn');
 const textArea = document.getElementById('text-area');
 
+
 addBtn.addEventListener('click', () => {
     textArea.innerHTML = '<textarea name="title" id="title"></textarea>';
     const note = document.getElementById('title');
@@ -9,4 +10,3 @@ addBtn.addEventListener('click', () => {
     })
     note.focus();
 });
-
