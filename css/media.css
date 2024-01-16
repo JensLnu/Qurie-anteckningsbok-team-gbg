@@ -52,10 +52,33 @@
     }
   }
   
-  @media only screen and (width < 575px){
+  @media only screen and (width < 500px){
     :root{
         --toggle-sidebar: none;
         --toggle-dropdown: flex;
+        --toggle-header-icons: none;
+    }
+    main {
+        top: 77px;
+        left: 0;
+        width: 100%;
+        min-height: 100vh;
+    }
+    #title {
+        width: calc(100%);
+        border: none;
+    }
+    .nav-list{
+        justify-content: flex-end;
+    }
+  }
+
+  @media only screen and (500px < width < 600px) {
+    :root{
+        --toggle-sidebar: none;
+        --toggle-dropdown: none;
+        --toggle-header-icons: flex;
+        --toggle-add: flex;
     }
     main {
         top: 77px;

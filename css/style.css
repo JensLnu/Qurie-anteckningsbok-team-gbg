@@ -7,6 +7,8 @@
 :root{
   --toggle-sidebar: block;
   --toggle-dropdown: none;
+  --toggle-header-icons: flex;
+  --toggle-add: none;
 }
 
 .material-symbols-outlined.md-40 {
@@ -56,18 +58,18 @@ header {
 
 .nav-list {
   display: flex;
-  /* flex-wrap: wrap; */
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
+  width: 100%;
 }
 
 .icon {
-  display: flex;
+  display: var(--toggle-header-icons);
   justify-content: center;
   align-items: center;
   list-style-type: none;
-  width: 100%;
-  padding: 1.5rem;
+  padding: 1.5rem 0;
   transition: scale 0.5s;
 }
 
@@ -96,6 +98,9 @@ header {
   width: 100%;
 }
 .add{
+  display: var(--toggle-add);
+}
+.dropdown {
   display: var(--toggle-dropdown);
 }
 .add-btn {

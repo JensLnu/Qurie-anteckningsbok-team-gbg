@@ -1,3 +1,6 @@
+// Skriv med string interpolation (HTML)
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const textArea = document.getElementById('text-area');
     const textContent = localStorage.getItem('text');
