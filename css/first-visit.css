@@ -1,0 +1,30 @@
+#first-div{
+    border: solid;
+    max-width: 60%;
+    
+}
+
+#search-div{
+    border: solid;
+}
+
+#favorite-div{
+    border: solid;
+}
+
+#analyse-div{
+    border: solid;
+}
+
+
+#settings-div{
+    border: solid;
+}
+
+.header-info{
+    border: solid red;
+}
+
+.p-info{
+    border: solid pink;
+}
