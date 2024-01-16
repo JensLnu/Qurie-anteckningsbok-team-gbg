@@ -61,7 +61,6 @@ header {
   width: 100%;
   padding: 1.5rem;
   transition: scale 0.5s;
-
 }
 
 .icon:hover {
@@ -71,8 +70,8 @@ header {
 }
 
 .icon:active {
-    scale: 1;
-    transition: 20ms;
+  scale: 1;
+  transition: 20ms;
 }
 #sidebar {
   position: fixed;
@@ -99,7 +98,7 @@ header {
   border: 0;
   border-bottom: 1px solid gray;
   background-color: rgb(132, 169, 140);
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .add-btn:hover {
@@ -107,14 +106,13 @@ header {
   cursor: pointer;
 }
 
-
 .add-btn:hover .material-symbols-outlined.md-40 {
   scale: 1.15;
 }
 
 .add-btn:active .material-symbols-outlined.md-40 {
-    scale: 1;
-    transition: 20ms;
+  scale: 1;
+  transition: 20ms;
 }
 main {
   position: fixed;
@@ -151,5 +149,45 @@ main {
   }
   .icon:hover {
     scale: 1;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  header {
+    height: 75px;
+    width: 100vw;
+    flex-direction: row;
+  }
+
+  #logo-container {
+    width: 75px;
+  }
+  #navigation {
+    width: 100%;
+    padding: 0;
+    height: 100%;
+  }
+  .nav-list {
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    padding: 2rem;
+  }
+  #sidebar {
+    top: 75px; /*FULLÖSNING*/
+    left: 0px;
+  }
+  main {
+    top: 78px;
+    left: 200px;
+    width: 100%;
+    min-height: 100vh;
+  }
+  #text-area:focus {
+    outline: 0;
+  }
+  #title {
+    width: calc(100% - 200px);
+    border: none;
   }
 }
