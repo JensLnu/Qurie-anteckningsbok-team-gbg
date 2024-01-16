@@ -4,8 +4,15 @@
   box-sizing: border-box;
 }
 
+:root{
+  --toggle-sidebar: block;
+  --toggle-dropdown: none;
+  --toggle-header-icons: flex;
+  --toggle-add: none;
+}
+
 .material-symbols-outlined.md-40 {
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 40px;
   font-weight: 300;
   transition: scale 0.3s;
@@ -17,6 +24,12 @@ body {
   display: flex;
 }
 
+.hidden {
+  display: none;
+}
+
+
+/* HEADER CONTENT */
 header {
   position: fixed;
   height: 100vh;
@@ -32,15 +45,11 @@ header {
   align-items: center;
   justify-content: center;
   font-size: 50px;
-  color: white;
+  color: rgb(255, 255, 255);
   background-color: rgb(47, 62, 70);
   height: 75px;
   cursor: pointer;
 }
-
-/* #logo {
-    width: 100%
-} */
 
 #navigation {
   width: 100%;
@@ -51,20 +60,20 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* gap: 2.5rem; */
+  justify-content: space-around;
+  width: 100%;
 }
+
 .icon {
-  display: flex;
+  display: var(--toggle-header-icons);
   justify-content: center;
   align-items: center;
   list-style-type: none;
-  width: 100%;
-  padding: 1.5rem;
+  padding: 1.5rem 0;
   transition: scale 0.5s;
 }
 
 .icon:hover {
-  /* background-color: rgb(82, 121, 111); */
   scale: 1.2;
   cursor: pointer;
 }
@@ -73,11 +82,12 @@ header {
   scale: 1;
   transition: 20ms;
 }
+
+/* SIDEBAR CONTENT */
 #sidebar {
   position: fixed;
+  display: var(--toggle-sidebar);
   left: 75px; /*FULLÖSNING*/
-  /* min(10%, fit-content) */
-  /* position: absolute; */
   width: 200px;
   height: 100vh;
   background-color: rgb(202, 210, 197);
@@ -87,7 +97,12 @@ header {
 .notes {
   width: 100%;
 }
-
+.add{
+  display: var(--toggle-add);
+}
+.dropdown {
+  display: var(--toggle-dropdown);
+}
 .add-btn {
   padding: 1rem 0;
   width: 100%;
@@ -96,7 +111,7 @@ header {
   justify-content: center;
   align-items: center;
   border: 0;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid rgb(128, 128, 128);
   background-color: rgb(132, 169, 140);
   transition: 0.5s;
 }
@@ -114,6 +129,9 @@ header {
   scale: 1;
   transition: 20ms;
 }
+
+
+/* TEXTAREA CONTENT */
 main {
   position: fixed;
   left: 275px;
@@ -126,6 +144,8 @@ main {
   /* padding: 3rem; */
 }
 
+
+/* DENNA SKA BYTAS TILL EN KLASS SÅ ATT DEN KAN ÅTERANVÄNDAS I ALLA NOTES*/
 #title {
   padding: 3rem;
   width: calc(100% - 276px);
@@ -133,67 +153,9 @@ main {
   resize: none;
   border: none;
 }
-/* 
-#title:focus{
-    border: none;
-    outline: 0;
-} */
 
-@media (pointer: none) {
-  .add-btn:hover {
-    background-color: rgb(132, 169, 140);
-  }
-
-  .add-btn:hover .material-symbols-outlined.md-40 {
-    scale: 1;
-  }
-  .icon:hover {
-    scale: 1;
-  }
-}
-
-@media only screen and (max-width: 700px) {
-  header {
-    height: 75px;
-    width: 100vw;
-    flex-direction: row;
-  }
-
-  #logo-container {
-    width: 75px;
-  }
-  #navigation {
-    width: 100%;
-    padding: 0;
-    height: 100%;
-  }
-  .nav-list {
-    flex-direction: row;
-    align-items: center;
-    height: 100%;
-    padding: 2rem;
-  }
-  #sidebar {
-    top: 75px; /*FULLÖSNING*/
-    left: 0px;
-  }
-  main {
-    top: 78px;
-    left: 200px;
-    width: 100%;
-    min-height: 100vh;
-  }
-  #text-area:focus {
-    outline: 0;
-  }
-  #title {
-    width: calc(100% - 200px);
-    border: none;
-  }
-}
 
 /* SWAP BETWEEN NOTES */
-
 .notes {
   padding: 0.5rem 1rem;
 }
@@ -204,6 +166,6 @@ main {
 
 .displayed-note {
   width: calc(100% + 5px);
-  background-color: white;
-  border-right: 5px solid white;
+  background-color: rgb(255, 255, 255);
+  border-right: 5px solid rgb(255, 255, 255);
 }
