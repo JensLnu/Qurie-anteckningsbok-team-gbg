@@ -8,5 +8,6 @@ addBtn.addEventListener('click', () => {
         localStorage.setItem('text', note.value);
     })
     note.focus();
+    
 });
 
