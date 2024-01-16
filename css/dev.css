@@ -1,9 +1,0 @@
-.notes {
-    padding: 0.5rem 1rem;
-}
-
-.displayed-note {
-    width: calc(100% + 5px);
-    background-color: white;
-    border-right: 5px solid white;
-}
