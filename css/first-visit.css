@@ -1,0 +1,18 @@
+#first-div{
+    /* border: solid; */
+    max-width: 60%;
+    margin: 0.5rem 1rem; 
+    /* kan man använda % ?  */
+
+    display: flex;
+    flex-direction: column;
+}
+
+#first-rubrik{
+    align-self: center;
+    margin-bottom: 10px;
+}
+
+.info-div{
+    margin: 20px 0;
+}
