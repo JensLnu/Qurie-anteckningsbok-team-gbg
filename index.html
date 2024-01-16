@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="./css/dev.css">
 </head>
+
 <body>
     <header>
         <!-- <img src="#" alt="Quire Logo" id="logo"> -->
-        <div id="logo-container"><div id="logo">Q</div></div>
+        <div id="logo-container">
+            <div id="logo">Q</div>
+        </div>
         <nav id="navigation">
             <ul class="nav-list">
                 <li class="icon"><span class="material-symbols-outlined md-40">search</span></li>
@@ -20,19 +25,32 @@
             </ul>
         </nav>
     </header>
-    <section id="sidebar">
-        <div class="notes">
-            <button class="add-btn"><span class="material-symbols-outlined md-40">add_circle</span></button>
+    <section id="sidebar" class="">
+        <button class="add-btn sidebar-border-right"><span class="material-symbols-outlined md-40">add_circle</span></button>
+        <div class="saved-notes">
+            <!-- test note 1 -->
+            <!-- skulle vilja att dem sparade 'notesen' lägger sig i en div med class="notes" annars fungerar inte koden för att byta mellan notes (swap-notes.js)-->
+            <div class="notes">
+                <h3>note 1</h3>
+                <p>antecknings text</p>
+            </div>
+            <!-- test note 2 -->
+            <div class="notes displayed-note">
+                <h3>note 2</h3>
+                <p>antecknings text</p>
+            </div>
         </div>
     </section>
     <main>
         <div id="text-area">
-    
+
         </div>
     </main>
 
     <!-- script -->
     <script src="./js/index.js"></script>
     <script src="./js/add-note.js"></script>
+    <script src="./js/swap-note.js"></script>
 </body>
+
 </html>
