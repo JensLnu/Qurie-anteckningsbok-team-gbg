@@ -5,12 +5,16 @@ document.addEventListener('DOMContentLoaded', function () {
     firstDiv.setAttribute('id', 'first-div');
     const searchDiv = document.createElement('div');
     searchDiv.setAttribute('id', 'search-div');
+    searchDiv.setAttribute('class', 'info-div');
     const favoriteDiv = document.createElement('div');
     favoriteDiv.setAttribute('id', 'favorite-div');
+    favoriteDiv.setAttribute('class', 'info-div');
     const analyseDiv = document.createElement('div');
     analyseDiv.setAttribute('id', 'analyse-div');
+    analyseDiv.setAttribute('class', 'info-div');
     const settingsDiv = document.createElement('div');
     settingsDiv.setAttribute('id', 'settings-div');
+    settingsDiv.setAttribute('class', 'info-div');
 
     if (!textContent) {
         let rubrik = document.createElement('h1');

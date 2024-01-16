@@ -1,30 +1,18 @@
 #first-div{
-    border: solid;
+    /* border: solid; */
     max-width: 60%;
-    
+    margin: 0.5rem 1rem; 
+    /* kan man använda % ?  */
+
+    display: flex;
+    flex-direction: column;
 }
 
-#search-div{
-    border: solid;
+#first-rubrik{
+    align-self: center;
+    margin-bottom: 10px;
 }
 
-#favorite-div{
-    border: solid;
-}
-
-#analyse-div{
-    border: solid;
-}
-
-
-#settings-div{
-    border: solid;
-}
-
-.header-info{
-    border: solid red;
-}
-
-.p-info{
-    border: solid pink;
+.info-div{
+    margin: 20px 0;
 }
