@@ -16,12 +16,9 @@ function chooseNote() {
     })
 }
 
-// display clicked not
+// display clicked note
 function displayNote(e) {
-    let selectedNote = e.target;
-    if (e.target.tagName === 'H3' || e.target.tagName === 'P') {
-        selectedNote = e.currentTarget;
-    }
+    let selectedNote = e.currentTarget;
     allNotes.forEach(note => {
         note.classList.remove('displayed-note');
     });
