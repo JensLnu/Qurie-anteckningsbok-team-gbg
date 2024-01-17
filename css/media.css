@@ -56,18 +56,23 @@
     :root{
         --toggle-sidebar: none;
         --toggle-dropdown: flex;
+        --toggle-add: flex
     }
     
     main {
-        top: 77px;
-        left: 0;
-        width: 100%;
-        min-height: 100vh;
+      top: 77px;
+      left: 0;
+      width: 100%;
+      min-height: 100vh;
     }
 
+    .background {
+      z-index: -1
+    }
+    
     #title {
-        width: calc(100%);
-        border: none;
+      width: calc(100%);
+      border: none;
     }
 
     #navigation {
@@ -79,14 +84,27 @@
       position: absolute;
       top: 75px;
       right: 0;
-      background-color: black;
+      background-color: rgb(53, 79, 82);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-around;
-      width: 25%;
+      width: 75px;
       height: fit-content;
+      overflow: hidden;
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: 0s;
+      z-index: 1;
     }
+
+    .display {
+      transform: scaleY(1);
+      transform-origin: top;
+      z-index: 1;
+      transition: 0.25s;
+    }
+    
   }
 
   @media only screen and (500px < width < 600px) {

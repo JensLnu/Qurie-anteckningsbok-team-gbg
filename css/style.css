@@ -83,6 +83,15 @@ header {
   transition: 20ms;
 }
 
+.add{
+  display: var(--toggle-add);
+}
+
+.dropdown {
+  display: var(--toggle-dropdown);
+  width: 75px;
+}
+
 /* SIDEBAR CONTENT */
 #sidebar {
   position: fixed;
@@ -96,12 +105,6 @@ header {
 
 .notes {
   width: 100%;
-}
-.add{
-  display: var(--toggle-add);
-}
-.dropdown {
-  display: var(--toggle-dropdown);
 }
 .add-btn {
   padding: 1rem 0;
