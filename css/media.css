@@ -52,22 +52,25 @@
     }
   }
   
-  @media only screen and (width < 500px){
+  @media only screen and (width < 501px){
     :root{
         --toggle-sidebar: none;
         --toggle-dropdown: flex;
         --toggle-header-icons: none;
     }
+    
     main {
         top: 77px;
         left: 0;
         width: 100%;
         min-height: 100vh;
     }
+
     #title {
         width: calc(100%);
         border: none;
     }
+
     .nav-list{
         justify-content: flex-end;
     }

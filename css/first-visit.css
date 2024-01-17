@@ -1,6 +1,6 @@
 #first-div{
     /* border: solid; */
-    max-width: 60%;
+    width: clamp(250px, 60%, 1000px);
     margin: 0.5rem 1rem; 
     /* kan man använda % ?  */
 
