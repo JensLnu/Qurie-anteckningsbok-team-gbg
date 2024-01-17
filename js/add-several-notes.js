@@ -6,7 +6,7 @@
 
 // Hämta add-btn och notes från HTML
 const addBtnSeveral = document.querySelector('.add-btn');
-const notesContainerSeveral = document.querySelector('.notes');
+const savedNotes = document.querySelector('.saved-notes');
 const textareaSeveral = document.getElementById('text-area');
 
 // Funktion för att hämta senaste ID från localStorage, så att noteCounter alltid startar från senaste ID:t vid uppdatering av sidan
@@ -39,8 +39,8 @@ function displayAllNotes() {
             const noteText = localStorage.getItem(noteId);
 
             // Skapa note container
-            const noteContainer = document.createElement('div');
-            noteContainer.classList.add('note');
+            const notes = document.createElement('div');
+            notes.classList.add('notes');
 
             // Skapa textarea för anteckningen
             const noteTextarea = document.createElement('textarea');
@@ -52,16 +52,16 @@ function displayAllNotes() {
             deleteBtn.classList.add('delete-btn');
             deleteBtn.textContent = '-';
             deleteBtn.addEventListener('click', () => {
-                notesContainerSeveral.removeChild(noteContainer);
+                savedNotes.removeChild(notes);
                 localStorage.removeItem(noteId);
             });
 
             // Appenda till note container
-            noteContainer.appendChild(noteTextarea);
-            noteContainer.appendChild(deleteBtn);
+            notes.appendChild(noteTextarea);
+            notes.appendChild(deleteBtn);
 
             // Appenda note container till notes container
-            notesContainerSeveral.appendChild(noteContainer);
+            savedNotes.appendChild(notes);
 
         }
     }
@@ -72,8 +72,8 @@ displayAllNotes();
 // Event listener för add-btn
 addBtnSeveral.addEventListener('click', () => {
     // Skapa ny antecknings container (t.ex note)
-    const noteContainer = document.createElement('div');
-    noteContainer.classList.add('note');
+    const notes = document.createElement('div');
+    notes.classList.add('notes');
 
     // Skapa ny textarea för anteckningen
     const noteTextarea = document.createElement('textarea');
@@ -91,10 +91,12 @@ addBtnSeveral.addEventListener('click', () => {
     // Skapa event listener för input eventet och spara till localStorage
     noteTextarea.addEventListener('input', function() {
         localStorage.setItem(noteId, noteTextarea.value);
+        // Uppdatera main text-area när anteckning ändras
+        document.getElementById('text-area').innerHTML = noteTextarea.value;
     });
 
     // Appenda textarea till note container
-    noteContainer.appendChild(noteTextarea);
+    notes.appendChild(noteTextarea);
 
     // Skapa en delete knapp för anteckningen
     const deleteBtn = document.createElement('button');
@@ -104,15 +106,16 @@ addBtnSeveral.addEventListener('click', () => {
 
     // Skapa event listener för delete knappen och ta bort från localStorage
     deleteBtn.addEventListener('click', () => {
-        notesContainerSeveral.removeChild(noteContainer);
+        savedNotes.removeChild(notes);
         localStorage.removeItem(noteId);
+        document.getElementById('text-area').innerHTML = '';
     });
 
-    // Appenda deleteknapp till note container
-    noteContainer.appendChild(deleteBtn);
+    // Appenda deleteknapp till notes
+    notes.appendChild(deleteBtn);
 
-    // Appenda note container till notes container
-    notesContainerSeveral.appendChild(noteContainer);
+    // Appenda savedNotes till notes
+    savedNotes.appendChild(notes);
 
     // Focus på den nya anteckningen
     noteTextarea.focus();
