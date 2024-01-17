@@ -1,0 +1,96 @@
+@media (pointer: none) {
+    .add-btn:hover {
+      background-color: rgb(132, 169, 140);
+    }
+  
+    .add-btn:hover .material-symbols-outlined.md-40 {
+      scale: 1;
+    }
+    .icon:hover {
+      scale: 1;
+    }
+  }
+  
+  @media only screen and (max-width: 700px) {
+    header {
+      height: 75px;
+      width: 100vw;
+      flex-direction: row;
+    }
+  
+    #logo-container {
+      width: 75px;
+      aspect-ratio: 1/1;
+    }
+    #navigation {
+      width: 100%;
+      padding: 0;
+      height: 100%;
+    }
+    .nav-list {
+      flex-direction: row;
+      align-items: center;
+      height: 100%;
+      padding: 2rem;
+    }
+    #sidebar {
+      top: 75px; /*FULLÖSNING*/
+      left: 0px;
+    }
+    main {
+      top: 78px;
+      left: 200px;
+      width: 100%;
+      min-height: 100vh;
+    }
+    #text-area:focus {
+      outline: 0;
+    }
+    #title {
+      width: calc(100% - 200px);
+      border: none;
+    }
+  }
+  
+  @media only screen and (width < 501px){
+    :root{
+        --toggle-sidebar: none;
+        --toggle-dropdown: flex;
+        --toggle-header-icons: none;
+    }
+    
+    main {
+        top: 77px;
+        left: 0;
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    #title {
+        width: calc(100%);
+        border: none;
+    }
+
+    .nav-list{
+        justify-content: flex-end;
+    }
+  }
+
+  @media only screen and (500px < width < 600px) {
+    :root{
+        --toggle-sidebar: none;
+        --toggle-dropdown: none;
+        --toggle-header-icons: flex;
+        --toggle-add: flex;
+    }
+    main {
+        top: 77px;
+        left: 0;
+        width: 100%;
+        min-height: 100vh;
+    }
+    #title {
+        width: calc(100%);
+        border: none;
+    }
+  }
