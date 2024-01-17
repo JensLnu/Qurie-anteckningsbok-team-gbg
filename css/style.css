@@ -28,7 +28,6 @@ body {
   display: none;
 }
 
-
 /* HEADER CONTENT */
 header {
   position: fixed;
@@ -54,6 +53,7 @@ header {
 #navigation {
   width: 100%;
   padding: 2.5rem 0;
+  position: relative;
 }
 
 .nav-list {
@@ -83,6 +83,15 @@ header {
   transition: 20ms;
 }
 
+.add{
+  display: var(--toggle-add);
+}
+
+.dropdown {
+  display: var(--toggle-dropdown);
+  width: 75px;
+}
+
 /* SIDEBAR CONTENT */
 #sidebar {
   position: fixed;
@@ -96,12 +105,6 @@ header {
 
 .notes {
   width: 100%;
-}
-.add{
-  display: var(--toggle-add);
-}
-.dropdown {
-  display: var(--toggle-dropdown);
 }
 .add-btn {
   padding: 1rem 0;
@@ -130,7 +133,6 @@ header {
   transition: 20ms;
 }
 
-
 /* TEXTAREA CONTENT */
 main {
   position: fixed;
@@ -153,7 +155,6 @@ main {
   resize: none;
   border: none;
 }
-
 
 /* SWAP BETWEEN NOTES */
 .notes {
