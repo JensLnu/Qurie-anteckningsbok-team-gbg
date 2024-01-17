@@ -24,3 +24,7 @@
 ## När storyn är färdig
 - Upprepa steg för färdig feature om du inte redan gjort det
 - git branch -d feature/{namn på branch med kebab-case} eller -D om den inte vill med sig
+
+## För att jobba i samma branch (hint: gör en local kopia av branchen)
+- git branch -r (listar alla branches på github)
+- git checkout -b {namn på din nya lokala branch} {namn på den listade branchen du vill kopiera}
