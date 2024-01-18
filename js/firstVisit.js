@@ -25,3 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Inga anteckningar sparade i localstorage än');
     }
 });
+
+
+localStorage.clear();
