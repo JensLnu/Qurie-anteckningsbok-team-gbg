@@ -19,8 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class = "info-div"><h3 class = "header-info">Favorisera</h3><p class = "p-info">${favorite}</p></div>
             <div class = "info-div"><h3 class = "header-info">Analysera</h3><p class = "p-info">${analyse}</p></div>
             <div class = "info-div"><h3 class = "header-info">Konfigurera</h3><p class = "p-info">${settings}</p></div>        
-        </div>   
-    
+        </div>      
     `;
        
         console.log('Inga anteckningar sparade i localstorage än');
