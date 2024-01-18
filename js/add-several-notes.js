@@ -28,7 +28,7 @@ let noteCounter = getLatestNoteId() + 1;
 // Kontrollera att noteCounter aldrig blir mindre än 1
 noteCounter = Math.max(1, noteCounter);
 
-// Funktion för att visa alla anteckningar från localStorage
+// Funktion för att visa alla anteckningar från localStorage vid uppdatering av sidan
 function displayAllNotes() {
     for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
