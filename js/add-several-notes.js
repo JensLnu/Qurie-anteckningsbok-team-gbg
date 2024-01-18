@@ -1,6 +1,9 @@
 /*--- Som användare vill jag kunna skapa flera olika anteckningar ---*/
 
 // Vid uppdatering av sidan hamnar inte sparade notes i samma ordning som tidigare
+// chooseNote är kallad på i displayAllNotes och eventlistener för add-btn
+// Synka med firstVisit
+
 
 // Hämta add-btn och notes från HTML
 const addBtnSeveral = document.querySelector('.add-btn');
@@ -34,7 +37,6 @@ function displayAllNotes() {
         const key = localStorage.key(i);
         if (key && key.startsWith('Note ')) {
             const noteId = key;
-            const noteText = localStorage.getItem(noteId);
 
             // Skapa notes container
             const notes = document.createElement('div');
@@ -64,6 +66,9 @@ function displayAllNotes() {
             savedNotes.appendChild(notes);
         }
     }
+
+    // Kalla på chooseNote för att kunna bläddra mellan anteckningarna
+    chooseNote();
 }
 
 displayAllNotes();
@@ -116,6 +121,9 @@ addBtnSeveral.addEventListener('click', () => {
 
     // Appenda notes till saved-notes
     savedNotes.appendChild(notes);
+
+    // Kalla på chooseNote för att bläddra mellan anteckningar, även de nya
+    chooseNote();
 
     // Fokus på main text-area
     noteTextarea.focus();
