@@ -11,18 +11,15 @@ const savedNotes = document.querySelector('.saved-notes');
 const textareaSeveral = document.getElementById('text-area');
 
 // Hämta antecknings-ID från lS, och låt aldrig ID:t vara mindre än 1
-let noteCounter = Math.max(1, getLatestNoteId() + 1);
+let noteCounter = Math.max(0, getLatestNoteId());
 
 // Funktion för att hämta senaste anteckningarna från lS
 function getLatestNoteId() {
-    let latestId = -1;
+    let latestId = 0;
     for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key && key.startsWith('Note ')) {
-            const id = parseInt(key.split(' ')[1]);
-            if (!isNaN(id) && id > latestId) {
-                latestId = id;
-            }
+        let key = parseInt(localStorage.key(i));
+        if (!isNaN(key) && key > latestId) {
+                latestId = key;
         }
     }
     return latestId;
@@ -39,7 +36,7 @@ function createNotesContainer(noteId) {
     // Visa antecknings-ID i notes
     const noteKeyDisplay = document.createElement('div');
     noteKeyDisplay.classList.add('note-key-display');
-    noteKeyDisplay.textContent = noteId;
+    noteKeyDisplay.textContent = `Note ${noteId}`;
 
     notes.appendChild(noteKeyDisplay);
     notes.appendChild(deleteBtn);
@@ -60,14 +57,15 @@ function createDeleteButton(noteId) {
     return deleteBtn;
 }
 
-// Funktion för att visa alla sparade anteckningar
+// Funktion för att visa alla sparade anteckningar, och sortera
 function displayAllNotes() {
+    let arr = [];
     for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key && key.startsWith('Note ')) {
-            const noteId = key;
-            createNotesContainer(noteId);
-        }
+        arr.push(parseInt(localStorage.key(i)));
+    }
+    arr.sort();
+    for(let i = 0; i < arr.length; i++){
+        createNotesContainer(arr[i])
     }
     // Kalla på chooseNote för att kunna bläddra bland anteckningarna
     chooseNote();
@@ -83,7 +81,8 @@ addBtnSeveral.addEventListener('click', () => {
     noteTextarea.classList.add('note-textarea');
 
     // Unikt ID för varje anteckning
-    const noteId = `Note ${noteCounter++}`;
+    noteCounter++
+    const noteId = noteCounter;
 
     // Lyssna på ändringar i main text-area och spara i lS
     noteTextarea.addEventListener('input', () => localStorage.setItem(noteId, noteTextarea.value));
