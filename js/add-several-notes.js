@@ -5,12 +5,15 @@
 // Synka med firstVisit
 
 
-// Hämta add-btn och notes från HTML
+// Hämta referenser från HTML
 const addBtnSeveral = document.querySelector('.add-btn');
 const savedNotes = document.querySelector('.saved-notes');
 const textareaSeveral = document.getElementById('text-area');
 
-// Funktion för att hämta senaste ID från localStorage, så att noteCounter alltid startar från senaste ID:t vid uppdatering av sidan
+// Hämta antecknings-ID från lS, och låt aldrig ID:t vara mindre än 1
+let noteCounter = Math.max(1, getLatestNoteId() + 1);
+
+// Funktion för att hämta senaste anteckningarna från lS
 function getLatestNoteId() {
     let latestId = -1;
     for (let i = 0; i < localStorage.length; i++) {
@@ -25,106 +28,72 @@ function getLatestNoteId() {
     return latestId;
 }
 
-// Unikt id för varje anteckning
-let noteCounter = getLatestNoteId() + 1;
-
-// Kontrollera att noteCounter aldrig blir mindre än 1
-noteCounter = Math.max(1, noteCounter);
-
-// Funktion för att visa alla anteckningar från localStorage vid uppdatering av sidan
-function displayAllNotes() {
-    for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key && key.startsWith('Note ')) {
-            const noteId = key;
-
-            // Skapa notes container
-            const notes = document.createElement('div');
-            notes.classList.add('notes');
-
-            // Skapa delete knapp för anteckningen
-            const deleteBtn = document.createElement('button');
-            deleteBtn.classList.add('delete-btn');
-            deleteBtn.textContent = '-';
-            deleteBtn.addEventListener('click', () => {
-                savedNotes.removeChild(notes);
-                localStorage.removeItem(noteId);
-            });
-
-            // Visa noteId för anteckningen
-            const noteKeyDisplay = document.createElement('div');
-            noteKeyDisplay.classList.add('note-key-display');
-            noteKeyDisplay.textContent = noteId;
-
-            // Appenda till notes 
-            notes.appendChild(noteKeyDisplay);
-
-            // Appenda deleteBtn till notes
-            notes.appendChild(deleteBtn);
-
-            // Appenda notes till saved-notes
-            savedNotes.appendChild(notes);
-        }
-    }
-
-    // Kalla på chooseNote för att kunna bläddra mellan anteckningarna
-    chooseNote();
-}
-
-displayAllNotes();
-
-// Event listener för add-btn
-addBtnSeveral.addEventListener('click', () => {
-    // Skapa en ny textarea inuti main text-area
-    const mainTextArea = document.getElementById('text-area');
-    const noteTextarea = document.createElement('textarea');
-    noteTextarea.classList.add('note-textarea');
-
-    // Skapa ett unikt id för anteckningen
-    const noteId = `Note ${noteCounter++}`;
-
-    // Event listener för att spara i LS
-    noteTextarea.addEventListener('input', function () {
-        localStorage.setItem(noteId, noteTextarea.value);
-    });
-
-    // Appenda nya textarean till main text-area
-    mainTextArea.textContent = ''; // Rensa befintligt innehåll
-    mainTextArea.appendChild(noteTextarea);
-
-    // Skapa en notes container för saved-notes
+// Funktion för att skapa notes i DOM
+function createNotesContainer(noteId) {
     const notes = document.createElement('div');
     notes.classList.add('notes');
 
-    // Visa noteId för anteckningen
+    // Knapp för att ta bort anteckning
+    const deleteBtn = createDeleteButton(noteId);
+
+    // Visa antecknings-ID i notes
     const noteKeyDisplay = document.createElement('div');
     noteKeyDisplay.classList.add('note-key-display');
     noteKeyDisplay.textContent = noteId;
 
     notes.appendChild(noteKeyDisplay);
+    notes.appendChild(deleteBtn);
+    savedNotes.appendChild(notes);
+}
 
-    // Skapa delete knapp
+// Funktion för att ta bort anteckning
+function createDeleteButton(noteId) {
     const deleteBtn = document.createElement('button');
     deleteBtn.classList.add('delete-btn');
     deleteBtn.textContent = '-';
+    // Ta bort anteckning från DOM och lS
     deleteBtn.addEventListener('click', () => {
-        // Ta bort anteckningen från saved-notes och LS
-        savedNotes.removeChild(notes);
+        savedNotes.removeChild(deleteBtn.parentElement);
         localStorage.removeItem(noteId);
-
-        // Rensa innehållet i main text-area
-        mainTextArea.textContent = '';
+        textareaSeveral.textContent = '';
     });
+    return deleteBtn;
+}
 
-    // Appenda delete knappen till notes
-    notes.appendChild(deleteBtn);
-
-    // Appenda notes till saved-notes
-    savedNotes.appendChild(notes);
-
-    // Kalla på chooseNote för att bläddra mellan anteckningar, även de nya
+// Funktion för att visa alla sparade anteckningar
+function displayAllNotes() {
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith('Note ')) {
+            const noteId = key;
+            createNotesContainer(noteId);
+        }
+    }
+    // Kalla på chooseNote för att kunna bläddra bland anteckningarna
     chooseNote();
+}
 
-    // Fokus på main text-area
+// Visa alla sparade anteckningar när sidan laddas om
+displayAllNotes();
+
+// Event listener för add-btn
+addBtnSeveral.addEventListener('click', () => {
+    const mainTextArea = document.getElementById('text-area');
+    const noteTextarea = document.createElement('textarea');
+    noteTextarea.classList.add('note-textarea');
+
+    // Unikt ID för varje anteckning
+    const noteId = `Note ${noteCounter++}`;
+
+    // Lyssna på ändringar i main text-area och spara i lS
+    noteTextarea.addEventListener('input', () => localStorage.setItem(noteId, noteTextarea.value));
+    mainTextArea.textContent = '';
+    mainTextArea.appendChild(noteTextarea);
+
+    // Lägg till den nya anteckningen i DOM
+    createNotesContainer(noteId);
+    // Kalla på chooseNote för att kunna bläddra bland anteckningarna
+    chooseNote();
+    // Fokus på den nya anteckningen
     noteTextarea.focus();
 });
