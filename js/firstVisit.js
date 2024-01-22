@@ -38,4 +38,4 @@ function displayFirstMessage(response) {
     }
 }
 
->>>>>>> 1076818aa1760453042064e50bc7cd8843c3bf53
+
