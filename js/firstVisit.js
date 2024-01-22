@@ -37,5 +37,3 @@ function displayFirstMessage(response) {
         console.log('Inga anteckningar sparade i localstorage än');
     }
 }
-
->>>>>>> 1076818aa1760453042064e50bc7cd8843c3bf53
