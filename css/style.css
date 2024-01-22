@@ -116,13 +116,22 @@ header {
   position: fixed;
   left: 275px;
   width: 100%;
-  background-color: black;
-  padding: .5rem 1rem;
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0.253);
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.toolbar-button {
+  width: 20px ;
 }
 
 /* TEXTAREA CONTENT */
 main {
   position: fixed;
+  top: 30px;
   left: 275px;
   width: 100%;
   min-height: 100vh;
