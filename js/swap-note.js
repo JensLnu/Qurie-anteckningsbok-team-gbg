@@ -9,6 +9,7 @@ function chooseNote() {
     const allNotes = document.querySelectorAll('.notes'); // array med alla div-element (notes)
     allNotes.forEach(note => {
         note.addEventListener('click', (e) => {
+            e.stopImmediatePropagation();
             displayNote(e, allNotes);
         });
     })
@@ -16,10 +17,12 @@ function chooseNote() {
 
 // display clicked note
 function displayNote(e, allNotes) {
+    console.log('displayNote')
     let selectedNote = e.currentTarget;
     allNotes.forEach(note => {
         note.classList.remove('displayed-note');
     });
     selectedNote.classList.add('displayed-note');
-    textArea.textContent = selectedNote.innertext;
+    const header = selectedNote.firstElementChild.textContent;
+    textArea.innerHTML = `<h2>${header}</h2><p>${localStorage.getItem(header)}</p>`;
 }
