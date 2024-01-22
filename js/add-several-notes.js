@@ -1,21 +1,21 @@
 /*--- Som användare vill jag kunna skapa flera olika anteckningar ---*/
 
-// 1. Kalla på vår funktion i add-note.js
-// 2. Ev. spara-knapp i add-note.js
-// 3. Korta ner och snygga till koden!
+// Vid uppdatering av sidan hamnar inte sparade notes i samma ordning som tidigare
+// chooseNote är kallad på i displayAllNotes och eventlistener för add-btn
+// Synka med firstVisit
 
-// Hämta add-btn och notes från HTML
 const addBtnSeveral = document.querySelector('.add-btn');
-const notesContainerSeveral = document.querySelector('.notes');
+const savedNotes = document.querySelector('.saved-notes');
 const textareaSeveral = document.getElementById('text-area');
 
-// Funktion för att hämta senaste ID från localStorage, så att noteCounter alltid startar från senaste ID:t vid uppdatering av sidan
+let noteCounter = Math.max(1, getLatestNoteId() + 1);
+
 function getLatestNoteId() {
     let latestId = -1;
     for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
-        if (key && key.startsWith('note_')) {
-            const id = parseInt(key.split('_')[1]);
+        if (key && key.startsWith('Note ')) {
+            const id = parseInt(key.split(' ')[1]);
             if (!isNaN(id) && id > latestId) {
                 latestId = id;
             }
@@ -24,96 +24,58 @@ function getLatestNoteId() {
     return latestId;
 }
 
-// Unikt id för varje anteckning
-let noteCounter = getLatestNoteId() + 1;
+function createNotesContainer(noteId) {
+    const notes = document.createElement('div');
+    notes.classList.add('notes');
 
-// Kontrollera att noteCounter aldrig blir mindre än 0
-noteCounter = Math.max(0, noteCounter);
+    const deleteBtn = createDeleteButton(noteId);
 
-// Funktion för att visa alla anteckningar från localStorage
+    const noteKeyDisplay = document.createElement('div');
+    noteKeyDisplay.classList.add('note-key-display');
+    noteKeyDisplay.textContent = noteId;
+
+    notes.appendChild(noteKeyDisplay);
+    notes.appendChild(deleteBtn);
+    savedNotes.appendChild(notes);
+}
+
+function createDeleteButton(noteId) {
+    const deleteBtn = document.createElement('button');
+    deleteBtn.classList.add('delete-btn');
+    deleteBtn.textContent = '-';
+    deleteBtn.addEventListener('click', () => {
+        savedNotes.removeChild(deleteBtn.parentElement);
+        localStorage.removeItem(noteId);
+        textareaSeveral.textContent = '';
+    });
+    return deleteBtn;
+}
+
 function displayAllNotes() {
     for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
-        if (key && key.startsWith('note_')) {
+        if (key && key.startsWith('Note ')) {
             const noteId = key;
-            const noteText = localStorage.getItem(noteId);
-
-            // Skapa note container
-            const noteContainer = document.createElement('div');
-            noteContainer.classList.add('note');
-
-            // Skapa textarea för anteckningen
-            const noteTextarea = document.createElement('textarea');
-            noteTextarea.classList.add('note-textarea');
-            noteTextarea.value = noteText;
-
-            // Skapa delete knapp för anteckningen
-            const deleteBtn = document.createElement('button');
-            deleteBtn.classList.add('delete-btn');
-            deleteBtn.textContent = '-';
-            deleteBtn.addEventListener('click', () => {
-                notesContainerSeveral.removeChild(noteContainer);
-                localStorage.removeItem(noteId);
-            });
-
-            // Appenda till note container
-            noteContainer.appendChild(noteTextarea);
-            noteContainer.appendChild(deleteBtn);
-
-            // Appenda note container till notes container
-            notesContainerSeveral.appendChild(noteContainer);
-
+            createNotesContainer(noteId);
         }
     }
+    chooseNote();
 }
 
 displayAllNotes();
 
-// Event listener för add-btn
 addBtnSeveral.addEventListener('click', () => {
-    // Skapa ny antecknings container (t.ex note)
-    const noteContainer = document.createElement('div');
-    noteContainer.classList.add('note');
-
-    // Skapa ny textarea för anteckningen
+    const mainTextArea = document.getElementById('text-area');
     const noteTextarea = document.createElement('textarea');
     noteTextarea.classList.add('note-textarea');
 
-    // Skapa unikt id med counter
-    const noteId = `note_${noteCounter++}`;
+    const noteId = `Note ${noteCounter++}`;
 
-    // Hämta tidigare sparad anteckning från localStorage
-    const savedNote = localStorage.getItem(noteId);
-    if (savedNote) {
-        noteTextarea.value = savedNote;
-    }
+    noteTextarea.addEventListener('input', () => localStorage.setItem(noteId, noteTextarea.value));
+    mainTextArea.textContent = '';
+    mainTextArea.appendChild(noteTextarea);
 
-    // Skapa event listener för input eventet och spara till localStorage
-    noteTextarea.addEventListener('input', function() {
-        localStorage.setItem(noteId, noteTextarea.value);
-    });
-
-    // Appenda textarea till note container
-    noteContainer.appendChild(noteTextarea);
-
-    // Skapa en delete knapp för anteckningen
-    const deleteBtn = document.createElement('button');
-    deleteBtn.classList.add('delete-btn');
-    // Lägg - som knapp
-    deleteBtn.textContent = '-';
-
-    // Skapa event listener för delete knappen och ta bort från localStorage
-    deleteBtn.addEventListener('click', () => {
-        notesContainerSeveral.removeChild(noteContainer);
-        localStorage.removeItem(noteId);
-    });
-
-    // Appenda deleteknapp till note container
-    noteContainer.appendChild(deleteBtn);
-
-    // Appenda note container till notes container
-    notesContainerSeveral.appendChild(noteContainer);
-
-    // Focus på den nya anteckningen
+    createNotesContainer(noteId);
+    chooseNote();
     noteTextarea.focus();
 });
