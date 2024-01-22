@@ -1,5 +1,9 @@
+/*  Som användare vill jag mötas av en informationssida 
+som berättar om systemet första gången jag besöker Quire  */
 document.addEventListener('DOMContentLoaded', getFirstVisit);
 
+
+// Hämtar data från '../json/firstVisit.json' asynkront.
 async function getFirstVisit() {
     let response = await fetch('../json/firstVisit.json');
     console.log(response)
@@ -12,11 +16,14 @@ async function getFirstVisit() {
     }
 }
 
+// Visar den första välkomstmeddelandet på sidan
 function displayFirstMessage(response) {
     const textArea = document.getElementById('text-area');
+
+    // hämta sparad text från localStorage
     const textContent = localStorage.getItem('text');
 
-
+    // om det inte fins sparad text i localStorage, skapar och lägger till
     if (!textContent) {
         textArea.innerHTML = `
         <div id ="first-div">
