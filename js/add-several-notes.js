@@ -49,10 +49,11 @@ function createDeleteButton(noteId) {
     deleteBtn.classList.add('delete-btn');
     deleteBtn.textContent = '-';
     // Ta bort anteckning från DOM och lS
-    deleteBtn.addEventListener('click', () => {
+    deleteBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
         savedNotes.removeChild(deleteBtn.parentElement);
         localStorage.removeItem(noteId);
-        textareaSeveral.textContent = '';
+        textareaSeveral.innerHTML = '';
     });
     return deleteBtn;
 }
