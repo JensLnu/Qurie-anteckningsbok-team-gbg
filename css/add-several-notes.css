@@ -1,0 +1,29 @@
+.notes {
+    display: flex;
+    justify-content: space-between;
+}
+
+.note-key-display {
+    font-weight: bold;
+    color: rgb(47, 62, 70);
+}
+
+.delete-btn {
+    display: flex;
+    color: white;
+    border-radius: 50%;
+    height: 1.5em;
+    width: 1.5em;
+    justify-content: center;
+    align-items: center;
+    border: solid white;
+    background-color: rgb(132, 169, 140);
+    transition: 0.5s;
+}
+
+.note-textarea {
+    width: 100%;
+    height: 100vh;
+    padding: 3em;
+    outline-color: rgb(47, 62, 70);
+}

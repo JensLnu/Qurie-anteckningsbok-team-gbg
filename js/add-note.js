@@ -13,4 +13,6 @@ function addNote(){
         localStorage.setItem('text', note.value);
     })
     note.focus();
-}
+    
+};
+
