@@ -44,20 +44,29 @@
       </nav>
     </header>
     <section id="sidebar" class="">
-      <button class="add-btn sidebar-border-right">
-        <span class="material-symbols-outlined md-40">add_circle</span>
-      </button>
-
-      <div class="saved-notes">
-        <!-- test note 1 -->
-        <!-- skulle vilja att dem sparade 'notesen' lägger sig i en div med class="notes" annars fungerar inte koden för att byta mellan notes (swap-notes.js)-->
-        <!--<div class="notes">
-                <h3>note 1</h3>
-                <p>antecknings text</p>
-            </div>-->
-      </div>
-
-      <div class="saved-notes"></div>
+        <button class="add-btn sidebar-border-right"><span class="material-symbols-outlined md-40">add_circle</span></button>
+        <div class="saved-notes">
+        </div>
+    </section>
+    <section id="toolbar">
+      <!-- Gissar att options kommer från API, Lycka till Tova & Adam! :-) -->
+      <select name="fonts" id="fonts">
+        <option value="Choose font">Välj en font</option>
+      </select>
+      <!-- Fyller denna dynamiskt med JS -->
+      <select name="font-size" id="font-size">
+        <option value="Choose font size">Välj storlek</option>
+      </select>
+      <select name="text-type" id="text-type">
+        <option value="regular">Vanlig text</option>
+        <option value="heading-1">Rubrik 1</option>
+        <option value="heading-2">Rubrik 2</option>
+        <option value="heading-3">Rubrik 3</option>
+        <option value="unordered-list">*Punktlista</option>
+        <option value="ordered-list">1. Numrerad lista</option>
+      </select>
+      <button class="toolbar-button">B</button>
+      <button class="toolbar-button">I</button>
     </section>
     <main>
           <div id="text-area">
