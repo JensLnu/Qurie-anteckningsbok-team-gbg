@@ -22,7 +22,7 @@ function displayFirstMessage(response) {
     const textContent = localStorage.getItem('text');
 
     // om det inte fins sparad text i localStorage, skapar och lägger till
-    if (!textContent) {
+    if (isLocalStorageEmpty()) {
         textArea.innerHTML = `
         <div id ="first-div">
             <h1 id = "first-rubrik">Välkommen till Qurie</h1>
@@ -37,17 +37,32 @@ function displayFirstMessage(response) {
         console.log('Inga anteckningar sparade i localstorage än');
     }
 }
+
+/**
+ * Kontrollerar om den lokala lagringen är tom genom att iterera genom alla nycklar
+ * och verifiera att varje motsvarande värde varken är null eller undefined.
+ * Sant om den lokala lagringen är tom, annars falskt. 
+ * */
 function isLocalStorageEmpty() {
+    
+    // Hämta alla nycklar i den lokala lagringen
     const allKeys = Object.keys(localStorage);
 
+    // Iterera genom varje nyckel
     for (let i = 0; i < allKeys.length; i++){
         const key = allKeys[i];
+
+        // Hämta värdet som är kopplat till nyckeln
         const value = localStorage.getItem(key);
 
+        // Kontrollera om värdet inte är null eller undefined
         if (value !== null && value !== undefined) {
+
+            // Om något icke-tomt värde hittas, returnera falskt
             return false;
         }
     }
 
+    // Om alla värden antingen är null eller undefined, returnera sant
     return true;
 }
