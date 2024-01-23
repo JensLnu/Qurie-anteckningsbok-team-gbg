@@ -1,5 +1,6 @@
 const displayBtn = document.querySelector('.dropdown');
 const dropdownMenu = document.querySelector('.nav-list');
+const toolbar = document.getElementById('toolbar');
 const main = document.querySelector('main');
 const body = document.querySelector('body');
 
@@ -13,10 +14,12 @@ function toggleDisplay() {
     if(dropdownMenu.classList.contains('display')){
         dropdownMenu.classList.remove('display')
         main.classList.remove('background') 
+        toolbar.classList.remove('background')
         body.removeEventListener('click', toggleDisplay) 
     } else {
         dropdownMenu.classList.add('display')
         main.classList.add('background')
+        toolbar.classList.add('background')
         // Timeout för att det ska funka?????????????????????
         setTimeout(() => {
             body.addEventListener('click', toggleDisplay)

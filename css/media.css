@@ -16,15 +16,15 @@
   }
 
   #sidebar {
-    top: 75px;
+    top: 105px;
     left: 0px;
   }
 
   main {
-    top: 76px;
+    top: 105px;
     left: 200px;
-    width: 100%;
-    min-height: 100vh;
+    width: calc(100% - 200px);
+    height: calc(100% - 105px);
   }
 
   #title {
@@ -33,12 +33,12 @@
   }
 
   #toolbar {
-    left: 200px;
+    left: 0;
     top: 75px;
     width: 100%;
-    background-color: black;
     padding: .5rem 1rem;
   }
+
 }
   
 @media only screen and (width < 501px){
@@ -49,10 +49,10 @@
   }
   
   main {
-    top: 77px;
+    top: 105px;
     left: 0;
     width: 100%;
-    min-height: 100vh;
+    height: calc(100% - 105px);
   }
 
   .background {
@@ -93,6 +93,12 @@
     z-index: 1;
     transition: 0.25s;
   }
+
+  #toolbar {
+    left: 0;
+    width: 100%;
+    padding: .5rem 1rem;
+  }
   
 }
 
@@ -104,14 +110,20 @@
       --toggle-add: flex;
   }
   main {
-      top: 77px;
+      top: 100px;
       left: 0;
       width: 100%;
-      min-height: 100vh;
+      height: calc(100% - 105px);
   }
   #title {
-      width: calc(100%);
+      width: 100%;
       border: none;
+  }
+  #toolbar {
+    left: 0;
+    top: 75px;
+    width: 100%;
+    padding: .5rem 1rem;
   }
 }
 
