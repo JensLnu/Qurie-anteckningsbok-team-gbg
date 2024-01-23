@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/media.css" />
     <link rel="stylesheet" href="./css/add-several-notes.css" />
+    <link rel="stylesheet" href="./css/edit.css">
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
@@ -69,7 +70,24 @@
     </section>
     <main>
       <div id="text-area"></div>
-    </main>
+        <div class="notesPreview">
+          <input class="notes__title" type="text" placeholder="Lägg till en titel...">
+          <br>
+          <div class="btn-options">
+              <button id="header">Rubrik</button>
+              <button id="createbulletList">Punkt lista</button>
+              <button id="createNumberedList">Numrerad lista</button>
+              <button id="italic">Kursiv</button>
+              <button id="bold">Fetstil</button>
+          </div>
+          <br>
+          <textarea class="notes__body" id="notesBody">Börja här!...</textarea>
+        </div>
+      </div>
+  </main>
+  
+  
+  
 
     <!-- script -->
     <script src="./js/index.js"></script>
@@ -80,5 +98,6 @@
     <script src="./js/dropdown.js"></script>
     <script src="./js/formating-markdown.js"></script>
     <script src="./js/add-img.js"></script>
-</body>
+   <script src="./js/edit.js"></script>
+  </body>
 </html>

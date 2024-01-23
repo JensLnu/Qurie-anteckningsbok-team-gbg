@@ -76,8 +76,9 @@ displayAllNotes();
 
 addBtnSeveral.addEventListener('click', () => {
     const mainTextArea = document.getElementById('text-area');
-    const noteTextarea = document.createElement('textarea');
-    noteTextarea.classList.add('note-textarea');
+    const noteTextarea = document.createElement('div');
+    noteTextarea.className = "note-textarea";
+    noteTextarea.setAttribute("contenteditable", "true");
 
     // Unikt ID för varje anteckning
     noteCounter++
@@ -88,7 +89,7 @@ addBtnSeveral.addEventListener('click', () => {
     mainTextArea.textContent = '';
     mainTextArea.appendChild(noteTextarea);
 
-    // Lägg till den nya anteckningen i DOM
+    // Lägg till den nya anteckningen i DOM (sidebar)
     createNotesContainer(noteId);
     // Kalla på chooseNote för att kunna bläddra bland anteckningarna
     chooseNote();
