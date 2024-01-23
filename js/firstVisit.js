@@ -1,5 +1,3 @@
-/*  Som användare vill jag mötas av en informationssida 
-som berättar om systemet första gången jag besöker Quire  */
 document.addEventListener('DOMContentLoaded', getFirstVisit);
 
 
@@ -39,4 +37,5 @@ function displayFirstMessage(response) {
         console.log('Inga anteckningar sparade i localstorage än');
     }
 }
+
 
