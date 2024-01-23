@@ -75,7 +75,6 @@ function displayAllNotes() {
 // Visa alla sparade anteckningar när sidan laddas om
 displayAllNotes();
 
-// Event listener för add-btn
 addBtnSeveral.addEventListener('click', () => {
     const mainTextArea = document.getElementById('text-area');
     const noteTextarea = document.createElement('textarea');

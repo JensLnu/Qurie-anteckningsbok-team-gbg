@@ -48,7 +48,7 @@ h1 {
     max-width: 100vw;
     overflow: scroll;
   }
-  p {
+  .p-info {
     margin: 0;
     padding: 20px;
   }
