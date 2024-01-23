@@ -4,7 +4,6 @@
 // chooseNote är kallad på i displayAllNotes och eventlistener för add-btn
 // Synka med firstVisit
 
-
 // Hämta referenser från HTML
 const addBtnSeveral = document.querySelector('.add-btn');
 const savedNotes = document.querySelector('.saved-notes');
@@ -49,10 +48,11 @@ function createDeleteButton(noteId) {
     deleteBtn.classList.add('delete-btn');
     deleteBtn.textContent = '-';
     // Ta bort anteckning från DOM och lS
-    deleteBtn.addEventListener('click', () => {
+    deleteBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
         savedNotes.removeChild(deleteBtn.parentElement);
         localStorage.removeItem(noteId);
-        textareaSeveral.textContent = '';
+        textareaSeveral.innerHTML = '';
     });
     return deleteBtn;
 }
@@ -74,7 +74,6 @@ function displayAllNotes() {
 // Visa alla sparade anteckningar när sidan laddas om
 displayAllNotes();
 
-// Event listener för add-btn
 addBtnSeveral.addEventListener('click', () => {
     const mainTextArea = document.getElementById('text-area');
     const noteTextarea = document.createElement('textarea');

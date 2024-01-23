@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/media.css">
-    <link rel="stylesheet" href="./css/add-several-notes.css">
+    <link rel="stylesheet" href="./css/media.css" />
+    <link rel="stylesheet" href="./css/add-several-notes.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
-    <link rel="stylesheet" href="./css/first-visit.css">
+    <link rel="stylesheet" href="./css/first-visit.css" />
   </head>
   <body>
     <header>
@@ -20,16 +20,18 @@
       <nav id="navigation">
         <ul class="nav-list">
           <li class="icon">
-            <span class="material-symbols-outlined md-40">search</span>
+            <span class="material-symbols-outlined md-40 search">search</span>
           </li>
           <li class="icon">
-            <span class="material-symbols-outlined md-40">stars</span>
+            <span class="material-symbols-outlined md-40 stars">stars</span>
           </li>
           <li class="icon">
-            <span class="material-symbols-outlined md-40">finance</span>
+            <span class="material-symbols-outlined md-40 finance">finance</span>
           </li>
           <li class="icon">
-            <span class="material-symbols-outlined md-40">settings</span>
+            <span class="material-symbols-outlined md-40 settings"
+              >settings</span
+            >
           </li>
           <li class="icon add">
             <span class="material-symbols-outlined md-40">add_circle</span>
@@ -45,6 +47,26 @@
         <div class="saved-notes">
         </div>
     </section>
+    <section id="toolbar">
+      <!-- Gissar att options kommer från API, Lycka till Tova & Adam! :-) -->
+      <select name="fonts" id="fonts">
+        <option value="Choose font">Välj en font</option>
+      </select>
+      <!-- Fyller denna dynamiskt med JS -->
+      <select name="font-size" id="font-size">
+        <option value="Choose font size">Välj storlek</option>
+      </select>
+      <select name="text-type" id="text-type">
+        <option value="regular">Vanlig text</option>
+        <option value="heading-1">Rubrik 1</option>
+        <option value="heading-2">Rubrik 2</option>
+        <option value="heading-3">Rubrik 3</option>
+        <option value="unordered-list">*Punktlista</option>
+        <option value="ordered-list">1. Numrerad lista</option>
+      </select>
+      <button class="toolbar-button">B</button>
+      <button class="toolbar-button">I</button>
+    </section>
     <main>
       <div id="text-area"></div>
     </main>
@@ -57,5 +79,6 @@
     <script src="./js/add-several-notes.js"></script>
     <script src="./js/dropdown.js"></script>
     <script src="./js/formating-markdown.js"></script>
+    <script src="./js/add-img.js"></script>
 </body>
 </html>

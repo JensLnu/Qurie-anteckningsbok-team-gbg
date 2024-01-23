@@ -1,53 +1,52 @@
 #first-div {
-  /* border: solid; */
-  /* width: clamp(250px, 60%, 1000px); */
-  margin: 0.5rem 1rem;
-  /* kan man använda % ?  */
-  max-height: 100vh;
-  max-width: 75vw;
-
-  overflow: scroll;
+  padding: 0 2rem 2rem;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+#first-div::-webkit-scrollbar {
+  display: none;
+}
+#first-div {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+#text-area {
+  width: min(90%, 1300px);
+  margin: 0 auto;
 }
 
 #first-rubrik {
   align-self: center;
-  margin: 1rem 0 1rem 1rem;
+  margin: 1rem 0;
+  font-size: clamp(1.8rem, 5vw, 4rem);
+  color: #22546e;
 }
 
 .info-div {
   margin: 20px 0;
 }
 
-p {
-  line-height: 25px;
-  margin: 0.5rem 0 0 2rem;
+.p-info {
+  line-height: 20px;
+  letter-spacing: 1.5px;
+  margin-top: .5rem;
+  font-size: 18px;
 }
 
 .header-info {
-  margin: 0 0 0 2rem;
+  color: #22546e;
+  font-weight: 500;
+  letter-spacing: 1.5px;
 }
 
-h1 {
-  font-size: 1.8rem;
-}
-
-@media (min-width: 300px) and (max-width: 500px) {
+@media only screen and (width < 700px){
   #first-div {
-    max-height: 90vh;
-    max-width: 100vw;
-  }
-  p {
-    margin: 0;
-    padding: 20px;
-  }
-  h1 {
-    display: block;
-    font-size: 1.8rem;
-  }
-  .header-info {
-    margin: 0;
-    padding: 0 20px 0 20px;
+    padding: 0 .5rem;
   }
 }
