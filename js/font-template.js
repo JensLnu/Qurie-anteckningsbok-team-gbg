@@ -1,81 +1,72 @@
 /*--- Som användare vill jag kunna skapa egna mallar där jag kan ställa in valfria typsnitt utifrån de som finns i Google fonts ---*/
 
-/*function createFontDropdownBtn() {
-    const dropdownFonts = document.createElement('div');
-    dropdownFonts.classList.add('dropdown-fonts');
-    dropdownFonts.innerHTML = `
-        <button class="font-btn">Choose font</button>
-        <div class="fonts">
-            <a href="#">Font 1</a>
-            <a href="#">Font 2</a>
-            <a href="#">Font 3</a>
-        </div>
-    `;
-    return dropdownFonts;
-}*/
+// Kan man göra så att de mest använda typsnitten hamnar högst upp i listan?
+// Spara i lS
+
 
 // API key: AIzaSyD9u1DRArZCKthVW8zoz2g1jVhveiaqjYQ
 
-// Vänta tills DOMen har laddats innan koden körs
-document.addEventListener('DOMContentLoaded', function() {
-    // Anropa funktionen för att hämta google fonts
-    fetchGoogleFonts();
-});
-
 // Funktion för att hämta Google Fonts
-function fetchGoogleFonts() {
+async function fetchGoogleFonts() {
     // Anropa API för att hämta data
-    fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyD9u1DRArZCKthVW8zoz2g1jVhveiaqjYQ')
-        .then(response => response.json())
-        .then(data => {
-            // Visa dropdown-menyn
-            displayFontDropdown(data.items);
-        })
-        .catch(error => {
-            // Visa felmeddelande vid error
-            console.error('Error fetching Google Fonts:', error);
-        });
+    try {
+        const response = await fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyD9u1DRArZCKthVW8zoz2g1jVhveiaqjYQ');
+        if (!response.ok) {
+            throw new Error('Failed to fetch Google Fonts');
+        }
+        const data = await response.json();
+        displayFontDropdown(data.items);
+    } catch(error) {
+        // Visa felmeddelande vid error
+        console.error('Error fetching Google Fonts:', error);
+        // Alert till användaren
+        alert('Failed to fetch Google Fonts. Please try again later');
+    };
 }
 
 // Funktion för att visa dropdown-menyn med alla fonts
 function displayFontDropdown(fonts) {
-    var fontDropdown = document.getElementById('fontDropdown');
+    const fontDropdown = document.getElementById('fontDropdown');
     fontDropdown.innerHTML = '';
 
     // Loopa igenom varje Google Font och lägg till varje i dropdown-menyn
     fonts.forEach(font => {
-        var option = document.createElement('option');
-        option.value = font.family;
-        option.text = font.family;
+        const option = new Option(font.family, font.family);
         fontDropdown.appendChild(option);
     });
 
     // Event listener för ändringar och applicera valt typsnitt
     fontDropdown.addEventListener('change', function() {
-        var selectedFont = fontDropdown.value;
+        const selectedFont = fontDropdown.value;
         if (selectedFont) {
             applyFont(selectedFont);
         }
     });
 
-    // Trigga laddning av standardtypsnittet
-    var defaultFont = fontDropdown.value;
+    // Trigga laddning av första fonten i listan tills använderan valt en annan font
+    const defaultFont = fontDropdown.value;
     if (defaultFont) {
         applyFont(defaultFont);
     }
 }
 
-// Funktion för att applicera valt typsnitt på textContainer mha Webfont.js
+// Funktion för att applicera valt typsnitt på textContainer
 function applyFont(fontName) {
-    WebFont.load({
-        google: {
-            families: [fontName]
-        },
-        active: function() {
-            document.getElementById('textContainer').style.fontFamily = fontName;
-        },
-        inactive: function() {
-            console.error('Font loading failed');
-        }
-    });
+    // Ta bort nuvarande styles
+    const existingStyles = document.querySelectorAll('style[data-font-stylesheet]');
+    existingStyles.forEach(style => style.remove());
+
+    // Skapa länk för fonts
+    const linkElement = document.createElement('link');
+    linkElement.rel = 'stylesheet';
+    linkElement.href = `https://fonts.googleapis.com/css?family=${fontName.replace(/\s/g, '+')}`;
+    linkElement.dataset.fontStylesheet = '';
+
+    // Appenda länk till head (för att dynamiskt ladda vald font)
+    document.head.appendChild(linkElement);
+
+    // Applicera fonten till texten
+    document.getElementById('textContainer').style.fontFamily = fontName;
 }
+
+fetchGoogleFonts();
