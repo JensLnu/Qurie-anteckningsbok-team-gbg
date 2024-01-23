@@ -33,7 +33,6 @@ function displayFirstMessage(response) {
             <div class = "info-div"><h3 class = "header-info">Konfigurera</h3><p class = "p-info">${response.settings}</p></div>        
         </div>      
     `;
-       
         console.log('Inga anteckningar sparade i localstorage än');
     }
 }
