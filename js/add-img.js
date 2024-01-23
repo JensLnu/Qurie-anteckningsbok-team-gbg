@@ -15,3 +15,5 @@ window.addEventListener('load', function() {
  * <input type='file' />
 <br><img id="myImg" src="#">
  */
+
+// 

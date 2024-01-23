@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', getFirstVisit);
 
 // Hämtar data från '../json/firstVisit.json' asynkront.
 async function getFirstVisit() {
-    let response = await fetch('../json/firstVisit.json');
+    let response = await fetch('./json/firstVisit.json');
     console.log(response)
     if (response.ok) {
         response = await response.json();
