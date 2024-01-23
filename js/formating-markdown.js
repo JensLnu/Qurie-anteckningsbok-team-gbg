@@ -3,6 +3,13 @@
 */
 
 function formatingMarkdown(){
-    const note = document.getElementById('title');
+    console.log('formatingMarkdown')
+    const note = document.getElementById('text-area');
     console.log(note);
+    convertToMarkdown(note.firstElementChild.textContent);
+}
+
+function convertToMarkdown(text) {
+    text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    console.log(text)
 }
