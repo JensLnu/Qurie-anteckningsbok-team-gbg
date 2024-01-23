@@ -25,3 +25,5 @@ function displayNote(e, allNotes) {
     const header = selectedNote.firstElementChild.textContent;
     textArea.innerHTML = `<h2>${header}</h2><p>${localStorage.getItem(header.charAt(header.length - 1))}</p>`;
 }
+
+// kan man lägga till ett input-element i rad 26. Här <h2>${header}</h2> så att användaren ska kunna välja vilket namn de ska ha på sin anteckning? 
