@@ -22,7 +22,7 @@ function displayFirstMessage(response) {
     const textContent = localStorage.getItem('text');
 
     // om det inte fins sparad text i localStorage, skapar och lägger till
-    if (!textContent) {
+    if (isLocalStorageEmpty()) {
         textArea.innerHTML = `
         <div id ="first-div">
             <h1 id = "first-rubrik">Välkommen till Qurie</h1>
@@ -33,6 +33,7 @@ function displayFirstMessage(response) {
             <div class = "info-div"><h3 class = "header-info">Konfigurera</h3><p class = "p-info">${response.settings}</p></div>        
         </div>      
     `;
+       
         console.log('Inga anteckningar sparade i localstorage än');
     }
 }
