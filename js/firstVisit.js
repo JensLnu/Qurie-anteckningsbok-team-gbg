@@ -1,11 +1,9 @@
-/*  Som användare vill jag mötas av en informationssida 
-som berättar om systemet första gången jag besöker Quire  */
 document.addEventListener('DOMContentLoaded', getFirstVisit);
 
 
 // Hämtar data från '../json/firstVisit.json' asynkront.
 async function getFirstVisit() {
-    let response = await fetch('../json/firstVisit.json');
+    let response = await fetch('./json/firstVisit.json');
     console.log(response)
     if (response.ok) {
         response = await response.json();
@@ -39,4 +37,3 @@ function displayFirstMessage(response) {
         console.log('Inga anteckningar sparade i localstorage än');
     }
 }
-

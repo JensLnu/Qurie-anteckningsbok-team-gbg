@@ -47,12 +47,13 @@ header {
   color: rgb(255, 255, 255);
   background-color: rgb(47, 62, 70);
   height: 75px;
+  width: 75px;
   cursor: pointer;
 }
 
 #navigation {
   width: 100%;
-  padding: 2.5rem 0;
+  padding: 2rem 0;
   position: relative;
 }
 
@@ -71,16 +72,6 @@ header {
   list-style-type: none;
   padding: 1.5rem 0;
   transition: scale 0.5s;
-}
-
-.icon:hover {
-  scale: 1.2;
-  cursor: pointer;
-}
-
-.icon:active {
-  scale: 1;
-  transition: 20ms;
 }
 
 .add{
@@ -106,6 +97,7 @@ header {
 .notes {
   width: 100%;
 }
+
 .add-btn {
   padding: 1rem 0;
   width: 100%;
@@ -119,33 +111,37 @@ header {
   transition: 0.5s;
 }
 
-.add-btn:hover {
-  background-color: rgba(132, 169, 140, 0.685);
-  cursor: pointer;
+/* TOOLBAR */
+#toolbar {
+  position: fixed;
+  left: 275px;
+  width: calc(100% - 275px);
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0.253);
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: .5rem;
 }
 
-.add-btn:hover .material-symbols-outlined.md-40 {
-  scale: 1.15;
-}
-
-.add-btn:active .material-symbols-outlined.md-40 {
-  scale: 1;
-  transition: 20ms;
+.toolbar-button {
+  width: 20px ;
 }
 
 /* TEXTAREA CONTENT */
 main {
   position: fixed;
+  top: 30px;
   left: 275px;
-  width: 100%;
-  min-height: 100vh;
+  width: calc(100% - 275px);
+  height: calc(100% - 30px);
 }
 
 #text-area {
-  min-height: 100%;
+  height: 100%;
   /* padding: 3rem; */
 }
-
 
 /* DENNA SKA BYTAS TILL EN KLASS SÅ ATT DEN KAN ÅTERANVÄNDAS I ALLA NOTES*/
 #title {
