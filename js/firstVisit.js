@@ -37,3 +37,17 @@ function displayFirstMessage(response) {
         console.log('Inga anteckningar sparade i localstorage än');
     }
 }
+function isLocalStorageEmpty() {
+    const allKeys = Object.keys(localStorage);
+
+    for (let i = 0; i < allKeys.length; i++){
+        const key = allKeys[i];
+        const value = localStorage.getItem(key);
+
+        if (value !== null && value !== undefined) {
+            return false;
+        }
+    }
+
+    return true;
+}
