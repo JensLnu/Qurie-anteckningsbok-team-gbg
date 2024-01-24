@@ -85,7 +85,7 @@ addBtnSeveral.addEventListener('click', () => {
     const noteId = noteCounter;
 
     // Lyssna på ändringar i main text-area och spara i lS
-    noteTextarea.addEventListener('input', () => localStorage.setItem(noteId, noteTextarea.value));
+    noteTextarea.addEventListener('input', () => localStorage.setItem(noteId, noteTextarea.innerHTML));
     mainTextArea.textContent = '';
     mainTextArea.appendChild(noteTextarea);
 

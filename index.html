@@ -58,17 +58,22 @@
         <option value="Choose font size">Välj storlek</option>
       </select>
       <select name="text-type" id="text-type">
-        <option value="regular">Vanlig text</option>
-        <option value="heading-1">Rubrik 1</option>
-        <option value="heading-2">Rubrik 2</option>
-        <option value="heading-3">Rubrik 3</option>
-        <option value="unordered-list">*Punktlista</option>
-        <option value="ordered-list">1. Numrerad lista</option>
+        <option value="regular" id="regular">Vanlig text</option>
+        <option value="heading-1" id="heading-1">Rubrik 1</option>
+        <option value="heading-2" id="heading-2">Rubrik 2</option>
+        <option value="heading-3" id="heading-3">Rubrik 3</option>
+        <option value="unordered-list" id="unordered-list">*Punktlista</option>
+        <option value="ordered-list" id="ordered-list">1. Numrerad lista</option>
       </select>
+
       <button class="toolbar-button">B</button>
       <button class="toolbar-button">I</button>
       <!-- <button id="addImgBtn">Välj bild</button> -->
       
+
+      <button class="toolbar-button" id="bold">B</button>
+      <button class="toolbar-button" id="italic">I</button>
+
     </section>
     <main>
       <div id="text-area"></div>
@@ -100,6 +105,6 @@
     <script src="./js/dropdown.js"></script>
     <script src="./js/formating-markdown.js"></script>
     <script src="./js/add-img.js"></script>
-   <script src="./js/edit.js"></script>
+   <!-- <script src="./js/edit.js"></script> -->
   </body>
 </html>
