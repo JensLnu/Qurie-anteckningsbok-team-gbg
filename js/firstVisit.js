@@ -18,9 +18,6 @@ async function getFirstVisit() {
 function displayFirstMessage(response) {
     const textArea = document.getElementById('text-area');
 
-    // hämta sparad text från localStorage
-    const textContent = localStorage.getItem('text');
-
     // om det inte fins sparad text i localStorage, skapar och lägger till
     if (isLocalStorageEmpty()) {
         textArea.innerHTML = `
