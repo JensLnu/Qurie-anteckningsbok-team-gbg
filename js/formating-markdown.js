@@ -19,5 +19,5 @@ function convertToMarkdown(text) {
     text = text.replace(/\*(.*?)\*/g, '<em>$1</em>');
     text = text.replace(/^>\s*(.*$)/gm, '<blockquote>$1</blockquote>');
 
-    console.log(text)
+    //console.log(text)
 }
