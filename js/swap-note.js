@@ -1,29 +1,26 @@
-/*
-storie 6. (5.3 points) Som användare vill jag kunna bläddra bland mina olika anteckningar på ett smidigt sätt -- Adam och Jens
-*/
-
 document.addEventListener('DOMContentLoaded', chooseNote);
 
-// makes all notes clickable
+// makes all notes clickable and enabels header to be editable
 function chooseNote() {
-    const allNotes = document.querySelectorAll('.notes'); // array med alla div-element (notes)
+    const allNotes = document.querySelectorAll('.notes'); // array with all div elements (notes), needs to be updated every time the function is executed as new notes may have been added
     allNotes.forEach(note => {
         note.addEventListener('click', (e) => {
-            e.stopImmediatePropagation();
-            displayNote(e, allNotes);
+            displayNote(e);
+        });
+        note.firstElementChild.addEventListener('input', (e) => {
+            updateHeaderForNote(e);
         });
     })
 }
 
 // displays clicked note
-function displayNote(e, allNotes) {
+function displayNote(e) {
     let selectedNote = e.currentTarget;
+    const allNotes = document.querySelectorAll('.notes'); // array with all div elements (notes), needs to be updated every time the function is executed as new notes may have been added
     allNotes.forEach(note => {
         note.classList.remove('displayed-note');
     });
-    selectedNote.classList.add('displayed-note');
-    const header = selectedNote.firstElementChild.textContent;
-    textArea.innerHTML = `<h2>${header}</h2><p>${localStorage.getItem(header.charAt(header.length - 1))}</p>`;
+    selectedNote.classList.add('displayed-note'); // css class with white backgroundcolor
+    let lsObj = JSON.parse(localStorage.getItem(selectedNote.firstElementChild.getAttribute('data-noteId'))); // get the id from the clicked note, then gets the data from localStorage and makes it to a string
+    textArea.innerHTML = `<h2>${lsObj.title}</h2><br>${lsObj.content}`; // displays note in textarea
 }
-
-// kan man lägga till ett input-element i rad 26. Här <h2>${header}</h2> så att användaren ska kunna välja vilket namn de ska ha på sin anteckning? 

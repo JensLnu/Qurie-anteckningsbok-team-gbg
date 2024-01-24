@@ -8,6 +8,11 @@
 const addBtnSeveral = document.querySelector('.add-btn');
 const savedNotes = document.querySelector('.saved-notes');
 const textareaSeveral = document.getElementById('text-area');
+let savedNoteContent = {
+    title: '',
+    content: '',
+    noteId: 0
+}
 
 // Hämta antecknings-ID från lS, och låt aldrig ID:t vara mindre än 1
 let noteCounter = Math.max(0, getLatestNoteId());
@@ -18,7 +23,7 @@ function getLatestNoteId() {
     for (let i = 0; i < localStorage.length; i++) {
         let key = parseInt(localStorage.key(i));
         if (!isNaN(key) && key > latestId) {
-                latestId = key;
+            latestId = key;
         }
     }
     return latestId;
@@ -35,8 +40,11 @@ function createNotesContainer(noteId) {
     // Visa antecknings-ID i notes
     const noteKeyDisplay = document.createElement('div');
     noteKeyDisplay.classList.add('note-key-display');
-    noteKeyDisplay.textContent = `Note ${noteId}`;
-
+    noteKeyDisplay.contentEditable = true;
+    noteKeyDisplay.spellcheck = false; // tar väck den rödvågiga under texten om man döper en note till ett "felstavat" namn
+    noteKeyDisplay.setAttribute('data-noteId', noteId); // sparar noteId som ett attribut
+    let jsonObj = JSON.parse(localStorage.getItem(noteId)); // hämtar sparad note för att bestämma vilket namn rubriken ska ha
+    jsonObj === null ? noteKeyDisplay.textContent = `Note ${noteId}` : noteKeyDisplay.textContent = jsonObj.title; // om det är en ny note får den 'Note + noteId' som rubrik annars hämtar den det sparade namnet för rubriken
     notes.appendChild(noteKeyDisplay);
     notes.appendChild(deleteBtn);
     savedNotes.appendChild(notes);
@@ -64,7 +72,7 @@ function displayAllNotes() {
         arr.push(parseInt(localStorage.key(i)));
     }
     arr.sort();
-    for(let i = 0; i < arr.length; i++){
+    for (let i = 0; i < arr.length; i++) {
         createNotesContainer(arr[i])
     }
     // Kalla på chooseNote för att kunna bläddra bland anteckningarna
@@ -85,7 +93,13 @@ addBtnSeveral.addEventListener('click', () => {
     const noteId = noteCounter;
 
     // Lyssna på ändringar i main text-area och spara i lS
-    noteTextarea.addEventListener('input', () => localStorage.setItem(noteId, noteTextarea.innerHTML));
+    noteTextarea.addEventListener('input', () => {
+        // sparar innehållet i noten (title, content, id) i objektet (saveNoteContent)
+        savedNoteContent.noteId = noteId;
+        savedNoteContent.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent; // titlen på notesen i sidebaren
+        savedNoteContent.content = noteTextarea.innerHTML; // innehållet användaren skriver i textarean
+        localStorage.setItem(noteId, JSON.stringify(savedNoteContent)); // spara objektet i typen string till ls
+    });
     mainTextArea.textContent = '';
     mainTextArea.appendChild(noteTextarea);
 
@@ -96,3 +110,10 @@ addBtnSeveral.addEventListener('click', () => {
     // Fokus på den nya anteckningen
     noteTextarea.focus();
 });
+
+// när användaren skriver in en ny rubrik till en note sparas de i localStorage direkt
+function updateHeaderForNote(e) {
+    const noteId = e.target.getAttribute('data-noteid'); // hämtar attributet med de id som noten man klickar på har
+    savedNoteContent.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent; // hämtar rubriken som ändras
+    localStorage.setItem(noteId, JSON.stringify(savedNoteContent)); // uppdaterar det nya rubrik namnet i localStorage
+}
