@@ -91,25 +91,31 @@ addBtnSeveral.addEventListener('click', () => {
     // Unikt ID för varje anteckning
     noteCounter++
     const noteId = noteCounter;
-
     // Lyssna på ändringar i main text-area och spara i lS
     noteTextarea.addEventListener('input', () => {
-        // sparar innehållet i noten (title, content, id) i objektet (saveNoteContent)
-        savedNoteContent.noteId = noteId;
-        savedNoteContent.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent; // titlen på notesen i sidebaren
-        savedNoteContent.content = noteTextarea.innerHTML; // innehållet användaren skriver i textarean
-        localStorage.setItem(noteId, JSON.stringify(savedNoteContent)); // spara objektet i typen string till ls
+        saveNoteToLocalStorage(noteId, noteTextarea);
     });
     mainTextArea.textContent = '';
     mainTextArea.appendChild(noteTextarea);
 
     // Lägg till den nya anteckningen i DOM (sidebar)
     createNotesContainer(noteId);
+    // sparar en ny tom note i lS, om användaren väljer att inte skriva något utan bara klickar på lägg till knappen
+    saveNoteToLocalStorage(noteId, noteTextarea);
     // Kalla på chooseNote för att kunna bläddra bland anteckningarna
     chooseNote();
+    
     // Fokus på den nya anteckningen
     noteTextarea.focus();
 });
+
+function saveNoteToLocalStorage(noteId, noteTextarea) {
+    // sparar innehållet i noten (title, content, id) i objektet (saveNoteContent)
+    savedNoteContent.noteId = noteId;
+    savedNoteContent.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent; // titlen på notesen i sidebaren
+    savedNoteContent.content = noteTextarea.innerHTML; // innehållet användaren skriver i textarean
+    localStorage.setItem(noteId, JSON.stringify(savedNoteContent)); // spara objektet i typen string till ls
+}
 
 // när användaren skriver in en ny rubrik till en note sparas de i localStorage direkt
 function updateHeaderForNote(e) {
