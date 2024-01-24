@@ -57,33 +57,21 @@
       <select name="font-size" id="font-size">
         <option value="Choose font size">Välj storlek</option>
       </select>
-      <select name="text-type" id="text-type">
-        <option value="regular" id="regular">Vanlig text</option>
-        <option value="heading-1" id="heading-1">Rubrik 1</option>
-        <option value="heading-2" id="heading-2">Rubrik 2</option>
-        <option value="heading-3" id="heading-3">Rubrik 3</option>
-        <option value="unordered-list" id="unordered-list">*Punktlista</option>
-        <option value="ordered-list" id="ordered-list">1. Numrerad lista</option>
+      <select name="text-type" id="formatBlock" class="headings">
+        <option value="p" id="regular">Vanlig text</option>
+        <option value="h1" id="heading-1">Rubrik 1</option>
+        <option value="h2" id="heading-2">Rubrik 2</option>
+        <option value="h3" id="heading-3">Rubrik 3</option>
       </select>
-      <button class="toolbar-button" id="bold">B</button>
-      <button class="toolbar-button" id="italic">I</button>
+
+      <button class="toolbar-button" id="bold" title="Fetstil">B</button>
+      <button class="toolbar-button" id="italic" title="Kursiv">I</button>
+      <button class="toolbar-button" id="insertOrderedList" title="Numererad lista">OL</button>
+      <button class="toolbar-button" id="insertUnorderedList" title="Punktlista">UL</button>
+
     </section>
     <main>
       <div id="text-area"></div>
-        <div class="notesPreview">
-          <input class="notes__title" type="text" placeholder="Lägg till en titel...">
-          <br>
-          <div class="btn-options">
-              <button id="header">Rubrik</button>
-              <button id="createbulletList">Punkt lista</button>
-              <button id="createNumberedList">Numrerad lista</button>
-              <button id="italic">Kursiv</button>
-              <button id="bold">Fetstil</button>
-          </div>
-          <br>
-          <textarea class="notes__body" id="notesBody">Börja här!...</textarea>
-        </div>
-      </div>
   </main>
   
   
@@ -99,5 +87,6 @@
     <script src="./js/formating-markdown.js"></script>
     <script src="./js/add-img.js"></script>
    <!-- <script src="./js/edit.js"></script> -->
+   <script src="./js/execCommand.js"></script>
   </body>
 </html>
