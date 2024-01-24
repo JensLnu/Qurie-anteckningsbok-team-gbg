@@ -91,10 +91,6 @@ addBtnSeveral.addEventListener('click', () => {
     // Unikt ID för varje anteckning
     noteCounter++
     const noteId = noteCounter;
-    // Lyssna på ändringar i main text-area och spara i lS
-    noteTextarea.addEventListener('input', () => {
-        saveNoteToLocalStorage(noteId, noteTextarea);
-    });
     mainTextArea.textContent = '';
     mainTextArea.appendChild(noteTextarea);
 
@@ -102,6 +98,10 @@ addBtnSeveral.addEventListener('click', () => {
     createNotesContainer(noteId);
     // sparar en ny tom note i lS, om användaren väljer att inte skriva något utan bara klickar på lägg till knappen
     saveNoteToLocalStorage(noteId, noteTextarea);
+    // Lyssna på ändringar i main text-area och spara i lS
+    noteTextarea.addEventListener('input', () => {
+        saveNoteToLocalStorage(noteId, noteTextarea);
+    });
     // Kalla på chooseNote för att kunna bläddra bland anteckningarna
     chooseNote();
     
