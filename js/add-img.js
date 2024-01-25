@@ -1,3 +1,4 @@
+let imgCounter = 0;
 // Function to set up the image upload functionality
 function getImg() {
     const toolbar = document.getElementById('toolbar')
@@ -15,10 +16,12 @@ function getImg() {
         `;
         
         noteTextArea.innerHTML += `       
-            <img id="myImg" src="#">
+            <img class="myImg" src="#" id='n${imgCounter}'>
     
         `;
-       
+
+
+
     });
         
 }
@@ -28,10 +31,12 @@ window.addEventListener('load', function () {
     document.querySelector('input[type="file"]').addEventListener('change', function() {
         
         if (this.files && this.files[0]) {
-            let img = document.querySelector('img');
-                img.onload = () => {
-                URL.revokeObjectURL(img.src); 
-            }
+            
+            let img = document.getElementById(`n${imgCounter}`);
+            imgCounter++;
+            //     img.onload = () => {
+            //     URL.revokeObjectURL(img.src); 
+            // }
       
                 img.src = URL.createObjectURL(this.files[0]); 
             }

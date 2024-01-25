@@ -166,3 +166,7 @@ main {
   background-color: rgb(255, 255, 255);
   border-right: 5px solid rgb(255, 255, 255);
 }
+
+.myImg{
+  width: 100px;
+}
