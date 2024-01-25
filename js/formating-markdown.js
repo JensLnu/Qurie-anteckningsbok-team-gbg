@@ -30,15 +30,24 @@ function formatMarkdown(markdown) {
     // Find all matches
     let matches = olListItems.match(liRegex);
 
+<<<<<<< HEAD
+    console.log(matches.length)
+=======
     //console.log(matches.length)
+>>>>>>> f05344fb39da1b6be48e5a8a0ccf920bdebaf5b2
     // Kontrollera om det finns några matchningar
     if (matches) {
         // Alla li-element i en string
         let allLi = matches.join('');
 
         // Omslut de samlade listelementen med <ol>
+<<<<<<< HEAD
+        //markdown += "<ol>" + allLi + "</ol>";
+        markdown = markdown.replace(/^\d\.\s(.*?)$/gm, "<ol>" + allLi + "</ol>");
+=======
         markdown = markdown.replace(/^1\.\s(.*?)$/gm, "<ol>" + allLi + "</ol>");
         markdown = markdown.replace(/^\d\.\s(.*?)$/gm, "");
+>>>>>>> f05344fb39da1b6be48e5a8a0ccf920bdebaf5b2
     }
 
     // Ersätt - punktlista med <ul><li> punktlista </li></ul>
@@ -88,4 +97,24 @@ function divContent(htmlString) {
 // test i browsern
 const settingBtn = document.getElementById('test');
 const textarea = document.getElementById('text-area');
+<<<<<<< HEAD
 settingBtn.addEventListener('click', testMarkdown);
+
+
+// // Samla alla numrerade listelement i en variabel
+// let olListItems = markdown.replace(/^\d\.\s(.*?)$/gm, "<li>$1</li>");
+
+// // Regular expression to match <li> tags and their contents
+// let liRegex = /<li>(.*?)<\/li>/g;
+
+// // Find all matches
+// let matches = olListItems.match(liRegex);
+
+// // alla li-element i en string
+// let allLi = matches.join('');
+
+// // Omslut de samlade listelementen med <ol>
+// markdown = markdown.replace(/^\d\.\s(.*?)$/gm, "<ol>" + allLi + "</ol>");
+=======
+settingBtn.addEventListener('click', testMarkdown);
+>>>>>>> f05344fb39da1b6be48e5a8a0ccf920bdebaf5b2
