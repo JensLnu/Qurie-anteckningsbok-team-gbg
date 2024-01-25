@@ -1,6 +1,6 @@
-#myImg {
+.myImg {
   position: relative;
   height: 60%;
-  width: 6cm;
+  width: 20%;
   border-radius: 10px;
 }
