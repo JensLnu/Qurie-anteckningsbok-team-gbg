@@ -21,7 +21,11 @@ function getImg() {
        
     });
         
-}
+};
+
+
+
+
 // Event listener for the window load event
 window.addEventListener('load', function () {
 
