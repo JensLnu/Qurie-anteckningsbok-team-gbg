@@ -30,11 +30,16 @@ function formatMarkdown(markdown) {
     // Find all matches
     let matches = olListItems.match(liRegex);
 
-    // alla li-element i en string
-    let allLi = matches.join('');
-    // Omslut de samlade listelementen med <ol>
-    markdown = markdown.replace(/^\d\.\s(.*?)$/gm, "<ol>" + allLi + "</ol>");
+    console.log(matches.length)
+    // Kontrollera om det finns några matchningar
+    if (matches) {
+        // Alla li-element i en string
+        let allLi = matches.join('');
 
+        // Omslut de samlade listelementen med <ol>
+        //markdown += "<ol>" + allLi + "</ol>";
+        markdown = markdown.replace(/^\d\.\s(.*?)$/gm, "<ol>" + allLi + "</ol>");
+    }
 
     // Ersätt - punktlista med <ul><li> punktlista </li></ul>
     markdown = markdown.replace(/^\-\s(.*?)$/gm, "<ul><li>$1</li></ul>");
@@ -44,7 +49,7 @@ function formatMarkdown(markdown) {
 
 // Exempel:
 function testMarkdown() {
-    console.log(formatMarkdown(textarea.textContent));
+    //console.log(formatMarkdown(textarea.textContent));
 
     let markdownText = "# **Huvudrubrik**\n## *Underrubrik*\n### Underunderrubrik\n- Punkt 1\n- Punkt 2\n1. Nummer 1\n2. Nummer 2";
     let formattedHTML = formatMarkdown(markdownText);
@@ -59,11 +64,17 @@ const textarea = document.getElementById('text-area');
 settingBtn.addEventListener('click', testMarkdown);
 
 
+// // Samla alla numrerade listelement i en variabel
+// let olListItems = markdown.replace(/^\d\.\s(.*?)$/gm, "<li>$1</li>");
 
-// Extract inner text from each match
-// let liTexts =
-//     matches &&
-//     matches.map((match) => {
-//         // Remove the <li> and </li> tags from each match
-//         return match.replace(/<\/?li>/g, "");
-//     });
+// // Regular expression to match <li> tags and their contents
+// let liRegex = /<li>(.*?)<\/li>/g;
+
+// // Find all matches
+// let matches = olListItems.match(liRegex);
+
+// // alla li-element i en string
+// let allLi = matches.join('');
+
+// // Omslut de samlade listelementen med <ol>
+// markdown = markdown.replace(/^\d\.\s(.*?)$/gm, "<ol>" + allLi + "</ol>");
