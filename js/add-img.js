@@ -1,3 +1,4 @@
+let imgCounter = 0;
 // Function to set up the image upload functionality
 function getImg() {
     const toolbar = document.getElementById('toolbar')
@@ -13,21 +14,43 @@ function getImg() {
         `;
         
         noteTextArea.innerHTML += `       
+<<<<<<< HEAD
+            <img class="myImg" src="#" id='n${imgCounter}'>
+    
+        `;
+
+
+
+    });
+        
+}
+=======
             <img id="myImg" src="#">    
         `;       
     });        
 };
 
 
+>>>>>>> 327174f2417a0742eaa6473abf8885d52d017b60
 // Event listener for the window load event
 window.addEventListener('load', function () {
     document.querySelector('input[type="file"]').addEventListener('change', function() {
         
         if (this.files && this.files[0]) {
+<<<<<<< HEAD
+            
+            let img = document.getElementById(`n${imgCounter}`);
+            imgCounter++;
+            //     img.onload = () => {
+            //     URL.revokeObjectURL(img.src); 
+            // }
+      
+=======
             let img = document.querySelector('img');
                 img.onload = () => {
                 // URL.revokeObjectURL(img.src); 
             }
+>>>>>>> 327174f2417a0742eaa6473abf8885d52d017b60
                 img.src = URL.createObjectURL(this.files[0]); 
             }
     });    
