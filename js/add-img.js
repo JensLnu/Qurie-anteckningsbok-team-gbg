@@ -2,12 +2,10 @@
 function getImg() {
     const toolbar = document.getElementById('toolbar')
     const addImgInput = document.createElement('input');
-    addImgInput.type = 'file';
-    
+    addImgInput.type = 'file';    
     toolbar.appendChild(addImgInput);
     
-    addImgInput.addEventListener('click', function () {
-        
+    addImgInput.addEventListener('click', function () {        
         const noteTextArea = document.querySelector('.note-textarea');
       
         addImgInput.innerHTML = `
@@ -15,32 +13,24 @@ function getImg() {
         `;
         
         noteTextArea.innerHTML += `       
-            <img id="myImg" src="#">
-    
-        `;
-       
-    });
-        
+            <img id="myImg" src="#">    
+        `;       
+    });        
 };
-
-
 
 
 // Event listener for the window load event
 window.addEventListener('load', function () {
-
     document.querySelector('input[type="file"]').addEventListener('change', function() {
         
         if (this.files && this.files[0]) {
             let img = document.querySelector('img');
                 img.onload = () => {
-                URL.revokeObjectURL(img.src); 
+                // URL.revokeObjectURL(img.src); 
             }
-      
                 img.src = URL.createObjectURL(this.files[0]); 
             }
-        });
-    
+    });    
 });
 
 getImg();
