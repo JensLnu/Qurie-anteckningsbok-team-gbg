@@ -3,7 +3,6 @@
 */
 
 function formatMarkdown(markdown) {
-    console.log('start formatMarkdown')
     // Ersätt **text** med <strong>text</strong>
     markdown = markdown.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
     // Ersätt *text* med <em>text</em>
@@ -52,15 +51,38 @@ function formatMarkdown(markdown) {
 function testMarkdown() {
     //console.log(formatMarkdown(textarea.textContent));
 
-    // test (funkar jävligt bra)
-    // let markdownText = "# **Huvudrubrik**\n## *Underrubrik*\n### Underunderrubrik\n- Punkt 1\n- Punkt 2\n1. Nummer 1\n2. Nummer 2\n3. Nummer 3\n4. Nummer 4";
+    // test i konsolen (funkar jävligt bra)
+    //let markdownText = "# **Huvudrubrik**\n## *Underrubrik*\n### Underunderrubrik\n- Punkt 1\n- Punkt 2\n1. Nummer 1\n2. Nummer 2\n3. Nummer 3\n4. Nummer 4";
     // let formattedHTML = formatMarkdown(markdownText);
     // console.log(formattedHTML);
     // textarea.innerHTML = formattedHTML;
 
     // realdeal
     console.log(formatMarkdown(textarea.innerHTML));
+    divContent(formatMarkdown(textarea.innerHTML));
+}
 
+function divContent(htmlString) {
+    //let inputString = '<h2>Markdown test</h2><br><div>#hej1</div><div>##hej2</div><div>###hej3</div><div>- ul li 1</div><div>- ul li 2</div><div>1. ol li 1</div><div>2. ol li 2</div><div>3. ol li 3<br></div>';
+
+    // regex för att matcha innehållet mellan <div>...</div>
+    let divContentRegex = /<div>(.*?)<\/div>/g;
+
+    // Använd match för att hitta alla matchningar
+    let matches = htmlString.match(divContentRegex);
+
+    let markdownToHtml = '';
+
+    // Loopa över matchningarna och skriv ut innehållet
+    if (matches) {
+        matches.forEach(function (match) {
+            // sparar innehållet mellan <div> och </div> i content
+            let content = match.replace(/<\/?div>/g, '');
+            markdownToHtml += formatMarkdown(content);
+        });
+    }
+    console.log(markdownToHtml);
+    textarea.innerHTML = markdownToHtml;
 }
 
 // test i browsern
