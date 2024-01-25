@@ -63,7 +63,7 @@ function testMarkdown() {
 }
 
 function divContent(htmlString) {
-    //let inputString = '<h2>Markdown test</h2><br><div>#hej1</div><div>##hej2</div><div>###hej3</div><div>- ul li 1</div><div>- ul li 2</div><div>1. ol li 1</div><div>2. ol li 2</div><div>3. ol li 3<br></div>';
+    let inputString = '<h2>Markdown test</h2><br><div>#hej1</div><div>##hej2</div><div>###hej3</div><div>- ul li 1</div><div>- ul li 2</div><div>1. ol li 1</div><div>2. ol li 2</div><div>3. ol li 3<br></div>';
 
     // regex för att matcha innehållet mellan <div>...</div>
     let divContentRegex = /<div>(.*?)<\/div>/g;
