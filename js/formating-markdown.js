@@ -3,6 +3,7 @@
 */
 
 function formatMarkdown(markdown) {
+    console.log('start formatMarkdown')
     // Ersätt **text** med <strong>text</strong>
     markdown = markdown.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
     // Ersätt *text* med <em>text</em>
@@ -30,15 +31,15 @@ function formatMarkdown(markdown) {
     // Find all matches
     let matches = olListItems.match(liRegex);
 
-    console.log(matches.length)
+    //console.log(matches.length)
     // Kontrollera om det finns några matchningar
     if (matches) {
         // Alla li-element i en string
         let allLi = matches.join('');
 
         // Omslut de samlade listelementen med <ol>
-        //markdown += "<ol>" + allLi + "</ol>";
-        markdown = markdown.replace(/^\d\.\s(.*?)$/gm, "<ol>" + allLi + "</ol>");
+        markdown = markdown.replace(/^1\.\s(.*?)$/gm, "<ol>" + allLi + "</ol>");
+        markdown = markdown.replace(/^\d\.\s(.*?)$/gm, "");
     }
 
     // Ersätt - punktlista med <ul><li> punktlista </li></ul>
@@ -51,30 +52,18 @@ function formatMarkdown(markdown) {
 function testMarkdown() {
     //console.log(formatMarkdown(textarea.textContent));
 
-    let markdownText = "# **Huvudrubrik**\n## *Underrubrik*\n### Underunderrubrik\n- Punkt 1\n- Punkt 2\n1. Nummer 1\n2. Nummer 2";
-    let formattedHTML = formatMarkdown(markdownText);
-    console.log(formattedHTML);
+    // test (funkar jävligt bra)
+    // let markdownText = "# **Huvudrubrik**\n## *Underrubrik*\n### Underunderrubrik\n- Punkt 1\n- Punkt 2\n1. Nummer 1\n2. Nummer 2\n3. Nummer 3\n4. Nummer 4";
+    // let formattedHTML = formatMarkdown(markdownText);
+    // console.log(formattedHTML);
+    // textarea.innerHTML = formattedHTML;
 
-    //textarea.innerHTML = formattedHTML;
+    // realdeal
+    console.log(formatMarkdown(textarea.innerHTML));
+
 }
 
 // test i browsern
 const settingBtn = document.getElementById('test');
 const textarea = document.getElementById('text-area');
 settingBtn.addEventListener('click', testMarkdown);
-
-
-// // Samla alla numrerade listelement i en variabel
-// let olListItems = markdown.replace(/^\d\.\s(.*?)$/gm, "<li>$1</li>");
-
-// // Regular expression to match <li> tags and their contents
-// let liRegex = /<li>(.*?)<\/li>/g;
-
-// // Find all matches
-// let matches = olListItems.match(liRegex);
-
-// // alla li-element i en string
-// let allLi = matches.join('');
-
-// // Omslut de samlade listelementen med <ol>
-// markdown = markdown.replace(/^\d\.\s(.*?)$/gm, "<ol>" + allLi + "</ol>");
