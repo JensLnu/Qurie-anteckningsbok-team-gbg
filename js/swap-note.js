@@ -17,8 +17,8 @@ function chooseNote() {
 function displayNote(e) {
     let selectedNote = e.currentTarget;
     hithLightTargedNote(selectedNote);
-    let lsObj = JSON.parse(localStorage.getItem(selectedNote.firstElementChild.getAttribute('data-noteId'))); // get the id from the clicked note, then gets the data from localStorage and makes it to a string
-    textArea.innerHTML = `<div><h2>${lsObj.title}</h2></div><br>${lsObj.content}`; // displays note in textarea
+    savedNote = JSON.parse(localStorage.getItem(selectedNote.firstElementChild.getAttribute('data-noteId'))); // get the id from the clicked note, then gets the data from localStorage and makes it to a string
+    textArea.innerHTML = `<div><h2>${savedNote.title}</h2></div><br>${savedNote.content}`; // displays note in textarea
 }
 
 // change bg color on targed note

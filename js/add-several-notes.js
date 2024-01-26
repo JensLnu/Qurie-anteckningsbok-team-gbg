@@ -8,7 +8,7 @@
 const addBtnSeveral = document.querySelector('.add-btn');
 const savedNotes = document.querySelector('.saved-notes');
 const textareaSeveral = document.getElementById('text-area');
-let savedNoteContent = {
+let savedNote = {
     title: '',
     content: '',
     noteId: 0
@@ -117,11 +117,11 @@ function createNote() {
 };
 
 function saveNoteToLocalStorage(noteId, noteTextarea) {
-    // sparar innehållet i noten (title, content, id) i objektet (saveNoteContent)
-    savedNoteContent.noteId = noteId;
-    savedNoteContent.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent; // titlen på notesen i sidebaren
-    savedNoteContent.content = noteTextarea.innerHTML; // innehållet användaren skriver i textarean
-    localStorage.setItem(noteId, JSON.stringify(savedNoteContent)); // spara objektet i typen string till ls
+    // sparar innehållet i noten (title, content, id) i objektet (saveNote)
+    savedNote.noteId = noteId;
+    savedNote.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent; // titlen på notesen i sidebaren
+    savedNote.content = noteTextarea.innerHTML; // innehållet användaren skriver i textarean
+    localStorage.setItem(noteId, JSON.stringify(savedNote)); // spara objektet i typen string till ls
 }
 
 // Här strular det nog med försvinnande text-content
@@ -130,6 +130,6 @@ function saveNoteToLocalStorage(noteId, noteTextarea) {
 // när användaren skriver in en ny rubrik till en note sparas de i localStorage direkt
 function updateHeaderForNote(e) {
     const noteId = e.target.getAttribute('data-noteid'); // hämtar attributet med de id som noten man klickar på har
-    savedNoteContent.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent; // hämtar rubriken som ändras
-    localStorage.setItem(noteId, JSON.stringify(savedNoteContent)); // uppdaterar det nya rubrik namnet i localStorage
+    savedNote.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent; // hämtar rubriken som ändras
+    localStorage.setItem(noteId, JSON.stringify(savedNote)); // uppdaterar det nya rubrik namnet i localStorage
 }
