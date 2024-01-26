@@ -17,3 +17,5 @@ imgBtn.addEventListener('change', (event) => {
         imgCounter++;
     }
 });
+
+// innerHTML saves on input. Adding img does not count as input. Find other listener
