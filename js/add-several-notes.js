@@ -38,7 +38,7 @@ function createNotesContainer(noteId) {
     const deleteBtn = createDeleteButton(noteId);
 
     // Visa antecknings-ID i notes
-    const noteKeyDisplay = document.createElement('div');
+    let noteKeyDisplay = document.createElement('div');
     noteKeyDisplay.classList.add('note-key-display');
     noteKeyDisplay.contentEditable = true;
     noteKeyDisplay.spellcheck = false; // tar väck den rödvågiga under texten om man döper en note till ett "felstavat" namn
@@ -48,6 +48,7 @@ function createNotesContainer(noteId) {
     notes.appendChild(noteKeyDisplay);
     notes.appendChild(deleteBtn);
     savedNotes.appendChild(notes);
+    noteKeyDisplay = `<div class='note-key-display' contenteditable='true' spellcheck='false' data-noteId='${noteId}>`
 }
 
 // Funktion för att ta bort anteckning
@@ -65,13 +66,18 @@ function createDeleteButton(noteId) {
     return deleteBtn;
 }
 
+// Funktion som parameter till sort för att sortera nummer i storleksordning
+function compareNumber(a, b) {
+    return a - b;
+}
+
 // Funktion för att visa alla sparade anteckningar, och sortera
 function displayAllNotes() {
     let arr = [];
     for (let i = 0; i < localStorage.length; i++) {
         arr.push(parseInt(localStorage.key(i)));
     }
-    arr.sort();
+    arr.sort(compareNumber);
     for (let i = 0; i < arr.length; i++) {
         createNotesContainer(arr[i])
     }
@@ -80,7 +86,7 @@ function displayAllNotes() {
 }
 
 // Visa alla sparade anteckningar när sidan laddas om
-displayAllNotes();
+window.addEventListener('DOMContentLoaded', displayAllNotes)
 
 addBtnSeveral.addEventListener('click', createNote);
 
@@ -89,14 +95,16 @@ function createNote() {
     mainTextArea.classList = "note-textarea"; // behövs mest troligt inte
 
     // Unikt ID för varje anteckning
-    noteCounter++
-    const noteId = noteCounter;
+    const noteId = ++noteCounter;
     mainTextArea.textContent = '';
 
     // Lägg till den nya anteckningen i DOM (sidebar)
     createNotesContainer(noteId);
     // sparar en ny tom note i lS, om användaren väljer att inte skriva något utan bara klickar på lägg till knappen
     saveNoteToLocalStorage(noteId, mainTextArea);
+
+
+    // HÄR DET STRULAR MED BILDERNA DÅ EN TILLAGD BILD INTE RÄKNAS SOM INPUT
     // Lyssna på ändringar i main text-area och spara i lS
     mainTextArea.addEventListener('input', () => {
         saveNoteToLocalStorage(noteId, mainTextArea);
@@ -116,6 +124,9 @@ function saveNoteToLocalStorage(noteId, noteTextarea) {
     localStorage.setItem(noteId, JSON.stringify(savedNoteContent)); // spara objektet i typen string till ls
 }
 
+// Här strular det nog med försvinnande text-content
+// LocalStorage uppdateras med endast titeln och skriver över det som står där innan?
+// LÅT BLI ATT HÄMTA TITELN OCH LÄGGA TILL DET I DOKUMENTET, LÅT DEN VARA SEPARAT
 // när användaren skriver in en ny rubrik till en note sparas de i localStorage direkt
 function updateHeaderForNote(e) {
     const noteId = e.target.getAttribute('data-noteid'); // hämtar attributet med de id som noten man klickar på har
