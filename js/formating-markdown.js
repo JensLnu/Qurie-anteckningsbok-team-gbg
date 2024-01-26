@@ -4,81 +4,99 @@
 
 // kontakt med DOMen
 const settingBtn = document.getElementById('test');
-const textarea = document.getElementById('text-area');
-settingBtn.addEventListener('click', testMarkdown);
+const t = document.getElementById('text-area');
+settingBtn.addEventListener('click', () => {
+    t.innerHTML = parseMarkdown(t.innerText);
+});
 
-function formatMarkdown(markdown, firstTimeFalse) {
-    // Ersätt **text** med <strong>text</strong>
-    markdown = markdown.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
-    // Ersätt *text* med <em>text</em>
-    markdown = markdown.replace(/\*(.*?)\*/g, "<em>$1</em>");
+// function formatMarkdown(markdown, firstTimeFalse) {
+//     // Ersätt **text** med <strong>text</strong>
+//     markdown = markdown.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+//     // Ersätt *text* med <em>text</em>
+//     markdown = markdown.replace(/\*(.*?)\*/g, "<em>$1</em>");
 
-    // Ersätt #, ##, och ### med motsvarande HTML-rubriker h1, h2, h3 osv
-    markdown = markdown.replace(/^#{1,6}\s*(.*)$/gm, (match, group1) => {
-        let headerLevel = 0;
-        for (let i = 0; i < match.length; i++) {
-            if (match[i] === "#") {
-                headerLevel++;
-            } else {
-                break;
-            }
-        }
-        return `<h${headerLevel}>${group1.trim()}</h${headerLevel}>`;
-    });
+//     // Ersätt #, ##, och ### med motsvarande HTML-rubriker h1, h2, h3 osv
+//     markdown = markdown.replace(/^#{1,6}\s*(.*)$/gm, (match, group1) => {
+//         let headerLevel = 0;
+//         for (let i = 0; i < match.length; i++) {
+//             if (match[i] === "#") {
+//                 headerLevel++;
+//             } else {
+//                 break;
+//             }
+//         }
+//         return `<h${headerLevel}>${group1.trim()}</h${headerLevel}>`;
+//     });
 
-    // Samla alla numrerade listelement i en variabel
-    let olListItems = markdown.replace(/^\d\.\s(.*?)$/gm, "<li>$1</li>");
+//     // Samla alla numrerade listelement i en variabel
+//     let olListItems = markdown.replace(/^\d\.\s(.*?)$/gm, "<li>$1</li>");
 
-    // Regular expression to match <li> tags and their contents
-    let liRegex = /<li>(.*?)<\/li>/g;
+//     // Regular expression to match <li> tags and their contents
+//     let liRegex = /<li>(.*?)<\/li>/g;
 
-    // Find all matches
-    let matches = olListItems.match(liRegex);
+//     // Find all matches
+//     let matches = olListItems.match(liRegex);
 
-    // Kontrollera om det finns några matchningar
-    if (matches) {
-        // Alla li-element i en string
-        let allLi = matches.join('');
-        let firstTime = firstTimeFalse;
-        // Omslut de samlade listelementen med <ol>
-        markdown = markdown.replace(/^1\.\s(.*?)$/gm, "<ol>" + allLi + "</ol>");
-        if (firstTime) {
-            markdown = markdown.replace(/^\d\.\s(.*?)$/gm, "");
-        }
-        firstTime = true
-    }
+//     // Kontrollera om det finns några matchningar
+//     if (matches) {
+//         // Alla li-element i en string
+//         let allLi = matches.join('');
+//         let firstTime = firstTimeFalse;
+//         // Omslut de samlade listelementen med <ol>
+//         markdown = markdown.replace(/^1\.\s(.*?)$/gm, "<ol>" + allLi + "</ol>");
+//         if (firstTime) {
+//             markdown = markdown.replace(/^\d\.\s(.*?)$/gm, "");
+//         }
+//         firstTime = true
+//     }
 
-    // Ersätt - punktlista med <ul><li> punktlista </li></ul>
-    markdown = markdown.replace(/^\-\s(.*?)$/gm, "<ul><li>$1</li></ul>");
-    return markdown;
-}
+//     // Ersätt - punktlista med <ul><li> punktlista </li></ul>
+//     markdown = markdown.replace(/^\-\s(.*?)$/gm, "<ul><li>$1</li></ul>");
+//     return markdown;
+// }
 
-// Exempel:
-function testMarkdown() {
-    console.log('start testMarkdown')
+// // Exempel:
+// function testMarkdown() {
+//     console.log('start testMarkdown')
 
-    // realdeal
-    //console.log(formatMarkdown(textarea.innerHTML));
-    divContent(formatMarkdown(textarea.innerHTML));
-}
+//     // realdeal
+//     //console.log(formatMarkdown(textarea.innerHTML));
+//     divContent(formatMarkdown(textarea.innerHTML));
+// }
 
-function divContent(htmlString) {
-    // regex för att matcha innehållet mellan <div>...</div>
-    let divContentRegex = /<div>(.*?)<\/div>/g;
+// function divContent(htmlString) {
+//     // regex för att matcha innehållet mellan <div>...</div>
+//     let divContentRegex = /<div>(.*?)<\/div>/g;
 
-    // Använd match för att hitta alla matchningar
-    let matches = htmlString.match(divContentRegex);
+//     // Använd match för att hitta alla matchningar
+//     let matches = htmlString.match(divContentRegex);
 
-    let markdownToHtml = '';
+//     let markdownToHtml = '';
 
-    // Loopa över matchningarna och skriv ut innehållet
-    if (matches) {
-        matches.forEach((match) => {
-            // sparar innehållet mellan <div> och </div> i content
-            let content = match.replace(/<\/?div>/g, '');
-            markdownToHtml += formatMarkdown(content, false);
-        });
-    }
-    console.log(markdownToHtml);
-    textarea.innerHTML = markdownToHtml;
+//     // Loopa över matchningarna och skriv ut innehållet
+//     if (matches) {
+//         matches.forEach((match) => {
+//             // sparar innehållet mellan <div> och </div> i content
+//             let content = match.replace(/<\/?div>/g, '');
+//             markdownToHtml += formatMarkdown(content, false);
+//         });
+//     }
+//     console.log(markdownToHtml);
+//     textarea.innerHTML = markdownToHtml;
+// }
+
+function parseMarkdown(text){
+    const toHTML = text
+    .replace(/^### (.*$)/gim, '<h3>$1</h3>') // Byt ut rader som startar med # mot deras resp hN:or
+    .replace(/^## (.*$)/gim, '<h2>$1</h2>') 
+    .replace(/^# (.*$)/gim, '<h1>$1</h1>') 
+    .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>') // Byt ut en rad som innefattas av ** ** till bold-tags
+    .replace(/\*(.*)\*/gim, '<em>$1</em>') // Byt ut en rad som innefattas av * * mot italic
+    .replace(/\-+(.*)?/gim,"<ul><li>$1</li></ul>") //En rad som startar med - byts ut mot en ul där texten hamnar i li
+    .replace(/(\<\/ul\>\n(.*)\<ul\>*)+/,"") //För att förhindra att varje - blir ny lista så byts </ul><ul> ut mot ingenting
+    .replace(/(\d+\.\d*)\s?(.*?)(?=\d+\.|$)/gsm, '<ol><li>$2</li></ol>') //Samma som för ul fast med nummer (tillåter 1.1 osv)
+    .replace(/(\<\/ol\>\n(.*)\<ol\>*)+/,"")
+
+    return toHTML.trim(); //Ta bort whitespace
+            
 }
