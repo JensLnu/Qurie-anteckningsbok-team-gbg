@@ -6,6 +6,7 @@
 
 // Hämta referenser från HTML
 const addBtnSeveral = document.querySelector('.add-btn');
+const addBtnMobile = document.querySelector('.add');
 const savedNotes = document.querySelector('.saved-notes');
 const textarea = document.getElementById('text-area');
 let savedNote = {
@@ -14,6 +15,12 @@ let savedNote = {
     noteId: 0
 }
 
+// Visa alla sparade anteckningar när sidan laddas om
+window.addEventListener('DOMContentLoaded', displayAllNotes)
+
+// Eventlisteners för båda lägg till-knapparna
+addBtnSeveral.addEventListener('click', createNote);
+addBtnMobile.addEventListener('click', createNote);
 // Hämta antecknings-ID från lS, och låt aldrig ID:t vara mindre än 1
 let noteCounter = Math.max(0, getLatestNoteId());
 
@@ -82,10 +89,6 @@ function displayAllNotes() {
     chooseNote();
 }
 
-// Visa alla sparade anteckningar när sidan laddas om
-window.addEventListener('DOMContentLoaded', displayAllNotes)
-
-addBtnSeveral.addEventListener('click', createNote);
 
 function createNote() {
     // Unikt ID för varje anteckning
@@ -120,7 +123,7 @@ function saveNoteToLocalStorage(noteId, noteTextarea) {
 
 // Här strular det nog med försvinnande text-content
 // LocalStorage uppdateras med endast titeln och skriver över det som står där innan?
-// LÅT BLI ATT HÄMTA TITELN OCH LÄGGA TILL DET I DOKUMENTET, LÅT DEN VARA SEPARAT
+// LÅT BLI ATT HÄMTA TITELN OCH LÄGGA TILL DET I DOKUMENTET, LÅT DEN VARA SEPARAT (ENDAST I PREVIEW NOTEN)
 // när användaren skriver in en ny rubrik till en note sparas de i localStorage direkt
 function updateHeaderForNote(e) {
     const noteId = e.target.getAttribute('data-noteid'); // hämtar attributet med de id som noten man klickar på har
