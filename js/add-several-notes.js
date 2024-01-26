@@ -38,17 +38,14 @@ function createNotesContainer(noteId) {
     const deleteBtn = createDeleteButton(noteId);
 
     // Visa antecknings-ID i notes
-    let noteKeyDisplay = document.createElement('div');
-    noteKeyDisplay.classList.add('note-key-display');
-    noteKeyDisplay.contentEditable = true;
-    noteKeyDisplay.spellcheck = false; // tar väck den rödvågiga under texten om man döper en note till ett "felstavat" namn
-    noteKeyDisplay.setAttribute('data-noteId', noteId); // sparar noteId som ett attribut
     let jsonObj = JSON.parse(localStorage.getItem(noteId)); // hämtar sparad note för att bestämma vilket namn rubriken ska ha
-    jsonObj === null ? noteKeyDisplay.textContent = `Note ${noteId}` : noteKeyDisplay.textContent = jsonObj.title; // om det är en ny note får den 'Note + noteId' som rubrik annars hämtar den det sparade namnet för rubriken
-    notes.appendChild(noteKeyDisplay);
+    noteKeyDisplay = `
+    <div class='note-key-display' contenteditable='true' spellcheck='false' data-noteId='${noteId}'>
+    ${(jsonObj === null ? `Note ${noteId}` : jsonObj.title)}
+    </div>`
+    notes.innerHTML += noteKeyDisplay;
     notes.appendChild(deleteBtn);
     savedNotes.appendChild(notes);
-    noteKeyDisplay = `<div class='note-key-display' contenteditable='true' spellcheck='false' data-noteId='${noteId}>`
 }
 
 // Funktion för att ta bort anteckning
@@ -129,4 +126,5 @@ function updateHeaderForNote(e) {
     const noteId = e.target.getAttribute('data-noteid'); // hämtar attributet med de id som noten man klickar på har
     savedNote.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent; // hämtar rubriken som ändras
     localStorage.setItem(noteId, JSON.stringify(savedNote)); // uppdaterar det nya rubrik namnet i localStorage
+    console.log(localStorage.getItem(noteId))
 }
