@@ -82,32 +82,31 @@ function displayAllNotes() {
 // Visa alla sparade anteckningar när sidan laddas om
 displayAllNotes();
 
-addBtnSeveral.addEventListener('click', () => {
+addBtnSeveral.addEventListener('click', createNote);
+
+function createNote() {
     const mainTextArea = document.getElementById('text-area');
-    const noteTextarea = document.createElement('div');
-    noteTextarea.className = "note-textarea";
-    noteTextarea.setAttribute("contenteditable", "true");
+    mainTextArea.classList = "note-textarea"; // behövs mest troligt inte
 
     // Unikt ID för varje anteckning
     noteCounter++
     const noteId = noteCounter;
     mainTextArea.textContent = '';
-    mainTextArea.appendChild(noteTextarea);
 
     // Lägg till den nya anteckningen i DOM (sidebar)
     createNotesContainer(noteId);
     // sparar en ny tom note i lS, om användaren väljer att inte skriva något utan bara klickar på lägg till knappen
-    saveNoteToLocalStorage(noteId, noteTextarea);
+    saveNoteToLocalStorage(noteId, mainTextArea);
     // Lyssna på ändringar i main text-area och spara i lS
-    noteTextarea.addEventListener('input', () => {
-        saveNoteToLocalStorage(noteId, noteTextarea);
+    mainTextArea.addEventListener('input', () => {
+        saveNoteToLocalStorage(noteId, mainTextArea);
     });
     // Kalla på chooseNote för att kunna bläddra bland anteckningarna
     chooseNote();
     
     // Fokus på den nya anteckningen
-    noteTextarea.focus();
-});
+    mainTextArea.focus();
+};
 
 function saveNoteToLocalStorage(noteId, noteTextarea) {
     // sparar innehållet i noten (title, content, id) i objektet (saveNoteContent)
