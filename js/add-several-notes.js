@@ -7,7 +7,7 @@
 // Hämta referenser från HTML
 const addBtnSeveral = document.querySelector('.add-btn');
 const savedNotes = document.querySelector('.saved-notes');
-const textareaSeveral = document.getElementById('text-area');
+const textarea = document.getElementById('text-area');
 let savedNote = {
     title: '',
     content: '',
@@ -61,7 +61,7 @@ function createDeleteButton(noteId) {
         e.stopPropagation();
         savedNotes.removeChild(deleteBtn.parentElement);
         localStorage.removeItem(noteId);
-        textareaSeveral.innerHTML = '';
+        textarea.innerHTML = '';
     });
     return deleteBtn;
 }
@@ -91,29 +91,26 @@ window.addEventListener('DOMContentLoaded', displayAllNotes)
 addBtnSeveral.addEventListener('click', createNote);
 
 function createNote() {
-    const mainTextArea = document.getElementById('text-area');
-    mainTextArea.classList = "note-textarea"; // behövs mest troligt inte
-
     // Unikt ID för varje anteckning
     const noteId = ++noteCounter;
-    mainTextArea.textContent = '';
+    textarea.textContent = '';
 
     // Lägg till den nya anteckningen i DOM (sidebar)
     createNotesContainer(noteId);
     // sparar en ny tom note i lS, om användaren väljer att inte skriva något utan bara klickar på lägg till knappen
-    saveNoteToLocalStorage(noteId, mainTextArea);
+    saveNoteToLocalStorage(noteId, textarea);
 
 
     // HÄR DET STRULAR MED BILDERNA DÅ EN TILLAGD BILD INTE RÄKNAS SOM INPUT
     // Lyssna på ändringar i main text-area och spara i lS
-    mainTextArea.addEventListener('input', () => {
-        saveNoteToLocalStorage(noteId, mainTextArea);
+    textarea.addEventListener('input', () => {
+        saveNoteToLocalStorage(noteId, textarea);
     });
     // Kalla på chooseNote för att kunna bläddra bland anteckningarna
     chooseNote();
     
     // Fokus på den nya anteckningen
-    mainTextArea.focus();
+    textarea.focus();
 };
 
 function saveNoteToLocalStorage(noteId, noteTextarea) {

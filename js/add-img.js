@@ -9,7 +9,7 @@ let imgCounter = 0;
 // Update counter
 imgBtn.addEventListener('change', (event) => {
     if (event.target.files && event.target.files[0]) {
-        const noteTextArea = document.querySelector('.note-textarea');
+        const noteTextArea = document.getElementById('text-area');
         let url = URL.createObjectURL(event.target.files[0]); 
         noteTextArea.innerHTML += `
         <img class="myImg" src="${url}" id="img-${imgCounter}">
