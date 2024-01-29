@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     toolbarButtons.forEach((btn) => {
         btn.addEventListener('click', (e) => {
             btn.classList.toggle('active');
-            const textarea = document.querySelector('.note-textarea')
+            const textarea = document.getElementById('text-area');
             modifyText(btn.id, false, null);
             textarea.focus();
         });
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     headings.forEach((btn) => {
         btn.addEventListener('change', () => {
-            const textarea = document.querySelector('.note-textarea')
+            const textarea = document.getElementById('text-area');
             modifyText(btn.id, false, btn.value)
             textarea.focus();
         })
