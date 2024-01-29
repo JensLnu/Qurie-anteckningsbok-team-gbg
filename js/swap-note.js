@@ -1,7 +1,9 @@
+
+import { applyFont } from "./font-template.js";
 document.addEventListener('DOMContentLoaded', chooseNote);
 
 // makes all notes clickable and enabels header to be editable
-function chooseNote() {
+export function chooseNote() {
     const allNotes = document.querySelectorAll('.notes'); // array with all div elements (notes), needs to be updated every time the function is executed as new notes may have been added
     allNotes.forEach(note => {
         note.addEventListener('click', (e) => {
@@ -19,10 +21,12 @@ function displayNote(e) {
     hithLightTargedNote(selectedNote);
     savedNote = JSON.parse(localStorage.getItem(selectedNote.firstElementChild.getAttribute('data-noteId'))); // get the id from the clicked note, then gets the data from localStorage and makes it to a string
     textarea.innerHTML = `<div><h2>${savedNote.title}</h2></div><br>${savedNote.content}`; // displays note in textarea
+    textarea.setAttribute('data-Id', savedNote.noteId)
+    // applyFont(savedNote.font);
 }
 
 // change bg color on targed note
-function hithLightTargedNote(selectedNote) {
+export function hithLightTargedNote(selectedNote) {
     const allNotes = document.querySelectorAll('.notes'); // array with all div elements (notes), needs to be updated every time the function is executed as new notes may have been added
     allNotes.forEach(note => {
         note.classList.remove('displayed-note');

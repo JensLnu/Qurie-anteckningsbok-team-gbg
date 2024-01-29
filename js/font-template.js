@@ -3,15 +3,12 @@
 // Kan man göra så att de mest använda typsnitten hamnar högst upp i listan?
 // Spara i lS
 
-// LÄGG TILL VÅR STANDARDFONT SOM FÖRSTA ALTERNATIV I LISTAN 
-// SÄTT FONT FAMILY PÅ TEXT AREA TILL STANDARD VARJE GÅNG MAN GÖR EN NY ANTECKNING ELLER LADDAR OM SIDAN
-
-
+const fontDropdown = document.getElementById('fonts');
 
 // API key: AIzaSyD9u1DRArZCKthVW8zoz2g1jVhveiaqjYQ
 
 // Funktion för att hämta Google Fonts
-async function fetchGoogleFonts() {
+(async function fetchGoogleFonts() {
     // Anropa API för att hämta data
     try {
         const response = await fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyD9u1DRArZCKthVW8zoz2g1jVhveiaqjYQ');
@@ -26,7 +23,7 @@ async function fetchGoogleFonts() {
         // Alert till användaren
         alert('Failed to fetch Google Fonts. Please try again later');
     };
-}
+})();
 
 // Event listener för ändringar och applicera valt typsnitt
 fontDropdown.addEventListener('change', function() {
@@ -38,7 +35,6 @@ fontDropdown.addEventListener('change', function() {
 
 // Funktion för att visa dropdown-menyn med alla fonts
 function displayFontDropdown(fonts) {
-    const fontDropdown = document.getElementById('fontDropdown');
     fontDropdown.innerHTML = '';
 
     // Loopa igenom varje Google Font och lägg till varje i dropdown-menyn
@@ -48,7 +44,6 @@ function displayFontDropdown(fonts) {
     });
 
     // Trigga laddning av första fonten i listan tills använderan valt en annan font
-    // Låt default font vara den som används i dokumentet
     // const defaultFont = fontDropdown.value;
     // if (defaultFont) {
     //     applyFont(defaultFont);
@@ -56,13 +51,12 @@ function displayFontDropdown(fonts) {
 }
 
 // Funktion för att applicera valt typsnitt på textContainer
-function applyFont(fontName) {
+export function applyFont(fontName) {
     // // Ta bort nuvarande styles
-    // DESSA BEHÖVER VI FÖR ATT KUNNA HA KVAR FONTS NÄR VI LADDAR OM SIDAN
-    // const existingStyles = document.querySelectorAll('style[data-font-stylesheet]');
-    // existingStyles.forEach(style => style.remove());
+    const existingStyles = document.querySelectorAll('[data-font-stylesheet]');
+    existingStyles.forEach(style => style.remove());
 
-    // Skapa länk för fonts
+    // Skapa länk för font
     const linkElement = document.createElement('link');
     linkElement.rel = 'stylesheet';
     linkElement.href = `https://fonts.googleapis.com/css?family=${fontName.replace(/\s/g, '+')}`;
@@ -72,7 +66,5 @@ function applyFont(fontName) {
     document.head.appendChild(linkElement);
 
     // Applicera fonten till texten
-    document.getElementById('textContainer').style.fontFamily = fontName;
+    document.getElementById('text-area').style.fontFamily = fontName;
 }
-
-fetchGoogleFonts();

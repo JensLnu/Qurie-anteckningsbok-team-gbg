@@ -3,6 +3,8 @@
 // Vid uppdatering av sidan hamnar inte sparade notes i samma ordning som tidigare
 // chooseNote är kallad på i displayAllNotes och eventlistener för add-btn
 // Synka med firstVisit
+import { hithLightTargedNote, chooseNote } from './swap-note.js'
+
 
 // Hämta referenser från HTML
 const addBtnSeveral = document.querySelector('.add-btn');
@@ -12,11 +14,20 @@ const textarea = document.getElementById('text-area');
 let savedNote = {
     title: '',
     content: '',
-    noteId: 0
+    noteId: 0,
+    font: ''
 }
 
 // Visa alla sparade anteckningar när sidan laddas om
 window.addEventListener('DOMContentLoaded', displayAllNotes)
+
+
+// HÄR DET STRULAR MED BILDERNA DÅ EN TILLAGD BILD INTE RÄKNAS SOM INPUT
+// Lyssna på ändringar i main text-area och spara i lS
+textarea.addEventListener('input', (e) => {
+    console.log(e.currentTarget.getAttribute('data-noteId'));
+    saveNoteToLocalStorage(e.currentTarget.getAttribute('[data-id]'), textarea, textarea.style.font);
+});
 
 // Eventlisteners för båda lägg till-knapparna
 addBtnSeveral.addEventListener('click', createNote);
@@ -46,7 +57,7 @@ function createNotesContainer(noteId) {
 
     // Visa antecknings-ID i notes
     let jsonObj = JSON.parse(localStorage.getItem(noteId)); // hämtar sparad note för att bestämma vilket namn rubriken ska ha
-    noteKeyDisplay = `
+    const noteKeyDisplay = `
     <div class='note-key-display' contenteditable='true' spellcheck='false' data-noteId='${noteId}'>
     ${(jsonObj === null ? `Note ${noteId}` : jsonObj.title)}
     </div>`
@@ -94,30 +105,23 @@ function createNote() {
     // Unikt ID för varje anteckning
     const noteId = ++noteCounter;
     textarea.textContent = '';
-
+    textarea.setAttribute('data-id', noteId);
     // Lägg till den nya anteckningen i DOM (sidebar)
     createNotesContainer(noteId);
     // sparar en ny tom note i lS, om användaren väljer att inte skriva något utan bara klickar på lägg till knappen
     saveNoteToLocalStorage(noteId, textarea);
-
-
-    // HÄR DET STRULAR MED BILDERNA DÅ EN TILLAGD BILD INTE RÄKNAS SOM INPUT
-    // Lyssna på ändringar i main text-area och spara i lS
-    textarea.addEventListener('input', () => {
-        saveNoteToLocalStorage(noteId, textarea);
-    });
     // Kalla på chooseNote för att kunna bläddra bland anteckningarna
     chooseNote();
-    
     // Fokus på den nya anteckningen
     textarea.focus();
 };
 
-function saveNoteToLocalStorage(noteId, noteTextarea) {
+function saveNoteToLocalStorage(noteId, noteTextarea, font) {
     // sparar innehållet i noten (title, content, id) i objektet (saveNote)
     savedNote.noteId = noteId;
     savedNote.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent; // titlen på notesen i sidebaren
     savedNote.content = noteTextarea.innerHTML; // innehållet användaren skriver i textarean
+    savedNote.font = font;
     localStorage.setItem(noteId, JSON.stringify(savedNote)); // spara objektet i typen string till ls
 }
 
@@ -126,7 +130,7 @@ function saveNoteToLocalStorage(noteId, noteTextarea) {
 // LÅT BLI ATT HÄMTA TITELN OCH LÄGGA TILL DET I DOKUMENTET, LÅT DEN VARA SEPARAT (ENDAST I PREVIEW NOTEN)
 // när användaren skriver in en ny rubrik till en note sparas de i localStorage direkt
 function updateHeaderForNote(e) {
-    const noteId = e.target.getAttribute('data-noteid'); // hämtar attributet med de id som noten man klickar på har
+    const noteId = e.target.getAttribute('data-noteId'); // hämtar attributet med de id som noten man klickar på har
     savedNote.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent; // hämtar rubriken som ändras
     localStorage.setItem(noteId, JSON.stringify(savedNote)); // uppdaterar det nya rubrik namnet i localStorage
     console.log(localStorage.getItem(noteId))
