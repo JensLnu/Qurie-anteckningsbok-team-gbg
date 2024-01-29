@@ -9,7 +9,7 @@ const addBtnSeveral = document.querySelector('.add-btn');
 const savedNotes = document.querySelector('.saved-notes');
 const textareaSeveral = document.getElementById('text-area');
 
-// Hämta antecknings-ID från lS, och låt aldrig ID:t vara mindre än 1
+// Hämta antecknings-ID från lS, och låt aldrig ID:t vara mindre än 0
 let noteCounter = Math.max(0, getLatestNoteId());
 
 // Funktion för att hämta senaste anteckningarna från lS

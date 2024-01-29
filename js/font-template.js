@@ -3,6 +3,10 @@
 // Kan man göra så att de mest använda typsnitten hamnar högst upp i listan?
 // Spara i lS
 
+// LÄGG TILL VÅR STANDARDFONT SOM FÖRSTA ALTERNATIV I LISTAN 
+// SÄTT FONT FAMILY PÅ TEXT AREA TILL STANDARD VARJE GÅNG MAN GÖR EN NY ANTECKNING ELLER LADDAR OM SIDAN
+
+
 
 // API key: AIzaSyD9u1DRArZCKthVW8zoz2g1jVhveiaqjYQ
 
@@ -24,6 +28,14 @@ async function fetchGoogleFonts() {
     };
 }
 
+// Event listener för ändringar och applicera valt typsnitt
+fontDropdown.addEventListener('change', function() {
+    const selectedFont = fontDropdown.value;
+    if (selectedFont) {
+        applyFont(selectedFont);
+    }
+});
+
 // Funktion för att visa dropdown-menyn med alla fonts
 function displayFontDropdown(fonts) {
     const fontDropdown = document.getElementById('fontDropdown');
@@ -35,26 +47,20 @@ function displayFontDropdown(fonts) {
         fontDropdown.appendChild(option);
     });
 
-    // Event listener för ändringar och applicera valt typsnitt
-    fontDropdown.addEventListener('change', function() {
-        const selectedFont = fontDropdown.value;
-        if (selectedFont) {
-            applyFont(selectedFont);
-        }
-    });
-
     // Trigga laddning av första fonten i listan tills använderan valt en annan font
-    const defaultFont = fontDropdown.value;
-    if (defaultFont) {
-        applyFont(defaultFont);
-    }
+    // Låt default font vara den som används i dokumentet
+    // const defaultFont = fontDropdown.value;
+    // if (defaultFont) {
+    //     applyFont(defaultFont);
+    // }
 }
 
 // Funktion för att applicera valt typsnitt på textContainer
 function applyFont(fontName) {
-    // Ta bort nuvarande styles
-    const existingStyles = document.querySelectorAll('style[data-font-stylesheet]');
-    existingStyles.forEach(style => style.remove());
+    // // Ta bort nuvarande styles
+    // DESSA BEHÖVER VI FÖR ATT KUNNA HA KVAR FONTS NÄR VI LADDAR OM SIDAN
+    // const existingStyles = document.querySelectorAll('style[data-font-stylesheet]');
+    // existingStyles.forEach(style => style.remove());
 
     // Skapa länk för fonts
     const linkElement = document.createElement('link');
