@@ -89,7 +89,10 @@ function compareNumber(a, b) {
 function displayAllNotes() {
     let arr = [];
     for (let i = 0; i < localStorage.length; i++) {
-        arr.push(parseInt(localStorage.key(i)));
+        console.log(parseInt(localStorage.key(i)))
+        if(!isNaN(parseInt(localStorage.key(i)))){
+            arr.push(parseInt(localStorage.key(i)));
+        }
     }
     arr.sort(compareNumber);
     for (let i = 0; i < arr.length; i++) {
