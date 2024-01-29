@@ -4,7 +4,7 @@
 // chooseNote är kallad på i displayAllNotes och eventlistener för add-btn
 // Synka med firstVisit
 
-import { addHashtagBtn, addHashtag } from "./tags";
+//import { addHashtagBtn, addHashtag } from "./tags";
 
 // Hämta referenser från HTML
 const addBtnSeveral = document.querySelector('.add-btn');
@@ -48,7 +48,7 @@ function createNotesContainer(noteId) {
 
     // Visa antecknings-ID i notes
     let jsonObj = JSON.parse(localStorage.getItem(noteId)); // hämtar sparad note för att bestämma vilket namn rubriken ska ha
-    noteKeyDisplay = `
+    let noteKeyDisplay = `
     <div class='note-key-display' contenteditable='true' spellcheck='false' data-noteId='${noteId}'>
     ${(jsonObj === null ? `Note ${noteId}` : jsonObj.title)}
     </div>`
