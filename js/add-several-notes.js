@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', displayAllNotes)
 
 // HÄR DET STRULAR MED BILDERNA DÅ EN TILLAGD BILD INTE RÄKNAS SOM INPUT
 // Lyssna på ändringar i main text-area och spara i lS
-textarea.addEventListener('input', (e) => {
+textarea.addEventListener('input', () => {
     saveNoteToLocalStorage(textarea.getAttribute('data-id'), textarea, textarea.style.fontFamily);
 });
 
@@ -34,7 +34,7 @@ addBtnMobile.addEventListener('click', createNote);
 // Hämta antecknings-ID från lS, och låt aldrig ID:t vara mindre än 1
 let noteCounter = Math.max(0, getLatestNoteId());
 
-// Funktion för att hämta senaste anteckningarna från lS
+// Går igenom alla ID:n och uppdaterar latestID om den hittar en större siffra
 function getLatestNoteId() {
     let latestId = 0;
     for (let i = 0; i < localStorage.length; i++) {
@@ -46,16 +46,17 @@ function getLatestNoteId() {
     return latestId;
 }
 
-// Funktion för att skapa notes i DOM
+// Skapa en ny anteckning
+// Highlighta den nya anteckningen
+// Lägg till ta-bort-knapp
+// Skapar en textruta för anteckningen, ger unikt ID och bestämmer innehållet efter om det finns motsvarande ID i LS
+// Append till sparade anteckningar
 function createNotesContainer(noteId) {
     const notes = document.createElement('div');
     notes.classList.add('notes');
-    hithLightTargedNote(notes); // gör så att den nya noten får vit bg färg och ser targetad ut
-    // Knapp för att ta bort anteckning
+    hithLightTargedNote(notes);
     const deleteBtn = createDeleteButton(noteId);
-
-    // Visa antecknings-ID i notes
-    let jsonObj = JSON.parse(localStorage.getItem(noteId)); // hämtar sparad note för att bestämma vilket namn rubriken ska ha
+    let jsonObj = JSON.parse(localStorage.getItem(noteId));
     const noteKeyDisplay = `
     <div class='note-key-display' contenteditable='true' spellcheck='false' data-noteId='${noteId}'>
     ${(jsonObj === null ? `Note ${noteId}` : jsonObj.title)}
@@ -65,12 +66,13 @@ function createNotesContainer(noteId) {
     savedNotes.appendChild(notes);
 }
 
-// Funktion för att ta bort anteckning
+// Skapa en ta-bort-knapp
+// Eventlistener som tar bort motsvarande ID i LS + tar bort note-previe
+// Rensa textarea
 function createDeleteButton(noteId) {
     const deleteBtn = document.createElement('button');
     deleteBtn.classList.add('delete-btn');
     deleteBtn.textContent = '-';
-    // Ta bort anteckning från DOM och lS
     deleteBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         savedNotes.removeChild(deleteBtn.parentElement);
@@ -85,11 +87,12 @@ function compareNumber(a, b) {
     return a - b;
 }
 
-// Funktion för att visa alla sparade anteckningar, och sortera
+// Skapa en tom array och lägg till alla ID:n som är siffror
+// Sortera i nummerordning
+// Skapa note-previews för alla element i arrayen
 function displayAllNotes() {
     let arr = [];
     for (let i = 0; i < localStorage.length; i++) {
-        console.log(parseInt(localStorage.key(i)))
         if(!isNaN(parseInt(localStorage.key(i)))){
             arr.push(parseInt(localStorage.key(i)));
         }
@@ -102,38 +105,45 @@ function displayAllNotes() {
     chooseNote();
 }
 
+// Ta bort tidigare note
+// Sätt standard-font
+// Lägg till ID till anteckningen
+// Skapa en ny anteckning
+// Spara ner den nya anteckningen till LS
+// Highlighta den nya anteckningen
+// Fokusera muspekaren till nya fönstret
 function createNote() {
-    // Unikt ID för varje anteckning
     const noteId = ++noteCounter;
     textarea.textContent = '';
     textarea.style.fontFamily = ''
     textarea.setAttribute('data-id', noteId);
-    // Lägg till den nya anteckningen i DOM (sidebar)
     createNotesContainer(noteId);
-    // sparar en ny tom note i lS, om användaren väljer att inte skriva något utan bara klickar på lägg till knappen
     saveNoteToLocalStorage(noteId, textarea, 'sans-serif');
-    // Kalla på chooseNote för att kunna bläddra bland anteckningarna
     chooseNote();
-    // Fokus på den nya anteckningen
     textarea.focus();
 };
 
+// Använd savedNote-objektet för att strukturerat kunna spara anteckningar
+// Anteckningens noteID från textarean
+// Anteckningens titel från sidebaren
+// Anteckningens innehåll
+// Font-family från text-area
 function saveNoteToLocalStorage(noteId, noteTextarea, font) {
-    // sparar innehållet i noten (title, content, id) i objektet (saveNote)
     savedNote.noteId = noteId;
-    savedNote.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent; // titlen på notesen i sidebaren
-    savedNote.content = noteTextarea.innerHTML; // innehållet användaren skriver i textarean
+    savedNote.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent;
+    savedNote.content = noteTextarea.innerHTML;
     savedNote.font = font;
-    localStorage.setItem(noteId, JSON.stringify(savedNote)); // spara objektet i typen string till ls
+    localStorage.setItem(noteId, JSON.stringify(savedNote));
 }
 
 // Här strular det nog med försvinnande text-content
-// LocalStorage uppdateras med endast titeln och skriver över det som står där innan?
 // LÅT BLI ATT HÄMTA TITELN OCH LÄGGA TILL DET I DOKUMENTET, LÅT DEN VARA SEPARAT (ENDAST I PREVIEW NOTEN)
-// när användaren skriver in en ny rubrik till en note sparas de i localStorage direkt
+
+// hämtar attributet med de id som noten man klickar på har
+// hämtar rubriken som ändras
+// uppdaterar det nya rubrik namnet i localStorage
 function updateHeaderForNote(e) {
-    const noteId = e.target.getAttribute('data-noteId'); // hämtar attributet med de id som noten man klickar på har
-    savedNote.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent; // hämtar rubriken som ändras
-    localStorage.setItem(noteId, JSON.stringify(savedNote)); // uppdaterar det nya rubrik namnet i localStorage
-    console.log(localStorage.getItem(noteId))
+    const noteId = e.target.getAttribute('data-noteId'); 
+    savedNote.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent; 
+    localStorage.setItem(noteId, JSON.stringify(savedNote)); 
 }

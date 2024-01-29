@@ -12,7 +12,9 @@ imgBtn.addEventListener('change', (event) => {
         const noteTextArea = document.getElementById('text-area');
         let url = URL.createObjectURL(event.target.files[0]); 
         noteTextArea.innerHTML += `
-        <img class="myImg" src="${url}" id="img-${imgCounter}">
+        <div class="img-container">
+            <img class="myImg" src="${url}" id="img-${imgCounter}">
+        </div>
         `;
         imgCounter++;
         localStorage.setItem('img-counter', imgCounter);

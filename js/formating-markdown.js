@@ -2,7 +2,9 @@
 15. (8.5 points) Som användare vill jag kunna klistra in markdown i en anteckning och att den formaterar sig korrekt --Jens och Oskar 
 */
 
-// kontakt med DOMen
+// Hämta knappen som kör markdown-konversionen
+// Hämta textarean där markdownen finns
+// Eventlistener för att upptäcka klick
 const settingBtn = document.getElementById('test');
 const t = document.getElementById('text-area');
 settingBtn.addEventListener('click', () => {
@@ -85,6 +87,8 @@ settingBtn.addEventListener('click', () => {
 //     textarea.innerHTML = markdownToHtml;
 // }
 
+// Hela dokumentets innehåll kommer med text-parametern
+// Regex för att hitta markdown syntax och byta ut mot motsvarande HTML
 function parseMarkdown(text){
     const toHTML = text
     .replace(/^### (.*$)/gim, '<h3>$1</h3>') // Byt ut rader som startar med # mot deras resp hN:or

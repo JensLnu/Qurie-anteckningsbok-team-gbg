@@ -1,15 +1,13 @@
 /*--- Som användare vill jag kunna skapa egna mallar där jag kan ställa in valfria typsnitt utifrån de som finns i Google fonts ---*/
 
 // Kan man göra så att de mest använda typsnitten hamnar högst upp i listan?
-// Spara i lS
-
 const fontDropdown = document.getElementById('fonts');
 
 // API key: AIzaSyD9u1DRArZCKthVW8zoz2g1jVhveiaqjYQ
 
-// Funktion för att hämta Google Fonts
+// Hämta Google Web Fonts
+// Om respons OK, fyll på med options i font select
 (async function fetchGoogleFonts() {
-    // Anropa API för att hämta data
     try {
         const response = await fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyD9u1DRArZCKthVW8zoz2g1jVhveiaqjYQ');
         if (!response.ok) {
@@ -18,14 +16,13 @@ const fontDropdown = document.getElementById('fonts');
         const data = await response.json();
         displayFontDropdown(data.items);
     } catch(error) {
-        // Visa felmeddelande vid error
         console.error('Error fetching Google Fonts:', error);
-        // Alert till användaren
         alert('Failed to fetch Google Fonts. Please try again later');
     };
 })();
 
 // Event listener för ändringar och applicera valt typsnitt
+// När option ändras, kolla att det är en font som är vald och applicera
 fontDropdown.addEventListener('change', function() {
     const selectedFont = fontDropdown.value;
     if (selectedFont) {
@@ -33,10 +30,10 @@ fontDropdown.addEventListener('change', function() {
     }
 });
 
-// Funktion för att visa dropdown-menyn med alla fonts
+// En default option i pedagogiskt syfte
+// Gå igenom alla fonts från API och skapa options för varje font
 function displayFontDropdown(fonts) {
     fontDropdown.innerHTML = '<option>Välj en font</option>';
-    // Loopa igenom varje Google Font och lägg till varje i dropdown-menyn
     fonts.forEach(font => {
         const option = new Option(font.family, font.family);
         fontDropdown.appendChild(option);
@@ -44,19 +41,20 @@ function displayFontDropdown(fonts) {
 }
 
 // Funktion för att applicera valt typsnitt på textContainer
+// Ta bort existerande font-länkar
+// Skapa en ny länk med den valda fonten
+// Lägg till fonten till savedNote-objektet
+// Uppdatera text-areans font
 function applyFont(fontName) {
-    // // Ta bort nuvarande styles
     const existingStyles = document.querySelectorAll('[data-font-stylesheet]');
     existingStyles.forEach(style => style.remove());
     
-    // Skapa länk för font
     const linkElement = document.createElement('link');
     linkElement.rel = 'stylesheet';
     linkElement.href = `https://fonts.googleapis.com/css?family=${fontName.replace(/\s/g, '+')}`;
     linkElement.dataset.fontStylesheet = '';
     document.head.appendChild(linkElement);
 
-    // Applicera fonten till texten
     savedNote.font = fontName;
     document.getElementById('text-area').style.fontFamily = fontName;
 }
