@@ -19,7 +19,7 @@ function displayFirstMessage(response) {
 
     if (isLocalStorageEmpty()) {
         textArea.innerHTML = `
-        <div id ="first-div">
+        <div id ="first-div" spellcheck='false' contenteditable='false'>
             <h1 id = "first-rubrik">Välkommen till Qurie</h1>
             <p>${response.paraText}</p>
             <div class = "info-div"><h3 class = "header-info">Navigera</h3><p class = "p-info">${response.search}</p></div>
