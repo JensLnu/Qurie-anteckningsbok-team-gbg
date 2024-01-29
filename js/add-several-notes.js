@@ -103,6 +103,7 @@ function createNote() {
     // Unikt ID för varje anteckning
     const noteId = ++noteCounter;
     textarea.textContent = '';
+    textarea.style.fontFamily = ''
     textarea.setAttribute('data-id', noteId);
     // Lägg till den nya anteckningen i DOM (sidebar)
     createNotesContainer(noteId);

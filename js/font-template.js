@@ -35,7 +35,7 @@ fontDropdown.addEventListener('change', function() {
 
 // Funktion för att visa dropdown-menyn med alla fonts
 function displayFontDropdown(fonts) {
-    fontDropdown.innerHTML = '';
+    fontDropdown.innerHTML = '<option>Välj en font</option>';
     // Loopa igenom varje Google Font och lägg till varje i dropdown-menyn
     fonts.forEach(font => {
         const option = new Option(font.family, font.family);
@@ -54,10 +54,10 @@ function applyFont(fontName) {
     linkElement.rel = 'stylesheet';
     linkElement.href = `https://fonts.googleapis.com/css?family=${fontName.replace(/\s/g, '+')}`;
     linkElement.dataset.fontStylesheet = '';
-    console.log(fontName)
-    // Appenda länk till head (för att dynamiskt ladda vald font)
     document.head.appendChild(linkElement);
-    savedNote.font = fontName;
+
     // Applicera fonten till texten
+    savedNote.font = fontName;
     document.getElementById('text-area').style.fontFamily = fontName;
 }
+

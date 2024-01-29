@@ -23,6 +23,11 @@ function displayNote(e) {
     textarea.innerHTML = savedNote.content; // displays note in textarea
     textarea.setAttribute('data-Id', savedNote.noteId)
     applyFont(savedNote.font);
+    if(savedNote.font != ''){
+        fontDropdown.value = savedNote.font;
+    } else {
+        fontDropdown.getElementsByTagName('option')[0].selected = 'selected'
+    }
 }
 
 // change bg color on targed note
