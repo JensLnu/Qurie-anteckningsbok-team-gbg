@@ -15,7 +15,8 @@ let savedNote = {
     title: '',
     content: '',
     noteId: 0,
-    font: ''
+    font: '',
+    // size: 12
 }
 
 // Visa alla sparade anteckningar när sidan laddas om
@@ -130,6 +131,9 @@ function createNote() {
 // Font-family från text-area
 function saveNoteToLocalStorage(noteId, noteTextarea, font) {
     savedNote.noteId = noteId;
+    // add-several-notes.js:134 Uncaught TypeError: Cannot read properties of null (reading 'textContent')
+    // at saveNoteToLocalStorage (add-several-notes.js:134:74)
+    // at HTMLDivElement.<anonymous> (add-several-notes.js:29:5)
     savedNote.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent;
     savedNote.content = noteTextarea.innerHTML;
     savedNote.font = font;

@@ -43,8 +43,10 @@ function displayFontDropdown(fonts) {
 // Funktion för att applicera valt typsnitt på textContainer
 // Ta bort existerande font-länkar
 // Skapa en ny länk med den valda fonten
-// Lägg till fonten till savedNote-objektet
+// Om det finns en selection, byt ut nuvarande innehåll mot ett span med rätt font
+// Annars lägg till fonten till savedNote-objektet
 // Uppdatera text-areans font
+// Här strular det med att 
 function applyFont(fontName) {
     const existingStyles = document.querySelectorAll('[data-font-stylesheet]');
     existingStyles.forEach(style => style.remove());
@@ -55,7 +57,22 @@ function applyFont(fontName) {
     linkElement.dataset.fontStylesheet = '';
     document.head.appendChild(linkElement);
 
-    savedNote.font = fontName;
-    document.getElementById('text-area').style.fontFamily = fontName;
+    const sel = window.getSelection();
+    const range = sel.getRangeAt(0);
+    if(sel.rangeCount > 0 && range.toString().length > 0){
+        let e = document.createElement('span');
+        e.style = 'font-family:' + fontName + ';'
+        e.className = 'yet-another-class'
+        e.innerHTML = sel.toString();
+        range.deleteContents();
+        range.insertNode(e);
+    } else {
+        const allSpans = document.querySelectorAll('yet-another-class')
+        allSpans.forEach(span => {
+            span.innerHTML = span.innerText || span.textContent || '';
+        })
+        savedNote.font = fontName;
+        document.getElementById('text-area').style.fontFamily = fontName;
+    }
 }
 
