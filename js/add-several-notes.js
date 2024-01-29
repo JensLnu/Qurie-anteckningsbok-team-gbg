@@ -43,6 +43,11 @@ function createNotesContainer(noteId) {
     const notes = document.createElement('div');
     notes.classList.add('notes');
     hithLightTargedNote(notes); // gör så att den nya noten får vit bg färg och ser targetad ut
+
+    // Container för knappar
+    const buttonsContainer = document.createElement('div');
+    buttonsContainer.classList.add('buttons-container');
+    
     // Knapp för att ta bort anteckning
     const deleteBtn = createDeleteButton(noteId);
 
@@ -144,3 +149,42 @@ function updateHeaderForNote(e) {
     localStorage.setItem(noteId, JSON.stringify(savedNote)); // uppdaterar det nya rubrik namnet i localStorage
     console.log(localStorage.getItem(noteId))
 }
+
+
+/* Försök att skapa container för knapparna för att förenkla styling, men då kan inte knapparna användas för strukturen ändras. Hjälp :)
+
+// Funktion för att skapa notes i DOM
+function createNotesContainer(noteId) {
+    const notes = document.createElement('div');
+    notes.classList.add('notes');
+    hithLightTargedNote(notes); // gör så att den nya noten får vit bg färg och ser targetad ut
+
+    // Container för knappar för styling
+    const buttonsContainer = document.createElement('div');
+    buttonsContainer.classList.add('buttons-container');
+
+    let displayHashtagBtn = addHashtagBtn();
+    buttonsContainer.appendChild(displayHashtagBtn);
+    
+    // Knapp för att ta bort anteckning
+    const deleteBtn = createDeleteButton(noteId);
+    buttonsContainer.appendChild(deleteBtn);
+
+    // Visa antecknings-ID i notes
+    let jsonObj = JSON.parse(localStorage.getItem(noteId)); // hämtar sparad note för att bestämma vilket namn rubriken ska ha
+    let noteKeyDisplay = `
+    <div class='note-key-display' contenteditable='true' spellcheck='false' data-noteId='${noteId}'>
+    ${(jsonObj === null ? `Note ${noteId}` : jsonObj.title)}
+    </div>`
+    notes.innerHTML += noteKeyDisplay;
+
+    savedNotes.appendChild(notes);
+    notes.appendChild(buttonsContainer);
+
+    displayHashtagBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        addHashtag(e);
+    });
+
+    return displayHashtagBtn;
+}*/

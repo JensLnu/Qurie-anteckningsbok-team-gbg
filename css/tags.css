@@ -1,0 +1,12 @@
+.hashtag-btn {
+    display: flex;
+    color: white;
+    border-radius: 50%;
+    height: 1.8em;
+    width: 1.8em;
+    justify-content: center;
+    align-items: center;
+    border: solid white;
+    background-color: rgb(132, 169, 140);
+    transition: 0.5s;
+}
