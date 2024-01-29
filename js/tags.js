@@ -17,7 +17,7 @@ export function addHashtagBtn() {
     const hashtagBtn = document.createElement('button');
     hashtagBtn.classList.add('hashtag-btn');
     hashtagBtn.textContent = '#';
-    return addHashtagBtn;
+    return hashtagBtn; // Returnera knappen och inte funktionen
 }
 
 export function addHashtag() {
