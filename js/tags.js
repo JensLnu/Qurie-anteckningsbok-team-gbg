@@ -24,7 +24,6 @@ export function addHashtag() {
     const hashtagContainer = document.createElement('div');
     hashtagContainer.classList.add('hashtag-container');
 
-    
     const hashtagInput = document.createElement('input');
     hashtagInput.classList.add('hashtag-input');
 
@@ -32,9 +31,8 @@ export function addHashtag() {
     deleteBtn.classList.add('delete-btn');
     deleteBtn.textContent = 'X';
 
-
-    hashtagInput.appendChild(hashtagContainer);
-    deleteBtn.appendChild(hashtagContainer);
+    hashtagContainer.appendChild(hashtagInput);
+    hashtagContainer.appendChild(deleteBtn);
 
     return hashtagContainer;
 }

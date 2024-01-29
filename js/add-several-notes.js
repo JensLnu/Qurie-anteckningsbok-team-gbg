@@ -43,10 +43,6 @@ function createNotesContainer(noteId) {
     const notes = document.createElement('div');
     notes.classList.add('notes');
     hithLightTargedNote(notes); // gör så att den nya noten får vit bg färg och ser targetad ut
-
-    // Container för knappar
-    const buttonsContainer = document.createElement('div');
-    buttonsContainer.classList.add('buttons-container');
     
     // Knapp för att ta bort anteckning
     const deleteBtn = createDeleteButton(noteId);
