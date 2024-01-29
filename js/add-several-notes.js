@@ -4,7 +4,8 @@
 // chooseNote är kallad på i displayAllNotes och eventlistener för add-btn
 // Synka med firstVisit
 
-import { addHashtagBtn, addHashtag } from "./tags.js";
+import { /*addHashtagBtn,*/ addHashtag } from "./tags.js";
+import { createHtmlElem } from "./moduls/createHtmlElem.js";
 
 // Hämta referenser från HTML
 const addBtnSeveral = document.querySelector('.add-btn');
@@ -54,15 +55,15 @@ function createNotesContainer(noteId) {
     ${(jsonObj === null ? `Note ${noteId}` : jsonObj.title)}
     </div>`
     notes.innerHTML += noteKeyDisplay;
-
-    let displayHashtagBtn = addHashtagBtn();
-
-    notes.appendChild(displayHashtagBtn);
+    
+    const displayHashtagBtn = createHtmlElem('button', '#', notes, 'hashtag-btn');
+    //notes.appendChild(displayHashtagBtn); // borde inte behövas men de gör den tydligen
+    
     notes.appendChild(deleteBtn);
     savedNotes.appendChild(notes);
 
     displayHashtagBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
+        // e.stopPropagation();
         addHashtag(e);
     });
 
@@ -71,9 +72,11 @@ function createNotesContainer(noteId) {
 
 // Funktion för att ta bort anteckning
 function createDeleteButton(noteId) {
-    const deleteBtn = document.createElement('button');
-    deleteBtn.classList.add('delete-btn');
-    deleteBtn.textContent = '-';
+    const deleteBtn = createHtmlElem('button', '-', null, 'delete-btn');
+    // document.createElement('button');
+    // deleteBtn.classList.add('delete-btn');
+    // deleteBtn.textContent = '-';
+
     // Ta bort anteckning från DOM och lS
     deleteBtn.addEventListener('click', (e) => {
         e.stopPropagation();

@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', chooseNote);
+const textarea = document.getElementById('text-area');
 
 // makes all notes clickable and enabels header to be editable
 function chooseNote() {

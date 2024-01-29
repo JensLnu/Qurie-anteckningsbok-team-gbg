@@ -10,29 +10,29 @@
 
 - exportera och importera till add-several-notes
 */
+import {createHtmlElem} from './moduls/createHtmlElem.js';
 
-console.log('halllooooo');
+// export function addHashtagBtn() {
+//     const hashtagBtn = document.createElement('button');
+//     hashtagBtn.classList.add('hashtag-btn');
+//     hashtagBtn.textContent = '#';
+//     return hashtagBtn; // Returnera knappen och inte funktionen
+// }
 
-export function addHashtagBtn() {
-    const hashtagBtn = document.createElement('button');
-    hashtagBtn.classList.add('hashtag-btn');
-    hashtagBtn.textContent = '#';
-    return hashtagBtn; // Returnera knappen och inte funktionen
-}
-
-export function addHashtag() {
-    const hashtagContainer = document.createElement('div');
-    hashtagContainer.classList.add('hashtag-container');
-
-    const hashtagInput = document.createElement('input');
-    hashtagInput.classList.add('hashtag-input');
-
-    const deleteBtn = document.createElement('button');
-    deleteBtn.classList.add('delete-btn');
-    deleteBtn.textContent = 'X';
-
-    hashtagContainer.appendChild(hashtagInput);
-    hashtagContainer.appendChild(deleteBtn);
-
+export function addHashtag(e) {
+    console.log('start addHashtag')
+    const hashtagContainer = createHtmlElem('div', '', e.target.parentElement, 'hashtag-container');
+    // const hashtagContainer = document.createElement('div');
+    // hashtagContainer.classList.add('hashtag-container');
+    createHtmlElem('input', '', hashtagContainer, 'hashtag-input');
+    // const hashtagInput = document.createElement('input');
+    // hashtagInput.classList.add('hashtag-input');
+    // hashtagContainer.appendChild(hashtagInput);
+    createHtmlElem('button', 'X', hashtagContainer, 'delete-btn');
+    // const deleteBtn = document.createElement('button');
+    // deleteBtn.classList.add('delete-btn');
+    // deleteBtn.textContent = 'X';
+    // hashtagContainer.appendChild(deleteBtn);
+    console.log('slut addHashtag')
     return hashtagContainer;
 }
