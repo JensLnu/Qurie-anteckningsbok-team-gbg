@@ -3,7 +3,7 @@
 // Vid uppdatering av sidan hamnar inte sparade notes i samma ordning som tidigare
 // chooseNote är kallad på i displayAllNotes och eventlistener för add-btn
 // Synka med firstVisit
-import { hithLightTargedNote, chooseNote } from './swap-note.js'
+// import { hithLightTargedNote, chooseNote } from './swap-note.js'
 
 
 // Hämta referenser från HTML
@@ -25,8 +25,7 @@ window.addEventListener('DOMContentLoaded', displayAllNotes)
 // HÄR DET STRULAR MED BILDERNA DÅ EN TILLAGD BILD INTE RÄKNAS SOM INPUT
 // Lyssna på ändringar i main text-area och spara i lS
 textarea.addEventListener('input', (e) => {
-    console.log(e.currentTarget.getAttribute('data-noteId'));
-    saveNoteToLocalStorage(e.currentTarget.getAttribute('[data-id]'), textarea, textarea.style.font);
+    saveNoteToLocalStorage(textarea.getAttribute('data-id'), textarea, textarea.style.fontFamily);
 });
 
 // Eventlisteners för båda lägg till-knapparna
@@ -100,7 +99,6 @@ function displayAllNotes() {
     chooseNote();
 }
 
-
 function createNote() {
     // Unikt ID för varje anteckning
     const noteId = ++noteCounter;
@@ -109,7 +107,7 @@ function createNote() {
     // Lägg till den nya anteckningen i DOM (sidebar)
     createNotesContainer(noteId);
     // sparar en ny tom note i lS, om användaren väljer att inte skriva något utan bara klickar på lägg till knappen
-    saveNoteToLocalStorage(noteId, textarea);
+    saveNoteToLocalStorage(noteId, textarea, 'sans-serif');
     // Kalla på chooseNote för att kunna bläddra bland anteckningarna
     chooseNote();
     // Fokus på den nya anteckningen

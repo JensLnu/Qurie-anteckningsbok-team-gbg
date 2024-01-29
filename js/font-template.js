@@ -36,35 +36,28 @@ fontDropdown.addEventListener('change', function() {
 // Funktion för att visa dropdown-menyn med alla fonts
 function displayFontDropdown(fonts) {
     fontDropdown.innerHTML = '';
-
     // Loopa igenom varje Google Font och lägg till varje i dropdown-menyn
     fonts.forEach(font => {
         const option = new Option(font.family, font.family);
         fontDropdown.appendChild(option);
     });
-
-    // Trigga laddning av första fonten i listan tills använderan valt en annan font
-    // const defaultFont = fontDropdown.value;
-    // if (defaultFont) {
-    //     applyFont(defaultFont);
-    // }
 }
 
 // Funktion för att applicera valt typsnitt på textContainer
-export function applyFont(fontName) {
+function applyFont(fontName) {
     // // Ta bort nuvarande styles
     const existingStyles = document.querySelectorAll('[data-font-stylesheet]');
     existingStyles.forEach(style => style.remove());
-
+    
     // Skapa länk för font
     const linkElement = document.createElement('link');
     linkElement.rel = 'stylesheet';
     linkElement.href = `https://fonts.googleapis.com/css?family=${fontName.replace(/\s/g, '+')}`;
     linkElement.dataset.fontStylesheet = '';
-
+    console.log(fontName)
     // Appenda länk till head (för att dynamiskt ladda vald font)
     document.head.appendChild(linkElement);
-
+    savedNote.font = fontName;
     // Applicera fonten till texten
     document.getElementById('text-area').style.fontFamily = fontName;
 }
