@@ -15,11 +15,20 @@ const textarea = document.getElementById('text-area');
 let savedNote = {
     title: '',
     content: '',
-    noteId: 0
+    noteId: 0,
+    font: '',
+    // size: 12
 }
 
 // Visa alla sparade anteckningar när sidan laddas om
 window.addEventListener('DOMContentLoaded', displayAllNotes)
+
+
+// HÄR DET STRULAR MED BILDERNA DÅ EN TILLAGD BILD INTE RÄKNAS SOM INPUT
+// Lyssna på ändringar i main text-area och spara i lS
+textarea.addEventListener('input', () => {
+    saveNoteToLocalStorage(textarea.getAttribute('data-id'), textarea, textarea.style.fontFamily);
+});
 
 // Eventlisteners för båda lägg till-knapparna
 addBtnSeveral.addEventListener('click', createNote);
@@ -27,7 +36,7 @@ addBtnMobile.addEventListener('click', createNote);
 // Hämta antecknings-ID från lS, och låt aldrig ID:t vara mindre än 1
 let noteCounter = Math.max(0, getLatestNoteId());
 
-// Funktion för att hämta senaste anteckningarna från lS
+// Går igenom alla ID:n och uppdaterar latestID om den hittar en större siffra
 function getLatestNoteId() {
     let latestId = 0;
     for (let i = 0; i < localStorage.length; i++) {
@@ -39,10 +48,15 @@ function getLatestNoteId() {
     return latestId;
 }
 
-// Funktion för att skapa notes i DOM
+// Skapa en ny anteckning
+// Highlighta den nya anteckningen
+// Lägg till ta-bort-knapp
+// Skapar en textruta för anteckningen, ger unikt ID och bestämmer innehållet efter om det finns motsvarande ID i LS
+// Append till sparade anteckningar
 function createNotesContainer(noteId) {
     const notes = document.createElement('div');
     notes.classList.add('notes');
+    
     hithLightTargedNote(notes); // gör så att den nya noten får vit bg färg och ser targetad ut
     const noteHeaderContainer = createHtmlElem('div', null, notes, 'note-header-container', 'flex');
 
@@ -91,11 +105,15 @@ function compareNumber(a, b) {
     return a - b;
 }
 
-// Funktion för att visa alla sparade anteckningar, och sortera
+// Skapa en tom array och lägg till alla ID:n som är siffror
+// Sortera i nummerordning
+// Skapa note-previews för alla element i arrayen
 function displayAllNotes() {
     let arr = [];
     for (let i = 0; i < localStorage.length; i++) {
-        arr.push(parseInt(localStorage.key(i)));
+        if(!isNaN(parseInt(localStorage.key(i)))){
+            arr.push(parseInt(localStorage.key(i)));
+        }
     }
     arr.sort(compareNumber);
     for (let i = 0; i < arr.length; i++) {
@@ -105,42 +123,46 @@ function displayAllNotes() {
     chooseNote();
 }
 
-
+// Ta bort tidigare note
+// Sätt standard-font
+// Lägg till ID till anteckningen
+// Skapa en ny anteckning
+// Spara ner den nya anteckningen till LS
+// Highlighta den nya anteckningen
+// Fokusera muspekaren till nya fönstret
 function createNote() {
-    // Unikt ID för varje anteckning
     const noteId = ++noteCounter;
     textarea.textContent = '';
-
-    // Lägg till den nya anteckningen i DOM (sidebar)
+    textarea.style.fontFamily = ''
+    textarea.setAttribute('data-id', noteId);
     createNotesContainer(noteId);
-    // sparar en ny tom note i lS, om användaren väljer att inte skriva något utan bara klickar på lägg till knappen
-    saveNoteToLocalStorage(noteId, textarea);
-
-
-    // HÄR DET STRULAR MED BILDERNA DÅ EN TILLAGD BILD INTE RÄKNAS SOM INPUT
-    // Lyssna på ändringar i main text-area och spara i lS
-    textarea.addEventListener('input', () => {
-        saveNoteToLocalStorage(noteId, textarea);
-    });
-    // Kalla på chooseNote för att kunna bläddra bland anteckningarna
+    saveNoteToLocalStorage(noteId, textarea, 'sans-serif');
     chooseNote();
-
-    // Fokus på den nya anteckningen
     textarea.focus();
 };
 
-function saveNoteToLocalStorage(noteId, noteTextarea) {
-    // sparar innehållet i noten (title, content, id) i objektet (saveNote)
+// Använd savedNote-objektet för att strukturerat kunna spara anteckningar
+// Anteckningens noteID från textarean
+// Anteckningens titel från sidebaren
+// Anteckningens innehåll
+// Font-family från text-area
+function saveNoteToLocalStorage(noteId, noteTextarea, font) {
     savedNote.noteId = noteId;
-    savedNote.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent; // titlen på notesen i sidebaren
-    savedNote.content = noteTextarea.innerHTML; // innehållet användaren skriver i textarean
-    localStorage.setItem(noteId, JSON.stringify(savedNote)); // spara objektet i typen string till ls
+    // add-several-notes.js:134 Uncaught TypeError: Cannot read properties of null (reading 'textContent')
+    // at saveNoteToLocalStorage (add-several-notes.js:134:74)
+    // at HTMLDivElement.<anonymous> (add-several-notes.js:29:5)
+    savedNote.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent;
+    savedNote.content = noteTextarea.innerHTML;
+    savedNote.font = font;
+    localStorage.setItem(noteId, JSON.stringify(savedNote));
 }
 
 // Här strular det nog med försvinnande text-content
-// LocalStorage uppdateras med endast titeln och skriver över det som står där innan?
 // LÅT BLI ATT HÄMTA TITELN OCH LÄGGA TILL DET I DOKUMENTET, LÅT DEN VARA SEPARAT (ENDAST I PREVIEW NOTEN)
-// när användaren skriver in en ny rubrik till en note sparas de i localStorage direkt
+
+// hämtar attributet med de id som noten man klickar på har
+// hämtar rubriken som ändras
+// uppdaterar det nya rubrik namnet i localStorage
 function updateHeaderForNote(e) {
     const noteId = e.target.getAttribute('data-noteid'); // hämtar attributet med de id som noten man klickar på har
     savedNote.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent; // hämtar rubriken som ändras
