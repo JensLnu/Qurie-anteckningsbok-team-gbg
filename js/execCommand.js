@@ -13,9 +13,7 @@ fontSelection.addEventListener('change', function() {
 });
 // FONT SIZE
 function populateFontSelection() {
-    console.log('detta borde fungera');
     for(let i = 6; i < 41; i += 2){
-        console.log(i);
         fontSelection.innerHTML += `<option value='${i}'>${i}px</option>`
         i+2;
     }

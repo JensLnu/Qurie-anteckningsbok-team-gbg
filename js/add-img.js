@@ -18,6 +18,7 @@ imgBtn.addEventListener('change', (event) => {
         `;
         imgCounter++;
         localStorage.setItem('img-counter', imgCounter);
+        saveNoteToLocalStorage(textarea.getAttribute('data-id'), textarea, textarea.style.fontFamily);
     }
 });
 
