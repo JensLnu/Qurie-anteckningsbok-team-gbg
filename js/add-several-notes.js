@@ -108,6 +108,7 @@ function displayAllNotes() {
     }
     // Kalla på chooseNote för att kunna bläddra bland anteckningarna
     chooseNote();
+    displayNote();
 }
 
 // Ta bort tidigare note
@@ -144,15 +145,3 @@ function saveNoteToLocalStorage(noteId, noteTextarea, font) {
     localStorage.setItem(noteId, JSON.stringify(savedNote));
 }
 
-// Här strular det nog med försvinnande text-content
-// LÅT BLI ATT HÄMTA TITELN OCH LÄGGA TILL DET I DOKUMENTET, LÅT DEN VARA SEPARAT (ENDAST I PREVIEW NOTEN)
-
-// hämtar attributet med de id som noten man klickar på har
-// hämtar rubriken som ändras
-// uppdaterar det nya rubrik namnet i localStorage
-function updateHeaderForNote(e) {
-    const noteId = e.target.getAttribute("data-noteid"); // hämtar attributet med de id som noten man klickar på har
-    savedNote.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent; // hämtar rubriken som ändras
-    localStorage.setItem(noteId, JSON.stringify(savedNote)); // uppdaterar det nya rubrik namnet i localStorage
-    console.log(localStorage.getItem(noteId));
-}

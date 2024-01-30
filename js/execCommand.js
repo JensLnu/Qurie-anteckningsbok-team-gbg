@@ -9,7 +9,7 @@ fontSelection.addEventListener('change', function() {
         changeSize(selectedSize);
     }
 });
-// FONT SIZE
+// FONT SIZE OPTIONS
 function populateFontSelection() {
     for(let i = 6; i < 41; i += 2){
         fontSelection.innerHTML += `<option value='${i}'>${i} px</option>`
