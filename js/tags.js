@@ -12,16 +12,30 @@
 */
 import {createHtmlElem} from './moduls/createHtmlElem.js';
 
+// lägger till en hashtag
 export function addHashtag(e) {
-    console.log('start addHashtag')
     const hashtagContainer = createHtmlElem('div', '', e.target.parentElement.parentNode, 'hashtag-container', 'flex');
     createHtmlElem('input', '', hashtagContainer, 'hashtag-input');
     createHtmlElem('button', 'X', hashtagContainer, 'delete-btn');
-    console.log('slut addHashtag')
-    
+    const hashtagDeleteBtn = hashtagContainer.querySelector('.delete-btn');
+    hashtagDeleteBtn.addEventListener('click', (e) => {
+        removeHashtag(e);
+    })
     return hashtagContainer;
 }
 
+export function removeHashtag(e) {
+    console.log('start removeHashtag')
+    console.log(e.currentTarget)
+}
+
+// sparar alla hashtags i ls
 export function saveHashtagToLs() {
-    const allTags = document.querySelectorAll()
+    const allTags = document.querySelectorAll('.hashtag-input');
+    allTags.forEach(input => {
+        console.log(input.value)
+        savedNote.hashtags.push(input.value);
+        console.log(savedNote.hashtags)
+        input.setAttribute(`data-${input.value}`, input.value);
+    });
 }
