@@ -1,7 +1,6 @@
 
 // Lägg till eventlistener till alla existerande anteckningar när sidan laddas
 document.addEventListener('DOMContentLoaded', chooseNote);
-const textarea = document.getElementById('text-area');
 
 // makes all notes clickable and enabels header to be editable
 // array with all div elements (notes), needs to be updated every time the function is executed as new notes may have been added

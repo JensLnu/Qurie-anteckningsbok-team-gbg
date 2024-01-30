@@ -1,6 +1,5 @@
 // Get input button
 // Image counter, needs to be fixed to get number of images after page refresh
-const imgBtn = document.getElementById('imgBtn');
 let imgCounter = Math.max(0, localStorage.getItem('img-counter'));
 
 // When file is selected get the note area

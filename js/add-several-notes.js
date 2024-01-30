@@ -8,17 +8,7 @@ import { /*addHashtagBtn,*/ addHashtag } from "./tags.js";
 import { createHtmlElem } from "./moduls/createHtmlElem.js";
 
 // Hämta referenser från HTML
-const addBtnSeveral = document.querySelector(".add-btn");
-const addBtnMobile = document.querySelector(".add");
-const savedNotes = document.querySelector(".saved-notes");
-const textarea = document.getElementById("text-area");
-let savedNote = {
-    title: "",
-    content: "",
-    noteId: 0,
-    font: "",
-    // size: 12
-};
+
 
 // Visa alla sparade anteckningar när sidan laddas om
 window.addEventListener("DOMContentLoaded", displayAllNotes);

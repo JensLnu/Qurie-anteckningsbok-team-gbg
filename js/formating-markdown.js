@@ -5,10 +5,9 @@
 // Hämta knappen som kör markdown-konversionen
 // Hämta textarean där markdownen finns
 // Eventlistener för att upptäcka klick
-const settingBtn = document.getElementById('test');
-const t = document.getElementById('text-area');
+
 settingBtn.addEventListener('click', () => {
-    t.innerHTML = parseMarkdown(t.innerText);
+    textarea.innerHTML = parseMarkdown(textarea.innerText);
 });
 
 // function formatMarkdown(markdown, firstTimeFalse) {

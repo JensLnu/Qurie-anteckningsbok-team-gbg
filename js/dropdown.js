@@ -1,9 +1,3 @@
-const displayBtn = document.querySelector('.dropdown');
-const dropdownMenu = document.querySelector('.nav-list');
-const toolbar = document.getElementById('toolbar');
-const main = document.querySelector('main');
-const body = document.querySelector('body');
-
 displayBtn.addEventListener('click', toggleDisplay);
 dropdownMenu.addEventListener('click', toggleDisplay);
 

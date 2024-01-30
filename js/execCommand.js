@@ -1,9 +1,7 @@
 // Hämta alla knapparna
 // Headings = Alla knappar som behöver ett value för att fungera (h-elementen, p)
 // Toolbar = Alla knappar som bara behöver ett command (bold, italic, ul, ol)
-const headings = document.querySelectorAll('.headings')
-const toolbarButtons = document.querySelectorAll('.toolbar-button')
-const fontSelection = document.getElementById('font-size');
+
 document.addEventListener('DOMContentLoaded', populateFontSelection)
 fontSelection.addEventListener('change', function() {
     const selectedSize = fontSelection.value;
@@ -14,7 +12,7 @@ fontSelection.addEventListener('change', function() {
 // FONT SIZE
 function populateFontSelection() {
     for(let i = 6; i < 41; i += 2){
-        fontSelection.innerHTML += `<option value='${i}'>${i}px</option>`
+        fontSelection.innerHTML += `<option value='${i}'>${i} px</option>`
         i+2;
     }
 };
@@ -38,9 +36,8 @@ function changeSize(fontSize){
     } else {
         // savedNote.fontSize = fontSize;
         const spans = document.querySelectorAll('.remove-this-shit');
-        console.log(spans);
         spans.forEach(span => {
-            span.innerHTML = span.textContent || span.innerText || '';
+            span.outerHTML = span.textContent || span.innerHTML || '';
         })
         document.getElementById('text-area').style = 'font-size:' + fontSize + 'px;';
     }

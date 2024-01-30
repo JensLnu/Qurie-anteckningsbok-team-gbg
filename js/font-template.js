@@ -1,7 +1,6 @@
 /*--- Som användare vill jag kunna skapa egna mallar där jag kan ställa in valfria typsnitt utifrån de som finns i Google fonts ---*/
 
 // Kan man göra så att de mest använda typsnitten hamnar högst upp i listan?
-const fontDropdown = document.getElementById('fonts');
 
 // API key: AIzaSyD9u1DRArZCKthVW8zoz2g1jVhveiaqjYQ
 
@@ -67,9 +66,10 @@ function applyFont(fontName) {
         range.deleteContents();
         range.insertNode(e);
     } else {
-        const allSpans = document.querySelectorAll('yet-another-class')
+        const allSpans = document.querySelectorAll('.yet-another-class')
+        console.log(allSpans)
         allSpans.forEach(span => {
-            span.innerHTML = span.innerText || span.textContent || '';
+            span.outerHTML = span.innerHTML || span.textContent || '';
         })
         savedNote.font = fontName;
         document.getElementById('text-area').style.fontFamily = fontName;
