@@ -21,7 +21,7 @@ import {createHtmlElem} from './moduls/createHtmlElem.js';
 
 export function addHashtag(e) {
     console.log('start addHashtag')
-    const hashtagContainer = createHtmlElem('div', '', e.target.parentElement, 'hashtag-container');
+    const hashtagContainer = createHtmlElem('div', '', e.target.parentElement.parentNode, 'hashtag-container', 'flex');
     // const hashtagContainer = document.createElement('div');
     // hashtagContainer.classList.add('hashtag-container');
     createHtmlElem('input', '', hashtagContainer, 'hashtag-input');

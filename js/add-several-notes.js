@@ -44,9 +44,7 @@ function createNotesContainer(noteId) {
     const notes = document.createElement('div');
     notes.classList.add('notes');
     hithLightTargedNote(notes); // gör så att den nya noten får vit bg färg och ser targetad ut
-    
-    // Knapp för att ta bort anteckning
-    const deleteBtn = createDeleteButton(noteId);
+    const noteHeaderContainer = createHtmlElem('div', null, notes, 'note-header-container', 'flex');
 
     // Visa antecknings-ID i notes
     let jsonObj = JSON.parse(localStorage.getItem(noteId)); // hämtar sparad note för att bestämma vilket namn rubriken ska ha
@@ -54,25 +52,26 @@ function createNotesContainer(noteId) {
     <div class='note-key-display' contenteditable='true' spellcheck='false' data-noteId='${noteId}'>
     ${(jsonObj === null ? `Note ${noteId}` : jsonObj.title)}
     </div>`
-    notes.innerHTML += noteKeyDisplay;
-    
-    const displayHashtagBtn = createHtmlElem('button', '#', notes, 'hashtag-btn');
+    noteHeaderContainer.innerHTML += noteKeyDisplay;
+
+    const displayHashtagBtn = createHtmlElem('button', '#', noteHeaderContainer, 'hashtag-btn');
     //notes.appendChild(displayHashtagBtn); // borde inte behövas men de gör den tydligen
-    
-    notes.appendChild(deleteBtn);
+
+    // Knapp för att ta bort anteckning
+    const deleteBtn = createDeleteButton(noteId, noteHeaderContainer);
+    // notes.appendChild(deleteBtn); // görs i createDeleteButton
+
     savedNotes.appendChild(notes);
 
     displayHashtagBtn.addEventListener('click', (e) => {
         // e.stopPropagation();
         addHashtag(e);
     });
-
-    return displayHashtagBtn;
 }
 
 // Funktion för att ta bort anteckning
-function createDeleteButton(noteId) {
-    const deleteBtn = createHtmlElem('button', '-', null, 'delete-btn');
+function createDeleteButton(noteId, noteHeaderContainer) {
+    const deleteBtn = createHtmlElem('button', '-', noteHeaderContainer, 'delete-btn');
     // document.createElement('button');
     // deleteBtn.classList.add('delete-btn');
     // deleteBtn.textContent = '-';
@@ -125,7 +124,7 @@ function createNote() {
     });
     // Kalla på chooseNote för att kunna bläddra bland anteckningarna
     chooseNote();
-    
+
     // Fokus på den nya anteckningen
     textarea.focus();
 };

@@ -10,3 +10,22 @@
     background-color: rgb(132, 169, 140);
     transition: 0.5s;
 }
+
+.notes {
+    flex-direction: column;
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .hashtag-input {
+    /* max-width: fit-content; */
+    font-size: 0.6rem;
+    margin-right: auto;
+    /*padding: 0; */
+  }
+
+  .note-key-display {
+    margin-right: auto;
+  }
