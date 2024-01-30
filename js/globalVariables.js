@@ -4,6 +4,7 @@ let savedNote = {
     content: "",
     noteId: 0,
     font: "",
+    hashtags: []
     // size: 12
 };
 

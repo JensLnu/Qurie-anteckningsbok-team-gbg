@@ -4,7 +4,7 @@
 // chooseNote är kallad på i displayAllNotes och eventlistener för add-btn
 // Synka med firstVisit
 
-import { addHashtag } from "./tags.js";
+import { addHashtag, saveHashtagToLs } from "./tags.js";
 import { createHtmlElem } from "./moduls/createHtmlElem.js";
 
 // Hämta referenser från HTML
@@ -63,12 +63,14 @@ function createNotesContainer(noteId) {
     noteHeaderContainer.innerHTML += noteKeyDisplay;
 
     const displayHashtagBtn = createHtmlElem("button", "#", noteHeaderContainer, "hashtag-btn");
+    displayHashtagBtn.addEventListener("click", (e) => {
+        let hashtagContainer = addHashtag(e);
+        console.log(hashtagContainer)
+        savedNote.hashtags += saveHashtagToLs();
+    });
 
     createDeleteButton(noteId, noteHeaderContainer); // Knapp för att ta bort anteckning
     savedNotes.appendChild(notes);
-    displayHashtagBtn.addEventListener("click", (e) => {
-        addHashtag(e);
-    });
 }
 
 // Funktion för att ta bort anteckning
