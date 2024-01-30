@@ -93,7 +93,7 @@ function createDeleteButton(noteId, noteHeaderContainer) {
     // Ta bort anteckning från DOM och lS
     deleteBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        savedNotes.removeChild(deleteBtn.parentElement);
+        savedNotes.removeChild(deleteBtn.parentElement.parentElement);
         localStorage.removeItem(noteId);
         textarea.innerHTML = '';
     });
