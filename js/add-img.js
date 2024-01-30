@@ -1,7 +1,7 @@
 // Get input button
 // Image counter, needs to be fixed to get number of images after page refresh
 const imgBtn = document.getElementById('imgBtn');
-let imgCounter = 0;
+let imgCounter = Math.max(0, localStorage.getItem('img-counter'));
 
 // When file is selected get the note area
 // Convert file to URL
@@ -12,9 +12,12 @@ imgBtn.addEventListener('change', (event) => {
         const noteTextArea = document.getElementById('text-area');
         let url = URL.createObjectURL(event.target.files[0]); 
         noteTextArea.innerHTML += `
-        <img class="myImg" src="${url}" id="img-${imgCounter}">
+        <div class="img-container">
+            <img class="myImg" src="${url}" id="img-${imgCounter}">
+        </div>
         `;
         imgCounter++;
+        localStorage.setItem('img-counter', imgCounter);
     }
 });
 

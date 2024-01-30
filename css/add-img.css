@@ -1,6 +1,10 @@
 .myImg {
   position: relative;
-  height: 30%;
-  width: 40%;
-  border-radius: 10px;
+  width: 100%;
+}
+.img-container {
+  resize: both;
+  /* height: 300px; */
+  /* width: 300px; */
+  background-size: cover;
 }
