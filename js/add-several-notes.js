@@ -57,7 +57,7 @@ function getLatestNoteId() {
 // Skapar en textruta för anteckningen, ger unikt ID och bestämmer innehållet efter om det finns motsvarande ID i LS
 // Append till sparade anteckningar
 function createNotesContainer(noteId) {
-  // G-tag
+  // G-tag gjord av Oscar Donaldson
   gtag("event", "add_note", {
     app_name: "add_note_button",
     screen_name: "add_note_name",
