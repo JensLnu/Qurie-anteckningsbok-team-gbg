@@ -4,11 +4,10 @@
 // chooseNote är kallad på i displayAllNotes och eventlistener för add-btn
 // Synka med firstVisit
 
-import { /*addHashtagBtn,*/ addHashtag } from "./tags.js";
+import { addHashtag } from "./tags.js";
 import { createHtmlElem } from "./moduls/createHtmlElem.js";
 
 // Hämta referenser från HTML
-
 
 // Visa alla sparade anteckningar när sidan laddas om
 window.addEventListener("DOMContentLoaded", displayAllNotes);
@@ -65,13 +64,9 @@ function createNotesContainer(noteId) {
 
     const displayHashtagBtn = createHtmlElem("button", "#", noteHeaderContainer, "hashtag-btn");
 
-    // Knapp för att ta bort anteckning
-    const deleteBtn = createDeleteButton(noteId, noteHeaderContainer);
-
+    createDeleteButton(noteId, noteHeaderContainer); // Knapp för att ta bort anteckning
     savedNotes.appendChild(notes);
-
     displayHashtagBtn.addEventListener("click", (e) => {
-        // e.stopPropagation();
         addHashtag(e);
     });
 }
@@ -79,9 +74,6 @@ function createNotesContainer(noteId) {
 // Funktion för att ta bort anteckning
 function createDeleteButton(noteId, noteHeaderContainer) {
     const deleteBtn = createHtmlElem("button", "-", noteHeaderContainer, "delete-btn");
-    // document.createElement('button');
-    // deleteBtn.classList.add('delete-btn');
-    // deleteBtn.textContent = '-';
 
     // Ta bort anteckning från DOM och lS
     deleteBtn.addEventListener("click", (e) => {
@@ -144,9 +136,7 @@ function saveNoteToLocalStorage(noteId, noteTextarea, font) {
     // add-several-notes.js:134 Uncaught TypeError: Cannot read properties of null (reading 'textContent')
     // at saveNoteToLocalStorage (add-several-notes.js:134:74)
     // at HTMLDivElement.<anonymous> (add-several-notes.js:29:5)
-    savedNote.title = document.querySelector(
-        `[data-noteId="${noteId}"]`
-    ).textContent;
+    savedNote.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent;
     savedNote.content = noteTextarea.innerHTML;
     savedNote.font = font;
     localStorage.setItem(noteId, JSON.stringify(savedNote));
