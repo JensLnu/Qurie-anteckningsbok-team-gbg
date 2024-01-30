@@ -23,5 +23,5 @@ export function addHashtag(e) {
 }
 
 export function saveHashtagToLs() {
-
+    const allTags = document.querySelectorAll()
 }
