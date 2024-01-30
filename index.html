@@ -42,7 +42,7 @@
           <li class="icon">
             <span class="material-symbols-outlined md-40 search">search</span>
           </li>
-          <li class="icon">
+          <li class="icon" id="stars-icon">
             <span class="material-symbols-outlined md-40 stars">stars</span>
           </li>
           <li class="icon">
@@ -69,6 +69,13 @@
       </button>
       <div class="saved-notes"></div>
     </section>
+    <!-- sektion för favorite notes -->
+    <section id="favorites-section">
+
+      <div class="favorites-container"></div>
+  </section>
+
+
     <section id="toolbar">
       <!-- Gissar att options kommer från API, Lycka till Tova & Adam! :-) -->
       <select name="fonts" id="fonts">
@@ -102,6 +109,9 @@
         UL
       </button>
       <input type="file" id="imgBtn">
+
+    <!-- stjärna btn i toolbaren -->
+      <button class="toolbar-button" id="favorite" title="Favorite">⭐</button>
     </section>
     <main>
       <div id="text-area" contenteditable="true" ></div>
@@ -119,5 +129,6 @@
     <script src="./js/formating-markdown.js"></script>
     <script src="./js/add-img.js"></script>
     <script src="./js/execCommand.js"></script>
+    <script src="./js/favorite.js"></script>
   </body>
 </html>
