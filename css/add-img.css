@@ -3,8 +3,11 @@
   width: 100%;
 }
 .img-container {
-  resize: both;
-  /* height: 300px; */
-  /* width: 300px; */
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  /* resize: both; */
+  height: 100px;
+  width: 200px;
   background-size: cover;
 }
