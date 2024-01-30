@@ -3,48 +3,52 @@
 // Vid uppdatering av sidan hamnar inte sparade notes i samma ordning som tidigare
 // chooseNote är kallad på i displayAllNotes och eventlistener för add-btn
 // Synka med firstVisit
-// import { hithLightTargedNote, chooseNote } from './swap-note.js'
 
+import { /*addHashtagBtn,*/ addHashtag } from "./tags.js";
+import { createHtmlElem } from "./moduls/createHtmlElem.js";
 
 // Hämta referenser från HTML
-const addBtnSeveral = document.querySelector('.add-btn');
-const addBtnMobile = document.querySelector('.add');
-const savedNotes = document.querySelector('.saved-notes');
-const textarea = document.getElementById('text-area');
+const addBtnSeveral = document.querySelector(".add-btn");
+const addBtnMobile = document.querySelector(".add");
+const savedNotes = document.querySelector(".saved-notes");
+const textarea = document.getElementById("text-area");
 let savedNote = {
-    title: '',
-    content: '',
-    noteId: 0,
-    font: '',
-    // size: 12
-}
+  title: "",
+  content: "",
+  noteId: 0,
+  font: "",
+  // size: 12
+};
 
 // Visa alla sparade anteckningar när sidan laddas om
-window.addEventListener('DOMContentLoaded', displayAllNotes)
-
+window.addEventListener("DOMContentLoaded", displayAllNotes);
 
 // HÄR DET STRULAR MED BILDERNA DÅ EN TILLAGD BILD INTE RÄKNAS SOM INPUT
 // Lyssna på ändringar i main text-area och spara i lS
-textarea.addEventListener('input', () => {
-    saveNoteToLocalStorage(textarea.getAttribute('data-id'), textarea, textarea.style.fontFamily);
+textarea.addEventListener("input", () => {
+  saveNoteToLocalStorage(
+    textarea.getAttribute("data-id"),
+    textarea,
+    textarea.style.fontFamily
+  );
 });
 
 // Eventlisteners för båda lägg till-knapparna
-addBtnSeveral.addEventListener('click', createNote);
-addBtnMobile.addEventListener('click', createNote);
+addBtnSeveral.addEventListener("click", createNote);
+addBtnMobile.addEventListener("click", createNote);
 // Hämta antecknings-ID från lS, och låt aldrig ID:t vara mindre än 1
 let noteCounter = Math.max(0, getLatestNoteId());
 
 // Går igenom alla ID:n och uppdaterar latestID om den hittar en större siffra
 function getLatestNoteId() {
-    let latestId = 0;
-    for (let i = 0; i < localStorage.length; i++) {
-        let key = parseInt(localStorage.key(i));
-        if (!isNaN(key) && key > latestId) {
-            latestId = key;
-        }
+  let latestId = 0;
+  for (let i = 0; i < localStorage.length; i++) {
+    let key = parseInt(localStorage.key(i));
+    if (!isNaN(key) && key > latestId) {
+      latestId = key;
     }
-    return latestId;
+  }
+  return latestId;
 }
 
 // Skapa en ny anteckning
@@ -53,57 +57,95 @@ function getLatestNoteId() {
 // Skapar en textruta för anteckningen, ger unikt ID och bestämmer innehållet efter om det finns motsvarande ID i LS
 // Append till sparade anteckningar
 function createNotesContainer(noteId) {
-    const notes = document.createElement('div');
-    notes.classList.add('notes');
-    hithLightTargedNote(notes);
-    const deleteBtn = createDeleteButton(noteId);
-    let jsonObj = JSON.parse(localStorage.getItem(noteId));
-    const noteKeyDisplay = `
+  // G-tag gjord av Oscar Donaldson
+  gtag("event", "add_note", {
+    app_name: "add_note_button",
+    screen_name: "add_note_name",
+  });
+
+  const notes = document.createElement("div");
+  notes.classList.add("notes");
+
+  hithLightTargedNote(notes); // gör så att den nya noten får vit bg färg och ser targetad ut
+  const noteHeaderContainer = createHtmlElem(
+    "div",
+    null,
+    notes,
+    "note-header-container",
+    "flex"
+  );
+
+  // Visa antecknings-ID i notes
+  let jsonObj = JSON.parse(localStorage.getItem(noteId)); // hämtar sparad note för att bestämma vilket namn rubriken ska ha
+  let noteKeyDisplay = `
     <div class='note-key-display' contenteditable='true' spellcheck='false' data-noteId='${noteId}'>
-    ${(jsonObj === null ? `Note ${noteId}` : jsonObj.title)}
-    </div>`
-    notes.innerHTML += noteKeyDisplay;
-    notes.appendChild(deleteBtn);
-    savedNotes.appendChild(notes);
+    ${jsonObj === null ? `Note ${noteId}` : jsonObj.title}
+    </div>`;
+  noteHeaderContainer.innerHTML += noteKeyDisplay;
+
+  const displayHashtagBtn = createHtmlElem(
+    "button",
+    "#",
+    noteHeaderContainer,
+    "hashtag-btn"
+  );
+  //notes.appendChild(displayHashtagBtn); // borde inte behövas men de gör den tydligen
+
+  // Knapp för att ta bort anteckning
+  const deleteBtn = createDeleteButton(noteId, noteHeaderContainer);
+  // notes.appendChild(deleteBtn); // görs i createDeleteButton
+
+  savedNotes.appendChild(notes);
+
+  displayHashtagBtn.addEventListener("click", (e) => {
+    // e.stopPropagation();
+    addHashtag(e);
+  });
 }
 
-// Skapa en ta-bort-knapp
-// Eventlistener som tar bort motsvarande ID i LS + tar bort note-previe
-// Rensa textarea
-function createDeleteButton(noteId) {
-    const deleteBtn = document.createElement('button');
-    deleteBtn.classList.add('delete-btn');
-    deleteBtn.textContent = '-';
-    deleteBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        savedNotes.removeChild(deleteBtn.parentElement);
-        localStorage.removeItem(noteId);
-        textarea.innerHTML = '';
-    });
-    return deleteBtn;
+// Funktion för att ta bort anteckning
+function createDeleteButton(noteId, noteHeaderContainer) {
+  const deleteBtn = createHtmlElem(
+    "button",
+    "-",
+    noteHeaderContainer,
+    "delete-btn"
+  );
+  // document.createElement('button');
+  // deleteBtn.classList.add('delete-btn');
+  // deleteBtn.textContent = '-';
+
+  // Ta bort anteckning från DOM och lS
+  deleteBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    savedNotes.removeChild(deleteBtn.parentElement.parentElement);
+    localStorage.removeItem(noteId);
+    textarea.innerHTML = "";
+  });
+  return deleteBtn;
 }
 
 // Funktion som parameter till sort för att sortera nummer i storleksordning
 function compareNumber(a, b) {
-    return a - b;
+  return a - b;
 }
 
 // Skapa en tom array och lägg till alla ID:n som är siffror
 // Sortera i nummerordning
 // Skapa note-previews för alla element i arrayen
 function displayAllNotes() {
-    let arr = [];
-    for (let i = 0; i < localStorage.length; i++) {
-        if(!isNaN(parseInt(localStorage.key(i)))){
-            arr.push(parseInt(localStorage.key(i)));
-        }
+  let arr = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    if (!isNaN(parseInt(localStorage.key(i)))) {
+      arr.push(parseInt(localStorage.key(i)));
     }
-    arr.sort(compareNumber);
-    for (let i = 0; i < arr.length; i++) {
-        createNotesContainer(arr[i])
-    }
-    // Kalla på chooseNote för att kunna bläddra bland anteckningarna
-    chooseNote();
+  }
+  arr.sort(compareNumber);
+  for (let i = 0; i < arr.length; i++) {
+    createNotesContainer(arr[i]);
+  }
+  // Kalla på chooseNote för att kunna bläddra bland anteckningarna
+  chooseNote();
 }
 
 // Ta bort tidigare note
@@ -114,15 +156,15 @@ function displayAllNotes() {
 // Highlighta den nya anteckningen
 // Fokusera muspekaren till nya fönstret
 function createNote() {
-    const noteId = ++noteCounter;
-    textarea.textContent = '';
-    textarea.style.fontFamily = ''
-    textarea.setAttribute('data-id', noteId);
-    createNotesContainer(noteId);
-    saveNoteToLocalStorage(noteId, textarea, 'sans-serif');
-    chooseNote();
-    textarea.focus();
-};
+  const noteId = ++noteCounter;
+  textarea.textContent = "";
+  textarea.style.fontFamily = "";
+  textarea.setAttribute("data-id", noteId);
+  createNotesContainer(noteId);
+  saveNoteToLocalStorage(noteId, textarea, "sans-serif");
+  chooseNote();
+  textarea.focus();
+}
 
 // Använd savedNote-objektet för att strukturerat kunna spara anteckningar
 // Anteckningens noteID från textarean
@@ -130,14 +172,16 @@ function createNote() {
 // Anteckningens innehåll
 // Font-family från text-area
 function saveNoteToLocalStorage(noteId, noteTextarea, font) {
-    savedNote.noteId = noteId;
-    // add-several-notes.js:134 Uncaught TypeError: Cannot read properties of null (reading 'textContent')
-    // at saveNoteToLocalStorage (add-several-notes.js:134:74)
-    // at HTMLDivElement.<anonymous> (add-several-notes.js:29:5)
-    savedNote.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent;
-    savedNote.content = noteTextarea.innerHTML;
-    savedNote.font = font;
-    localStorage.setItem(noteId, JSON.stringify(savedNote));
+  savedNote.noteId = noteId;
+  // add-several-notes.js:134 Uncaught TypeError: Cannot read properties of null (reading 'textContent')
+  // at saveNoteToLocalStorage (add-several-notes.js:134:74)
+  // at HTMLDivElement.<anonymous> (add-several-notes.js:29:5)
+  savedNote.title = document.querySelector(
+    `[data-noteId="${noteId}"]`
+  ).textContent;
+  savedNote.content = noteTextarea.innerHTML;
+  savedNote.font = font;
+  localStorage.setItem(noteId, JSON.stringify(savedNote));
 }
 
 // Här strular det nog med försvinnande text-content
@@ -147,7 +191,48 @@ function saveNoteToLocalStorage(noteId, noteTextarea, font) {
 // hämtar rubriken som ändras
 // uppdaterar det nya rubrik namnet i localStorage
 function updateHeaderForNote(e) {
-    const noteId = e.target.getAttribute('data-noteId'); 
-    savedNote.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent; 
-    localStorage.setItem(noteId, JSON.stringify(savedNote)); 
+  const noteId = e.target.getAttribute("data-noteid"); // hämtar attributet med de id som noten man klickar på har
+  savedNote.title = document.querySelector(
+    `[data-noteId="${noteId}"]`
+  ).textContent; // hämtar rubriken som ändras
+  localStorage.setItem(noteId, JSON.stringify(savedNote)); // uppdaterar det nya rubrik namnet i localStorage
+  console.log(localStorage.getItem(noteId));
 }
+
+/* Försök att skapa container för knapparna för att förenkla styling, men då kan inte knapparna användas för strukturen ändras. Hjälp :)
+
+// Funktion för att skapa notes i DOM
+function createNotesContainer(noteId) {
+    const notes = document.createElement('div');
+    notes.classList.add('notes');
+    hithLightTargedNote(notes); // gör så att den nya noten får vit bg färg och ser targetad ut
+
+    // Container för knappar för styling
+    const buttonsContainer = document.createElement('div');
+    buttonsContainer.classList.add('buttons-container');
+
+    let displayHashtagBtn = addHashtagBtn();
+    buttonsContainer.appendChild(displayHashtagBtn);
+    
+    // Knapp för att ta bort anteckning
+    const deleteBtn = createDeleteButton(noteId);
+    buttonsContainer.appendChild(deleteBtn);
+
+    // Visa antecknings-ID i notes
+    let jsonObj = JSON.parse(localStorage.getItem(noteId)); // hämtar sparad note för att bestämma vilket namn rubriken ska ha
+    let noteKeyDisplay = `
+    <div class='note-key-display' contenteditable='true' spellcheck='false' data-noteId='${noteId}'>
+    ${(jsonObj === null ? `Note ${noteId}` : jsonObj.title)}
+    </div>`
+    notes.innerHTML += noteKeyDisplay;
+
+    savedNotes.appendChild(notes);
+    notes.appendChild(buttonsContainer);
+
+    displayHashtagBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        addHashtag(e);
+    });
+
+    return displayHashtagBtn;
+}*/
