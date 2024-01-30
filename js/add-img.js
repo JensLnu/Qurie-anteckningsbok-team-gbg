@@ -22,13 +22,14 @@ imgBtn.addEventListener('change', (event) => {
 
 });
 
+// David gtag
 const myInput = document.getElementById('imgBtn');
 myInput.addEventListener('click', function (argument) {
-    gtag('event', 'new_button_click'),{
+    gtag('event', 'new_button_click'), {
         'image_click': 'new_click'
         
             
     }
-})
+});
 
 // innerHTML saves on input. Adding img does not count as input. Find other listener
