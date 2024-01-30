@@ -1,4 +1,3 @@
-
 // Lägg till eventlistener till alla existerande anteckningar när sidan laddas
 document.addEventListener('DOMContentLoaded', chooseNote);
 
@@ -28,7 +27,8 @@ function chooseNote() {
 // Lägg till fonten till textarean
 // Uppdatera font-selection efter om det finns en använd font eller inte
 function displayNote(e) {
-    let selectedNote = e.currentTarget;
+    let selectedNote;
+    !!e ? selectedNote = e.currentTarget : selectedNote = document.querySelector('.notes');   
     hithLightTargedNote(selectedNote);
     savedNote = JSON.parse(localStorage.getItem(selectedNote.firstElementChild.firstElementChild.getAttribute('data-noteId')));
     textarea.innerHTML = savedNote.content;
@@ -51,4 +51,20 @@ function hithLightTargedNote(selectedNote) {
         note.classList.remove('displayed-note');
     });
     selectedNote.classList.add('displayed-note');
+}
+
+
+// Här strular det nog med försvinnande text-content
+// LÅT BLI ATT HÄMTA TITELN OCH LÄGGA TILL DET I DOKUMENTET, LÅT DEN VARA SEPARAT (ENDAST I PREVIEW NOTEN)
+
+// hämtar attributet med de id som noten man klickar på har
+// hämtar rubriken som ändras
+// uppdaterar det nya rubrik namnet i localStorage
+function updateHeaderForNote(e) {
+    const noteId = e.target.getAttribute("data-noteid"); // hämtar attributet med de id som noten man klickar på har
+    savedNote.title = document.querySelector(
+        `[data-noteId="${noteId}"]`
+    ).textContent; // hämtar rubriken som ändras
+    localStorage.setItem(noteId, JSON.stringify(savedNote)); // uppdaterar det nya rubrik namnet i localStorage
+    console.log(localStorage.getItem(noteId));
 }

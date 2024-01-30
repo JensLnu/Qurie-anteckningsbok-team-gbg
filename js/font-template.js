@@ -50,15 +50,17 @@ function applyFont(fontName) {
     const existingStyles = document.querySelectorAll('[data-font-stylesheet]');
     existingStyles.forEach(style => style.remove());
     
-    const linkElement = document.createElement('link');
-    linkElement.rel = 'stylesheet';
-    linkElement.href = `https://fonts.googleapis.com/css?family=${fontName.replace(/\s/g, '+')}`;
-    linkElement.dataset.fontStylesheet = '';
-    document.head.appendChild(linkElement);
+    if(fontName !== 'sans-serif'){
+        const linkElement = document.createElement('link');
+        linkElement.rel = 'stylesheet';
+        linkElement.href = `https://fonts.googleapis.com/css?family=${fontName.replace(/\s/g, '+')}`;
+        linkElement.dataset.fontStylesheet = '';
+        document.head.appendChild(linkElement);
+    }
 
     const sel = window.getSelection();
-    const range = sel.getRangeAt(0);
-    if(sel.rangeCount > 0 && range.toString().length > 0){
+    if(sel.rangeCount > 0 && sel.getRangeAt(0).toString().length > 0){
+        const range = sel.getRangeAt(0);
         let e = document.createElement('span');
         e.style = 'font-family:' + fontName + ';'
         e.className = 'yet-another-class'
@@ -67,7 +69,6 @@ function applyFont(fontName) {
         range.insertNode(e);
     } else {
         const allSpans = document.querySelectorAll('.yet-another-class')
-        console.log(allSpans)
         allSpans.forEach(span => {
             span.outerHTML = span.innerHTML || span.textContent || '';
         })
