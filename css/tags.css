@@ -13,19 +13,19 @@
 
 .notes {
     flex-direction: column;
-  }
+}
 
-  .flex {
+.flex {
     display: flex;
-  }
+}
 
-  .hashtag-input {
+.hashtag-input {
     /* max-width: fit-content; */
     font-size: 0.6rem;
     margin-right: auto;
     /*padding: 0; */
-  }
+}
 
-  .note-key-display {
+.note-key-display {
     margin-right: auto;
-  }
+}
