@@ -150,9 +150,7 @@ function saveNoteToLocalStorage(noteId, noteTextarea, font) {
 // uppdaterar det nya rubrik namnet i localStorage
 function updateHeaderForNote(e) {
     const noteId = e.target.getAttribute("data-noteid"); // hämtar attributet med de id som noten man klickar på har
-    savedNote.title = document.querySelector(
-        `[data-noteId="${noteId}"]`
-    ).textContent; // hämtar rubriken som ändras
+    savedNote.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent; // hämtar rubriken som ändras
     localStorage.setItem(noteId, JSON.stringify(savedNote)); // uppdaterar det nya rubrik namnet i localStorage
     console.log(localStorage.getItem(noteId));
 }
