@@ -53,6 +53,7 @@ function createNotesContainer(noteId) {
     notes.classList.add("notes");
 
     highLightTargedNote(notes); // gör så att den nya noten får vit bg färg och ser targetad ut
+    highLightTargetTags(notes);
     const noteHeaderContainer = createHtmlElem("div", null, notes, "note-header-container", "flex");
 
     // Visa antecknings-ID i notes

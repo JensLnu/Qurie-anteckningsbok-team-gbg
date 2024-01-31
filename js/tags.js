@@ -46,3 +46,12 @@ function removeHashtag(e) {
     e.currentTarget.parentElement.remove();
     localStorage.setItem(savedNote.noteId, JSON.stringify(savedNote));
 }
+
+
+// const searchbar = document.getElementById('input-search-bar');
+// searchHashtags();
+// function searchHashtags() {
+//     searchbar.addEventListener('input', () => {
+//         // savedNote = 
+//     });
+// }
