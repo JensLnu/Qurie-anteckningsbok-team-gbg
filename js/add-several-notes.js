@@ -4,7 +4,7 @@
 // chooseNote är kallad på i displayAllNotes och eventlistener för add-btn
 // Synka med firstVisit
 
-import { addHashtag, saveHashtagToLs } from "./tags.js";
+import { addHashtag } from "./tags.js";
 import { createHtmlElem } from "./moduls/createHtmlElem.js";
 
 // Hämta referenser från HTML
@@ -47,7 +47,7 @@ function getLatestNoteId() {
 // Append till sparade anteckningar
 function createNotesContainer(noteId) {
     // G-tag gjord av Oscar Donaldson
-    gtag("event", "add_note", { app_name: "add_note_button", screen_name: "add_note_name",});
+    gtag("event", "add_note", { app_name: "add_note_button", screen_name: "add_note_name", });
 
     const notes = document.createElement("div");
     notes.classList.add("notes");
@@ -64,11 +64,10 @@ function createNotesContainer(noteId) {
 
 
 
-
+    // hashtags hantering
     const displayHashtagBtn = createHtmlElem("button", "#", noteHeaderContainer, "hashtag-btn");
     displayHashtagBtn.addEventListener("click", (e) => {
         let hashtagContainer = addHashtag(e);
-        saveHashtagToLs();
     });
 
     createDeleteButton(noteId, noteHeaderContainer); // Knapp för att ta bort anteckning
@@ -126,6 +125,8 @@ function createNote() {
     textarea.style.fontFamily = "";
     textarea.setAttribute("data-id", noteId);
     createNotesContainer(noteId);
+
+    console.log(savedNote)
     saveNoteToLocalStorage(noteId, textarea, "sans-serif");
     chooseNote();
     textarea.focus();
