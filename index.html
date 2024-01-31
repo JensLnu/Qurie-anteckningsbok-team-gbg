@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="./css/first-visit.css" />
     <link rel="stylesheet" href="./css/add-img.css" />
     <link rel="stylesheet" href="./css/tags.css">
+    <link rel="stylesheet" href="./css/search.css">
   </head>
 
   <body>
@@ -39,8 +40,9 @@
       </div>
       <nav id="navigation">
         <ul class="nav-list">
-          <li class="icon">
-            <span class="material-symbols-outlined md-40 search">search</span>
+          <li class="icon" id="open-search-modal">
+            <span class="material-symbols-outlined md-40 search">search</span></a>
+            
           </li>
           <li class="icon">
             <span class="material-symbols-outlined md-40 stars">stars</span>
@@ -104,6 +106,11 @@
       <input type="file" id="imgBtn">
     </section>
     <main>
+      <dialog class="dialog">
+        <div class="dialog-box">
+        <div id="input-search" ><input id="input-search-bar" type="text" placeholder="Sök efter en anteckning"></div>
+        <div id="result-list" ></div>
+    </div></dialog>
       <div id="text-area" contenteditable="true" ></div>
     </main>
 
@@ -119,5 +126,6 @@
     <script src="./js/formating-markdown.js"></script>
     <script src="./js/add-img.js"></script>
     <script src="./js/execCommand.js"></script>
+    <script src="./js/search.js"></script>
   </body>
 </html>
