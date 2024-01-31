@@ -29,3 +29,7 @@
 .note-key-display {
     margin-right: auto;
 }
+
+.display-none {
+    display: none;
+}
