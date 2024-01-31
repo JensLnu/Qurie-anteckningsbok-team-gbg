@@ -2,11 +2,11 @@
 
 /* Som användare vill jag kunna:
 [x]- via en knapp # bredvid delete-btn kunna lägga till taggar för en anteckning.
-[]- se mina taggar under titeln i sidebar när noten är aktiv.
+[x]- se mina taggar under titeln i sidebar när noten är aktiv, och dölja övriga tags.
 []- söka efter specifika taggar via search i navigation
 []    - se enbart de notes med sökt tagg i sidebar (utan att taggarna visas under varje note)
 []    - text-area är tom efter sökt tagg, tills man väljer en note
-[]- visa taggar i varje note
+[x]- visa taggar i varje note
 [x]- ta bort taggar i varje note
 
 [x]- exportera och importera till add-several-notes
@@ -36,6 +36,7 @@ function saveHashtagToObj(e) {
         savedNote.hashtags.push(input.value);
         input.setAttribute(`data-hashtag`, input.value);
     });
+    localStorage.setItem(savedNote.noteId, JSON.stringify(savedNote));
 }
 
 // tarbort 'hashtagen' ur objektet & i DOMen
@@ -43,4 +44,5 @@ function removeHashtag(e) {
     const hashtagName = e.currentTarget.previousSibling.value;
     savedNote.hashtags = savedNote.hashtags.filter(hashtag => hashtag !== hashtagName);
     e.currentTarget.parentElement.remove();
+    localStorage.setItem(savedNote.noteId, JSON.stringify(savedNote));
 }
