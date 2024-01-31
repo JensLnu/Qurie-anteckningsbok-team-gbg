@@ -28,7 +28,7 @@
     />
     <link rel="stylesheet" href="./css/first-visit.css" />
     <link rel="stylesheet" href="./css/add-img.css" />
-    <link rel="stylesheet" href="./css/tags.css">
+    <link rel="stylesheet" href="./css/tags.css" />
   </head>
 
   <body>
@@ -71,10 +71,8 @@
     </section>
     <!-- sektion för favorite notes -->
     <section id="favorites-section">
-
       <div class="favorites-container"></div>
-  </section>
-
+    </section>
 
     <section id="toolbar">
       <!-- Gissar att options kommer från API, Lycka till Tova & Adam! :-) -->
@@ -108,13 +106,17 @@
       >
         UL
       </button>
-      <input type="file" id="imgBtn">
+      <input type="file" id="imgBtn" />
 
-    <!-- stjärna btn i toolbaren -->
-      <button class="toolbar-button" id="favorite" title="Favorite">⭐</button>
+      <!-- stjärna btn i toolbaren -->
+      <!-- <button class="toolbar-button" id="favorite" title="Favorite">⭐</button> -->
+      <div class="note" data-noteId="1">
+        <!-- Anteckningens innehåll här -->
+        <button class="favorite-button" data-noteId="1">⭐</button>
+      </div>
     </section>
     <main>
-      <div id="text-area" contenteditable="true" ></div>
+      <div id="text-area" contenteditable="true"></div>
     </main>
 
     <!-- script -->

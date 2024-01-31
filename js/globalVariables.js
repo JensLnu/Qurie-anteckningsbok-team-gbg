@@ -4,7 +4,8 @@ let savedNote = {
     content: "",
     noteId: 0,
     font: "",
-    hashtags: []
+    hashtags: [],
+    favorite: false
     // size: 12
 };
 
@@ -43,4 +44,6 @@ const fontSelection = document.getElementById('font-size');
 
 // Settings-button
 const settingBtn = document.getElementById('test');
+
+
 
