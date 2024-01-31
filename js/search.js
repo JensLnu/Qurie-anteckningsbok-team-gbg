@@ -3,7 +3,6 @@
 // Klickar du på search, öppnas modalen
 // Gör en function som kollar igenom localstorage
 // Sök efter titlarna, matchar det med input value
-
 // Displayar resultaten i result-list
 
 // Lägg en eventlistener, rätt note vid rätt klick
@@ -13,7 +12,7 @@ const dialog = document.querySelector("dialog")
 const openSearchModal = document.getElementById("open-search-modal")
 
 
-dialog.showModal()
+// dialog.showModal()
 
 openSearchModal.addEventListener("click", function () {
     dialog.showModal() // Opens a modal
@@ -36,29 +35,50 @@ dialog.addEventListener("click", e => {
 let savedInput = document.getElementById('input-search-bar');
 let resultList = document.getElementById('result-list');
 
-let localValue;
+
 let localKey;
 
 savedInput.addEventListener("input", function () {
-  for (let i = 0; i < localStorage.length; i++) {
-     localKey = localStorage.key(i);
-    let localValue = JSON.parse(localStorage.getItem(localKey));
-    let savedValue = savedInput.value;
+  let savedValue = savedInput.value.trim(); // Ta bort mellanslag från början och slutet av inputvärdet
 
-    if (localValue.content.includes(savedValue) || localValue.title.includes(savedValue)) {
-      console.log('Anteckning:' + localKey + ', Värde:' + localValue.content);
-    }
-    
+  // Om savedValue är tomt, rensa resultList och avsluta funktionen
+  if (savedValue === '') {
+    resultList.innerHTML = '';
+    return;
   }
-  displayResult(localValue);
-  
+
+  resultList.innerHTML = '';
+  for (let i = 0; i < localStorage.length; i++) {
+    localKey = localStorage.key(i);
+    savedNote = JSON.parse(localStorage.getItem(localKey));
+
+    // Konvertera både savedValue och localValue.title/content till små bokstäver för jämförelse
+    if (savedNote && 
+        (savedNote.content.toLowerCase().includes(savedValue.toLowerCase()) || 
+        savedNote.title.toLowerCase().includes(savedValue.toLowerCase()))) {
+      displayResult(localKey);
+    }
+  }
 });
 
+function displayResult(key) {
+  const resultItem = document.createElement('div');
+  resultItem.classList.add('result-item');
+  resultItem.innerHTML = ` 
+      <h3 class="result-header">${savedNote.title}</h3>
+      <h6 class="result-tags"></h6>
+      <p class="result-content">${savedNote.content}</p>`;
 
-function displayResult(localValue) {
-  resultList.innerHTML = ` <div class="result-item">
-            <h3 class="result-header">${localValue.title}</h3>
-            <h6 class="result-tags"></h6>
-            <p class="result-content">${localValue.content}</p>
-          </div>`
+  // Lägg till klickhändelse för att visa innehållet vid klick
+  resultItem.addEventListener('click', function() {
+    showContent();
+  });
+
+  resultList.appendChild(resultItem);
+}
+
+function showContent() {
+  
+  dialog.close()
+  chooseNote();
 }
