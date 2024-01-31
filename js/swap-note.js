@@ -30,7 +30,7 @@ function displayNote(e) {
     let selectedNote;
     !!e ? selectedNote = e.currentTarget : selectedNote = document.querySelector('.notes');   
     highLightTargedNote(selectedNote);
-    highLightTargetTags(selectedNote);
+    highLightTargedTag(selectedNote);
     savedNote = JSON.parse(localStorage.getItem(selectedNote.firstElementChild.firstElementChild.getAttribute('data-noteId')));
     textarea.innerHTML = savedNote.content;
     textarea.setAttribute('data-Id', savedNote.noteId)
@@ -55,7 +55,7 @@ function highLightTargedNote(selectedNote) {
 }
 
 // Funktion för att dölja de tags som inte är aktiva och visa aktiv tag
-function highLightTargetTags(selectedNote) {
+function highLightTargedTag(selectedNote) {
     let tags = document.querySelectorAll('.hashtag-container');
     tags.forEach(note => {
         note.classList.add('display-none');
