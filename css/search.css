@@ -15,7 +15,7 @@
     margin-top: 20px;
     
 }
-#input-search-bar{
+#input-search-bar, #input-search-tags{
     margin-top: 15px;
     width: 600px;
     height: 50px;
@@ -26,7 +26,7 @@
     padding: 10px;
     background-color: #bebebe7a;
 }
-#input-search-bar:focus {
+#input-search-bar:focus, #input-search-tags:focus {
     outline: none;
 }
 #result-list{
