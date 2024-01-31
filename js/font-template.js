@@ -50,7 +50,7 @@ function applyFont(fontName) {
     const existingStyles = document.querySelectorAll('[data-font-stylesheet]');
     existingStyles.forEach(style => style.remove());
     
-    if(fontName !== 'sans-serif'){
+    if(fontName != 'sans-serif' && fontName != ''){
         const linkElement = document.createElement('link');
         linkElement.rel = 'stylesheet';
         linkElement.href = `https://fonts.googleapis.com/css?family=${fontName.replace(/\s/g, '+')}`;
