@@ -1,10 +1,10 @@
 // användaren ska kunna markera en anteckning som favorit så jag enkelt kan hitta till den igen när de behöver den. 
 
-/*tasks:
--lägg till en stjärnknapp i sidbaren som i add several notes som en funktion och det gör man i funktionen create an element och appenda den.
--sätt en class till stjärnknappen så att det är unik. när man trycker på knappen så fylls den i.
--när man trycker på favorit knappen i sidbaren så ska den kolla om den som markerade finns i anteckningarna.
--sist ska den displaya.
+/* tasks:
+- lägg till en stjärnknapp i sidbaren som i add several notes som en funktion och det gör man i funktionen create an element och appenda den.
+- sätt en class till stjärnknappen så att det är unik. när man trycker på knappen så fylls den i.
+- när man trycker på favorit knappen i sidbaren så ska den kolla om den som markerade finns i anteckningarna.
+- sist ska den displaya.
 */
 
 let notesArray = JSON.parse(localStorage.getItem('notes')) || [];
@@ -63,6 +63,7 @@ function saveFavorite(noteId) {
         // Spara den uppdaterade listan av anteckningar i localStorage
         saveNotesToLocalStorage();
     }
+    console.log(noteId)
 };
 
 function findNoteById(noteId) {
@@ -71,12 +72,51 @@ function findNoteById(noteId) {
 }
 
 function updateFavoriteButtonUI(noteId, isFavorite) {
-    // Uppdatera användargränssnittet baserat på favoritstatus
-    // Exempel: Ändra färg eller ikon på favoritknappen
+    const favoriteButton = document.querySelector(`.favorite-button[data-noteId="${noteId}"]`);
+    if (isFavorite) {
+        favoriteButton.classList.add('favorited');
+    } else {
+        favoriteButton.classList.remove('favorited');
+    }
 }
+
 
 function saveNotesToLocalStorage() {
     localStorage.setItem('notes', JSON.stringify(notesArray));
+}
+
+document.getElementById('stars-icon').addEventListener('click', () => {
+    displayFavoriteNotes();
+});
+
+function displayFavoriteNotes() {
+    const favoriteNotes = notesArray.filter(note => note.favorite);
+    // Rensa tidigare anteckningar
+    savedNotesContainer.innerHTML = '';
+    // Lägg till varje favoritanteckning till savedNotesContainer
+    favoriteNotes.forEach(note => {
+        const noteElement = createNoteElement(note);
+        savedNotesContainer.appendChild(noteElement);
+    });
+    console.log(favoriteNotes)
+}
+
+function createNoteElement(note) {
+    const noteDiv = document.createElement('div');
+    noteDiv.classList.add('note');
+
+    // Skapa och lägg till andra element och innehåll, såsom note.title, note.content
+    // baserat på hur du vill visa dina anteckningar
+    // Exempel:
+    const title = document.createElement('h3');
+    title.textContent = note.title;
+    noteDiv.appendChild(title);
+
+    const content = document.createElement('p');
+    content.textContent = note.content;
+    noteDiv.appendChild(content);
+
+    return noteDiv;
 }
 
 

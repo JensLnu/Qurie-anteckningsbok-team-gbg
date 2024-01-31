@@ -48,14 +48,19 @@ function modifyText(command, defaultUi, value) {
     document.execCommand(command, defaultUi, value);
 }
 
+function toggleButtonState(buttonId) {
+    const button = document.getElementById(buttonId);
+    button.classList.toggle('active');
+}
+
 // Lyssna efter klick på en toolbar-knapp
 // Kör execCommand med knappens id(motsvarande command, 'bold', 'italic' osv.')
 // Fokusera textarea
 toolbarButtons.forEach((btn) => {
     btn.addEventListener('click', (e) => {
-        // btn.classList.toggle('active');
         const textarea = document.getElementById('text-area');
         modifyText(btn.id, false, null);
+        toggleButtonState(btn.id); // Toggle active state
         textarea.focus();
     });
 })
@@ -70,5 +75,3 @@ headings.forEach((btn) => {
         textarea.focus();
     })
 })
-
-
