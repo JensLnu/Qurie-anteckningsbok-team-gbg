@@ -29,7 +29,7 @@ export function chooseNote() {
 // Lägg till id till textarean
 // Lägg till fonten till textarean
 // Uppdatera font-selection efter om det finns en använd font eller inte
-function displayNote(noteId) {  
+export function displayNote(noteId) {  
     const selectedNote = document.querySelector(`[data-noteId="${noteId}"]`).parentElement.parentElement;
     highLightTargedNote(selectedNote);
     let source = JSON.parse(localStorage.getItem(noteId));
