@@ -10,12 +10,24 @@
 
 const dialog = document.querySelector("dialog")
 const openSearchModal = document.getElementById("open-search-modal")
+// tags
+const hashtagsOrNot = document.getElementById('search-for-hashtag');
+let searchForHashtag = false;
 
+hashtagsOrNot.addEventListener('click', () => {
+  if (!searchForHashtag) {
+    searchForHashtag = true;
+    hashtagsOrNot.classList.add('hashtag-marked');
+  } else {
+    searchForHashtag = false;
+    hashtagsOrNot.classList.remove('hashtag-marked');
+  }
+});
 
 // dialog.showModal()
 
 openSearchModal.addEventListener("click", function () {
-    dialog.showModal() // Opens a modal
+  dialog.showModal() // Opens a modal
 })
 
 
@@ -52,10 +64,17 @@ savedInput.addEventListener("input", function () {
     localKey = localStorage.key(i);
     savedNote = JSON.parse(localStorage.getItem(localKey));
 
-    // Konvertera både savedValue och localValue.title/content till små bokstäver för jämförelse
-    if (savedNote && 
-        (savedNote.content.toLowerCase().includes(savedValue.toLowerCase()) || 
-        savedNote.title.toLowerCase().includes(savedValue.toLowerCase()))) {
+    const hashtagString = savedNote.hashtags.join(' ');
+    console.log(savedNote.hashtags)
+    console.log(hashtagString)
+    console.log(searchForHashtag)
+    if (searchForHashtag && savedNote && (hashtagString.toLowerCase().includes(savedValue.toLowerCase()))) {
+      console.log('if')
+      console.log(hashtagString.toLowerCase().includes(savedValue.toLowerCase()))
+      displayResult(localKey);
+    } else if (!searchForHashtag && savedNote && (savedNote.content.toLowerCase().includes(savedValue.toLowerCase())) || (!searchForHashtag && savedNote.title.toLowerCase().includes(savedValue.toLowerCase()))) {
+      // Konvertera både savedValue och localValue.title/content till små bokstäver för jämförelse
+      console.log('else')
       displayResult(localKey);
     }
   }
@@ -70,7 +89,7 @@ function displayResult(key) {
       <p class="result-content">${savedNote.content}</p>`;
 
   // Lägg till klickhändelse för att visa innehållet vid klick
-  resultItem.addEventListener('click', function() {
+  resultItem.addEventListener('click', function () {
     showContent();
   });
 
@@ -78,7 +97,7 @@ function displayResult(key) {
 }
 
 function showContent() {
-  
+
   dialog.close()
   chooseNote();
 }
