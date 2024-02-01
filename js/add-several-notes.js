@@ -3,7 +3,7 @@
 import { addHashtag } from "./tags.js";
 import { createHtmlElem } from "./moduls/createHtmlElem.js";
 import Note from "../js/classes/newNote.js"
-import { chooseNote } from "./swap-note.js";
+import { chooseNote, displayNote } from "./swap-note.js";
 
 // Visa alla sparade anteckningar när sidan laddas om
 window.addEventListener("DOMContentLoaded", displayAllNotes);
@@ -69,6 +69,7 @@ function createNotesContainer(noteId) {
 
     // hithLightTargedNote(notes); // gör så att den nya noten får vit bg färg och ser targetad ut
     const noteHeaderContainer = createHtmlElem("div", null, notes, "note-header-container", "flex");
+    // highli
 
     // Visa antecknings-ID i notes
     let jsonObj = JSON.parse(localStorage.getItem(noteId)); // hämtar sparad note för att bestämma vilket namn rubriken ska ha
@@ -122,7 +123,7 @@ function displayAllNotes() {
     }
     // Kalla på chooseNote för att kunna bläddra bland anteckningarna
     chooseNote();
-    // displayNote();
+    displayNote();
 }
 
 

@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', chooseNote);
 import Note from "../js/classes/newNote.js"
 import { loadFont, removeAllFonts } from './font-template.js'
+// import { highLightTargedNote } from './add-several-notes.js'
 
 // makes all notes clickable and enabels header to be editable
 // array with all div elements (notes), needs to be updated every time the function is executed as new notes may have been added
@@ -30,11 +31,10 @@ export function chooseNote() {
 // Uppdatera font-selection efter om det finns en använd font eller inte
 
 // HÄR STRULAR DET MED ATT SPANS FÖRSVINNER OM MAN UPPDATERAR FONTEN
-function displayNote(e) {
+export function displayNote(e) {
     let selectedNote;
-    // !!e ? : selectedNote = document.querySelector('.notes')
-    selectedNote = e.currentTarget;
-    hithLightTargedNote(selectedNote);
+    !!e ?selectedNote = e.currentTarget : selectedNote = document.querySelector('.notes');
+    highLightTargedNote(selectedNote);
     let source = JSON.parse(localStorage.getItem(selectedNote.firstElementChild.firstElementChild.getAttribute('data-noteId')));
     savedNote = Object.assign(new Note(), source)
     textarea.innerHTML = savedNote.content;
