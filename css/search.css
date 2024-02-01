@@ -16,7 +16,8 @@
 }
 #input-search-bar{
     margin-top: 15px;
-    width: 600px;
+    width: 40vw;
+    max-width: 600px;
     height: 50px;
     font-size: 1.5rem;
     border-radius: 1rem;
@@ -44,15 +45,17 @@
 .result-item {
     box-sizing: border-box;
     padding: 15px;
+    padding-top: 7px;
     margin: 8px;
     height: 98px;
     overflow: hidden;
     flex: none;
     border-radius: 1rem;
-    background-color: rgb(216, 216, 216);
+    background-color: rgb(204, 204, 204);
     transition: .3s;
   }
 
 .result-item:hover {
     scale: 1.015;
+    background-color: rgb(233, 233, 233);
 }
