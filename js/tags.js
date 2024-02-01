@@ -3,9 +3,7 @@
 /* Som användare vill jag kunna:
 [x]- via en knapp # bredvid delete-btn kunna lägga till taggar för en anteckning.
 [x]- se mina taggar under titeln i sidebar när noten är aktiv, och dölja övriga tags.
-[1/2]- söka efter specifika taggar via search i navigation, FUNKAR MEN OKLART OM DEN ÄR BUGGIG
-[]    - se enbart de notes med sökt tagg i sidebar (utan att taggarna visas under varje note)
-[]    - text-area är tom efter sökt tagg, tills man väljer en notem, ORELEVANT? I OCH MED MODULRUTAN?
+[x] söka efter specifika taggar via search i navigation, FUNKAR MEN OKLART OM DEN ÄR BUGGIG
 [x]- visa taggar i varje note
 [x]- ta bort taggar i varje note
 
