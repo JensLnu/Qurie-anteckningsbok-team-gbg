@@ -32,7 +32,7 @@
     
     display: flex;
     flex-direction: column;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     width: 50vw;
     height: 50vh;
     margin-top: 50px;
@@ -41,12 +41,18 @@
     padding: 8px;
   }
   
-  .result-item {
+.result-item {
     box-sizing: border-box;
-    padding: 10px;
-    border: solid 0.5px;
+    padding: 15px;
     margin: 8px;
-    height: 100px;
+    height: 98px;
     overflow: hidden;
     flex: none;
+    border-radius: 1rem;
+    background-color: rgb(216, 216, 216);
+    transition: .3s;
   }
+
+.result-item:hover {
+    scale: 1.015;
+}
