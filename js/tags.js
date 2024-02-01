@@ -25,18 +25,23 @@ export function addHashtag(e) {
     hashtagDeleteBtn.addEventListener('click', (e) => {
         removeHashtag(e);
     })
+    hashtagInput.focus();
     return hashtagContainer;
 }
 
 // sparar alla hashtags i objektet 'savedNote'
 function saveHashtagToObj(e) {
+    console.log('start saveHashtagToObj')
     const currentNote = e.target.parentNode.parentNode;
     const allTags = currentNote.querySelectorAll('.hashtag-input');
     allTags.forEach(input => {
-        savedNote.hashtags.push(input.value);
-        input.setAttribute(`data-hashtag`, input.value);
+        if (!savedNote.hashtags.includes(input.value) && !savedNote.hashtags.includes('')) { // VISA TOVA
+            savedNote.hashtags.push(input.value);
+            input.setAttribute(`data-hashtag`, input.value);
+        }
     });
     localStorage.setItem(savedNote.noteId, JSON.stringify(savedNote));
+    savedNote.hashtags = [];
 }
 
 // tarbort 'hashtagen' ur objektet & i DOMen
