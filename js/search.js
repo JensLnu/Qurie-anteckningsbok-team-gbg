@@ -8,6 +8,7 @@
 
 // Lägg en eventlistener, rätt note vid rätt klick
 
+import {displayNote} from "./swap-note.js";
 
 const dialog = document.querySelector("dialog")
 const openSearchModal = document.getElementById("open-search-modal")
