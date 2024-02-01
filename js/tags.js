@@ -13,6 +13,7 @@
 
 BUGS, LATER!!
 [] - om man lägger till samma hashtag igen syns den i sidebaren men läggs inte till i ls. (tror jag vill att det inte ska gå att lägga till samma igen?)
+[] - om man ändrar en redan sparad hashtag så sparas en ny och den gamla behålls, det ska den inte.
 [] - funktionallitet för att dem sparade hashtagsen i ls ska läsas in i sidebaren igen. 
 */
 import { createHtmlElem } from './moduls/createHtmlElem.js';
