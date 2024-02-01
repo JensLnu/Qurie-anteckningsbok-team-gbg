@@ -1,145 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-7BZMN42MS3"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
 
-      gtag("config", "G-7BZMN42MS3");
-    </script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Qurie</title>
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/media.css" />
-    <link rel="stylesheet" href="./css/add-several-notes.css" />
-    <link rel="stylesheet" href="./css/edit.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
-    <link rel="stylesheet" href="./css/first-visit.css" />
-    <link rel="stylesheet" href="./css/add-img.css" />
-    <link rel="stylesheet" href="./css/tags.css">
-    <link rel="stylesheet" href="./css/search.css">
-  </head>
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BZMN42MS3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
 
-  <body>
-    <header>
-      <!-- <img src="#" alt="Quire Logo" id="logo"> -->
-      <div id="logo-container">
-        <div id="logo">Q</div>
+    gtag("config", "G-7BZMN42MS3");
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qurie</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/media.css" />
+  <link rel="stylesheet" href="./css/add-several-notes.css" />
+  <link rel="stylesheet" href="./css/edit.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="./css/first-visit.css" />
+  <link rel="stylesheet" href="./css/add-img.css" />
+  <link rel="stylesheet" href="./css/tags.css" />
+  <link rel="stylesheet" href="./css/search.css">
+  <link rel="stylesheet" href="./css/favorit.css" />
+</head>
+
+<body>
+  <header>
+    <!-- <img src="#" alt="Quire Logo" id="logo"> -->
+    <div id="logo-container">
+      <div id="logo">Q</div>
+    </div>
+    <nav id="navigation">
+      <ul class="nav-list">
+        <li class="icon" id="open-search-modal">
+          <span class="material-symbols-outlined md-40 search">search</span></a>
+
+        </li>
+        <li class="icon" id="stars-icon">
+          <span class="material-symbols-outlined md-40 stars">stars</span>
+        </li>
+        <li class="icon">
+          <span class="material-symbols-outlined md-40 finance">finance</span>
+        </li>
+        <li class="icon" id="test">
+          <!-- test id -->
+          <span class="material-symbols-outlined md-40 settings">settings</span>
+        </li>
+        <li class="icon add">
+          <span class="material-symbols-outlined md-40">add_circle</span>
+        </li>
+      </ul>
+      <div class="icon dropdown">
+        <span class="material-symbols-outlined md-40">expand_more</span>
       </div>
-      <nav id="navigation">
-        <ul class="nav-list">
-          <li class="icon" id="open-search-modal">
-            <span class="material-symbols-outlined md-40 search">search</span></a>
-            
-          </li>
-          <li class="icon" id="stars-icon">
-            <span class="material-symbols-outlined md-40 stars">stars</span>
-          </li>
-          <li class="icon">
-            <span class="material-symbols-outlined md-40 finance">finance</span>
-          </li>
-          <li class="icon" id="test">
-            <!-- test id -->
-            <span class="material-symbols-outlined md-40 settings"
-              >settings</span
-            >
-          </li>
-          <li class="icon add">
-            <span class="material-symbols-outlined md-40">add_circle</span>
-          </li>
-        </ul>
-        <div class="icon dropdown">
-          <span class="material-symbols-outlined md-40">expand_more</span>
-        </div>
-      </nav>
-    </header>
-    <section id="sidebar" class="">
-      <button class="add-btn sidebar-border-right">
-        <span class="material-symbols-outlined md-40">add_circle</span>
-      </button>
-      <div class="saved-notes"></div>
-    </section>
+    </nav>
+  </header>
+  <section id="sidebar" class="">
+    <button class="add-btn sidebar-border-right">
+      <span class="material-symbols-outlined md-40">add_circle</span>
+    </button>
+    <div class="saved-notes"></div>
     <!-- sektion för favorite notes -->
-    <section id="favorites-section">
-      <div class="favorites-container"></div>
-    </section>
+    <!-- <section id="favorites-section">
+        <div class="favorites-container"></div>
+      </section> -->
+  </section>
 
-    <section id="toolbar">
-      <!-- Gissar att options kommer från API, Lycka till Tova & Adam! :-) -->
-      <select name="fonts" id="fonts">
-        <option value="Choose font">Välj en font</option>
-      </select>
-      <!-- Fyller denna dynamiskt med JS -->
-      <select name="font-size" id="font-size">
-        <option value="Choose font size">Välj storlek</option>
-      </select>
-      <select name="text-type" id="formatBlock" class="headings">
-        <option value="p" id="regular">Vanlig text</option>
-        <option value="h1" id="heading-1">Rubrik 1</option>
-        <option value="h2" id="heading-2">Rubrik 2</option>
-        <option value="h3" id="heading-3">Rubrik 3</option>
-      </select>
+  <section id="toolbar">
+    <!-- Gissar att options kommer från API, Lycka till Tova & Adam! :-) -->
+    <select name="fonts" id="fonts">
+      <option value="Choose font">Välj en font</option>
+    </select>
+    <!-- Fyller denna dynamiskt med JS -->
+    <select name="font-size" id="font-size">
+      <option value="Choose font size">Välj storlek</option>
+    </select>
+    <select name="text-type" id="formatBlock" class="headings">
+      <option value="p" id="regular">Vanlig text</option>
+      <option value="h1" id="heading-1">Rubrik 1</option>
+      <option value="h2" id="heading-2">Rubrik 2</option>
+      <option value="h3" id="heading-3">Rubrik 3</option>
+    </select>
 
-      <button class="toolbar-button" id="bold" title="Fetstil">B</button>
-      <button class="toolbar-button" id="italic" title="Kursiv">I</button>
-      <button
-        class="toolbar-button"
-        id="insertOrderedList"
-        title="Numererad lista"
-      >
-        OL
-      </button>
-      <button
-        class="toolbar-button"
-        id="insertUnorderedList"
-        title="Punktlista"
-      >
-        UL
-      </button>
-      <input type="file" id="imgBtn" />
+    <button class="toolbar-button" id="bold" title="Fetstil">B</button>
+    <button class="toolbar-button" id="italic" title="Kursiv">I</button>
+    <button class="toolbar-button" id="insertOrderedList" title="Numererad lista">
+      OL
+    </button>
+    <button class="toolbar-button" id="insertUnorderedList" title="Punktlista">
+      UL
+    </button>
+    <input type="file" id="imgBtn" />
 
-      <!-- stjärna btn i toolbaren -->
-      <!-- <button class="toolbar-button" id="favorite" title="Favorite">⭐</button> -->
-      <div class="note" data-noteId="1">
-        <!-- Anteckningens innehåll här -->
-        <button class="favorite-button" data-noteId="1">⭐</button>
-      </div>
-    </section>
-    <main>
-      <div id="text-area" contenteditable="true"></div>
-      <dialog class="dialog">
-        <div class="dialog-box">
-          <div class="input-search" ><input id="input-search-bar" type="text" placeholder="Sök efter en anteckning"></div>
-          <div id="result-list">
+    <!-- stjärna btn i toolbaren -->
+    <!-- <button class="toolbar-button" id="favorite" title="Favorite">⭐</button> -->
+    <div class="note" data-noteId="1">
+      <!-- Anteckningens innehåll här -->
+      <button class="favorite-button" data-noteId="1">⭐</button>
+    </div>
+  </section>
+  <main>
+    <div id="text-area" contenteditable="true"></div>
+    <dialog class="dialog">
+      <div class="dialog-box">
+        <div id="input-search" class="flex">
+          <input id="input-search-bar" type="text" placeholder="Sök efter en anteckning">
+          <div id="search-for-hashtag">
+            #
           </div>
-      <div id="text-area" contenteditable="true" ></div>
-    </main>
+        </div>
+        <div id="result-list"></div>
+      </div>
+    </dialog>
+    <div id="text-area" contenteditable="true"></div>
+  </main>
 
     <!-- script -->
     <script src="./js/globalVariables.js"></script>
     <script src="./js/index.js"></script>
-    <script src="./js/add-note.js"></script>
     <script type="module" src="./js/add-several-notes.js"></script>
-    <script src="./js/swap-note.js"></script>
+    <script type="module" src="./js/swap-note.js"></script>
     <script src="./js/firstVisit.js"></script>
-    <script src="./js/font-template.js"></script>
+    <script type="module" src="./js/font-template.js"></script>
     <script src="./js/dropdown.js"></script>
     <script src="./js/formating-markdown.js"></script>
     <script src="./js/add-img.js"></script>
     <script src="./js/execCommand.js"></script>
-    <script src="./js/favorite.js"></script>
+    <!-- <script src="./js/favorite.js"></script> -->
     <script src="./js/search.js"></script>
+    <script type="module" src="./js/classes/newNote.js"></script>
   </body>
 </html>

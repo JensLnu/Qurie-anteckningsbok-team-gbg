@@ -27,8 +27,6 @@ const myInput = document.getElementById('imgBtn');
 myInput.addEventListener('click', function (argument) {
     gtag('event', 'new_button_click'), {
         'image_click': 'new_click'
-        
-            
     }
 });
 

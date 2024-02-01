@@ -4,18 +4,31 @@
 // Gör en function som kollar igenom localstorage
 // Sök efter titlarna, matchar det med input value
 // Displayar resultaten i result-list
+// När vi klickar på ett resultat vill vi att modaler stängs ner
 
 // Lägg en eventlistener, rätt note vid rätt klick
-// När vi klickar på ett resultat vill vi att modaler stängs ner
+
 
 const dialog = document.querySelector("dialog")
 const openSearchModal = document.getElementById("open-search-modal")
+// tags
+const hashtagsOrNot = document.getElementById('search-for-hashtag');
+let searchForHashtag = false;
 
+hashtagsOrNot.addEventListener('click', () => {
+  if (!searchForHashtag) {
+    searchForHashtag = true;
+    hashtagsOrNot.classList.add('hashtag-marked');
+  } else {
+    searchForHashtag = false;
+    hashtagsOrNot.classList.remove('hashtag-marked');
+  }
+});
 
 // dialog.showModal()
 
 openSearchModal.addEventListener("click", function () {
-    dialog.showModal() // Opens a modal
+  dialog.showModal() // Opens a modal
 })
 
 
@@ -52,10 +65,18 @@ savedInput.addEventListener("input", function () {
     localKey = localStorage.key(i);
     savedNote = JSON.parse(localStorage.getItem(localKey));
 
-    // Konvertera både savedValue och localValue.title/content till små bokstäver för jämförelse
-    if (savedNote && 
-        (savedNote.content.toLowerCase().includes(savedValue.toLowerCase()) || 
-        savedNote.title.toLowerCase().includes(savedValue.toLowerCase()))) {
+    const hashtagString = savedNote.hashtags.join(' ');
+    // console.log(savedNote.hashtags)
+    // console.log(hashtagString)
+    // console.log(searchForHashtag)
+    if (searchForHashtag && savedNote && (hashtagString.toLowerCase().includes(savedValue.toLowerCase()))) {
+      console.log('if')
+      console.log(hashtagString.toLowerCase().includes(savedValue.toLowerCase()))
+      displayResult(localKey);
+    } else if (!searchForHashtag && savedNote && (savedNote.content.toLowerCase().includes(savedValue.toLowerCase()))
+     || (!searchForHashtag && savedNote.title.toLowerCase().includes(savedValue.toLowerCase()))) {
+      // Konvertera både savedValue och localValue.title/content till små bokstäver för jämförelse
+      
       displayResult(localKey);
     }
   }
@@ -64,21 +85,28 @@ savedInput.addEventListener("input", function () {
 function displayResult(key) {
   const resultItem = document.createElement('div');
   resultItem.classList.add('result-item');
+  resultItem.setAttribute("data-noteId-modal", savedNote.noteId)
   resultItem.innerHTML = ` 
       <h3 class="result-header">${savedNote.title}</h3>
       <h6 class="result-tags"></h6>
       <p class="result-content">${savedNote.content}</p>`;
 
   // Lägg till klickhändelse för att visa innehållet vid klick
-  resultItem.addEventListener('click', function() {
-    showContent();
+  resultItem.addEventListener('click', (e) => {
+    
+    
+
+    showContent(e);
   });
 
   resultList.appendChild(resultItem);
 }
 
-function showContent() {
-  
+function showContent(e) {
+  let resultNoteId = e.currentTarget.getAttribute("data-noteId-modal");
+  console.log(resultNoteId)
+  displayNote(resultNoteId);
   dialog.close()
-  chooseNote();
+  
 }
+

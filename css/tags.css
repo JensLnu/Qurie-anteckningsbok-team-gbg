@@ -1,3 +1,5 @@
+/*Se search.css för styling av sökfält*/
+
 .hashtag-btn {
     display: flex;
     color: white;
@@ -32,4 +34,16 @@
 
 .display-none {
     display: none;
+}
+
+#search-for-hashtag {
+    font-size: 2rem;
+}
+
+#input-search {
+    align-items: center;
+}
+
+.hashtag-marked {
+    background-color: chocolate;
 }
