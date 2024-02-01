@@ -65,13 +65,14 @@ savedInput.addEventListener("input", function () {
     savedNote = JSON.parse(localStorage.getItem(localKey));
 
     const hashtagString = savedNote.hashtags.join(' ');
-    // console.log(savedNote.hashtags)
-    // console.log(hashtagString)
-    // console.log(searchForHashtag)
+    console.log(savedNote.hashtags)
+    console.log(hashtagString)
+    console.log(searchForHashtag)
     if (searchForHashtag && savedNote && (hashtagString.toLowerCase().includes(savedValue.toLowerCase()))) {
       console.log('if')
+      console.log(hashtagString.toLowerCase().includes(savedValue.toLowerCase()))
       displayResult(localKey);
-    } else if (savedNote && (savedNote.content.toLowerCase().includes(savedValue.toLowerCase())) || savedNote.title.toLowerCase().includes(savedValue.toLowerCase())) {
+    } else if (!searchForHashtag && savedNote && (savedNote.content.toLowerCase().includes(savedValue.toLowerCase())) || (!searchForHashtag && savedNote.title.toLowerCase().includes(savedValue.toLowerCase()))) {
       // Konvertera både savedValue och localValue.title/content till små bokstäver för jämförelse
       console.log('else')
       displayResult(localKey);
