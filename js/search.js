@@ -65,21 +65,16 @@ savedInput.addEventListener("input", function () {
     savedNote = JSON.parse(localStorage.getItem(localKey));
 
     const hashtagString = savedNote.hashtags.join(' ');
-    console.log(savedNote.hashtags)
-    console.log(hashtagString)
-
-    if (!searchForHashtag) {
-      if (savedNote && (savedNote.content.toLowerCase().includes(savedValue.toLowerCase()))) {
-        console.log('if')
-        displayResult(localKey);
-      } else {
-        console.log('else')
-        // Konvertera både savedValue och localValue.title/content till små bokstäver för jämförelse
-        if (savedNote && (savedNote.content.toLowerCase().includes(savedValue.toLowerCase()) ||
-          savedNote.title.toLowerCase().includes(savedValue.toLowerCase()))) {
-          displayResult(localKey);
-        }
-      }
+    // console.log(savedNote.hashtags)
+    // console.log(hashtagString)
+    // console.log(searchForHashtag)
+    if (searchForHashtag && savedNote && (hashtagString.toLowerCase().includes(savedValue.toLowerCase()))) {
+      console.log('if')
+      displayResult(localKey);
+    } else if (savedNote && (savedNote.content.toLowerCase().includes(savedValue.toLowerCase())) || savedNote.title.toLowerCase().includes(savedValue.toLowerCase())) {
+      // Konvertera både savedValue och localValue.title/content till små bokstäver för jämförelse
+      console.log('else')
+      displayResult(localKey);
     }
   }
 });

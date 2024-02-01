@@ -3,9 +3,9 @@
 /* Som användare vill jag kunna:
 [x]- via en knapp # bredvid delete-btn kunna lägga till taggar för en anteckning.
 [x]- se mina taggar under titeln i sidebar när noten är aktiv, och dölja övriga tags.
-[]- söka efter specifika taggar via search i navigation
+[1/2]- söka efter specifika taggar via search i navigation, FUNKAR MEN OKLART OM DEN ÄR BUGGIG
 []    - se enbart de notes med sökt tagg i sidebar (utan att taggarna visas under varje note)
-[]    - text-area är tom efter sökt tagg, tills man väljer en note
+[]    - text-area är tom efter sökt tagg, tills man väljer en notem, ORELEVANT? I OCH MED MODULRUTAN?
 [x]- visa taggar i varje note
 [x]- ta bort taggar i varje note
 
@@ -56,12 +56,3 @@ function removeHashtag(e) {
     e.currentTarget.parentElement.remove();
     localStorage.setItem(savedNote.noteId, JSON.stringify(savedNote));
 }
-
-
-// const searchbar = document.getElementById('input-search-bar');
-// searchHashtags();
-// function searchHashtags() {
-//     searchbar.addEventListener('input', () => {
-//         // savedNote = 
-//     });
-// }
