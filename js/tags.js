@@ -10,6 +10,10 @@
 [x]- ta bort taggar i varje note
 
 [x]- exportera och importera till add-several-notes
+
+BUGS, LATER!!
+[] - om man lägger till samma hashtag igen syns den i sidebaren men läggs inte till i ls. (tror jag vill att det inte ska gå att lägga till samma igen?)
+[] - funktionallitet för att dem sparade hashtagsen i ls ska läsas in i sidebaren igen. 
 */
 import { createHtmlElem } from './moduls/createHtmlElem.js';
 
@@ -35,7 +39,7 @@ function saveHashtagToObj(e) {
     const currentNote = e.target.parentNode.parentNode;
     const allTags = currentNote.querySelectorAll('.hashtag-input');
     allTags.forEach(input => {
-        if (!savedNote.hashtags.includes(input.value) && !savedNote.hashtags.includes('')) { // VISA TOVA
+        if (!savedNote.hashtags.includes(input.value) && !savedNote.hashtags.includes('')) { // VISA TOVA -------------------------------------------------------------
             savedNote.hashtags.push(input.value);
             input.setAttribute(`data-hashtag`, input.value);
         }
