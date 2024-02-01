@@ -39,7 +39,7 @@ function saveHashtagToObj(e) {
     const currentNote = e.target.parentNode.parentNode;
     const allTags = currentNote.querySelectorAll('.hashtag-input');
     allTags.forEach(input => {
-        if (!savedNote.hashtags.includes(input.value) && !savedNote.hashtags.includes('')) { // VISA TOVA -------------------------------------------------------------
+        if (!savedNote.hashtags.includes(input.value) && input.value !== '') { // VISA TOVA, else tabort hashtagen? -------------------------
             savedNote.hashtags.push(input.value);
             input.setAttribute(`data-hashtag`, input.value);
         }
