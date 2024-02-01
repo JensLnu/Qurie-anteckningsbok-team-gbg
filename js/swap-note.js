@@ -1,12 +1,15 @@
 // Lägg till eventlistener till alla existerande anteckningar när sidan laddas
 document.addEventListener('DOMContentLoaded', chooseNote);
+import Note from "../js/classes/newNote.js"
+import { loadFont, removeAllFonts } from './font-template.js'
+// import { highLightTargedNote } from './add-several-notes.js'
 
 // makes all notes clickable and enabels header to be editable
 // array with all div elements (notes), needs to be updated every time the function is executed as new notes may have been added
 // Hittar igen alla anteckningar i sidebaren
 // Lägger till eventlistener för att kunna visa anteckningen som klickas på
 // Eventlistener för att kunna uppdatera anteckningens titel
-function chooseNote() {
+export function chooseNote() {
     const allNotes = document.querySelectorAll('.notes'); 
     allNotes.forEach(note => {
         note.addEventListener('click', (e) => {
@@ -30,13 +33,14 @@ function chooseNote() {
 function displayNote(noteId) {  
     const selectedNote = document.querySelector(`[data-noteId="${noteId}"]`).parentElement.parentElement;
     highLightTargedNote(selectedNote);
-    highLightTargedTag(selectedNote);
-    savedNote = JSON.parse(localStorage.getItem(noteId));
+    let source = JSON.parse(localStorage.getItem(noteId));
+    savedNote = Object.assign(new Note(), source)
     textarea.innerHTML = savedNote.content;
     textarea.setAttribute('data-Id', savedNote.noteId)
-    applyFont(savedNote.font);
+    removeAllFonts();
     if(savedNote.font != ''){
-        fontDropdown.value = savedNote.font;
+        loadFont(savedNote.fonts);
+        fontDropdown.value = textarea.style.font;
     } else {
         fontDropdown.getElementsByTagName('option')[0].selected = 'selected'
     }
@@ -76,9 +80,5 @@ function highLightTargedTag(selectedNote) {
 // uppdaterar det nya rubrik namnet i localStorage
 function updateHeaderForNote(e) {
     const noteId = e.target.getAttribute("data-noteid"); // hämtar attributet med de id som noten man klickar på har
-    savedNote.title = document.querySelector(
-        `[data-noteId="${noteId}"]`
-    ).textContent; // hämtar rubriken som ändras
-    localStorage.setItem(noteId, JSON.stringify(savedNote)); // uppdaterar det nya rubrik namnet i localStorage
-    console.log(localStorage.getItem(noteId));
+    savedNote.updateTitle(document.querySelector(`[data-noteId="${noteId}"]`).textContent); // hämtar rubriken som ändras
 }
