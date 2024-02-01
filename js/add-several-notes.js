@@ -1,30 +1,24 @@
 /*--- Som användare vill jag kunna skapa flera olika anteckningar ---*/
 
-// Vid uppdatering av sidan hamnar inte sparade notes i samma ordning som tidigare
-// chooseNote är kallad på i displayAllNotes och eventlistener för add-btn
-// Synka med firstVisit
-
 import { addHashtag } from "./tags.js";
 import { createHtmlElem } from "./moduls/createHtmlElem.js";
-
-// Hämta referenser från HTML
+import Note from "../js/classes/newNote.js"
+import { chooseNote, displayNote } from "./swap-note.js";
 
 // Visa alla sparade anteckningar när sidan laddas om
 window.addEventListener("DOMContentLoaded", displayAllNotes);
 
 // HÄR DET STRULAR MED BILDERNA DÅ EN TILLAGD BILD INTE RÄKNAS SOM INPUT
+// Sammas problem med att ändra fonts då content endast uppdateras vid input
 // Lyssna på ändringar i main text-area och spara i lS
 textarea.addEventListener("input", () => {
-    saveNoteToLocalStorage(
-        textarea.getAttribute("data-id"),
-        textarea,
-        textarea.style.fontFamily
-    );
+    savedNote.updateContent(textarea.innerHTML);
 });
 
 // Eventlisteners för båda lägg till-knapparna
 addBtnSeveral.addEventListener("click", createNote);
 addBtnMobile.addEventListener("click", createNote);
+
 // Hämta antecknings-ID från lS, och låt aldrig ID:t vara mindre än 1
 let noteCounter = Math.max(0, getLatestNoteId());
 
@@ -40,6 +34,27 @@ function getLatestNoteId() {
     return latestId;
 }
 
+// Ta bort tidigare note
+// Sätt standard-font
+// Lägg till ID till anteckningen
+// Skapa en ny anteckning
+// Spara ner den nya anteckningen till LS
+// Highlighta den nya anteckningen
+// Fokusera muspekaren till nya fönstret
+function createNote() {
+    const noteId = ++noteCounter;
+    savedNote = new Note(noteId, `Note ${noteId}`);
+    savedNote.save();
+    textarea.innerHTML = "";
+    textarea.style.fontFamily = "";
+    textarea.setAttribute("data-id", noteId);
+    createNotesContainer(noteId);
+
+    // saveNoteToLocalStorage(noteId, textarea, "");
+    chooseNote();
+    textarea.focus();
+}
+
 // Skapa en ny anteckning
 // Highlighta den nya anteckningen
 // Lägg till ta-bort-knapp
@@ -52,9 +67,9 @@ function createNotesContainer(noteId) {
     const notes = document.createElement("div");
     notes.classList.add("notes");
 
-    highLightTargedNote(notes); // gör så att den nya noten får vit bg färg och ser targetad ut
-    //highLightTargetTags(notes);
+    // hithLightTargedNote(notes); // gör så att den nya noten får vit bg färg och ser targetad ut
     const noteHeaderContainer = createHtmlElem("div", null, notes, "note-header-container", "flex");
+    // highli
 
     // Visa antecknings-ID i notes
     let jsonObj = JSON.parse(localStorage.getItem(noteId)); // hämtar sparad note för att bestämma vilket namn rubriken ska ha
@@ -62,8 +77,6 @@ function createNotesContainer(noteId) {
     <div class='note-key-display' contenteditable='true' spellcheck='false' data-noteId='${noteId}'>
     ${jsonObj === null ? `Note ${noteId}` : jsonObj.title}</div>`;
     noteHeaderContainer.innerHTML += noteKeyDisplay;
-
-
 
     // hashtags hantering
     const displayHashtagBtn = createHtmlElem("button", "#", noteHeaderContainer, "hashtag-btn");
@@ -110,42 +123,24 @@ function displayAllNotes() {
     }
     // Kalla på chooseNote för att kunna bläddra bland anteckningarna
     chooseNote();
-    displayNote();
+    displayNote(noteCounter);
 }
 
-// Ta bort tidigare note
-// Sätt standard-font
-// Lägg till ID till anteckningen
-// Skapa en ny anteckning
-// Spara ner den nya anteckningen till LS
-// Highlighta den nya anteckningen
-// Fokusera muspekaren till nya fönstret
-function createNote() {
-    const noteId = ++noteCounter;
-    textarea.textContent = "";
-    textarea.style.fontFamily = "";
-    textarea.setAttribute("data-id", noteId);
-    createNotesContainer(noteId);
 
-    console.log(savedNote)
-    saveNoteToLocalStorage(noteId, textarea, "sans-serif");
-    chooseNote();
-    textarea.focus();
-}
 
 // Använd savedNote-objektet för att strukturerat kunna spara anteckningar
 // Anteckningens noteID från textarean
 // Anteckningens titel från sidebaren
 // Anteckningens innehåll
 // Font-family från text-area
-function saveNoteToLocalStorage(noteId, noteTextarea, font) {
-    savedNote.noteId = noteId;
-    // add-several-notes.js:134 Uncaught TypeError: Cannot read properties of null (reading 'textContent')
-    // at saveNoteToLocalStorage (add-several-notes.js:134:74)
-    // at HTMLDivElement.<anonymous> (add-several-notes.js:29:5)
-    savedNote.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent;
-    savedNote.content = noteTextarea.innerHTML;
-    savedNote.font = font;
-    localStorage.setItem(noteId, JSON.stringify(savedNote));
-}
+// function saveNoteToLocalStorage(noteId, noteTextarea, font) {
+//     savedNote.noteId = noteId;
+//     // add-several-notes.js:134 Uncaught TypeError: Cannot read properties of null (reading 'textContent')
+//     // at saveNoteToLocalStorage (add-several-notes.js:134:74)
+//     // at HTMLDivElement.<anonymous> (add-several-notes.js:29:5)
+//     savedNote.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent;
+//     savedNote.content = noteTextarea.innerHTML;
+//     savedNote.font = font;
+//     localStorage.setItem(noteId, JSON.stringify(savedNote));
+// }
 

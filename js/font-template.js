@@ -1,5 +1,6 @@
 /*--- Som användare vill jag kunna skapa egna mallar där jag kan ställa in valfria typsnitt utifrån de som finns i Google fonts ---*/
 
+
 // Kan man göra så att de mest använda typsnitten hamnar högst upp i listan?
 
 // API key: AIzaSyD9u1DRArZCKthVW8zoz2g1jVhveiaqjYQ
@@ -26,6 +27,7 @@ fontDropdown.addEventListener('change', function() {
     const selectedFont = fontDropdown.value;
     if (selectedFont) {
         applyFont(selectedFont);
+
     }
 });
 
@@ -45,19 +47,14 @@ function displayFontDropdown(fonts) {
 // Om det finns en selection, byt ut nuvarande innehåll mot ett span med rätt font
 // Annars lägg till fonten till savedNote-objektet
 // Uppdatera text-areans font
-// Här strular det med att 
-function applyFont(fontName) {
-    const existingStyles = document.querySelectorAll('[data-font-stylesheet]');
-    existingStyles.forEach(style => style.remove());
-    
-    if(fontName != 'sans-serif' && fontName != ''){
-        const linkElement = document.createElement('link');
-        linkElement.rel = 'stylesheet';
-        linkElement.href = `https://fonts.googleapis.com/css?family=${fontName.replace(/\s/g, '+')}`;
-        linkElement.dataset.fontStylesheet = '';
-        document.head.appendChild(linkElement);
-    }
 
+// FELET LIGGER I ATT TA BORT SPANS OCH UPPDATERA 
+// TA ENDAST BORT EXISTERANDE STILAR OM INGENTING ÄR MARKERAT OCH EN NY FONT VÄLJS
+// 
+function applyFont(fontName) {
+    savedNote.updateFont(fontName);
+    linkFont(fontName)
+    
     const sel = window.getSelection();
     if(sel.rangeCount > 0 && sel.getRangeAt(0).toString().length > 0){
         const range = sel.getRangeAt(0);
@@ -68,12 +65,30 @@ function applyFont(fontName) {
         range.deleteContents();
         range.insertNode(e);
     } else {
-        const allSpans = document.querySelectorAll('.yet-another-class')
+        const allSpans = document.querySelectorAll('.yet-another-class');
         allSpans.forEach(span => {
             span.outerHTML = span.innerHTML || span.textContent || '';
         })
-        savedNote.font = fontName;
-        document.getElementById('text-area').style.fontFamily = fontName;
+        textarea.style.fontFamily = fontName;
+        savedNote.fonts = [fontName];
     }
 }
 
+export function loadFont(fontArr){
+    fontArr.forEach(font => {
+        linkFont(font);
+    })
+}
+
+function linkFont(font){
+    const linkElement = document.createElement('link');
+    linkElement.rel = 'stylesheet';
+    linkElement.href = `https://fonts.googleapis.com/css?family=${font.replace(/\s/g, '+')}`;
+    linkElement.dataset.fontStylesheet = '';
+    document.head.appendChild(linkElement);
+}
+
+export function removeAllFonts(){
+    const existingStyles = document.querySelectorAll('[data-font-stylesheet]');
+    existingStyles.forEach(style => style.remove());   
+}

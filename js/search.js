@@ -4,9 +4,11 @@
 // Gör en function som kollar igenom localstorage
 // Sök efter titlarna, matchar det med input value
 // Displayar resultaten i result-list
+// När vi klickar på ett resultat vill vi att modaler stängs ner
 
 // Lägg en eventlistener, rätt note vid rätt klick
-// När vi klickar på ett resultat vill vi att modaler stängs ner
+
+import {displayNote} from "./swap-note.js";
 
 const dialog = document.querySelector("dialog")
 const openSearchModal = document.getElementById("open-search-modal")
@@ -70,10 +72,12 @@ savedInput.addEventListener("input", function () {
     // console.log(searchForHashtag)
     if (searchForHashtag && savedNote && (hashtagString.toLowerCase().includes(savedValue.toLowerCase()))) {
       console.log('if')
+      console.log(hashtagString.toLowerCase().includes(savedValue.toLowerCase()))
       displayResult(localKey);
-    } else if (!searchForHashtag && savedNote && (savedNote.content.toLowerCase().includes(savedValue.toLowerCase())) || !searchForHashtag && savedNote.title.toLowerCase().includes(savedValue.toLowerCase())) {
+    } else if (!searchForHashtag && savedNote && (savedNote.content.toLowerCase().includes(savedValue.toLowerCase()))
+     || (!searchForHashtag && savedNote.title.toLowerCase().includes(savedValue.toLowerCase()))) {
       // Konvertera både savedValue och localValue.title/content till små bokstäver för jämförelse
-      console.log('else')
+      
       displayResult(localKey);
     }
   }
@@ -82,21 +86,28 @@ savedInput.addEventListener("input", function () {
 function displayResult(key) {
   const resultItem = document.createElement('div');
   resultItem.classList.add('result-item');
+  resultItem.setAttribute("data-noteId-modal", savedNote.noteId)
   resultItem.innerHTML = ` 
       <h3 class="result-header">${savedNote.title}</h3>
       <h6 class="result-tags"></h6>
       <p class="result-content">${savedNote.content}</p>`;
 
   // Lägg till klickhändelse för att visa innehållet vid klick
-  resultItem.addEventListener('click', function () {
-    showContent();
+  resultItem.addEventListener('click', (e) => {
+    
+    
+
+    showContent(e);
   });
 
   resultList.appendChild(resultItem);
 }
 
-function showContent() {
-
+function showContent(e) {
+  let resultNoteId = e.currentTarget.getAttribute("data-noteId-modal");
+  console.log(resultNoteId)
+  displayNote(resultNoteId);
   dialog.close()
-  chooseNote();
+  
 }
+
