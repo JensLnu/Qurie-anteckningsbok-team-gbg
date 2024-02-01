@@ -73,6 +73,25 @@ function createNotesContainer(noteId) {
 
     // Visa antecknings-ID i notes
     let jsonObj = JSON.parse(localStorage.getItem(noteId)); // hämtar sparad note för att bestämma vilket namn rubriken ska ha
+
+    
+    // Skapa en hashtagContainer (samma klass som i tags.js) som innehåller alla tags under varje note
+    const hashtagContainer = createHtmlElem("div", null, notes, "hashtag-container");
+    // Kolla om den sparade noten existerar och innehåller hashtags
+    if (jsonObj && jsonObj.hashtags && jsonObj.hashtags.length > 0) {
+        // Gå igenom varje hashtag i sparade notes
+        jsonObj.hashtags.forEach(tag => {
+            // Kalla på addHashtag från tags.js för att skapa ett nytt input fält som innehåller de specifika tagsen under varje note (läggs i hashtagContainer)
+            addHashtag({target: {parentElement: {parentNode: hashtagContainer}}});
+            // Hämta senast skapade hashtag input fält i hashtagContainer
+            const tagInput = hashtagContainer.lastElementChild.querySelector('.hashtag-input');
+            // Sätt värdet av hashtag inputen till tagens innehåll
+            tagInput.value = tag;
+            // Dataattribut på hashtag input fältet för att lagra värdet
+            tagInput.setAttribute("data-hashtag", tag);
+        });
+    }
+
     let noteKeyDisplay = `
     <div class='note-key-display' contenteditable='true' spellcheck='false' data-noteId='${noteId}'>
     ${jsonObj === null ? `Note ${noteId}` : jsonObj.title}</div>`;
