@@ -74,7 +74,7 @@ function createNotesContainer(noteId) {
     // Visa antecknings-ID i notes
     let jsonObj = JSON.parse(localStorage.getItem(noteId)); // hämtar sparad note för att bestämma vilket namn rubriken ska ha
 
-    
+    // Visa tags i sidebaren efter reload
     // Skapa en hashtagContainer (samma klass som i tags.js) som innehåller alla tags under varje note
     const hashtagContainer = createHtmlElem("div", null, notes, "hashtag-container");
     // Kolla om den sparade noten existerar och innehåller hashtags
