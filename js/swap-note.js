@@ -10,7 +10,8 @@ function chooseNote() {
     const allNotes = document.querySelectorAll('.notes'); 
     allNotes.forEach(note => {
         note.addEventListener('click', (e) => {
-            displayNote(e);
+            const noteId = e.currentTarget.firstElementChild.firstElementChild.getAttribute('data-noteId')
+            displayNote(noteId);
         });
         note.firstElementChild.addEventListener('input', (e) => {
             updateHeaderForNote(e);
@@ -26,12 +27,11 @@ function chooseNote() {
 // Lägg till id till textarean
 // Lägg till fonten till textarean
 // Uppdatera font-selection efter om det finns en använd font eller inte
-function displayNote(e) {
-    let selectedNote;
-    !!e ? selectedNote = e.currentTarget : selectedNote = document.querySelector('.notes');   
+function displayNote(noteId) {  
+    const selectedNote = document.querySelector(`[data-noteId="${noteId}"]`).parentElement.parentElement;
     highLightTargedNote(selectedNote);
     highLightTargedTag(selectedNote);
-    savedNote = JSON.parse(localStorage.getItem(selectedNote.firstElementChild.firstElementChild.getAttribute('data-noteId')));
+    savedNote = JSON.parse(localStorage.getItem(noteId));
     textarea.innerHTML = savedNote.content;
     textarea.setAttribute('data-Id', savedNote.noteId)
     applyFont(savedNote.font);

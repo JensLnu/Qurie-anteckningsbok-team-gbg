@@ -110,7 +110,7 @@ function displayAllNotes() {
     }
     // Kalla på chooseNote för att kunna bläddra bland anteckningarna
     chooseNote();
-    displayNote();
+    displayNote(noteCounter);
 }
 
 // Ta bort tidigare note
