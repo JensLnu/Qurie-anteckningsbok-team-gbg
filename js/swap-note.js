@@ -32,6 +32,7 @@ export function chooseNote() {
 export function displayNote(noteId) {  
     const selectedNote = document.querySelector(`[data-noteId="${noteId}"]`).parentElement.parentElement;
     highLightTargedNote(selectedNote);
+    highLightTargedTag(selectedNote);
     let source = JSON.parse(localStorage.getItem(noteId));
     savedNote = Object.assign(new Note(), source)
     textarea.innerHTML = savedNote.content;
