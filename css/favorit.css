@@ -1,0 +1,13 @@
+.favorite-button .favorited {
+  background-color: red;
+}
+
+.toolbar-button.active {
+  background-color: #555;
+  color: #f0f0f0;
+}
+
+.toolbar-button:hover {
+  background-color: #f0f0f0;
+  color: #555;
+}

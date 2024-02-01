@@ -2,14 +2,19 @@
 
 /* Som användare vill jag kunna:
 [x]- via en knapp # bredvid delete-btn kunna lägga till taggar för en anteckning.
-[]- se mina taggar under titeln i sidebar när noten är aktiv.
-[]- söka efter specifika taggar via search i navigation
+[x]- se mina taggar under titeln i sidebar när noten är aktiv, och dölja övriga tags.
+[1/2]- söka efter specifika taggar via search i navigation, FUNKAR MEN OKLART OM DEN ÄR BUGGIG
 []    - se enbart de notes med sökt tagg i sidebar (utan att taggarna visas under varje note)
-[]    - text-area är tom efter sökt tagg, tills man väljer en note
-[]- visa taggar i varje note
+[]    - text-area är tom efter sökt tagg, tills man väljer en notem, ORELEVANT? I OCH MED MODULRUTAN?
+[x]- visa taggar i varje note
 [x]- ta bort taggar i varje note
 
 [x]- exportera och importera till add-several-notes
+
+BUGS, LATER!!
+[] - om man lägger till samma hashtag igen syns den i sidebaren men läggs inte till i ls. (tror jag vill att det inte ska gå att lägga till samma igen?)
+[] - om man ändrar en redan sparad hashtag så sparas en ny och den gamla behålls, det ska den inte.
+[] - funktionallitet för att dem sparade hashtagsen i ls ska läsas in i sidebaren igen. 
 */
 import { createHtmlElem } from './moduls/createHtmlElem.js';
 
@@ -25,17 +30,23 @@ export function addHashtag(e) {
     hashtagDeleteBtn.addEventListener('click', (e) => {
         removeHashtag(e);
     })
+    hashtagInput.focus();
     return hashtagContainer;
 }
 
 // sparar alla hashtags i objektet 'savedNote'
 function saveHashtagToObj(e) {
+    console.log('start saveHashtagToObj')
     const currentNote = e.target.parentNode.parentNode;
     const allTags = currentNote.querySelectorAll('.hashtag-input');
     allTags.forEach(input => {
-        savedNote.hashtags.push(input.value);
-        input.setAttribute(`data-hashtag`, input.value);
+        if (!savedNote.hashtags.includes(input.value) && input.value !== '') { // VISA TOVA, else tabort hashtagen? -------------------------
+            savedNote.hashtags.push(input.value);
+            input.setAttribute(`data-hashtag`, input.value);
+        }
     });
+    localStorage.setItem(savedNote.noteId, JSON.stringify(savedNote));
+    savedNote.hashtags = [];
 }
 
 // tarbort 'hashtagen' ur objektet & i DOMen
@@ -43,4 +54,5 @@ function removeHashtag(e) {
     const hashtagName = e.currentTarget.previousSibling.value;
     savedNote.hashtags = savedNote.hashtags.filter(hashtag => hashtag !== hashtagName);
     e.currentTarget.parentElement.remove();
+    localStorage.setItem(savedNote.noteId, JSON.stringify(savedNote));
 }

@@ -52,12 +52,25 @@ function displayNote(e) {
 // Hämta alla notes från sidebaren
 // Ta bort alla förekomster av 'displayed note'
 // Lägg till 'displayed-note' till anteckningen som klickades på
-function hithLightTargedNote(selectedNote) {
+function highLightTargedNote(selectedNote) {
     const allNotes = document.querySelectorAll('.notes');
     allNotes.forEach(note => {
         note.classList.remove('displayed-note');
     });
     selectedNote.classList.add('displayed-note');
+}
+
+// Funktion för att dölja de tags som inte är aktiva och visa aktiv tag
+function highLightTargedTag(selectedNote) {
+    let tags = document.querySelectorAll('.hashtag-container');
+    tags.forEach(note => {
+        note.classList.add('display-none');
+    });
+
+    tags = selectedNote.querySelectorAll('.hashtag-container');
+    tags.forEach(note => {
+        note.classList.remove('display-none');
+    });
 }
 
 
