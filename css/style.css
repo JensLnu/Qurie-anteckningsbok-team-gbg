@@ -92,6 +92,13 @@ header {
   height: 100vh;
   background-color: rgb(202, 210, 197);
   border-right: 5px solid rgba(66, 66, 66, 0.17);
+  overflow: auto;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+#sidebar::-webkit-scrollbar {
+  display: none;
 }
 
 .notes {
