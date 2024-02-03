@@ -1,42 +1,5 @@
-/* Stil för modalen */
-/* dialog {
-  border: 1px solid #444;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  width: 80%;
-  max-width: 500px;
-} */
-
-/* Stängknapp om du behöver */
-/* .dialog-close-btn {
-  float: right;
-  cursor: pointer;
-} */
-
-/* Stil för varje favoritantecknings-item */
-/* .favorite-item {
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
-  cursor: pointer;
-} */
-
-/* .favorite-header {
-  font-size: 1.2em;
-  margin: 0;
-  color: #333;
-} */
-
-/* .favorite-content {
-  font-size: 0.9em;
-  margin-top: 5px;
-  color: #666;
-} */
-
-/* För att göra texten mer läsbar */
-/* .favorite-item:hover {
-  background-color: #f0f0f0;
-} */
-
-/* Övrig stil efter behov */
-/* Lägg till mer CSS här för att anpassa utseendet efter dina önskemål
+.favorite-button {
+  padding: 3px 5px;
+  border: none;
+  border-radius: 5px;
+}
