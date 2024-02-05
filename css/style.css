@@ -97,6 +97,15 @@ header {
   scrollbar-width: none;  /* Firefox */
 }
 
+#navigation #stars-icon.active .stars {
+  color: #FFD700;
+}
+
+#navigation #stars-icon:not(.active) .stars {
+  color: white;
+}
+
+
 #sidebar::-webkit-scrollbar {
   display: none;
 }

@@ -5,6 +5,7 @@ import { createHtmlElem } from "./moduls/createHtmlElem.js";
 import Note from "../js/classes/newNote.js"
 import { chooseNote, displayNote } from "./swap-note.js";
 
+
 // Visa alla sparade anteckningar när sidan laddas om
 window.addEventListener("DOMContentLoaded", displayAllNotes);
 
@@ -60,7 +61,7 @@ function createNote() {
 // Lägg till ta-bort-knapp
 // Skapar en textruta för anteckningen, ger unikt ID och bestämmer innehållet efter om det finns motsvarande ID i LS
 // Append till sparade anteckningar
-function createNotesContainer(noteId) {
+export function createNotesContainer(noteId) {
     // G-tag gjord av Oscar Donaldson
     gtag("event", "add_note", { app_name: "add_note_button", screen_name: "add_note_name", });
 
