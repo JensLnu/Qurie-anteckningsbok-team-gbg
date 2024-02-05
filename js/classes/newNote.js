@@ -26,7 +26,7 @@ export default class Note {
         this.save()
     }
     removeTag(tag){
-        // this.hashtags.push(tag); // tabort "tag" ur this.hashtags
+        this.hashtags = this.hashtags.filter(hashtag => hashtag !== tag);
         this.save()
     }
     updateFavorite() {

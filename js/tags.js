@@ -52,9 +52,8 @@ function saveHashtagToObj() {
 // tarbort 'hashtagen' ur objektet & i DOMen
 function removeHashtag(e) {
     const hashtagName = e.currentTarget.previousSibling.value;
-    savedNote.hashtags = savedNote.hashtags.filter(hashtag => hashtag !== hashtagName);
+    savedNote.removeTag(hashtagName);
     e.currentTarget.parentElement.remove();
-    localStorage.setItem(savedNote.noteId, JSON.stringify(savedNote));
 }
 
 
