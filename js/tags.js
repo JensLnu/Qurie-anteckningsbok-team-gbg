@@ -16,7 +16,7 @@ OBS: använd metoder och objekt från newNote.js, så kan vi enklare fixa buggar
 [] - om man ändrar en redan sparad hashtag så sparas en ny och den gamla behålls, det ska den inte.
 [x] - funktionalitet för att dem sparade hashtagsen i ls ska läsas in i sidebaren igen. Se createNotesContainer i add-several-notes.js. Finns det ett enklare sätt med mindre rader kod??
 [] - hashtag sparas inte om man inte klickar på något annat, så om du skriver en hashtag och uppdaterar sidan utan att klicka någon annanstans först så sparas den inte... kan man göra så att alla ändringar sparas direkt i localStorage på samma sätt som t.ex content i text-area? Ändra focusout till input kanske?
-[] - när man skapar en ny note är den senaste aktiva noten markerad istället för den nya.
+[x] - när man skapar en ny note är den senaste aktiva noten markerad istället för den nya.
 */
 
 import { createHtmlElem } from './moduls/createHtmlElem.js';

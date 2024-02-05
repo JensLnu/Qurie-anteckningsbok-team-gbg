@@ -102,6 +102,7 @@ export function createNotesContainer(noteId) {
 
     createDeleteButton(noteId, noteHeaderContainer); // Knapp för att ta bort anteckning
     savedNotes.appendChild(notes);
+    displayNote(noteId);
 }
 
 // Funktion för att ta bort anteckning
