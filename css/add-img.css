@@ -1,13 +1,18 @@
-.myImg {
+/* .myImg {
   position: relative;
   width: 100%;
+} */
+#imgBtn {
+  /* padding: 12px; */
+  cursor: pointer;
 }
-.img-container {
+
+/* .img-container {
   box-sizing: border-box;
   position: relative;
   display: inline-block;
   /* resize: both; */
-  height: 100px;
-  width: 200px;
-  background-size: cover;
-}
+/* height: 100px;
+  width: 200px; */
+/* background-size: cover; */
+/* } */
