@@ -62,16 +62,12 @@ function createNote() {
 // Skapar en textruta för anteckningen, ger unikt ID och bestämmer innehållet efter om det finns motsvarande ID i LS
 // Append till sparade anteckningar
 export function createNotesContainer(noteId) {
-    // G-tag gjord av Oscar Donaldson
-    gtag("event", "add_note", { app_name: "add_note_button", screen_name: "add_note_name", });
+    gtag("event", "add_note", { app_name: "add_note_button", screen_name: "add_note_name", }); // G-tag gjord av Oscar Donaldson
 
     const notes = document.createElement("div");
     notes.classList.add("notes");
 
-    // hithLightTargedNote(notes); // gör så att den nya noten får vit bg färg och ser targetad ut
     const noteHeaderContainer = createHtmlElem("div", null, notes, "note-header-container", "flex");
-    // highli
-
     // Visa antecknings-ID i notes
     let jsonObj = JSON.parse(localStorage.getItem(noteId)); // hämtar sparad note för att bestämma vilket namn rubriken ska ha
 
@@ -101,7 +97,7 @@ export function createNotesContainer(noteId) {
     // hashtags hantering
     const displayHashtagBtn = createHtmlElem("button", "#", noteHeaderContainer, "hashtag-btn");
     displayHashtagBtn.addEventListener("click", (e) => {
-        let hashtagContainer = addHashtag(e);
+        addHashtag(e);
     });
 
     createDeleteButton(noteId, noteHeaderContainer); // Knapp för att ta bort anteckning

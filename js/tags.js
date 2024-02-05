@@ -65,15 +65,12 @@ function removeHashtag(e) {
 }
 
 
+/* OBS: fungerar inte. Får inte hashtagsen att sparas i det specifika noteId. Istället sparas alla hashtags i en key som heter "Undefined". Fungerar iaf att ändra alla hashtags vid input haha.... */
 
-/*
-
-OBS: fungerar inte. Får inte hashtagsen att sparas i det specifika noteId. Istället sparas alla hashtags i en key som heter "Undefined". Fungerar iaf att ändra alla hashtags vid input haha....
-
-import { createHtmlElem } from './moduls/createHtmlElem.js';
+/* import { createHtmlElem } from './moduls/createHtmlElem.js';
 import Note from './classes/newNote.js';
 
-const savedNote = new Note();
+// const savedNote = new Note();
 
 // Funktion för att lägga till hashtag
 export function addHashtag(e) {
@@ -115,6 +112,4 @@ function removeHashtag(e, hashtagInput) {
 // Funktion för att uppdatera och spara anteckn ingen efter ändringar
 function updateAndSaveNote() {
     savedNote.save(); // Save-metod från note-klassen
-}
-
-*/
+} */
