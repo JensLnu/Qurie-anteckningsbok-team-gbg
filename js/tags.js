@@ -31,7 +31,7 @@ export function addHashtag(e) {
     createHtmlElem('button', 'X', hashtagContainer, 'delete-btn');
     const hashtagDeleteBtn = hashtagContainer.querySelector('.delete-btn');
     hashtagDeleteBtn.addEventListener('click', (e) => {
-        removeHashtag(e);
+        removeHashtag(hashtagInput);
     })
     hashtagInput.focus();
     return hashtagContainer;
@@ -50,10 +50,9 @@ function saveHashtagToObj() {
 }
 
 // tarbort 'hashtagen' ur objektet & i DOMen
-function removeHashtag(e) {
-    const hashtagName = e.currentTarget.previousSibling.value;
-    savedNote.removeTag(hashtagName);
-    e.currentTarget.parentElement.remove();
+function removeHashtag(hashtagInput) {
+    savedNote.removeTag(hashtagInput.value);
+    hashtagInput.parentElement.remove();
 }
 
 
