@@ -12,13 +12,16 @@
   display: none;
 }
 #first-div {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
+/* David redigerade lite */
 #text-area {
-  width: min(90%, 1300px);
-  margin: 0 auto;
+  width: min(100%, 1300px);
+  /* margin: 0 auto; */
+  padding-left: 1.5rem;
+  padding-top: 2rem;
 }
 
 #first-rubrik {
@@ -35,7 +38,7 @@
 .p-info {
   line-height: 20px;
   letter-spacing: 1.5px;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   font-size: 18px;
 }
 
@@ -45,8 +48,8 @@
   letter-spacing: 1.5px;
 }
 
-@media only screen and (width < 700px){
+@media only screen and (width < 700px) {
   #first-div {
-    padding: 0 .5rem;
+    padding: 0 0.5rem;
   }
 }

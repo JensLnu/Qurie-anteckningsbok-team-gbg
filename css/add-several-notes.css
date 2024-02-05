@@ -1,29 +1,31 @@
 .notes {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+
+  /* padding: 5px 12px; */
 }
 
 .note-key-display {
-    font-weight: bold;
-    color: rgb(47, 62, 70);
+  font-weight: bold;
+  color: rgb(47, 62, 70);
 }
 
 .delete-btn {
-    display: flex;
-    color: white;
-    border-radius: 50%;
-    height: 1.8em;
-    width: 1.8em;
-    justify-content: center;
-    align-items: center;
-    border: solid white;
-    background-color: rgb(132, 169, 140);
-    transition: 0.5s;
+  display: flex;
+  color: white;
+  border-radius: 50%;
+  height: 1.8em;
+  width: 1.8em;
+  justify-content: center;
+  align-items: center;
+  border: solid white;
+  background-color: rgb(132, 169, 140);
+  transition: 0.5s;
 }
 
 .note-textarea {
-    width: 100%;
-    height: 100vh;
-    padding: 3em;
-    outline-color: rgb(47, 62, 70);
+  width: 100%;
+  height: 100vh;
+  padding: 3em;
+  outline-color: rgb(47, 62, 70);
 }
