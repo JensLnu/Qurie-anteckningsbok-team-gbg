@@ -21,13 +21,14 @@ OBS: använd metoder och objekt från newNote.js, så kan vi enklare fixa buggar
 
 
 import { createHtmlElem } from './moduls/createHtmlElem.js';
+import Note from "../js/classes/newNote.js"
 
 // lägger till en hashtags inputfält & delete knapp
 export function addHashtag(e) {
     const hashtagContainer = createHtmlElem('div', '', e.target.parentElement.parentNode, 'hashtag-container', 'flex');
     const hashtagInput = createHtmlElem('input', '', hashtagContainer, 'hashtag-input');
     hashtagInput.addEventListener('focusout', () => {
-        saveHashtagToObj(e);
+        saveHashtagToObj();
     });
     createHtmlElem('button', 'X', hashtagContainer, 'delete-btn');
     const hashtagDeleteBtn = hashtagContainer.querySelector('.delete-btn');
@@ -39,21 +40,15 @@ export function addHashtag(e) {
 }
 
 // sparar alla hashtags i objektet 'savedNote'
-function saveHashtagToObj(e) {
-    console.log('start saveHashtagToObj')
-    const currentNote = e.target.parentNode.parentNode;
-    const allTags = currentNote.querySelectorAll('.hashtag-input');
-
-    savedNote.hashtags = [];
-
+function saveHashtagToObj() {
+    const allTags = savedNote.htmlReference.querySelectorAll('.hashtag-input');
+    // kontrolerar så att det inte sparas en "tom" hashtag och att man inte sparar dubbletter
     allTags.forEach(input => {
-        if (!savedNote.hashtags.includes(input.value) && input.value !== '') { // VISA TOVA, else tabort hashtagen? -------------------------
-            savedNote.hashtags.push(input.value);
+        if (!savedNote.hashtags.includes(input.value) && input.value !== '') {
+            savedNote.updateTags(input.value)
             input.setAttribute(`data-hashtag`, input.value);
         }
     });
-    localStorage.setItem(savedNote.noteId, JSON.stringify(savedNote));
-    savedNote.hashtags = [];
 }
 
 // tarbort 'hashtagen' ur objektet & i DOMen
