@@ -19,9 +19,7 @@ OBS: använd metoder och objekt från newNote.js, så kan vi enklare fixa buggar
 [] - när man skapar en ny note är den senaste aktiva noten markerad istället för den nya.
 */
 
-
 import { createHtmlElem } from './moduls/createHtmlElem.js';
-import Note from "../js/classes/newNote.js"
 
 // lägger till en hashtags inputfält & delete knapp
 export function addHashtag(e) {
@@ -45,7 +43,7 @@ function saveHashtagToObj() {
     // kontrolerar så att det inte sparas en "tom" hashtag och att man inte sparar dubbletter
     allTags.forEach(input => {
         if (!savedNote.hashtags.includes(input.value) && input.value !== '') {
-            savedNote.updateTags(input.value)
+            savedNote.addTag(input.value)
             input.setAttribute(`data-hashtag`, input.value);
         }
     });
