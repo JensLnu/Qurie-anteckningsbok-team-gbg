@@ -36,6 +36,29 @@ main {
     color: #555; 
 }
 
+.favorite-button {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 5px 15px;
+    margin: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition effect */
+}
+
+.favorite-button.active,
+.favorite-button:hover {
+    background-color: #555;
+    color: #f0f0f0;
+}
+
 /*------------------select elements---------------*/
 select {
     font-size: 14px; 

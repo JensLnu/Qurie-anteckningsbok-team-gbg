@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="./css/tags.css" />
   <link rel="stylesheet" href="./css/search.css">
   <link rel="stylesheet" href="./css/favorit.css" />
+  <link rel="stylesheet" href="./css/note-template.css">
 </head>
 
 <body>
@@ -42,7 +43,7 @@
         </li>
         <li class="icon" id="stars-icon">
           <span class="material-symbols-outlined md-40 stars">stars</span>
-        </li>
+        </li>        
         <li class="icon">
           <span class="material-symbols-outlined md-40 finance">finance</span>
         </li>
@@ -64,13 +65,11 @@
       <span class="material-symbols-outlined md-40">add_circle</span>
     </button>
     <div class="saved-notes"></div>
-    <!-- sektion för favorite notes -->
-    <!-- <section id="favorites-section">
-        <div class="favorites-container"></div>
-      </section> -->
+
   </section>
 
   <section id="toolbar">
+    <button class="toolbar-button" id="note-template-btn">Mallar</button>
     <!-- Gissar att options kommer från API, Lycka till Tova & Adam! :-) -->
     <select name="fonts" id="fonts">
       <option value="Choose font">Välj en font</option>
@@ -94,10 +93,9 @@
     <button class="toolbar-button" id="insertUnorderedList" title="Punktlista">
       UL
     </button>
-    <input type="file" id="imgBtn" />
+    <input type="file" id="imgBtn"/>
 
     <!-- stjärna btn i toolbaren -->
-    <!-- <button class="toolbar-button" id="favorite" title="Favorite">⭐</button> -->
     <div class="note" data-noteId="1">
       <!-- Anteckningens innehåll här -->
       <button class="favorite-button" data-noteId="1">⭐</button>
@@ -121,6 +119,7 @@
 
     <!-- script -->
     <script src="./js/globalVariables.js"></script>
+    <script type="module" src="./js/main.js"></script>
     <script src="./js/index.js"></script>
     <script type="module" src="./js/add-several-notes.js"></script>
     <script type="module" src="./js/swap-note.js"></script>

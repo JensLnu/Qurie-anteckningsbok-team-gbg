@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Stil för modalen */
 /* dialog {
   border: 1px solid #444;
@@ -40,3 +41,10 @@
 
 /* Övrig stil efter behov */
 /* Lägg till mer CSS här för att anpassa utseendet efter dina önskemål
+=======
+.favorite-button {
+  padding: 3px 5px;
+  border: none;
+  border-radius: 5px;
+}
+>>>>>>> f54431c645ca8c1505bf11b50b925c4934769be9
