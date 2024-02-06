@@ -1,13 +1,12 @@
 const toBePrinted = document.getElementById('text-area');
-const btn = document.querySelector('.print');
-console.log('vi är connected iallafall')
+const btn = document.querySelector('.print-button');
+
 function printPreview(){
-    const printed = toBePrinted.innerHTML;
-    console.log(printed)
+    const content = toBePrinted.innerHTML;
     w = window.open();
-    w.document.write(printed);
-    // w.print();
-    // w.close();
+    w.document.write(content);
+    w.print();
+    w.close();
 }
 
 btn.addEventListener('click', printPreview);
