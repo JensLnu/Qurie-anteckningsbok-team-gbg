@@ -1,6 +1,6 @@
 /*--- Som användare vill jag kunna skapa flera olika anteckningar ---*/
 
-import { addHashtag } from "./tags.js";
+import { addHashtag } from "./moduls/tags.js";
 import { createHtmlElem } from "./moduls/createHtmlElem.js";
 import Note from "../js/classes/newNote.js"
 import { chooseNote, displayNote } from "./swap-note.js";
