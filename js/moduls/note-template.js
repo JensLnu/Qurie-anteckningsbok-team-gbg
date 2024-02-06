@@ -10,7 +10,19 @@
 // [] - css, LATER! de finns en "note-template.css" som är kopplad och färdig för att göra css i
 // [] - ??
 
+import { createHtmlElem } from './createHtmlElem.js';
+
 // hit kommer man när man klickar på "Mallar" i toolbaren
-export function chooseNoteTemplate() {
-    console.log('start chooseNoteTemplate');
+export function createFunctionalityNoteTemplate() {
+    console.log('start createFunctionalityNoteTemplate');
+    createHtmlElem('option', 'Mall 1', noteTemplateDropdown);
+    createHtmlElem('option', 'Mall 2', noteTemplateDropdown);
+    createHtmlElem('option', 'Mall 3', noteTemplateDropdown);
+    noteTemplateDropdown.addEventListener('change', () => {
+        applyNoteTemplate();
+    });
+}
+
+function applyNoteTemplate() {
+    console.log('start applyNoteTemplate');
 }
