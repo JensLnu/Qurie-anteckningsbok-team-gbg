@@ -6,7 +6,8 @@
   width: 60vw;
   height: 70vh;
   border-radius: 1rem;
-  border: 3px solid #2f3e46;
+  background-color: var(--dialog--background-color);
+  border: 3px solid var(--logo-container-color);
 }
 .dialog-box {
   display: flex;
@@ -23,7 +24,7 @@
   font-size: 1.5rem;
   border-radius: 1rem;
   box-shadow: 8px 5px 10px rgb(107, 107, 107);
-  border: 3px solid #2f3e46;
+  border: 3px solid;
   padding: 10px;
   background-color: #bebebe7a;
 }
@@ -33,7 +34,6 @@
 #result-list {
   display: flex;
   flex-direction: column;
-  /* border: 2px solid black; */
   width: 50vw;
   height: 50vh;
   margin-top: 50px;

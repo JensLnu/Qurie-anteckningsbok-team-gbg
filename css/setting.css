@@ -1,4 +1,7 @@
 /* default-theme.css */
+
+
+
 .body-default {
   background-color: #ffffff;
   color: #000000;
@@ -61,6 +64,55 @@
 
 .dark-theme .add-btn {
   background-color: blue;
+}
+
+/* 
+---------------NEON THEME------------------
+*/
+.neon-theme {
+  background-color: #232323;
+  color: #3A86FF;
+  text-shadow: 0 0 20px #fff;
+}
+
+.neon-theme .material-symbols-outlined.md-40 {
+  color: #FF006E;
+  text-shadow: 10 0 10px #fff;
+}
+/* #stars-icon:not(.active) .stars {
+  color: #FF006E;
+  text-shadow: 10 0 10px #fff;
+} */
+
+.neon-theme #toolbar {
+  background-color: #111111;
+  
+}
+/* .neon-theme #toolbar, #note-template-btn, #fonts, #font-size, #formatBlock, #bold, #italic, #insertOrderedList, #insertUnorderedList, #imgBtn, #note, #print-button {
+  background-color: #232323;
+  color: yellow;
+  
+} */
+
+
+.neon-theme #sidebar {
+  background-color: #111111;
+}
+
+.neon-theme #logo-container {
+  background-color: #232323;
+  color: #FF006E;
+  text-shadow: 10 10 10px #fff;
+}
+.neon-theme header {
+  background-color: #232323;
+}
+
+.neon-theme .add-btn {
+  background-color: #232323;
+}
+.neon-theme .displayed-note {
+  background-color: #696969;
 }
 
 /* #first-theme {
