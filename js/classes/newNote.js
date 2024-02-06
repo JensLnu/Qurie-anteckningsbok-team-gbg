@@ -19,23 +19,23 @@ export default class Note {
     }
     updateFont(fontName){
         this.fonts.push(fontName);
-        this.save()
+        this.save();
     }
     addTag(tagName){   
         if (!this.hashtags.includes(tagName) && tagName !== '') this.hashtags.push(tagName);
-        this.save()
+        this.save();
     }
     removeTag(tagName){
         this.hashtags = this.hashtags.filter(hashtag => hashtag !== tagName);
-        this.save()
+        this.save();
     }
     updateFavorite() {
         this.favorite = !this.favorite;
-        this.save()
+        this.save();
     }
     updateSize(size){
         this.size = size;
-        this.save()
+        this.save();
     }
     updateHtmlReference(ref){
         this.htmlReference = ref;
@@ -51,7 +51,7 @@ export default class Note {
             favorite : this.favorite,
             size : this.size,
         }
-        localStorage.setItem(this.noteId, JSON.stringify(note))
+        localStorage.setItem(this.noteId, JSON.stringify(note));
     }
 }
 // const texting = document.getElementById('testing');
@@ -60,5 +60,3 @@ export default class Note {
 // note.updateTitle('tjenixen')
 // note.updateFavorite();
 // note.saveNote();
-
-

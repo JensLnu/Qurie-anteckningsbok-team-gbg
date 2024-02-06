@@ -44,7 +44,7 @@
         </li>
         <li class="icon" id="stars-icon">
           <span class="material-symbols-outlined md-40 stars">stars</span>
-        </li>        
+        </li>
         <li class="icon">
           <span class="material-symbols-outlined md-40 finance">finance</span>
         </li>
@@ -67,6 +67,12 @@
       <span class="material-symbols-outlined md-40">add_circle</span>
     </button>
     <div class="saved-notes"></div>
+
+    <!-- sektion för favorite notes -->
+    <!-- <section id="favorites-section">
+        <div class="favorites-container"></div>
+      </section> -->
+
   </section>
 
   <section id="toolbar">
@@ -94,13 +100,15 @@
     <button class="toolbar-button" id="insertUnorderedList" title="Punktlista">
       UL
     </button>
-    <input type="file" id="imgBtn"/>
+    <input type="file" id="imgBtn" />
 
     <!-- stjärna btn i toolbaren -->
+    <!-- <button class="toolbar-button" id="favorite" title="Favorite">⭐</button> -->
     <div class="note" data-noteId="1">
       <!-- Anteckningens innehåll här -->
       <button class="favorite-button" data-noteId="1">⭐</button>
     </div>
+    <button class="print-button"><span class="material-symbols-outlined">print</span></button>
   </section>
   <main>
     <div id="text-area" contenteditable="true"></div>
@@ -133,8 +141,7 @@
 
     <!-- script -->
     <script src="./js/globalVariables.js"></script>
-    <script type="module" src="./js/main.js"></script>
-    <script src="./js/index.js"></script>
+    <script type="module" src="./js/index.js"></script>
     <script type="module" src="./js/add-several-notes.js"></script>
     <script type="module" src="./js/swap-note.js"></script>
     <script src="./js/firstVisit.js"></script>
@@ -143,10 +150,14 @@
     <script src="./js/formating-markdown.js"></script>
     <script src="./js/add-img.js"></script>
     <script src="./js/execCommand.js"></script>
-    <script type="module" src="./js/favorite.js"></script>
+    <script src="./js/favorite.js"></script>
     <script type="module" src="./js/search.js"></script>
     <script type="module" src="./js/classes/newNote.js"></script>
+
     <script src="./js/theme.js"></script>
     
+
+    <script src="./js/print.js"></script>
+
   </body>
 </html>
