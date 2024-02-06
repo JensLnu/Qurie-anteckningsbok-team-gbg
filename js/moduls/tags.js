@@ -26,35 +26,17 @@ export function addHashtag(e) {
     const hashtagContainer = createHtmlElem('div', '', e.target.parentElement.parentNode, 'hashtag-container', 'flex');
     const hashtagInput = createHtmlElem('input', '', hashtagContainer, 'hashtag-input');
     hashtagInput.addEventListener('focusout', () => {
-        saveHashtagToObj();
+        savedNote.addTag(hashtagInput.value); // lägger till hashtagen i objektet
     });
     createHtmlElem('button', 'X', hashtagContainer, 'delete-btn');
     const hashtagDeleteBtn = hashtagContainer.querySelector('.delete-btn');
     hashtagDeleteBtn.addEventListener('click', (e) => {
-        removeHashtag(hashtagInput);
+        savedNote.removeTag(hashtagInput.value); // tarbort hashtagen ur objektet
+        hashtagInput.parentElement.remove(); // tarbort hashtagen ur DOMen
     })
     hashtagInput.focus();
     return hashtagContainer;
 }
-
-// sparar alla hashtags i objektet 'savedNote'
-function saveHashtagToObj() {
-    const allTags = savedNote.htmlReference.querySelectorAll('.hashtag-input');
-    // kontrolerar så att det inte sparas en "tom" hashtag och att man inte sparar dubbletter
-    allTags.forEach(input => {
-        if (!savedNote.hashtags.includes(input.value) && input.value !== '') {
-            savedNote.addTag(input.value)
-            input.setAttribute(`data-hashtag`, input.value);
-        }
-    });
-}
-
-// tarbort 'hashtagen' ur objektet & i DOMen
-function removeHashtag(hashtagInput) {
-    savedNote.removeTag(hashtagInput.value);
-    hashtagInput.parentElement.remove();
-}
-
 
 /* OBS: fungerar inte. Får inte hashtagsen att sparas i det specifika noteId. Istället sparas alla hashtags i en key som heter "Undefined". Fungerar iaf att ändra alla hashtags vid input haha.... */
 

@@ -85,7 +85,7 @@ export function createNotesContainer(noteId) {
             // Sätt värdet av hashtag inputen till tagens innehåll
             tagInput.value = tag;
             // Dataattribut på hashtag input fältet för att lagra värdet
-            tagInput.setAttribute("data-hashtag", tag);
+            tagInput.setAttribute("data-hashtag", tag); // behövs ens denna? / Jens
         });
     }
 

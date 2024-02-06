@@ -21,12 +21,12 @@ export default class Note {
         this.fonts.push(fontName);
         this.save()
     }
-    addTag(tag){
-        this.hashtags.push(tag);
+    addTag(tagName){   
+        if (!this.hashtags.includes(tagName) && tagName !== '') this.hashtags.push(tagName);
         this.save()
     }
-    removeTag(tag){
-        this.hashtags = this.hashtags.filter(hashtag => hashtag !== tag);
+    removeTag(tagName){
+        this.hashtags = this.hashtags.filter(hashtag => hashtag !== tagName);
         this.save()
     }
     updateFavorite() {
