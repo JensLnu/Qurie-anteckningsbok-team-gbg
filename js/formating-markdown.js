@@ -6,9 +6,9 @@
 // Hämta textarean där markdownen finns
 // Eventlistener för att upptäcka klick
 
-settingBtn.addEventListener('click', () => {
-    textarea.innerHTML = parseMarkdown(textarea.innerText);
-});
+// settingBtn.addEventListener('click', () => {
+//     textarea.innerHTML = parseMarkdown(textarea.innerText);
+// });
 
 // function formatMarkdown(markdown, firstTimeFalse) {
 //     // Ersätt **text** med <strong>text</strong>
