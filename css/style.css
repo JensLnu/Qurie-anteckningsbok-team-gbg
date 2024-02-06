@@ -177,7 +177,8 @@ main {
 
 #text-area {
   height: 100%;
-  /* padding: 3rem; */
+  overflow: auto;
+  padding: 3rem;
 }
 
 /* DENNA SKA BYTAS TILL EN KLASS SÅ ATT DEN KAN ÅTERANVÄNDAS I ALLA NOTES*/
