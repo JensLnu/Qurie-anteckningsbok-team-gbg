@@ -7,7 +7,7 @@
 // När vi klickar på ett resultat vill vi att modaler stängs ner
 // Lägg en eventlistener, rätt note vid rätt klick
 
-import {displayNote} from "./swap-note.js";
+import { displayNote } from "./swap-note.js";
 import { createHtmlElem } from './moduls/createHtmlElem.js';
 
 const dialog = document.querySelector("dialog");
@@ -38,31 +38,31 @@ dialog.addEventListener("click", e => {
     e.clientX > dialogDimensions.right ||
     e.clientY < dialogDimensions.top ||
     e.clientY > dialogDimensions.bottom
-    ) {
-      dialog.close()
-    }
-  });
-  
-  savedInput.addEventListener("input", () => {
-    let savedValue = savedInput.value.trim(); // Ta bort mellanslag från början och slutet av inputvärdet
-    
-    // Om savedValue är tomt, rensa resultList och avsluta funktionen
+  ) {
+    dialog.close()
+  }
+});
+
+savedInput.addEventListener("input", () => {
+  let savedValue = savedInput.value.trim(); // Ta bort mellanslag från början och slutet av inputvärdet
+
+  // Om savedValue är tomt, rensa resultList och avsluta funktionen
   if (savedValue === '') {
     resultList.innerHTML = '';
     return;
   }
-  
+
   resultList.innerHTML = '';
   let localKey;
   for (let i = 0; i < localStorage.length; i++) {
     localKey = localStorage.key(i);
     savedNote = JSON.parse(localStorage.getItem(localKey));
     const hashtagString = savedNote.hashtags.join(' ');
-    
+
     if (searchForHashtag && savedNote && (hashtagString.toLowerCase().includes(savedValue.toLowerCase()))) {
       displayResult();
     } else if (!searchForHashtag && savedNote && (savedNote.content.toLowerCase().includes(savedValue.toLowerCase()))
-    || (!searchForHashtag && savedNote.title.toLowerCase().includes(savedValue.toLowerCase()))) {
+      || (!searchForHashtag && savedNote.title.toLowerCase().includes(savedValue.toLowerCase()))) {
       // Konvertera både savedValue och localValue.title/content till små bokstäver för jämförelse
       displayResult();
     }
