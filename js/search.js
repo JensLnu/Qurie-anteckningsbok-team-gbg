@@ -5,16 +5,18 @@
 // Sök efter titlarna, matchar det med input value
 // Displayar resultaten i result-list
 // När vi klickar på ett resultat vill vi att modaler stängs ner
-
 // Lägg en eventlistener, rätt note vid rätt klick
 
-import {displayNote} from "./swap-note.js";
+import { displayNote } from "./swap-note.js";
+import { createHtmlElem } from './moduls/createHtmlElem.js';
 
-const dialog = document.querySelector("dialog")
-const openSearchModal = document.getElementById("open-search-modal")
-// tags
+const dialog = document.querySelector("dialog");
+const openSearchModal = document.getElementById("open-search-modal");
 const hashtagsOrNot = document.getElementById('search-for-hashtag');
-let searchForHashtag = false;
+const savedInput = document.getElementById('input-search-bar');
+const resultList = document.getElementById('result-list');
+
+let searchForHashtag = false; // håller reda på ifall man söker efter hashtags eller inte
 
 hashtagsOrNot.addEventListener('click', () => {
   if (!searchForHashtag) {
@@ -26,12 +28,7 @@ hashtagsOrNot.addEventListener('click', () => {
   }
 });
 
-// dialog.showModal()
-
-openSearchModal.addEventListener("click", function () {
-  dialog.showModal() // Opens a modal
-})
-
+openSearchModal.addEventListener("click", () => dialog.showModal()); // Opens a modal
 
 // Stänger modalen om man klickar utanför
 dialog.addEventListener("click", e => {
@@ -46,13 +43,7 @@ dialog.addEventListener("click", e => {
   }
 });
 
-let savedInput = document.getElementById('input-search-bar');
-let resultList = document.getElementById('result-list');
-
-
-let localKey;
-
-savedInput.addEventListener("input", function () {
+savedInput.addEventListener("input", () => {
   let savedValue = savedInput.value.trim(); // Ta bort mellanslag från början och slutet av inputvärdet
 
   // Om savedValue är tomt, rensa resultList och avsluta funktionen
@@ -62,52 +53,40 @@ savedInput.addEventListener("input", function () {
   }
 
   resultList.innerHTML = '';
+  let localKey;
   for (let i = 0; i < localStorage.length; i++) {
     localKey = localStorage.key(i);
     savedNote = JSON.parse(localStorage.getItem(localKey));
-
     const hashtagString = savedNote.hashtags.join(' ');
-    // console.log(savedNote.hashtags)
-    // console.log(hashtagString)
-    // console.log(searchForHashtag)
+
     if (searchForHashtag && savedNote && (hashtagString.toLowerCase().includes(savedValue.toLowerCase()))) {
-      console.log('if')
-      console.log(hashtagString.toLowerCase().includes(savedValue.toLowerCase()))
-      displayResult(localKey);
+      displayResult();
     } else if (!searchForHashtag && savedNote && (savedNote.content.toLowerCase().includes(savedValue.toLowerCase()))
-     || (!searchForHashtag && savedNote.title.toLowerCase().includes(savedValue.toLowerCase()))) {
+      || (!searchForHashtag && savedNote.title.toLowerCase().includes(savedValue.toLowerCase()))) {
       // Konvertera både savedValue och localValue.title/content till små bokstäver för jämförelse
-      
-      displayResult(localKey);
+      displayResult();
     }
   }
 });
 
-function displayResult(key) {
-  const resultItem = document.createElement('div');
-  resultItem.classList.add('result-item');
+function displayResult() {
+  const resultItem = createHtmlElem('div', '', resultList, 'result-item');
   resultItem.setAttribute("data-noteId-modal", savedNote.noteId)
   resultItem.innerHTML = ` 
       <h3 class="result-header">${savedNote.title}</h3>
-      <h6 class="result-tags"></h6>
+      <h6 class="result-tags">${savedNote.hashtags.map(tag => tag = `#${tag}`).join(' ')}</h6>
       <p class="result-content">${savedNote.content}</p>`;
 
   // Lägg till klickhändelse för att visa innehållet vid klick
   resultItem.addEventListener('click', (e) => {
-    
-    
-
+    savedInput.value = '';
+    resultList.innerHTML = '';
     showContent(e);
   });
-
-  resultList.appendChild(resultItem);
 }
 
 function showContent(e) {
   let resultNoteId = e.currentTarget.getAttribute("data-noteId-modal");
-  console.log(resultNoteId)
+  dialog.close();
   displayNote(resultNoteId);
-  dialog.close()
-  
 }
-

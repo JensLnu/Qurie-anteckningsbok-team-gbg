@@ -45,13 +45,14 @@
 .dialog {
   min-width: 85vw;
   margin: 0;   
+  
 }
 #input-search-bar{
   min-width: 55vw;
 }
 #result-list {
   min-width: 80vw;
-  /* margin-top: 50px; */
+  margin-top: 50px;
 }
 .result-item:hover {
   scale: 1;

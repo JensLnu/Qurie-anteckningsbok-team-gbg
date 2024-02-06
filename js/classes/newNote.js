@@ -6,7 +6,8 @@ export default class Note {
         this.fonts = [],
         this.hashtags = [],
         this.favorite = false,
-        this.size = 16
+        this.size = 16,
+        this.htmlReference;
     }
     updateTitle(title){
         this.title = title;
@@ -20,8 +21,12 @@ export default class Note {
         this.fonts.push(fontName);
         this.save()
     }
-    updateTags(tag){
-        this.hashtags.push(tag);
+    addTag(tagName){   
+        if (!this.hashtags.includes(tagName) && tagName !== '') this.hashtags.push(tagName);
+        this.save()
+    }
+    removeTag(tagName){
+        this.hashtags = this.hashtags.filter(hashtag => hashtag !== tagName);
         this.save()
     }
     updateFavorite() {
@@ -31,6 +36,10 @@ export default class Note {
     updateSize(size){
         this.size = size;
         this.save()
+    }
+    updateHtmlReference(ref){
+        this.htmlReference = ref;
+        this.save();
     }
     save(){
         const note = {
