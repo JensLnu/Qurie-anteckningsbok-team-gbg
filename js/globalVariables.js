@@ -48,5 +48,5 @@ const fontSelection = document.getElementById('font-size');
 // Settings-button
 const settingBtn = document.getElementById('test');
 
-
-
+// note-templates.js
+const noteTemplateBtn = document.getElementById('note-template-btn');
