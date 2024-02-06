@@ -13,8 +13,8 @@ main {
     font-size: 14px; 
     font-weight: bold;
     color: #333; 
-    background-color: #fff; 
-    border: 1px solid #555; 
+    background-color: var(--edit-buttons-primary); 
+    border: 1px solid var(--edit-buttons-secondary); 
     border-radius: 5px; 
     padding: 5px 15px; 
     margin: 5px;
@@ -27,21 +27,21 @@ main {
 }
 
 .toolbar-button.active {
-    background-color:  #555; 
+    background-color:  var(--edit-buttons-secondary); 
     color: #f0f0f0; 
 }
 
 .toolbar-button:hover {
-    background-color:  #f0f0f0; 
-    color: #555; 
+    background-color:  var(---edit-buttons-hover); 
+    color: var(--edit-buttons-secondary); 
 }
 
 .favorite-button {
     font-size: 14px;
     font-weight: bold;
     color: #333;
-    background-color: #fff;
-    border: 1px solid #555;
+    background-color: var(--edit-buttons-primary);
+    border: 1px solid var(--edit-buttons-secondary);
     border-radius: 5px;
     padding: 5px 15px;
     margin: 5px;
@@ -55,7 +55,7 @@ main {
 
 .favorite-button.active,
 .favorite-button:hover {
-    background-color: #555;
+    background-color: var(--edit-buttons-secondary);
     color: #f0f0f0;
 }
 
@@ -64,8 +64,8 @@ select {
     font-size: 14px; 
     font-weight: bold;
     color: #333; 
-    background-color: #fff;
-    border: 1px solid #555; 
+    background-color: var(--edit-buttons-primary);
+    border: 1px solid var(--edit-buttons-secondary); 
     border-radius: 5px; 
     padding: 5px; 
     margin: 5px;
@@ -74,6 +74,6 @@ select {
 }
 
 select:hover {
-    background-color: #f0f0f0; 
-    color: #555; 
+    background-color: var(---edit-buttons-hover);; 
+    color: var(--edit-buttons-secondary); 
 }

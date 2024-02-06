@@ -17,6 +17,11 @@ firstTheme.onclick = function () {
     console.log('hej')
 }
 
+secondTheme.onclick = function () {
+    document.body.classList.toggle('neon-theme')
+    
+}
+
 // firstTheme.addEventListener('change', () => {
 //     let selectedTheme = this.value;
 //     switchTheme(selectedTheme);

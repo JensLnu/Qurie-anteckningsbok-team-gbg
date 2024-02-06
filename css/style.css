@@ -9,10 +9,28 @@
   --toggle-dropdown: none;
   --toggle-header-icons: flex;
   --toggle-add: none;
+
+  /* Colors */
+  --header-color: rgb(53, 79, 82);;
+  --logo-container-color: rgb(47, 62, 70);
+  --logo-color: rgb(255, 255, 255);
+  --sidebar-color: rgb(202, 210, 197);
+  --sidebar-addbtn: rgb(132, 169, 140);
+  --toolbar-color: rgba(0, 0, 0, 0.253);
+  --default-text-color: rgb(0, 0, 0);
+  --displayed-note-color: rgb(255, 255, 255);
+  --delete-btn-color: rgb(132, 169, 140);
+  --edit-buttons-primary: rgb(255, 255, 255);
+  --edit-buttons-secondary: rgb(85,85,85);
+  --edit-buttons-hover: rgb(240,240,240);
+  --first-visit-primary: rgb(34,84,110);
+  --dialog--background-color: rgb(255, 255, 255);
+  --hashtag-button-color: rgb(132, 169, 140);
 }
 
+
 .material-symbols-outlined.md-40 {
-  color: rgb(255, 255, 255);
+  color: var(--logo-color);
   font-size: 40px;
   font-weight: 300;
   transition: scale 0.3s;
@@ -28,12 +46,14 @@ body {
   display: none;
 }
 
+
+
 /* HEADER CONTENT */
 header {
   position: fixed;
   height: 100vh;
   width: 75px;
-  background-color: rgb(53, 79, 82);
+  background-color: var(--header-color);
   display: flex;
   flex-direction: column;
   user-select: none;
@@ -44,8 +64,8 @@ header {
   align-items: center;
   justify-content: center;
   font-size: 50px;
-  color: rgb(255, 255, 255);
-  background-color: rgb(47, 62, 70);
+  color: var(--logo-color);
+  background-color: var(--logo-container-color);
   height: 75px;
   width: 75px;
   cursor: pointer;
@@ -90,21 +110,20 @@ header {
   left: 75px; /*FULLÖSNING*/
   width: 200px;
   height: 100vh;
-  background-color: rgb(202, 210, 197);
+  background-color: var(--sidebar-color);
   border-right: 5px solid rgba(66, 66, 66, 0.17);
   overflow: auto;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
 
-#navigation #stars-icon.active .stars {
+#stars-icon.active .stars {
   color: #FFD700;
 }
 
-#navigation #stars-icon:not(.active) .stars {
+#stars-icon:not(.active) .stars {
   color: white;
 }
-
 
 #sidebar::-webkit-scrollbar {
   display: none;
@@ -123,7 +142,7 @@ header {
   align-items: center;
   border: 0;
   border-bottom: 1px solid rgb(128, 128, 128);
-  background-color: rgb(132, 169, 140);
+  background-color: var(--sidebar-addbtn);
   transition: 0.5s;
 }
 
@@ -133,13 +152,14 @@ header {
   left: 275px;
   width: calc(100% - 275px);
   height: 30px;
-  background-color: rgba(0, 0, 0, 0.253);
+  background-color: var(--toolbar-color);
   padding: 0 1rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 0.5rem;
 }
+
 
 .toolbar-button {
   width: 20px;
@@ -152,6 +172,7 @@ main {
   left: 275px;
   width: calc(100% - 275px);
   height: calc(100% - 30px);
+  color: var(--default-text-color);
 }
 
 #text-area {
@@ -179,7 +200,7 @@ main {
 
 .displayed-note {
   width: calc(100% + 5px);
-  background-color: rgb(255, 255, 255);
+  background-color: var(--displayed-note-color);
   border-right: 5px solid rgb(255, 255, 255);
 }
 
