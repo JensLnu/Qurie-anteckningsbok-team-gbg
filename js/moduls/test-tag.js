@@ -8,7 +8,7 @@ export function addHashtag(e) {
     const parentElement = e.target.parentElement.parentNode;
 
     // hashtag div skapas 
-    const hashtagDiv = createHtmlElem('div', '', parentElement, 'hashtag-div');
+    const hashtagDiv = createHtmlElem('div', '', parentElement, 'hashtag-div', 'flex');
 
     // här skriver användaren taggen 
     const hashtagInput = createHtmlElem('input', '', hashtagContainer, 'hashtag-input');
