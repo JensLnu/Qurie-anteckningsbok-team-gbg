@@ -26,6 +26,9 @@
   <link rel="stylesheet" href="./css/tags.css" />
   <link rel="stylesheet" href="./css/search.css">
   <link rel="stylesheet" href="./css/favorit.css" />
+  <link rel="stylesheet" href="./css/setting.css">
+  <link rel="stylesheet" href="./css/note-template.css" />
+
 </head>
 
 <body>
@@ -42,11 +45,11 @@
         </li>
         <li class="icon stars-icon">
           <span class="material-symbols-outlined md-40 stars">stars</span>
-        </li>        
+        </li>
         <li class="icon">
           <span class="material-symbols-outlined md-40 finance">finance</span>
         </li>
-        <li class="icon" id="test">
+        <li class="icon" id="open-theme-modal">
           <!-- test id -->
           <span class="material-symbols-outlined md-40 settings">settings</span>
         </li>
@@ -71,6 +74,9 @@
   </section>
 
   <section id="toolbar">
+    <select id="note-template-btn">
+      <option>Mallar</option>
+    </select>
     <!-- Gissar att options kommer från API, Lycka till Tova & Adam! :-) -->
     <select name="fonts" id="fonts">
       <option value="Choose font">Välj en font</option>
@@ -104,6 +110,7 @@
     </div>
   </section>
   <main>
+    <!-- search modal -->
     <div id="text-area" contenteditable="true"></div>
     <dialog class="dialog">
       <div class="dialog-box">
@@ -116,23 +123,38 @@
         <div id="result-list"></div>
       </div>
     </dialog>
+
+    <!-- settings modal -->
+    <dialog class="theme-dialog">
+      <div class="theme-dialog-box">
+
+        <div class="theme" id="standard-theme">Hello</div>
+        <div class="theme" id="second-theme">Neon</div>
+        <div class="theme" id="third-theme">Hello</div>
+        <div class="theme" id="fourth-theme">Hello</div>
+       
+        
+      </div>
+    </dialog>
     <div id="text-area" contenteditable="true"></div>
   </main>
 
-    <!-- script -->
-    <script src="./js/globalVariables.js"></script>
-    <script src="./js/index.js"></script>
-    <script type="module" src="./js/add-several-notes.js"></script>
-    <script type="module" src="./js/swap-note.js"></script>
-    <script src="./js/firstVisit.js"></script>
-    <script type="module" src="./js/font-template.js"></script>
-    <script src="./js/dropdown.js"></script>
-    <script src="./js/formating-markdown.js"></script>
-    <script src="./js/add-img.js"></script>
-    <script src="./js/execCommand.js"></script>
-    <script type="module" src="./js/favorite.js"></script>
-    <script type="module" src="./js/search.js"></script>
-    <script type="module" src="./js/classes/newNote.js"></script>
-    
-  </body>
+  <!-- script -->
+  <script src="./js/globalVariables.js"></script>
+  <script type="module" src="./js/index.js"></script>
+  <script type="module" src="./js/add-several-notes.js"></script>
+  <script type="module" src="./js/swap-note.js"></script>
+  <script src="./js/firstVisit.js"></script>
+  <script type="module" src="./js/font-template.js"></script>
+  <script src="./js/dropdown.js"></script>
+  <script src="./js/formating-markdown.js"></script>
+  <script src="./js/add-img.js"></script>
+  <script src="./js/execCommand.js"></script>
+  <script type="module" src="./js/favorite.js"></script>
+  <script type="module" src="./js/search.js"></script>
+  <script type="module" src="./js/classes/newNote.js"></script>
+  <script src="./js/theme.js"> </script>
+
+</body>
+
 </html>
