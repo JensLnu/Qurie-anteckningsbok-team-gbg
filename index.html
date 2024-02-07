@@ -26,11 +26,9 @@
   <link rel="stylesheet" href="./css/tags.css" />
   <link rel="stylesheet" href="./css/search.css">
   <link rel="stylesheet" href="./css/favorit.css" />
-  <link rel="stylesheet" href="./css/note-template.css">
-  <link rel="stylesheet" href="./css/setting.css" id="theme-style">
 </head>
 
-<body class="body-default">
+<body>
   <header>
     <!-- <img src="#" alt="Quire Logo" id="logo"> -->
     <div id="logo-container">
@@ -39,16 +37,16 @@
     <nav id="navigation">
       <ul class="nav-list">
         <li class="icon" id="open-search-modal">
-          <span class="material-symbols-outlined md-40 search" >search</span></a>
+          <span class="material-symbols-outlined md-40 search">search</span></a>
 
         </li>
-        <li class="icon" class="stars-icon">
+        <li class="icon" id="stars-icon">
           <span class="material-symbols-outlined md-40 stars">stars</span>
-        </li>
+        </li>        
         <li class="icon">
           <span class="material-symbols-outlined md-40 finance">finance</span>
         </li>
-        <li class="icon" id="open-theme-modal">
+        <li class="icon" id="test">
           <!-- test id -->
           <span class="material-symbols-outlined md-40 settings">settings</span>
         </li>
@@ -61,24 +59,18 @@
       </div>
     </nav>
   </header>
-
   <section id="sidebar" class="">
     <button class="add-btn sidebar-border-right">
       <span class="material-symbols-outlined md-40">add_circle</span>
     </button>
     <div class="saved-notes"></div>
-
     <!-- sektion för favorite notes -->
     <!-- <section id="favorites-section">
         <div class="favorites-container"></div>
       </section> -->
-
   </section>
 
   <section id="toolbar">
-    <select id="note-template-btn">
-      <option value="Choose note template">Mallar</option>
-    </select>
     <!-- Gissar att options kommer från API, Lycka till Tova & Adam! :-) -->
     <select name="fonts" id="fonts">
       <option value="Choose font">Välj en font</option>
@@ -110,7 +102,6 @@
       <!-- Anteckningens innehåll här -->
       <button class="favorite-button" data-noteId="1">⭐</button>
     </div>
-    <button class="print-button"><span class="material-symbols-outlined">print</span></button>
   </section>
   <main>
     <div id="text-area" contenteditable="true"></div>
@@ -125,25 +116,12 @@
         <div id="result-list"></div>
       </div>
     </dialog>
-
-    <!-- settings modal -->
-    <dialog class="theme-dialog">
-      <div class="theme-dialog-box">
-
-        <div class="theme" id="standard-theme">Hello</div>
-        <div class="theme" id="second-theme">Hello</div>
-        <div class="theme" id="third-theme">Hello</div>
-        <div class="theme" id="fourth-theme">Hello</div>
-       
-        
-      </div>
-    </dialog>
     <div id="text-area" contenteditable="true"></div>
   </main>
 
     <!-- script -->
     <script src="./js/globalVariables.js"></script>
-    <script type="module" src="./js/index.js"></script>
+    <script src="./js/index.js"></script>
     <script type="module" src="./js/add-several-notes.js"></script>
     <script type="module" src="./js/swap-note.js"></script>
     <script src="./js/firstVisit.js"></script>
@@ -152,14 +130,9 @@
     <script src="./js/formating-markdown.js"></script>
     <script src="./js/add-img.js"></script>
     <script src="./js/execCommand.js"></script>
-    <script src="./js/favorite.js"></script>
+    <script type="module" src="./js/favorite.js"></script>
     <script type="module" src="./js/search.js"></script>
     <script type="module" src="./js/classes/newNote.js"></script>
-
-    <script src="./js/theme.js"></script>
     
-
-    <script src="./js/print.js"></script>
-
   </body>
 </html>
