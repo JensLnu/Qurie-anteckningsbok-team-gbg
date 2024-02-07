@@ -12,7 +12,7 @@ main {
 .toolbar-button {
     font-size: 14px; 
     font-weight: bold;
-    color: #333; 
+    color: var(--default-text-color); 
     background-color: var(--edit-buttons-primary); 
     border: 1px solid var(--edit-buttons-secondary); 
     border-radius: 5px; 
@@ -63,7 +63,7 @@ main {
 select {
     font-size: 14px; 
     font-weight: bold;
-    color: #333; 
+    color: var(--default-text-color); 
     background-color: var(--edit-buttons-primary);
     border: 1px solid var(--edit-buttons-secondary); 
     border-radius: 5px; 

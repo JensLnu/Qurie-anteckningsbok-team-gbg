@@ -7,7 +7,7 @@
 
 .note-key-display {
   font-weight: bold;
-  color: rgb(47, 62, 70);
+  color: var(--notes-text-color);
 }
 
 .delete-btn {
@@ -27,5 +27,5 @@
   width: 100%;
   height: 100vh;
   padding: 3em;
-  outline-color: rgb(47, 62, 70);
+  outline-color: var(--notes-text-color);
 }

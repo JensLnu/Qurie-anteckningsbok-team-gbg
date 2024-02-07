@@ -6,7 +6,7 @@
   width: 60vw;
   height: 70vh;
   border-radius: 1rem;
-  background-color: var(--dialog--background-color);
+  background-color: var(--dialog-background-color);
   border: 3px solid var(--logo-container-color);
 }
 .dialog-box {
