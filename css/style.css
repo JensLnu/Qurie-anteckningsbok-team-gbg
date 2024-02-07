@@ -11,7 +11,7 @@
   --toggle-add: none;
 
   /* Colors */
-  --header-color: rgb(53, 79, 82);;
+  --header-color: rgb(53, 79, 82);
   --logo-container-color: rgb(47, 62, 70);
   --logo-color: rgb(255, 255, 255);
   --sidebar-color: rgb(202, 210, 197);
@@ -26,6 +26,11 @@
   --first-visit-primary: rgb(34,84,110);
   --dialog--background-color: rgb(255, 255, 255);
   --hashtag-button-color: rgb(132, 169, 140);
+
+  /* note-template-colors */
+  --textColor: black;
+  --headerColor: black;
+  --bgColor: white;
 }
 
 
@@ -177,7 +182,13 @@ main {
 
 #text-area {
   height: 100%;
-  /* padding: 3rem; */
+  padding: 3rem;
+  color: var(--textColor); /* för note-template */
+  background-color: var(--bgColor); /* för note-template */
+}
+
+#text-area h1, #text-area h2, #text-area h3 { /* för note-template */
+  color: var(--headerColor);
 }
 
 /* DENNA SKA BYTAS TILL EN KLASS SÅ ATT DEN KAN ÅTERANVÄNDAS I ALLA NOTES*/
