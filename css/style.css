@@ -29,11 +29,10 @@
   --hashtag-button-color: rgb(132, 169, 140);
   --notes-text-color: rgb(47, 62, 70);
   --neon-text-shadow: none;
-  /* note-template-colors */
-  --textColor: black;
-  --headerColor: black;
-  --bgColor: white;
-  
+  /* note-template-colors */ /* Oscar ge FAN i mina note grejer mvh utvecklar */
+  --note-text-color: black;
+  --note-header-color: black;
+  --note-bg-color: white;
 }
 
 
@@ -191,12 +190,12 @@ main {
   height: 98%;
   overflow: auto;
   padding: 3rem;
-  color: var(--default-text-color);; /* för note-template */
-  background-color: var(--bgColor); /* för note-template */
+  color: var(--note-text-color); /* för note-template */
+  background-color: var(--note-bg-color); /* för note-template */
 }
 
 #text-area h1, #text-area h2, #text-area h3 { /* för note-template */
-  color: var(--default-text-color);
+  color: var(--note-header-color);
 }
 
 /* DENNA SKA BYTAS TILL EN KLASS SÅ ATT DEN KAN ÅTERANVÄNDAS I ALLA NOTES*/
