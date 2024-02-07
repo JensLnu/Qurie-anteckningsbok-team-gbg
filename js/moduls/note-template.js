@@ -13,6 +13,7 @@
 
 // [] - css, LATER! de finns en "note-template.css" som är kopplad och färdig för att göra css i
 // [] - ??
+const noteTemplateDropdown = document.getElementById('note-template-btn');
 
 import { createHtmlElem } from './createHtmlElem.js';
 const rootColors = document.querySelector(':root');
@@ -67,7 +68,7 @@ export function chooseNoteTemplate(selectedTemplate) {
             break;
         default: return;
     }
-    savedNote.updateNoteTemplate(selectedTemplate); // spara i class objektet och i ls
+   // savedNote.updateNoteTemplate(selectedTemplate); // spara i class objektet och i ls
     applyNoteTemplate(template);
     // console.log('slut chooseNoteTemplate');
 }
