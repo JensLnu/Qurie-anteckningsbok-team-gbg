@@ -69,7 +69,7 @@
 /* 
 ---------------NEON THEME------------------
 */
-.neon-theme {
+/* .neon-theme {
   background-color: #232323;
   color: #3A86FF;
   text-shadow: 0 0 20px #fff;
@@ -84,10 +84,10 @@
   text-shadow: 10 0 10px #fff;
 } */
 
-.neon-theme #toolbar {
+/* .neon-theme #toolbar {
   background-color: #111111;
   
-}
+} */
 /* .neon-theme #toolbar, #note-template-btn, #fonts, #font-size, #formatBlock, #bold, #italic, #insertOrderedList, #insertUnorderedList, #imgBtn, #note, #print-button {
   background-color: #232323;
   color: yellow;
@@ -95,7 +95,7 @@
 } */
 
 
-.neon-theme #sidebar {
+/* .neon-theme #sidebar {
   background-color: #111111;
 }
 
@@ -113,26 +113,5 @@
 }
 .neon-theme .displayed-note {
   background-color: #696969;
-}
+}  */
 
-/* #first-theme {
-  background-color: red;
-} */
-
-/* default-theme.css */
-/* .body-default {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-/* dark-theme.css */
-/* .body-dark {
-  background-color: #333333;
-  color: #ffffff;
-} */
-
-/* light-theme.css */
-/* .body-light {
-  background-color: #f4f4f4;
-  color: #333333;
-} */
