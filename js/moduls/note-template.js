@@ -3,7 +3,8 @@
 // [x] - lägga till valet av mall i toolbaren, dropdown med namn eller popout modul med previews?
 // [x] - skapa 3-4 olika mallar med olika färgval
 // [x] - applicera dem på vald note
-// [] - och spara valet i ls
+// [x] - och spara valet i ls
+// [] - läs in från ls
 // [] - göra så att tidigare vald mall blir vald för kommande ny skapad note, något i ls 'latest template'?
 // [] - lägg till olika font till mallarna?
 
@@ -28,39 +29,41 @@ export function createFunctionalityNoteTemplate() {
 
 // läser av vald mall från dropdown menyn och skickar vidare mallens olika egenskaper
 function chooseNoteTemplate(e) {
-    console.log('start applyNoteTemplate');
+    console.log('start chooseNoteTemplate');
     const selectedTemplate = e.target.value;
+    let template;
     switch (selectedTemplate) {
         case 'Mall 1':
-            const template1 = {
+            template = {
                 textColor: "#ffb703",
                 headerColor: "#fb8500",
                 bgColor: "#bb9457"
             }
-            applyNoteTemplate(template1);
             break;
         case 'Mall 2':
-            const template2 = {
+            template = {
                 textColor: "#4895ef",
                 headerColor: "#4361ee",
                 bgColor: "#d9d9d9"
             }
-            applyNoteTemplate(template2);
             break;
         case 'Mall 3':
-            const template3 = {
+            template = {
                 textColor: "#bfd200",
                 headerColor: "#80b918",
                 bgColor: "#ffccd5"
             }
-            applyNoteTemplate(template3);
             break;
+        default: return;
     }
+    savedNote.updateNoteTemplate(template); // spara i class objektet och i ls
+    applyNoteTemplate(template);
+    console.log('slut chooseNoteTemplate');
 }
 
-// apply selected template
-function applyNoteTemplate(template) {
-    console.log('start applyNoteTemplate')
+// applicerar vald mall
+export function applyNoteTemplate(template) {
+    console.log('start applyNoteTemplate', template)
     rootColors.style.setProperty("--textColor", template.textColor);
     rootColors.style.setProperty("--headerColor", template.headerColor);
     rootColors.style.setProperty("--bgColor", template.bgColor);
