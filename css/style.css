@@ -182,7 +182,8 @@ main {
 }
 
 #text-area {
-  height: 100%;
+  height: 98%;
+  overflow: auto;
   padding: 3rem;
   color: var(--textColor); /* för note-template */
   background-color: var(--bgColor); /* för note-template */
