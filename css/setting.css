@@ -1,12 +1,5 @@
 /* default-theme.css */
 
-
-
-.body-default {
-  background-color: #ffffff;
-  color: #000000;
-}
-
 .theme-dialog {
   /* margin på en data skärm,
     margin: 150px 5rem 0px 25rem;*/
@@ -15,10 +8,11 @@
   width: 60vw;
   height: 70vh;
   border-radius: 1rem;
-  border: 3px solid #2f3e46;
+  border: 3px solid var(--logo-color);
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--dialog-background-color);
 }
 
 .theme-dialog-box {
@@ -28,12 +22,13 @@
   width: 90%;
   height: 80%;
   flex-wrap: wrap;
+  
 }
 
 .theme {
   display: flex;
   border-radius: 10px;
-  border: 1px solid;
+  border: 3px solid var(--notes-text-color);
   width: 15vw;
   height: 20vh;
   margin: 1.5rem;
@@ -65,53 +60,3 @@
 .dark-theme .add-btn {
   background-color: blue;
 }
-
-/* 
----------------NEON THEME------------------
-*/
-/* .neon-theme {
-  background-color: #232323;
-  color: #3A86FF;
-  text-shadow: 0 0 20px #fff;
-}
-
-.neon-theme .material-symbols-outlined.md-40 {
-  color: #FF006E;
-  text-shadow: 10 0 10px #fff;
-}
-/* #stars-icon:not(.active) .stars {
-  color: #FF006E;
-  text-shadow: 10 0 10px #fff;
-} */
-
-/* .neon-theme #toolbar {
-  background-color: #111111;
-  
-} */
-/* .neon-theme #toolbar, #note-template-btn, #fonts, #font-size, #formatBlock, #bold, #italic, #insertOrderedList, #insertUnorderedList, #imgBtn, #note, #print-button {
-  background-color: #232323;
-  color: yellow;
-  
-} */
-
-
-/* .neon-theme #sidebar {
-  background-color: #111111;
-}
-
-.neon-theme #logo-container {
-  background-color: #232323;
-  color: #FF006E;
-  text-shadow: 10 10 10px #fff;
-}
-.neon-theme header {
-  background-color: #232323;
-}
-
-.neon-theme .add-btn {
-  background-color: #232323;
-}
-.neon-theme .displayed-note {
-  background-color: #696969;
-}  */
-
