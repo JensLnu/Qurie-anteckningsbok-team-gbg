@@ -11,7 +11,7 @@ function toggleFavorite() {
 function findFavorites() {
     let savedNote; // Deklarerar en variabel för att hålla den nuvarande behandlade anteckningen.
     let noteContainer = document.querySelector('.saved-notes');
-    let starsIcon = document.getElementById('stars-icon');
+    let starsIcon = document.querySelector('.stars-icon');
 
     starsIcon.classList.toggle('active');// Växlar klassen 'active' för att visuellt indikera om filtret är aktivt eller inte.
 
@@ -42,7 +42,7 @@ function findFavorites() {
 
 // Event listeners
 document.querySelector('.favorite-button').addEventListener('click', toggleFavorite);
-document.getElementById('stars-icon').addEventListener('click', findFavorites);
+document.querySelector('.stars-icon').addEventListener('click', findFavorites);
 
 
 

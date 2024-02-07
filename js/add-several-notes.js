@@ -4,6 +4,7 @@ import { addHashtag, createTags } from "./moduls/test-tag.js";
 import { createHtmlElem } from "./moduls/createHtmlElem.js";
 import Note from "../js/classes/newNote.js"
 import { chooseNote, displayNote } from "./swap-note.js";
+import { chooseNoteTemplate } from "./moduls/note-template.js";
 
 
 // Visa alla sparade anteckningar när sidan laddas om

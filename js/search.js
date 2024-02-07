@@ -28,7 +28,13 @@ hashtagsOrNot.addEventListener('click', () => {
   }
 });
 
-openSearchModal.addEventListener("click", () => dialog.showModal()); // Opens a modal
+openSearchModal.addEventListener("click", () => 
+  dialog.showModal(),
+  gtag("event", "search_button", { 
+    "event_category": "Search button interaction", 
+    "event_label": "Search for note",
+  }) // Tovas g-tag
+); // Opens a modal
 
 // Stänger modalen om man klickar utanför
 dialog.addEventListener("click", e => {

@@ -1,4 +1,4 @@
-import { chooseNoteTemplate } from "./moduls/note-template.js"
+import { createFunctionalityNoteTemplate } from "./moduls/note-template.js"
 
 document.getElementById('logo-container').addEventListener('click', () => {
     gtag('event', 'home-btn-click', {
@@ -8,6 +8,6 @@ document.getElementById('logo-container').addEventListener('click', () => {
     })
 })
 
-// förslag på att ha en main.js fil som läser in standard funktionalitet?
-
-noteTemplateBtn.addEventListener('click', chooseNoteTemplate); // aktiverar knappen för att välja antecknings mall
+window.addEventListener('DOMContentLoaded', () => {
+    createFunctionalityNoteTemplate(); // aktiverar knappen för att välja antecknings mall
+});
