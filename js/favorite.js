@@ -4,7 +4,13 @@ import { chooseNote } from "./swap-note.js";
 
 // Funktion för att växla favoritstatus på en sparad anteckning.
 function toggleFavorite() {
-    savedNote.updateFavorite(); // Uppdaterar favoritstatus för en specifik anteckning.   
+    savedNote.updateFavorite(); // Uppdaterar favoritstatus för en specifik anteckning.  
+    
+ //Toleen gtag   
+    gtag('event', 'toggle_favorite', {
+        'event_category': 'Favorite Actions', 
+        'event_label': 'Note Favorite Toggled' 
+    });
 }
 
 // Funktion för att hitta och visa favoritmarkerade anteckningar.
