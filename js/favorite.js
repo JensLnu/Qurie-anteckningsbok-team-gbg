@@ -15,6 +15,12 @@ function findFavorites() {
 
     starsIcon.classList.toggle('active');// Växlar klassen 'active' för att visuellt indikera om filtret är aktivt eller inte.
 
+    if (starsIcon.classList.contains('active')) {
+        starsIcon.querySelector('.stars').style.color = "#FFD700"; 
+    } else {
+        starsIcon.querySelector('.stars').style.color = "white"; 
+    }
+
     noteContainer.innerHTML = '';
     let localKey; // Deklarerar en variabel för att hålla nyckeln till den aktuella posten i localStorage.
 
