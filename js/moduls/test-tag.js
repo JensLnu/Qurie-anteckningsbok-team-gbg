@@ -13,15 +13,15 @@ export function addHashtag(e) {
     // här skriver användaren taggen 
     const hashtagInput = createHtmlElem('input', '', hashtagContainer, 'hashtag-input');
 
-
+    
     // när man trycker utanför så sparas taggen till objektet/klassen (?) addTag.
     hashtagInput.addEventListener('keydown', (e) => {
         if (e.keyCode === 13) {
             const hashtagValue = hashtagInput.value;
             savedNote.addTag(hashtagValue); // lägger till hashtagen i objektet
-
+            
             //kör funktionen createTags med hashtagvalue som parameter.
-            createTags(hashtagValue, hashtagDiv);
+        createTags(hashtagValue, hashtagDiv);
         }
     });
     hashtagInput.focus();
@@ -29,7 +29,7 @@ export function addHashtag(e) {
 };
 
 // en funktion som skapar h6 för tagg och dltbtn samt evnt lyssnare till den för att ta bort taggen
-export function createTags(hashtagValue, hashtagDiv) {
+export function createTags(hashtagValue, hashtagDiv ) {
     // skapa diven taggar ska ligga i 
     const savedTagsDiv = createHtmlElem('div', '', hashtagDiv, 'saved-tags-div');
 

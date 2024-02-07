@@ -61,12 +61,12 @@ function highLightTargedNote(selectedNote) {
 
 // Funktion för att dölja de tags som inte är aktiva och visa aktiv tag
 function highLightTargedTag(selectedNote) {
-    let tags = document.querySelectorAll('.hashtag-container');
+    let tags = document.querySelectorAll('.saved-tags-div');
     tags.forEach(note => {
         note.classList.add('display-none');
     });
 
-    tags = selectedNote.querySelectorAll('.hashtag-container');
+    tags = selectedNote.querySelectorAll('.saved-tags-div');
     tags.forEach(note => {
         note.classList.remove('display-none');
     });

@@ -1,6 +1,6 @@
 /*--- Som användare vill jag kunna skapa flera olika anteckningar ---*/
 
-import { addHashtag } from "./moduls/tags.js";
+import { addHashtag, createTags } from "./moduls/test-tag.js";
 import { createHtmlElem } from "./moduls/createHtmlElem.js";
 import Note from "../js/classes/newNote.js"
 import { chooseNote, displayNote } from "./swap-note.js";
@@ -78,12 +78,7 @@ export function createNotesContainer(noteId) {
     if (jsonObj && jsonObj.hashtags && jsonObj.hashtags.length > 0) {
         // Gå igenom varje hashtag i sparade notes
         jsonObj.hashtags.forEach(tag => {
-            // Kalla på addHashtag från tags.js för att skapa ett nytt input fält som innehåller de specifika tagsen under varje note (läggs i hashtagContainer)
-            addHashtag({target: {parentElement: {parentNode: hashtagContainer}}});
-            // Hämta senast skapade hashtag input fält i hashtagContainer
-            const tagInput = hashtagContainer.lastElementChild.querySelector('.hashtag-input');
-            // Sätt värdet av hashtag inputen till tagens innehåll
-            tagInput.value = tag;
+            createTags(tag, hashtagContainer);
         });
     }
 
