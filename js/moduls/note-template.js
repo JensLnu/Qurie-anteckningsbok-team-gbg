@@ -25,17 +25,17 @@ export function createFunctionalityNoteTemplate() {
     createHtmlElem('option', 'Mall 2', noteTemplateDropdown);
     createHtmlElem('option', 'Mall 3', noteTemplateDropdown);
     noteTemplateDropdown.addEventListener('change', (e) => {
-        chooseNoteTemplate(e);
+        const selectedTemplate = e.target.value;
+        chooseNoteTemplate(selectedTemplate);
     });
 }
 
 // läser av vald mall från dropdown menyn och skickar vidare mallens olika egenskaper
-function chooseNoteTemplate(e) {
+export function chooseNoteTemplate(selectedTemplate) {
     console.log('start chooseNoteTemplate');
-    const selectedTemplate = e.target.value;
     let template;
     switch (selectedTemplate) {
-        case 'Standard':
+        case 'Standard', 'Mallar':
             template = {
                 textColor: "black",
                 headerColor: "black",

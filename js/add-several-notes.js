@@ -4,6 +4,7 @@ import { addHashtag } from "./moduls/tags.js";
 import { createHtmlElem } from "./moduls/createHtmlElem.js";
 import Note from "../js/classes/newNote.js"
 import { chooseNote, displayNote } from "./swap-note.js";
+import { chooseNoteTemplate } from "./moduls/note-template.js";
 
 
 // Visa alla sparade anteckningar när sidan laddas om
@@ -101,6 +102,7 @@ export function createNotesContainer(noteId) {
     createDeleteButton(noteId, noteHeaderContainer); // Knapp för att ta bort anteckning
     savedNotes.appendChild(notes);
     displayNote(noteId);
+    chooseNoteTemplate('Standard'); // ger skapad note en stadard mall
 }
 
 // Funktion för att ta bort anteckning
