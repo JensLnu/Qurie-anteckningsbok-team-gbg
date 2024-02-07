@@ -9,11 +9,38 @@ const themeStyle = document.getElementById('theme-style');
 const themeSelector = document.getElementById('theme-selector');
 const rootColors = document.querySelector(":root");
 
-
+// Öppnar modalen
 openThemeModal.addEventListener("click", () => dialog.showModal());
+
+// Media query
+// Skapa en mediaquery som kontrollerar om användaren använder dark mode
+var darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+// Funktion som körs när användarens färgschema ändras
+function handleColorSchemeChange(e) {
+  if (e.matches) {
+    // Användaren använder dark mode
+    console.log("Användaren använder dark mode");
+    darkmodeTheme();
+  } else {
+    // Användaren använder light mode
+    console.log("Användaren använder light mode");
+    lightmodeTheme();
+  }
+}
+
+// Lyssna på förändringar i användarens färgschema
+darkModeQuery.addListener(handleColorSchemeChange);
+
+// Kör funktionen en gång vid sidans laddning för att anpassa innehållet
+handleColorSchemeChange(darkModeQuery);
+
 
 // STANDARD THEME
 standardTheme.onclick = function () {
+    lightmodeTheme();
+}
+function lightmodeTheme() {
     rootColors.style.setProperty("--header-color", "rgb(53, 79, 82)")
     rootColors.style.setProperty("--logo-container-color", "rgb(47, 62, 70)")
     rootColors.style.setProperty("--logo-color", "rgb(255, 255, 255)")
@@ -34,8 +61,12 @@ standardTheme.onclick = function () {
     rootColors.style.setProperty("--notes-text-color", "rgb(47, 62, 70)")
 }
 
+
 // NEON THEME
 secondTheme.onclick = function () {
+    neonTheme();
+}
+function neonTheme() {
     rootColors.style.setProperty("--header-color", "rgb(35,35,35)")
     rootColors.style.setProperty("--logo-container-color", "rgb(35,35,35)")
     rootColors.style.setProperty("--logo-color", "rgb(255,0,110)")
@@ -58,6 +89,9 @@ secondTheme.onclick = function () {
 
 // DARKMODE THEME
 thirdTheme.onclick = function () {
+    darkmodeTheme();
+}
+function darkmodeTheme() {
     rootColors.style.setProperty("--header-color", "rgb(35,35,35)")
     rootColors.style.setProperty("--logo-container-color", "rgb(35,35,35)")
     rootColors.style.setProperty("--logo-color", "rgb(221, 221, 221)")
@@ -78,13 +112,6 @@ thirdTheme.onclick = function () {
     rootColors.style.setProperty("--notes-text-color", "white")
 }
 
-
-
-
-// MÖRK GRÖN (14,21,20)
-// ljusare (27, 67, 50)
-// ljusare (45, 106, 79)
-// textfärg? (116, 198, 157)
 
 // Stänger modalen om man klickar utanför
 dialog.addEventListener("click", e => {
