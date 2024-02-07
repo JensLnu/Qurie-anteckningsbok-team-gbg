@@ -4,9 +4,10 @@
 // [x] - skapa 3-4 olika mallar med olika färgval
 // [x] - applicera dem på vald note
 // [x] - och spara valet i ls
-// [] - läs in från ls
-// [] - göra så att tidigare vald mall blir vald för kommande ny skapad note, något i ls 'latest template'?
+// [x] - läs in från ls
+// [x] - göra så att tidigare vald mall blir vald för kommande ny skapad note, något i ls 'latest template'? (inte helt hundra på hur detta löset sig men men de funkar)
 // [] - lägg till olika font till mallarna?
+// [] - lägg till olika boarders, boarder radius, shadow?
 
 /* Bugs */
 
@@ -19,6 +20,7 @@ import { createHtmlElem } from './createHtmlElem.js';
 // skapar de olika valen i dropdown menyn och lägger på eventListner när menyn ändras
 export function createFunctionalityNoteTemplate() {
     console.log('start createFunctionalityNoteTemplate');
+    createHtmlElem('option', 'Standard', noteTemplateDropdown);
     createHtmlElem('option', 'Mall 1', noteTemplateDropdown);
     createHtmlElem('option', 'Mall 2', noteTemplateDropdown);
     createHtmlElem('option', 'Mall 3', noteTemplateDropdown);
@@ -33,6 +35,13 @@ function chooseNoteTemplate(e) {
     const selectedTemplate = e.target.value;
     let template;
     switch (selectedTemplate) {
+        case 'Standard':
+            template = {
+                textColor: "black",
+                headerColor: "black",
+                bgColor: "white"
+            }
+            break;
         case 'Mall 1':
             template = {
                 textColor: "#ffb703",

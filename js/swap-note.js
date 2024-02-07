@@ -1,7 +1,8 @@
 // Lägg till eventlistener till alla existerande anteckningar när sidan laddas
 document.addEventListener('DOMContentLoaded', chooseNote);
-import Note from "../js/classes/newNote.js"
-import { loadFont, removeAllFonts } from './font-template.js'
+import Note from "../js/classes/newNote.js";
+import { loadFont, removeAllFonts } from "./font-template.js";
+import { applyNoteTemplate } from "./moduls/note-template.js"
 
 // makes all notes clickable and enabels header to be editable
 // array with all div elements (notes), needs to be updated every time the function is executed as new notes may have been added
@@ -39,6 +40,7 @@ export function displayNote(noteId) {
     removeAllFonts();
     highLightTargedNote(savedNote.htmlReference);
     highLightTargedTag(savedNote.htmlReference);
+    if (savedNote.noteTemplate) applyNoteTemplate(savedNote.noteTemplate);
     if(savedNote.font != ''){
         loadFont(savedNote.fonts);
         fontDropdown.value = textarea.style.font;
