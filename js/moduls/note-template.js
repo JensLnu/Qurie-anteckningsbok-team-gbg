@@ -15,6 +15,7 @@
 // [] - ??
 
 import { createHtmlElem } from './createHtmlElem.js';
+const rootColors = document.querySelector(':root');
 
 // hit kommer man när man klickar på "Mallar" i toolbaren
 // skapar de olika valen i dropdown menyn och lägger på eventListner när menyn ändras

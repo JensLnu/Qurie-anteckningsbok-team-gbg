@@ -42,7 +42,7 @@
         </li>
         <li class="icon" id="stars-icon">
           <span class="material-symbols-outlined md-40 stars">stars</span>
-        </li>        
+        </li>
         <li class="icon">
           <span class="material-symbols-outlined md-40 finance">finance</span>
         </li>
@@ -71,6 +71,9 @@
   </section>
 
   <section id="toolbar">
+    <select id="note-template-btn">
+      <option value="Choose note template">Mallar</option>
+    </select>
     <!-- Gissar att options kommer från API, Lycka till Tova & Adam! :-) -->
     <select name="fonts" id="fonts">
       <option value="Choose font">Välj en font</option>
@@ -119,20 +122,21 @@
     <div id="text-area" contenteditable="true"></div>
   </main>
 
-    <!-- script -->
-    <script src="./js/globalVariables.js"></script>
-    <script src="./js/index.js"></script>
-    <script type="module" src="./js/add-several-notes.js"></script>
-    <script type="module" src="./js/swap-note.js"></script>
-    <script src="./js/firstVisit.js"></script>
-    <script type="module" src="./js/font-template.js"></script>
-    <script src="./js/dropdown.js"></script>
-    <script src="./js/formating-markdown.js"></script>
-    <script src="./js/add-img.js"></script>
-    <script src="./js/execCommand.js"></script>
-    <script type="module" src="./js/favorite.js"></script>
-    <script type="module" src="./js/search.js"></script>
-    <script type="module" src="./js/classes/newNote.js"></script>
-    
-  </body>
+  <!-- script -->
+  <script src="./js/globalVariables.js"></script>
+  <script src="./js/index.js"></script>
+  <script type="module" src="./js/add-several-notes.js"></script>
+  <script type="module" src="./js/swap-note.js"></script>
+  <script src="./js/firstVisit.js"></script>
+  <script type="module" src="./js/font-template.js"></script>
+  <script src="./js/dropdown.js"></script>
+  <script src="./js/formating-markdown.js"></script>
+  <script src="./js/add-img.js"></script>
+  <script src="./js/execCommand.js"></script>
+  <script type="module" src="./js/favorite.js"></script>
+  <script type="module" src="./js/search.js"></script>
+  <script type="module" src="./js/classes/newNote.js"></script>
+
+</body>
+
 </html>
