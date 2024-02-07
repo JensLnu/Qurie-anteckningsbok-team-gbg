@@ -42,19 +42,10 @@ secondTheme.onclick = function () {
     rootColors.style.setProperty("--edit-buttons-hover", "rgb(240,240,240)")
     rootColors.style.setProperty("--first-visit-primary", "rgb(34,84,110)")
     rootColors.style.setProperty("--dialog--background-color", "rgb(255, 255, 255)")
+    rootColors.style.setProperty("--neon-text-shadow", "10 0 10px #fff")
     
 }
 
-// firstTheme.addEventListener('change', () => {
-//     let selectedTheme = this.value;
-//     switchTheme(selectedTheme);
-// });
-
-// function switchTheme(theme) {
-//     let themePath = theme + '-setting.css';
-//     themeStyle.setAttribute('href', themePath);
-//     document.body.className = 'body-' + theme;
-// }
 
 
 
