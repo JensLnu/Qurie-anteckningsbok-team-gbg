@@ -1,9 +1,11 @@
 /* 18. (7.6 points) Som användare vill jag kunna välja olika mallar för varje anteckning -- JENS & TOLEEN */
 
-// [] - lägga till valet av mall i toolbaren, dropdown med namn eller popout modul med previews?
-// [] - skapa 3-4 olika mallar
-// [] - applicera dem på vald note, och spara valet i ls
+// [x] - lägga till valet av mall i toolbaren, dropdown med namn eller popout modul med previews?
+// [x] - skapa 3-4 olika mallar med olika färgval
+// [x] - applicera dem på vald note
+// [] - och spara valet i ls
 // [] - göra så att tidigare vald mall blir vald för kommande ny skapad note, något i ls 'latest template'?
+// [] - lägg till olika font till mallarna?
 
 /* Bugs */
 
@@ -56,7 +58,10 @@ function chooseNoteTemplate(e) {
     }
 }
 
+// apply selected template
 function applyNoteTemplate(template) {
     console.log('start applyNoteTemplate')
-    
+    rootColors.style.setProperty("--textColor", template.textColor);
+    rootColors.style.setProperty("--headerColor", template.headerColor);
+    rootColors.style.setProperty("--bgColor", template.bgColor);
 }
