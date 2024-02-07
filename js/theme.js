@@ -104,7 +104,7 @@ function darkmodeTheme() {
     rootColors.style.setProperty("--displayed-note-color", "rgb(52, 52, 52)")
     rootColors.style.setProperty("--edit-buttons-primary", "rgb(35,35,35)")
     rootColors.style.setProperty("--edit-buttons-secondary", "rgb(85,85,85)")
-    rootColors.style.setProperty("--edit-buttons-hover", "rgb(221, 221, 221)")
+    rootColors.style.setProperty("--edit-buttons-hover", "rgb(89, 89, 89)")
     rootColors.style.setProperty("--first-visit-primary", "rgb(221, 221, 221)")
     rootColors.style.setProperty("--dialog-background-color", "rgb(35,35,35)")
     rootColors.style.setProperty("--neon-text-shadow", "10 0 10px #fff")

@@ -7,7 +7,7 @@
   height: 70vh;
   border-radius: 1rem;
   background-color: var(--dialog-background-color);
-  border: 3px solid var(--logo-container-color);
+  border: 3px solid var(--logo-color);
 }
 .dialog-box {
   display: flex;
@@ -15,6 +15,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+  
 }
 #input-search-bar {
   margin-top: 15px;
@@ -52,7 +53,8 @@
   overflow: hidden;
   flex: none;
   border-radius: 1rem;
-  background-color: rgb(204, 204, 204);
+  background-color: var(--edit-buttons-hover);
+  color: var(--default-text-color);
   transition: 0.3s;
 }
 
