@@ -1,8 +1,23 @@
+/* Standardmall */
+.note-template-standard {
+    --note-text-color: black;
+    --note-header-color: black;
+    --note-bg-color: white;
+    --note-font-family: Arial, sans-serif;
+    --note-border: 1px solid #000;
+    --note-border-radius: 5px;
+    --note-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
 /* Mall 1 */
 .note-template1 {
     --note-text-color: #ffb703;
     --note-header-color: #fb8500;
     --note-bg-color: #bb9457;
+    --note-font-family: Arial, sans-serif;
+    --note-border: 1px solid #000;
+    --note-border-radius: 5px;
+    --note-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* Mall 2 */
@@ -10,6 +25,10 @@
     --note-text-color: #4895ef;
     --note-header-color: #4361ee;
     --note-bg-color: #d9d9d9;
+    --note-font-family: 'Times New Roman', serif;
+    --note-border: 2px dotted #333;
+    --note-border-radius: 10px;
+    --note-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Mall 3 */
@@ -17,11 +36,8 @@
     --note-text-color: #bfd200;
     --note-header-color: #80b918;
     --note-bg-color: #ffccd5;
-}
-
-/* Standardmall eller andra generella stilar */
-.note-template-standard {
-    --note-text-color: black;
-    --note-header-color: black;
-    --note-bg-color: white;
+    --note-font-family: Arial, sans-serif;
+    --note-border: 1px solid #000;
+    --note-border-radius: 5px;
+    --note-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }

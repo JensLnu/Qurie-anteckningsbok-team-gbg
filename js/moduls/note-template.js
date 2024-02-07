@@ -6,12 +6,12 @@
 // [x] - och spara valet i ls
 // [x] - läs in från ls
 // [] - göra så att tidigare vald mall blir vald för kommande ny skapad note, något i ls 'latest template'? (den gör de nu men sparas inte i ls)
-// [] - lägg till olika font till mallarna?
-// [] - lägg till olika boarders, boarder radius, shadow?
+// [x] - lägg till olika font till mallarna?
+// [x] - lägg till olika boarders, boarder radius, shadow?
 
 /* Bugs */
 
-// [] - css, LATER! de finns en "note-template.css" som är kopplad och färdig för att göra css i
+// [x] - css, LATER! de finns en "note-template.css" som är kopplad och färdig för att göra css i
 // [] - ??
 const noteTemplateDropdown = document.getElementById('note-template-btn');
 
