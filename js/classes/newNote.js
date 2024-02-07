@@ -8,6 +8,7 @@ export default class Note {
         this.favorite = false,
         this.size = 16,
         this.htmlReference;
+        this.noteTemplate;
     }
     updateTitle(title){
         this.title = title;
@@ -41,6 +42,10 @@ export default class Note {
         this.htmlReference = ref;
         this.save();
     }
+    updateNoteTemplate(template){
+        this.noteTemplate = template;
+        this.save();
+    }
     save(){
         const note = {
             noteId : this.noteId,
@@ -50,6 +55,8 @@ export default class Note {
             hashtags : this.hashtags,
             favorite : this.favorite,
             size : this.size,
+            htmlReference: this.htmlReference,
+            noteTemplate: this.noteTemplate
         }
         localStorage.setItem(this.noteId, JSON.stringify(note));
     }
