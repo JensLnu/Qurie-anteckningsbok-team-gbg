@@ -1,14 +1,3 @@
-
-const dialog = document.querySelector(".theme-dialog");
-const openThemeModal = document.getElementById("open-theme-modal");
-const standardTheme = document.getElementById('standard-theme');
-const secondTheme = document.getElementById('second-theme');
-const thirdTheme = document.getElementById('third-theme');
-const fourthTheme = document.getElementById('fourth-theme');
-const themeStyle = document.getElementById('theme-style');
-const themeSelector = document.getElementById('theme-selector');
-const rootColors = document.querySelector(":root");
-
 // Öppnar modalen
 openThemeModal.addEventListener("click", () => dialog.showModal());
 
