@@ -112,6 +112,32 @@ function darkmodeTheme() {
     rootColors.style.setProperty("--notes-text-color", "white")
 }
 
+// FOURTH THEME
+fourthTheme.onclick = function () {
+  quireTheme();
+}
+function quireTheme() {
+  rootColors.style.setProperty("--header-color", "rgb(120, 144, 156)"); 
+  rootColors.style.setProperty("--logo-container-color", "rgb(207, 216, 220)"); 
+  rootColors.style.setProperty("--logo-color", "rgb(38, 50, 56)"); 
+  rootColors.style.setProperty("--displayed-note-color", "rgb(255, 253, 231)"); 
+  rootColors.style.setProperty("--edit-buttons-primary", "rgb(144, 164, 174)"); 
+  rootColors.style.setProperty("--dialog-background-color", "rgb(255, 253, 231)"); 
+  rootColors.style.setProperty("--sidebar-color", "rgb(178, 223, 219)");
+  rootColors.style.setProperty("--toolbar-color", "rgba(187, 222, 251, 0.8)"); 
+  rootColors.style.setProperty("--default-text-color", "rgb(55, 71, 79)"); 
+  rootColors.style.setProperty("--delete-btn-color", "rgb(189, 189, 189)"); 
+  rootColors.style.setProperty("--hashtag-button-color", "rgb(178, 223, 219)"); 
+  rootColors.style.setProperty("--sidebar-addbtn", "rgb(178, 223, 219)"); 
+  rootColors.style.setProperty("--edit-buttons-secondary", "rgb(207, 216, 220)"); 
+  rootColors.style.setProperty("--edit-buttons-hover", "rgb(238, 238, 238)"); 
+  rootColors.style.setProperty("--first-visit-primary", "rgb(144, 202, 249)"); 
+  rootColors.style.setProperty("--neon-text-shadow", "none"); 
+  rootColors.style.setProperty("--bgColor", "rgb(250, 250, 250)"); 
+  rootColors.style.setProperty("--notes-text-color", "rgb(38, 50, 56)"); 
+  
+}
+
 
 // Stänger modalen om man klickar utanför
 dialog.addEventListener("click", e => {
