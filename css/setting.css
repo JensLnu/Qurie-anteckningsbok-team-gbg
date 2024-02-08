@@ -13,6 +13,8 @@
   align-items: center;
   justify-content: center;
   background-color: var(--dialog-background-color);
+  /* -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(30px); */
 }
 
 .theme-dialog-box {
@@ -22,7 +24,6 @@
   width: 90%;
   height: 80%;
   flex-wrap: wrap;
-  
 }
 
 .theme {
@@ -34,14 +35,15 @@
   margin: 1.5rem;
   transition: 0.2s;
   cursor: pointer;
+  transition: transform 0.3s ease;
 }
 .theme img {
   width: 100%;
   height: auto;
   object-fit: cover;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
 }
 
 .theme:hover {
-  scale: 1.05;
+  transform: scale(1.05);
 }
