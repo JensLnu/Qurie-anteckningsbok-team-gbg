@@ -66,11 +66,13 @@ function highLightTargedTag(selectedNote) {
     let tags = document.querySelectorAll('.saved-tags-div');
     tags.forEach(note => {
         note.classList.add('display-none');
+        note.classList.remove('flex-container')
     });
 
     tags = selectedNote.querySelectorAll('.saved-tags-div');
     tags.forEach(note => {
         note.classList.remove('display-none');
+        note.classList.add('flex-container')
     });
 }
 
