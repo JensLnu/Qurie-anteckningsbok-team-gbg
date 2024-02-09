@@ -1,9 +1,11 @@
+document.addEventListener('DOMContentLoaded', setTheme);
+
 // Öppnar modalen
 openThemeModal.addEventListener("click", () => dialog.showModal());
 
 // Media query
 // Skapa en mediaquery som kontrollerar om användaren använder dark mode
-var darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+// let darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
 // Funktion som körs när användarens färgschema ändras
 function handleColorSchemeChange(e) {
@@ -19,10 +21,10 @@ function handleColorSchemeChange(e) {
 }
 
 // Lyssna på förändringar i användarens färgschema
-darkModeQuery.addListener(handleColorSchemeChange);
+// darkModeQuery.addListener(handleColorSchemeChange);
 
 // Kör funktionen en gång vid sidans laddning för att anpassa innehållet
-handleColorSchemeChange(darkModeQuery);
+// handleColorSchemeChange(darkModeQuery);
 
 
 // STANDARD THEME
@@ -48,6 +50,8 @@ function lightmodeTheme() {
     rootColors.style.setProperty("--neon-text-shadow", "none")
     rootColors.style.setProperty("--bgColor", "white")
     rootColors.style.setProperty("--notes-text-color", "rgb(47, 62, 70)")
+  
+    localStorage.setItem('theme', 'default');
 }
 
 
@@ -74,6 +78,8 @@ function neonTheme() {
     rootColors.style.setProperty("--neon-text-shadow", "10 0 10px #fff")
     rootColors.style.setProperty("--bgColor", "rgb(35,35,35)")
     rootColors.style.setProperty("--notes-text-color", "rgb(251,86,7)")
+  
+  localStorage.setItem('theme', 'neon');
 }
 
 // DARKMODE THEME
@@ -99,6 +105,8 @@ function darkmodeTheme() {
     rootColors.style.setProperty("--neon-text-shadow", "10 0 10px #fff")
     rootColors.style.setProperty("--bgColor", "rgb(35,35,35)")
     rootColors.style.setProperty("--notes-text-color", "white")
+
+    localStorage.setItem('theme', 'dark');
 }
 
 // FOURTH THEME
@@ -106,26 +114,50 @@ fourthTheme.onclick = function () {
   quireTheme();
 }
 function quireTheme() {
-rootColors.style.setProperty("--header-color", "rgb(225, 245, 254)"); 
-rootColors.style.setProperty("--logo-container-color", "rgb(187, 222, 251)"); 
-rootColors.style.setProperty("--logo-color", "rgb(30, 136, 229)"); 
-rootColors.style.setProperty("--displayed-note-color", "rgb(227, 242, 253)");
-rootColors.style.setProperty("--edit-buttons-primary", "rgb(144, 202, 249)"); 
-rootColors.style.setProperty("--dialog-background-color", "rgb(207, 216, 220)"); 
-rootColors.style.setProperty("--sidebar-color", "rgb(225, 230, 240)"); 
-rootColors.style.setProperty("--toolbar-color", "rgba(100, 181, 246, 0.8)"); 
-rootColors.style.setProperty("--default-text-color", "rgb(26, 35, 126)"); 
-rootColors.style.setProperty("--delete-btn-color", "rgb(144, 202, 249)"); 
-rootColors.style.setProperty("--hashtag-button-color", "rgb(144, 202, 249)"); 
-rootColors.style.setProperty("--sidebar-addbtn", "rgb(144, 202, 249)"); 
-rootColors.style.setProperty("--edit-buttons-secondary", "rgb(187, 222, 251)"); 
-rootColors.style.setProperty("--edit-buttons-hover", "rgb(227, 242, 253)"); 
-rootColors.style.setProperty("--first-visit-primary", "rgb(30, 136, 229)"); 
-rootColors.style.setProperty("--neon-text-shadow", "none"); 
-rootColors.style.setProperty("--bgColor", "rgb(237, 247, 255)"); 
-rootColors.style.setProperty("--notes-text-color", "rgb(30, 136, 229)");
+   rootColors.style.setProperty("--header-color", "rgb(225, 245, 254)"); 
+   rootColors.style.setProperty("--logo-container-color", "rgb(187, 222, 251)"); 
+   rootColors.style.setProperty("--logo-color", "rgb(30, 136, 229)"); 
+   rootColors.style.setProperty("--displayed-note-color", "rgb(227, 242, 253)");
+   rootColors.style.setProperty("--edit-buttons-primary", "rgb(144, 202, 249)"); 
+   rootColors.style.setProperty("--dialog-background-color", "rgb(207, 216, 220)"); 
+   rootColors.style.setProperty("--sidebar-color", "rgb(225, 230, 240)"); 
+   rootColors.style.setProperty("--toolbar-color", "rgba(100, 181, 246, 0.8)"); 
+   rootColors.style.setProperty("--default-text-color", "rgb(26, 35, 126)"); 
+   rootColors.style.setProperty("--delete-btn-color", "rgb(144, 202, 249)"); 
+   rootColors.style.setProperty("--hashtag-button-color", "rgb(144, 202, 249)"); 
+   rootColors.style.setProperty("--sidebar-addbtn", "rgb(144, 202, 249)"); 
+   rootColors.style.setProperty("--edit-buttons-secondary", "rgb(187, 222, 251)"); 
+   rootColors.style.setProperty("--edit-buttons-hover", "rgb(227, 242, 253)"); 
+   rootColors.style.setProperty("--first-visit-primary", "rgb(30, 136, 229)"); 
+   rootColors.style.setProperty("--neon-text-shadow", "none"); 
+   rootColors.style.setProperty("--bgColor", "rgb(237, 247, 255)"); 
+   rootColors.style.setProperty("--notes-text-color", "rgb(30, 136, 229)");
 
-  
+   localStorage.setItem('theme', 'quire');
+ 
+}
+
+
+function setTheme() {
+  const theme = localStorage.getItem('theme');
+
+  switch (theme) {
+    case 'default':
+      lightmodeTheme();
+      break;
+    case 'neon':
+      neonTheme();
+      break;
+    case 'dark':
+      darkmodeTheme();
+      break;
+    case 'quire':
+      quireTheme();
+      break;
+    default:
+      lightmodeTheme();
+
+  }
 }
 
 

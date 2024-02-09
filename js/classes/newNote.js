@@ -9,6 +9,7 @@ export default class Note {
         this.size = 16,
         this.htmlReference;
         this.noteTemplate;
+        
     }
     updateTitle(title){
         this.title = title;
