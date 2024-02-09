@@ -4,7 +4,13 @@ import { chooseNote } from "./swap-note.js";
 
 // Funktion för att växla favoritstatus på en sparad anteckning.
 function toggleFavorite() {
-    savedNote.updateFavorite(); // Uppdaterar favoritstatus för en specifik anteckning.   
+    savedNote.updateFavorite(); // Uppdaterar favoritstatus för en specifik anteckning.  
+    
+ //Toleen gtag   
+    gtag('event', 'toggle_favorite', {
+        'event_category': 'Favorite Actions', 
+        'event_label': 'Note Favorite Toggled' 
+    });
 }
 
 // Funktion för att hitta och visa favoritmarkerade anteckningar.
@@ -14,6 +20,12 @@ function findFavorites() {
     let starsIcon = document.querySelector('.stars-icon');
 
     starsIcon.classList.toggle('active');// Växlar klassen 'active' för att visuellt indikera om filtret är aktivt eller inte.
+
+    if (starsIcon.classList.contains('active')) {
+        starsIcon.querySelector('.stars').style.color = "#FFD700"; 
+    } else {
+        starsIcon.querySelector('.stars').style.color = "white"; 
+    }
 
     noteContainer.innerHTML = '';
     let localKey; // Deklarerar en variabel för att hålla nyckeln till den aktuella posten i localStorage.
@@ -43,6 +55,3 @@ function findFavorites() {
 // Event listeners
 document.querySelector('.favorite-button').addEventListener('click', toggleFavorite);
 document.querySelector('.stars-icon').addEventListener('click', findFavorites);
-
-
-
