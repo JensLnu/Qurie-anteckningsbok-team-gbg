@@ -47,3 +47,24 @@
 .hashtag-marked {
     background-color: chocolate;
 }
+
+.hashtag-container{
+/* border: solid blue; */
+display: flex;
+flex-wrap: wrap;
+margin: 10px ;
+}
+
+.saved-tags-div.flex-container{
+    display: flex;
+    margin: 2px;
+}
+
+.dlt-tag{
+    color: red;
+    border-radius: 50%;
+}
+
+.single-tag{
+    align-self: center;
+}
