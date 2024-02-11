@@ -13,10 +13,10 @@
 
 // [x] - css, LATER! de finns en "note-template.css" som är kopplad och färdig för att göra css i
 // [] - ??
-const noteTemplateDropdown = document.getElementById('note-template-btn');
-
 import { createHtmlElem } from './createHtmlElem.js';
 const rootColors = document.querySelector(':root');
+
+const noteTemplateDropdown = document.getElementById('note-template-btn');
 
 // hit kommer man när man klickar på "Mallar" i toolbaren
 // skapar de olika valen i dropdown menyn och lägger på eventListner när menyn ändras

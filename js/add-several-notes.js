@@ -102,6 +102,7 @@ export function createNotesContainer(noteId) {
     createDeleteButton(noteId, noteHeaderContainer); // Knapp för att ta bort anteckning
     savedNotes.appendChild(notes);
     displayNote(noteId);
+    chooseNoteTemplate('Standard'); // ger skapad note en stadard mall
 }
 
 // Funktion för att ta bort anteckning
@@ -159,3 +160,4 @@ function displayAllNotes() {
 //     savedNote.font = font;
 //     localStorage.setItem(noteId, JSON.stringify(savedNote));
 // }
+
