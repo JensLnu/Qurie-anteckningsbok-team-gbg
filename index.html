@@ -27,6 +27,10 @@
   <link rel="stylesheet" href="./css/search.css">
   <link rel="stylesheet" href="./css/favorit.css" />
   <link rel="stylesheet" href="./css/setting.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="./css/print.css">
+
+
 </head>
 
 <body>
@@ -106,10 +110,15 @@
       <!-- Anteckningens innehåll här -->
       <button class="favorite-button" data-noteId="1">⭐</button>
     </div>
-  </section>
-  <main>
-    <!-- search modal -->
-    <div id="text-area" contenteditable="true"></div>
+    <!-- Exempel med Material Icons -->
+    <span class="print-icon material-symbols-outlined">print</span>
+
+    <!-- <button class="print-button">Print</button> -->
+    <div>
+    </section>
+    <main>
+      <!-- search modal -->
+      <div id="text-area" contenteditable="true"></div>
     <dialog class="dialog">
       <div class="dialog-box">
         <div id="input-search" class="flex">
@@ -152,6 +161,7 @@
   <script type="module" src="./js/search.js"></script>
   <script type="module" src="./js/classes/newNote.js"></script>
   <script type="module" src="./js/theme.js"> </script>
+  <script src="./js/print.js"></script>
 
 </body>
 

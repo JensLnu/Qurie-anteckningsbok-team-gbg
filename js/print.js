@@ -1,5 +1,5 @@
 const toBePrinted = document.getElementById('text-area');
-const btn = document.querySelector('.print-button');
+const btn = document.querySelector('.print-icon');
 
 function printPreview(){
     const content = toBePrinted.innerHTML;
