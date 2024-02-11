@@ -6,17 +6,16 @@
 // [x] - och spara valet i ls
 // [x] - läs in från ls
 // [] - göra så att tidigare vald mall blir vald för kommande ny skapad note, något i ls 'latest template'? (den gör de nu men sparas inte i ls)
-// [x] - lägg till olika font till mallarna?
-// [x] - lägg till olika boarders, boarder radius, shadow?
+// [] - lägg till olika font till mallarna?
+// [] - lägg till olika boarders, boarder radius, shadow?
 
 /* Bugs */
 
-// [x] - css, LATER! de finns en "note-template.css" som är kopplad och färdig för att göra css i
+// [] - css, LATER! de finns en "note-template.css" som är kopplad och färdig för att göra css i
 // [] - ??
+
 import { createHtmlElem } from './createHtmlElem.js';
 const rootColors = document.querySelector(':root');
-
-const noteTemplateDropdown = document.getElementById('note-template-btn');
 
 // hit kommer man när man klickar på "Mallar" i toolbaren
 // skapar de olika valen i dropdown menyn och lägger på eventListner när menyn ändras
@@ -68,7 +67,7 @@ export function chooseNoteTemplate(selectedTemplate) {
             break;
         default: return;
     }
-   // savedNote.updateNoteTemplate(selectedTemplate); // spara i class objektet och i ls
+    savedNote.updateNoteTemplate(selectedTemplate); // spara i class objektet och i ls
     applyNoteTemplate(template);
     // console.log('slut chooseNoteTemplate');
 }

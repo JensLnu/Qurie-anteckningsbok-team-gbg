@@ -160,4 +160,3 @@ function displayAllNotes() {
 //     savedNote.font = font;
 //     localStorage.setItem(noteId, JSON.stringify(savedNote));
 // }
-
