@@ -7,6 +7,11 @@ function printPreview(){
     w.document.write(content);
     w.print();
     w.close();
+    // gtag av nyat
+    gtag('event', 'print_preview', {
+        'event_category': 'Printing function',
+        'event_label': 'Print preview'
+    });
 }
 
 btn.addEventListener('click', printPreview);
