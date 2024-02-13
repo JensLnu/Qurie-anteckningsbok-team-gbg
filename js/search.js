@@ -61,11 +61,12 @@ savedInput.addEventListener("input", () => {
       savedNote = JSON.parse(localStorage.getItem(localKey));
       const hashtagString = savedNote.hashtags.join(' ');
 
+      // Gör om all text i savedValue och localValue.title/content
+      // till små bokstäver så det inte är type-sensitive
       if (searchForHashtag && savedNote && (hashtagString.toLowerCase().includes(savedValue.toLowerCase()))) {
         displayResult();
       } else if (!searchForHashtag && savedNote && (savedNote.content.toLowerCase().includes(savedValue.toLowerCase()))
         || (!searchForHashtag && savedNote.title.toLowerCase().includes(savedValue.toLowerCase()))) {
-        // Konvertera både savedValue och localValue.title/content till små bokstäver för jämförelse
         displayResult();
       }
     }
@@ -87,7 +88,7 @@ function displayResult() {
     showContent(e);
   });
 }
-
+// Stänger modalen och visar innehållet
 function showContent(e) {
   let resultNoteId = e.currentTarget.getAttribute("data-noteId-modal");
   dialog.close();
