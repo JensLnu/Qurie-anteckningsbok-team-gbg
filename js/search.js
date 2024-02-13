@@ -1,12 +1,3 @@
-// Skapa en modal
-// Lägg den i main ovanför text area
-// Klickar du på search, öppnas modalen
-// Gör en function som kollar igenom localstorage
-// Sök efter titlarna, matchar det med input value
-// Displayar resultaten i result-list
-// När vi klickar på ett resultat vill vi att modaler stängs ner
-// Lägg en eventlistener, rätt note vid rätt klick
-
 import { displayNote } from "./swap-note.js";
 import { createHtmlElem } from './moduls/createHtmlElem.js';
 
@@ -28,13 +19,15 @@ hashtagsOrNot.addEventListener('click', () => {
   }
 });
 
+// Öppnar modalen
 openSearchModal.addEventListener("click", () => 
   dialog.showModal(),
+  // Tovas g-tag
   gtag("event", "search_button", { 
     "event_category": "Search button interaction", 
     "event_label": "Search for note",
-  }) // Tovas g-tag
-); // Opens a modal
+  }) 
+); 
 
 // Stänger modalen om man klickar utanför
 dialog.addEventListener("click", e => {
@@ -62,17 +55,21 @@ savedInput.addEventListener("input", () => {
   let localKey;
   for (let i = 0; i < localStorage.length; i++) {
     localKey = localStorage.key(i);
-    savedNote = JSON.parse(localStorage.getItem(localKey));
-    const hashtagString = savedNote.hashtags.join(' ');
+    
+    // Kollar i localstorage om localKey är en siffra eller inte
+    if(!isNaN(localKey)) {
+      savedNote = JSON.parse(localStorage.getItem(localKey));
+      const hashtagString = savedNote.hashtags.join(' ');
 
-    if (searchForHashtag && savedNote && (hashtagString.toLowerCase().includes(savedValue.toLowerCase()))) {
-      displayResult();
-    } else if (!searchForHashtag && savedNote && (savedNote.content.toLowerCase().includes(savedValue.toLowerCase()))
-      || (!searchForHashtag && savedNote.title.toLowerCase().includes(savedValue.toLowerCase()))) {
-      // Konvertera både savedValue och localValue.title/content till små bokstäver för jämförelse
-      displayResult();
+      if (searchForHashtag && savedNote && (hashtagString.toLowerCase().includes(savedValue.toLowerCase()))) {
+        displayResult();
+      } else if (!searchForHashtag && savedNote && (savedNote.content.toLowerCase().includes(savedValue.toLowerCase()))
+        || (!searchForHashtag && savedNote.title.toLowerCase().includes(savedValue.toLowerCase()))) {
+        // Konvertera både savedValue och localValue.title/content till små bokstäver för jämförelse
+        displayResult();
+      }
     }
-  }
+    }
 });
 
 function displayResult() {
