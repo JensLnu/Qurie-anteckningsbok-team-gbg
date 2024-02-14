@@ -1,10 +1,5 @@
 /* ----- Som användare vill jag kunna exportera en anteckning som markdown -----*/
 
-/* Buggar:
-[] Ul konverteras inte till markdown
-[] Ol konverteras inte till markdown
-*/
-
 const markdownBtn = document.querySelector(".markdown-btn");
 
 // Vid klick på markdown-knappen
@@ -23,10 +18,11 @@ function htmlToMarkdown(html) {
         .replace(/<h2>(.*?)<\/h2>/gim, '## $1') // <h2> till ##
         .replace(/<h3>(.*?)<\/h3>/gim, '### $1') // <h3> till ###
         .replace(/<b>(.*?)<\/b>/gim, '**$1**') // <b> till **
-        .replace(/<i>(.*?)<\/i>/gim, '*$1*') // <i> till *
+        .replace(/<i[^>]*style[^>]*>(.*?)<\/i>/gim, '*$1*') // <i> till *
         .replace(/<ul>([\s\S]*?)<\/ul>/gim, (_, listItems) => convertListItems(listItems, '-')) // <ul> till - list
         .replace(/<ol>([\s\S]*?)<\/ol>/gim, (_, listItems) => convertListItems(listItems, '1.')) // <ol> till 1. list
-        .replace(/<li>(.*?)<\/li>/gim, '$1\n'); // <li> till radavbryt
+        .replace(/<li>(.*?)<\/li>/gim, '$1\n') // <li> till radavbryt
+        .replace(/<\/?span[^>]*>/g, ''); // Ta bort spans och deras innehåll
     return markdown.trim();
 }
 
@@ -34,16 +30,18 @@ function htmlToMarkdown(html) {
 function convertListItems(listItems, prefix) {
     let counter = 1;
     return listItems
-        .trim() // Tar bort extra mellanslag i början och slutet av listItems
-        .split('\n') // Delar upp stringen i en array av listelement baserat på radbrytningar
+        .replace(/<\/?span[^>]*>/g, '') // Ta bort spans och deras innehåll
+        .split('</li>') // Split listitems baserat på stängningstagg
+        .filter(item => item.trim() !== '') // Filtrerar ut tomma items
         .map(item => { // Itererar över varje listelement i arrayen
+            item = item.trim().replace(/<li[^>]*>/, ''); // Ta bort öppningstagg och mellanslag
             if (prefix === '1.') { // Håller koll på vilket nummer listelementet har
-                item = `${counter}. ${item.trim()}`;
+                item = `${counter}. ${item}`;
                 counter++;
             } else {
-                item = `${prefix} ${item.trim()}`;
+                item = `${prefix} ${item}`;
             }
             return item;
         })
-        .join('\n'); // Läggs ihop i en enda string
+        .join('\n') // Läggs ihop i en enda string
 }
