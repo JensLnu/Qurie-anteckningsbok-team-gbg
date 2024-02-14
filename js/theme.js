@@ -9,7 +9,7 @@ openThemeModal.addEventListener("click", () => {
   gtag('event', 'new_theme', { // Sedan anropa gtag för att spåra händelsen
       'event_category': 'theme_setting',
       'event_label': 'change the theme',
-      'value': 'David' // Observera att 'author' inte är ett standardfält för gtag händelser. Använd 'value' eller en annan relevant parameter istället.
+      'value': 'David' 
   });
 });
 
