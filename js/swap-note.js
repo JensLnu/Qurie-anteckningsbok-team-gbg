@@ -9,6 +9,7 @@ import { chooseNoteTemplate } from "./moduls/note-template.js"
 // Hittar igen alla anteckningar i sidebaren
 // Lägger till eventlistener för att kunna visa anteckningen som klickas på
 // Eventlistener för att kunna uppdatera anteckningens titel
+// DESSA SKULLE VI KUNNA LÄGGA IN NÄR VI SKAPAR NOTES
 export function chooseNote() {
     const allNotes = document.querySelectorAll('.notes'); 
     allNotes.forEach(note => {
@@ -28,19 +29,19 @@ export function chooseNote() {
 // Hämta anteckningen från LS med IDt från previewn
 // Lägg till innehållet i textarean
 // Lägg till id till textarean
+// Lägg till senaste använda note-mallen till textarean
 // Lägg till fonten till textarean
 // Uppdatera font-selection efter om det finns en använd font eller inte
 export function displayNote(noteId) {  
     const selectedNote = document.querySelector(`[data-noteId="${noteId}"]`).parentElement.parentElement;
     let source = JSON.parse(localStorage.getItem(noteId));
     savedNote = Object.assign(new Note(), source)
-    savedNote.updateHtmlReference(selectedNote); // borde kanske inte ligga här men känns gött att ha den någonstans
     textarea.innerHTML = savedNote.content;
     textarea.setAttribute('data-Id', savedNote.noteId)
     removeAllFonts();
-    highLightTargedNote(savedNote.htmlReference);
-    highLightTargedTag(savedNote.htmlReference);
-    chooseNoteTemplate(savedNote.noteTemplate);
+    highLightTargedNote(selectedNote);
+    highLightTargedTag(selectedNote);
+    chooseNoteTemplate(savedNote.template);
     if(savedNote.font != ''){
         loadFont(savedNote.fonts);
         fontDropdown.value = textarea.style.font;

@@ -4,8 +4,6 @@ import { addHashtag, createTags } from "./moduls/test-tag.js";
 import { createHtmlElem } from "./moduls/createHtmlElem.js";
 import Note from "../js/classes/newNote.js"
 import { chooseNote, displayNote } from "./swap-note.js";
-import { chooseNoteTemplate } from "./moduls/note-template.js";
-
 
 // Visa alla sparade anteckningar när sidan laddas om
 window.addEventListener("DOMContentLoaded", displayAllNotes);
@@ -18,7 +16,15 @@ textarea.addEventListener("input", () => {
 });
 
 // Eventlisteners för båda lägg till-knapparna
-addBtnSeveral.addEventListener("click", createNote);
+addBtnSeveral.addEventListener("click", () => {
+    // Jens gtag
+    gtag('event', 'clicked_new_note_btn_browser', {
+        'event-category': 'click',
+        'event_label': 'clicked_new_note_btn_browser',
+        'event-author' : 'Jens'
+      });
+    createNote();
+});
 addBtnMobile.addEventListener("click", createNote);
 
 // Hämta antecknings-ID från lS, och låt aldrig ID:t vara mindre än 1
@@ -136,22 +142,3 @@ function displayAllNotes() {
     chooseNote();
     displayNote(noteCounter);
 }
-
-
-
-// Använd savedNote-objektet för att strukturerat kunna spara anteckningar
-// Anteckningens noteID från textarean
-// Anteckningens titel från sidebaren
-// Anteckningens innehåll
-// Font-family från text-area
-// function saveNoteToLocalStorage(noteId, noteTextarea, font) {
-//     savedNote.noteId = noteId;
-//     // add-several-notes.js:134 Uncaught TypeError: Cannot read properties of null (reading 'textContent')
-//     // at saveNoteToLocalStorage (add-several-notes.js:134:74)
-//     // at HTMLDivElement.<anonymous> (add-several-notes.js:29:5)
-//     savedNote.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent;
-//     savedNote.content = noteTextarea.innerHTML;
-//     savedNote.font = font;
-//     localStorage.setItem(noteId, JSON.stringify(savedNote));
-// }
-

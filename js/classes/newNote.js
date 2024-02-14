@@ -1,3 +1,5 @@
+//Class with functions to manipulate title, content, fonts, tags, favorite, font-sizes and template plus a save function to store everything in LS
+
 export default class Note {
     constructor(noteId, title){
         this.noteId = noteId,
@@ -8,7 +10,7 @@ export default class Note {
         this.favorite = false,
         this.size = 16,
         this.htmlReference;
-        this.noteTemplate;
+        this.template;
         
     }
     updateTitle(title){
@@ -39,12 +41,8 @@ export default class Note {
         this.size = size;
         this.save();
     }
-    updateHtmlReference(ref){
-        this.htmlReference = ref;
-        this.save();
-    }
-    updateNoteTemplate(template){
-        this.noteTemplate = template;
+    updateTemplate(template){
+        this.template = template;
         this.save();
     }
     save(){
@@ -56,15 +54,8 @@ export default class Note {
             hashtags : this.hashtags,
             favorite : this.favorite,
             size : this.size,
-            htmlReference: this.htmlReference,
-            noteTemplate: this.noteTemplate
+            template: this.template
         }
         localStorage.setItem(this.noteId, JSON.stringify(note));
     }
 }
-// const texting = document.getElementById('testing');
-// const note = new Note(1, 'hejhej');
-// note.uppdateContent(texting.innerHTML)
-// note.updateTitle('tjenixen')
-// note.updateFavorite();
-// note.saveNote();

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <!-- Google tag (gtag.js) -->
+  <!-- GOOGLE TAG (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BZMN42MS3"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -10,142 +10,149 @@
       dataLayer.push(arguments);
     }
     gtag("js", new Date());
-
     gtag("config", "G-7BZMN42MS3");
-  </script>
+  </script> 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Qurie</title>
-  <link rel="shortcut icon" href="#">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="stylesheet" href="./css/media.css" />
   <link rel="stylesheet" href="./css/add-several-notes.css" />
   <link rel="stylesheet" href="./css/edit.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="./css/first-visit.css" />
   <link rel="stylesheet" href="./css/add-img.css" />
   <link rel="stylesheet" href="./css/tags.css" />
   <link rel="stylesheet" href="./css/search.css">
   <link rel="stylesheet" href="./css/favorit.css" />
   <link rel="stylesheet" href="./css/setting.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="./css/print.css">
-
+  <!-- GOOGLE MATERIAL ICONS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 </head>
 
 <body>
   <header>
     <!-- <img src="#" alt="Quire Logo" id="logo"> -->
+    <!-- QUIRE LOGO -->
     <div id="logo-container">
       <div id="logo">Q</div>
     </div>
+    <!-- HEADER NAVIGATION -->
     <nav id="navigation">
       <ul class="nav-list">
+        <!-- SEARCH -->
         <li class="icon" id="open-search-modal">
           <span class="material-symbols-outlined md-40 search">search</span></a>
-
         </li>
+        <!-- FAVORITES -->
         <li class="icon stars-icon">
           <span class="material-symbols-outlined md-40 stars">stars</span>
         </li>
+        <!-- STATISTICS -->
         <li class="icon">
           <a href ="https://analytics.google.com/analytics/web/?pli=1#/p424782787/reports/intelligenthome" target="_blank">
             <span class="material-symbols-outlined md-40 finance">finance</span> 
           </a>
-          
         </li>
+        <!-- SETTINGS -->
         <li class="icon" id="open-theme-modal">
-          <!-- test id -->
           <span class="material-symbols-outlined md-40 settings">settings</span>
         </li>
+        <!-- MOBILE VIEW -->
+        <!-- ADD NOTE -->
         <li class="icon add">
           <span class="material-symbols-outlined md-40">add_circle</span>
         </li>
       </ul>
+      <!-- DROPDOWN MENU -->
       <div class="icon dropdown">
         <span class="material-symbols-outlined md-40">expand_more</span>
       </div>
     </nav>
   </header>
+
+  <!-- SIDEBAR -->
   <section id="sidebar" class="">
+    <!-- ADD NOTE BUTTON -->
     <button class="add-btn sidebar-border-right">
       <span class="material-symbols-outlined md-40">add_circle</span>
     </button>
+    <!-- CONTAINER FOR STORING NOTES -->
     <div class="saved-notes"></div>
   </section>
 
+  <!-- TOOLBAR -->
   <section id="toolbar">
+    <!-- CHOOSE TEMPLATE -->
     <select id="note-template-btn">
       <option>Mallar</option>
     </select>
-    <!-- Gissar att options kommer från API, Lycka till Tova & Adam! :-) -->
+    <!-- CHOOSE FONTS -->
     <select name="fonts" id="fonts">
       <option value="Choose font">Välj en font</option>
     </select>
-    <!-- Fyller denna dynamiskt med JS -->
+    <!-- CHOOSE FONT SIZE -->
     <select name="font-size" id="font-size">
       <option value="Choose font size">Välj storlek</option>
     </select>
+    <!-- CHOOSE HEADERS -->
     <select name="text-type" id="formatBlock" class="headings">
       <option value="p" id="regular">Vanlig text</option>
       <option value="h1" id="heading-1">Rubrik 1</option>
       <option value="h2" id="heading-2">Rubrik 2</option>
       <option value="h3" id="heading-3">Rubrik 3</option>
     </select>
-
+    <!-- BOLD, ITALIC, UL AND OL - BUTTONS  -->
     <button class="toolbar-button" id="bold" title="Fetstil">B</button>
     <button class="toolbar-button" id="italic" title="Kursiv">I</button>
-    <button class="toolbar-button" id="insertOrderedList" title="Numererad lista">
-      OL
-    </button>
-    <button class="toolbar-button" id="insertUnorderedList" title="Punktlista">
-      UL
-    </button>
+    <button class="toolbar-button" id="insertOrderedList" title="Numererad lista">OL</button>
+    <button class="toolbar-button" id="insertUnorderedList" title="Punktlista">UL</button>
     <input type="file" id="imgBtn" />
+    <!-- FAVORITE BUTTON -->
+    <button class="favorite-button">⭐</button>
+    <!-- PRINT BUTTON -->
+    <button><span class="print-icon material-symbols-outlined">print</span></button>
+    <!-- TOGGLE MARKDOWN -->
+    <button class="markdown-btn"><span class="material-symbols-outlined">markdown_copy</span></button>
+  </section>
 
-    <!-- stjärna btn i toolbaren -->
-    <div class="note" data-noteId="1">
-      <!-- Anteckningens innehåll här -->
-      <button class="favorite-button" data-noteId="1">⭐</button>
-    </div>
-    <!-- Exempel med Material Icons -->
-    <span class="print-icon material-symbols-outlined">print</span>
+  <main>
+    <!-- ACTUAL DOCUMENT -->
+    <div id="text-area" contenteditable="true"></div>
 
-    <div>
-    </section>
-    <main>
-      <!-- search modal -->
-      <div id="text-area" contenteditable="true"></div>
+    <!-- SEARCH MODAL -->
     <dialog class="dialog">
       <div class="dialog-box">
+        <!-- SEARCH INPUT -->
         <div id="input-search" class="flex">
           <input id="input-search-bar" type="text" placeholder="Sök efter en anteckning">
           <div id="search-for-hashtag">
             <img src="./image/hashtag.png" alt="bild på en hashtag" id="ht-img">
-            <!-- <img src="./image/hashtag (2).png" alt="bild på färgad hashtag" id="ht-img-marked"> -->
           </div>
         </div>
+        <!-- RESULT DISPLAY -->
         <div id="result-list"></div>
       </div>
     </dialog>
 
-    <!-- settings modal -->
+    <!-- THEME MODAL -->
     <dialog class="theme-dialog">
       <div class="theme-dialog-box">
-
+        <!-- THEME OPTIONS -->
         <div class="theme" id="standard-theme"><img src="./image/lightmode-icon.jpg" alt="LIGHTMODE-ICON"></div>
         <div class="theme" id="second-theme"><img src="./image/neon-icon.jpg" alt="NEON-ICON"></div>
         <div class="theme" id="third-theme"><img src="./image/darkmode-icon.jpg" alt="DARKMODE-ICON"></div>
         <div class="theme" id="fourth-theme"><img src="./image/quire.jpg" alt="quire"></div>
-       
-        
       </div>
     </dialog>
-    <div id="text-area" contenteditable="true"></div>
+    
   </main>
 
-  <!-- script -->
+  <!-- SCRIPT -->
   <script src="./js/globalVariables.js"></script>
   <script type="module" src="./js/index.js"></script>
   <script type="module" src="./js/add-several-notes.js"></script>
@@ -161,7 +168,7 @@
   <script type="module" src="./js/classes/newNote.js"></script>
   <script type="module" src="./js/theme.js"> </script>
   <script src="./js/print.js"></script>
+  <script src="./js/convert-to-markdown.js"></script>
 
 </body>
-
 </html>

@@ -1,4 +1,3 @@
-// Hämta alla knapparna
 // Headings = Alla knappar som behöver ett value för att fungera (h-elementen, p)
 // Toolbar = Alla knappar som bara behöver ett command (bold, italic, ul, ol)
 
@@ -9,7 +8,8 @@ fontSelection.addEventListener('change', function() {
         changeSize(selectedSize);
     }
 });
-// FONT SIZE OPTIONS
+
+// POPULATE FONT SIZE SELECTION
 function populateFontSelection() {
     for(let i = 6; i < 41; i += 2){
         fontSelection.innerHTML += `<option value='${i}'>${i} px</option>`
@@ -25,7 +25,6 @@ function populateFontSelection() {
 function changeSize(fontSize){
     const sel = window.getSelection();
     const range = sel.getRangeAt(0);
-    // console.log(range.commonAncestorContainer.parentElement.id === 'text-area');
     if(sel.rangeCount > 0 && range.toString().length > 0){
         let e = document.createElement('span');
         e.style = 'font-size:' + fontSize + 'px;'
@@ -34,7 +33,6 @@ function changeSize(fontSize){
         range.deleteContents();
         range.insertNode(e);
     } else {
-        // savedNote.fontSize = fontSize;
         const spans = document.querySelectorAll('.remove-this-shit');
         spans.forEach(span => {
             span.outerHTML = span.textContent || span.innerHTML || '';
@@ -44,10 +42,12 @@ function changeSize(fontSize){
     textarea.focus();
 }
 
+// FUNCTION FOR EXECCOMMAND
 function modifyText(command, defaultUi, value) {
     document.execCommand(command, defaultUi, value);
 }
 
+// THIS SHOULD BE ONLY FOR STATIC BUTTONS (BOLD, ITALIC AND NOT FOR THE LISTS)
 function toggleButtonState(buttonId) {
     const button = document.getElementById(buttonId);
     button.classList.toggle('active');
