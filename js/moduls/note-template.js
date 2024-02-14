@@ -69,12 +69,10 @@ export function chooseNoteTemplate(selectedTemplate) {
     }
     savedNote.updateTemplate(selectedTemplate); // spara i class objektet och i ls
     applyNoteTemplate(template);
-    // console.log('slut chooseNoteTemplate');
 }
 
 // applicerar vald mall
 function applyNoteTemplate(template) {
-    // console.log('start applyNoteTemplate')
     rootColors.style.setProperty("--note-text-color", template.textColor);
     rootColors.style.setProperty("--note-header-color", template.headerColor);
     rootColors.style.setProperty("--note-bg-color", template.bgColor);

@@ -142,22 +142,3 @@ function displayAllNotes() {
     chooseNote();
     displayNote(noteCounter);
 }
-
-
-
-// Använd savedNote-objektet för att strukturerat kunna spara anteckningar
-// Anteckningens noteID från textarean
-// Anteckningens titel från sidebaren
-// Anteckningens innehåll
-// Font-family från text-area
-// function saveNoteToLocalStorage(noteId, noteTextarea, font) {
-//     savedNote.noteId = noteId;
-//     // add-several-notes.js:134 Uncaught TypeError: Cannot read properties of null (reading 'textContent')
-//     // at saveNoteToLocalStorage (add-several-notes.js:134:74)
-//     // at HTMLDivElement.<anonymous> (add-several-notes.js:29:5)
-//     savedNote.title = document.querySelector(`[data-noteId="${noteId}"]`).textContent;
-//     savedNote.content = noteTextarea.innerHTML;
-//     savedNote.font = font;
-//     localStorage.setItem(noteId, JSON.stringify(savedNote));
-// }
-
