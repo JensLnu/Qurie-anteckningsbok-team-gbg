@@ -1,5 +1,5 @@
 .print-icon {
   cursor: pointer;
   font-size: 24px;
-  color: #000;
+  color: var(--print-icon);
 }

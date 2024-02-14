@@ -38,15 +38,19 @@
 
 #search-for-hashtag {
     font-size: 2rem;
+    align-self: flex-end;
+    margin-left: 15px;
 }
 
 #input-search {
     align-items: center;
 }
 
-.hashtag-marked {
-    background-color: chocolate;
-}
+/* .hashtag-marked {
+    border: solid rgb(156, 166, 82);
+    border-radius: 50%;
+    padding: ;
+} */
 
 .hashtag-container{
 /* border: solid blue; */
@@ -60,11 +64,21 @@ margin: 10px ;
     margin: 2px;
 }
 
-.dlt-tag{
+/* .dlt-tag{
     color: red;
     border-radius: 50%;
-}
+} */
 
 .single-tag{
     align-self: center;
+}
+
+.x-img{
+    width: 9px;
+    height: 9px;
+}
+
+#ht-img{
+    height: 30px;
+    width: 30px;
 }
