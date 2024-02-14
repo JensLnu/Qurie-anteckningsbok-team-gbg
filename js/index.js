@@ -17,7 +17,7 @@ document.getElementById('logo-container').addEventListener('click', () => {
             <div class = "info-div"><h3 class = "header-info">Analysera</h3><p class = "p-info">${response.analyse}</p></div>
             <div class = "info-div"><h3 class = "header-info">Konfigurera</h3><p class = "p-info">${response.settings}</p></div>        
         </div > `;
-
+    // Emils gtag
     gtag('event', 'home-btn-click', {
         'event-category': 'click',
         'event-label': 'Någon stackare har försökt ta sig tillbaka till startsidan på det här viset',

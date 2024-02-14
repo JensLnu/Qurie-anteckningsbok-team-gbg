@@ -42,15 +42,18 @@ function displayFontDropdown(fonts) {
 }
 
 // Funktion för att applicera valt typsnitt på textContainer
-// Ta bort existerande font-länkar
-// Skapa en ny länk med den valda fonten
-// Om det finns en selection, byt ut nuvarande innehåll mot ett span med rätt font
-// Annars lägg till fonten till savedNote-objektet
-// Uppdatera text-areans font
+// Lägger till vald font i Note-objektet
+// Länkar till vald font
 
-// FELET LIGGER I ATT TA BORT SPANS OCH UPPDATERA 
-// TA ENDAST BORT EXISTERANDE STILAR OM INGENTING ÄR MARKERAT OCH EN NY FONT VÄLJS
-// 
+// Om användaren har något markerat på sidan skapas ett span med valda fonten,
+// Den markerade klipps ut ut dokumentet, klistras in i spanet och sedan läggs spannet in som en node i rangen
+
+// Om ingenting är markerat tas alla existerande spans i dokumentet bort för att inte krocka 
+// Sedan ändras stilen på textdokumentet till den valda fonten
+// Alla andra fonts tas bort från Note-Objektet
+// DET ÄR HÄR BUGGEN DYKER UPP MED ATT FONT-SIZE SKRIVS ÖVER NÄR MAN APPLICERAR FONT PÅ HELA DOKUMENTET
+// ÄNDRAS GENOM ATT BARA TA BORT FONT-FAMILY PROPERTY PÅ ALLA SPANS
+
 function applyFont(fontName) {
     savedNote.updateFont(fontName);
     linkFont(fontName)
@@ -74,12 +77,15 @@ function applyFont(fontName) {
     }
 }
 
+
+// Funktion som går igenom objektets array med fonts och länkar dessa
 export function loadFont(fontArr){
     fontArr.forEach(font => {
         linkFont(font);
     })
 }
 
+// Funktion som skapar en google-fonts länk och appendar till head i DOMen
 function linkFont(font){
     const linkElement = document.createElement('link');
     linkElement.rel = 'stylesheet';
@@ -88,6 +94,7 @@ function linkFont(font){
     document.head.appendChild(linkElement);
 }
 
+// Funktion för att ta bort irrelevanta font-länkar för att inte DOMen ska svämma över
 export function removeAllFonts(){
     const existingStyles = document.querySelectorAll('[data-font-stylesheet]');
     existingStyles.forEach(style => style.remove());   
