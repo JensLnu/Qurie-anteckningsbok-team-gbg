@@ -14,7 +14,7 @@ hashtagsOrNot.addEventListener('click', () => {
   if (!searchForHashtag) {
     searchForHashtag = true;
     hashtagsOrNot.classList.add('hashtag-marked');
-    htImg.src = "./image/hashtag-(2).png";
+    htImg.src = "./image/hashtag-marked.png";
   } else {
     searchForHashtag = false;
     hashtagsOrNot.classList.remove('hashtag-marked');
