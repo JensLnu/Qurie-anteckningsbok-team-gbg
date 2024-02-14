@@ -31,7 +31,6 @@ function displayFirstMessage(response) {
     }
 }
 
-
 // Hämta alla nycklar från LS
 // Om en nyckel motsvarar en siffra har vi en anteckning (alla noteID är siffror)
 // Om en nyckel som passar hittas så returnas false annars true
@@ -47,18 +46,3 @@ function isLocalStorageEmpty() {
     if(noOfItems > 0) return false
     else return true;
 }
-
-/**
- * Kontrollerar om den lokala lagringen är tom genom att iterera genom alla nycklar
- * och verifiera att varje motsvarande värde varken är null eller undefined.
- * Sant om den lokala lagringen är tom, annars falskt. 
- * */
-// const key = allKeys[i];
-
-// Hämta värdet som är kopplat till nyckeln
-// const value = localStorage.getItem(key);
-
-// Kontrollera om värdet inte är null eller undefined
-// if (value !== null && value !== undefined) {
-//     noOfItems++
-// }

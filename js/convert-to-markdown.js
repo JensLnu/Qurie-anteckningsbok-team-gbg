@@ -3,39 +3,50 @@
 const markdownBtn = document.querySelector(".markdown-btn");
 
 // Vid klick på markdown-knappen
+// Hämta innerHTML från textarea
+// Öppna nytt fönster och skriv ut resultatet från htmlToMarkdown
 markdownBtn.addEventListener('click', () => {
     const textArea = document.getElementById('text-area').innerHTML;
-    // Öppnar ett nytt fönster
     w = window.open();
-    // Lägger in konverterad markdown i det fönstret
     w.document.write(htmlToMarkdown(textArea));
 });
 
+
 // Funktion för att konvetera HTML till Markdown
+// Byt ut alla html-taggar mot motsvarande markdown
+// Extra funktion för att kunna byta ut ul/ol + li till motsvarande markdown
+// execCommand lägger till en massa konstiga spans som hittas igen i sista steget
 function htmlToMarkdown(html) {
     let markdown = html
-        .replace(/<h1>(.*?)<\/h1>/gim, '# $1') // <h1> till #
-        .replace(/<h2>(.*?)<\/h2>/gim, '## $1') // <h2> till ##
-        .replace(/<h3>(.*?)<\/h3>/gim, '### $1') // <h3> till ###
-        .replace(/<b>(.*?)<\/b>/gim, '**$1**') // <b> till **
-        .replace(/<i[^>]*style[^>]*>(.*?)<\/i>/gim, '*$1*') // <i> till *
-        .replace(/<ul>([\s\S]*?)<\/ul>/gim, (_, listItems) => convertListItems(listItems, '-')) // <ul> till - list
-        .replace(/<ol>([\s\S]*?)<\/ol>/gim, (_, listItems) => convertListItems(listItems, '1.')) // <ol> till 1. list
-        .replace(/<li>(.*?)<\/li>/gim, '$1\n') // <li> till radavbryt
-        .replace(/<\/?span[^>]*>/g, ''); // Ta bort spans och deras innehåll
+        .replace(/<h1>(.*?)<\/h1>/gim, '# $1') 
+        .replace(/<h2>(.*?)<\/h2>/gim, '## $1') 
+        .replace(/<h3>(.*?)<\/h3>/gim, '### $1')
+        .replace(/<b>(.*?)<\/b>/gim, '**$1**') 
+        .replace(/<i[^>]*style[^>]*>(.*?)<\/i>/gim, '*$1*') 
+        .replace(/<ul>([\s\S]*?)<\/ul>/gim, (_, listItems) => convertListItems(listItems, '-'))
+        .replace(/<ol>([\s\S]*?)<\/ol>/gim, (_, listItems) => convertListItems(listItems, '1.'))
+        .replace(/<li>(.*?)<\/li>/gim, '$1\n')
+        .replace(/<\/?span[^>]*>/g, '');
     return markdown.trim();
 }
 
 // Funktion för att konvertera listelement till Markdown
+// Tar innehållet från en ul/ol
+// Tar bort span om det är formaterat (bold, italic, etc.)
+// Delar upp listitems 
+// Tar bort tomma items
+// Tar bort öppningstagg
+// Counter för att hålla koll på OL
+// Lägger ihop alla list items till en string
 function convertListItems(listItems, prefix) {
     let counter = 1;
     return listItems
-        .replace(/<\/?span[^>]*>/g, '') // Ta bort spans och deras innehåll
-        .split('</li>') // Split listitems baserat på stängningstagg
-        .filter(item => item.trim() !== '') // Filtrerar ut tomma items
-        .map(item => { // Itererar över varje listelement i arrayen
-            item = item.trim().replace(/<li[^>]*>/, ''); // Ta bort öppningstagg och mellanslag
-            if (prefix === '1.') { // Håller koll på vilket nummer listelementet har
+        .replace(/<\/?span[^>]*>/g, '')
+        .split('</li>')
+        .filter(item => item.trim() !== '')
+        .map(item => {
+            item = item.trim().replace(/<li[^>]*>/, '');
+            if (prefix === '1.') {
                 item = `${counter}. ${item}`;
                 counter++;
             } else {
@@ -43,5 +54,5 @@ function convertListItems(listItems, prefix) {
             }
             return item;
         })
-        .join('\n') // Läggs ihop i en enda string
+        .join('\n')
 }

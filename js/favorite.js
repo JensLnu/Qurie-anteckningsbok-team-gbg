@@ -1,12 +1,15 @@
-// Importera nödvändiga funktioner från andra moduler.
 import { createNotesContainer } from "./add-several-notes.js";
 import { chooseNote } from "./swap-note.js";
 
+document.querySelector('.favorite-button').addEventListener('click', toggleFavorite);
+document.querySelector('.stars-icon').addEventListener('click', findFavorites);
+
 // Funktion för att växla favoritstatus på en sparad anteckning.
+// Use object method to update favorite status
 function toggleFavorite() {
-    savedNote.updateFavorite(); // Uppdaterar favoritstatus för en specifik anteckning.  
+    savedNote.updateFavorite();
     
- //Toleen gtag   
+    //Toleen gtag   
     gtag('event', 'toggle_favorite', {
         'event_category': 'Favorite Actions', 
         'event_label': 'Note Favorite Toggled' 
@@ -14,12 +17,18 @@ function toggleFavorite() {
 }
 
 // Funktion för att hitta och visa favoritmarkerade anteckningar.
+// Update status and color for favorite button in header
+// Empty out all notes
+// Iterate through all saved notes and display favorite-notes if favorites-button is active
+// Else display all notes
+// Run chooseNote to add eventlisteners to displayed notes
 function findFavorites() {
-    let savedNote; // Deklarerar en variabel för att hålla den nuvarande behandlade anteckningen.
-    let noteContainer = document.querySelector('.saved-notes');
-    let starsIcon = document.querySelector('.stars-icon');
+    let savedNote;
+    const noteContainer = document.querySelector('.saved-notes');
+    const starsIcon = document.querySelector('.stars-icon');
 
-    starsIcon.classList.toggle('active');// Växlar klassen 'active' för att visuellt indikera om filtret är aktivt eller inte.
+    starsIcon.classList.toggle('active');
+    noteContainer.innerHTML = '';
 
     if (starsIcon.classList.contains('active')) {
         starsIcon.querySelector('.stars').style.color = "#FFD700"; 
@@ -27,31 +36,23 @@ function findFavorites() {
         starsIcon.querySelector('.stars').style.color = "white"; 
     }
 
-    noteContainer.innerHTML = '';
-    let localKey; // Deklarerar en variabel för att hålla nyckeln till den aktuella posten i localStorage.
+    // DENNA ÄR NOG ONÖDIG
+    let localKey;
 
     for (let i = 0; i < localStorage.length; i++) {
         localKey = localStorage.key(i);
-
         try {
             savedNote = JSON.parse(localStorage.getItem(localKey));
-            
-            // Kontrollerar om stjärnikonen är aktiv och om den sparade anteckningen är markerad som favorit.
             if (starsIcon.classList.contains('active')) {
                 if (savedNote.favorite) {
-                    createNotesContainer(savedNote.noteId);// Skapar ett element för anteckningen om den är en favorit.
+                    createNotesContainer(savedNote.noteId);
                 }
             } else {
-                createNotesContainer(savedNote.noteId);// Skapar ett element för anteckningen även om favoritfilter inte är aktiverat.
+                createNotesContainer(savedNote.noteId);
             }
         } catch (error) {
             console.error(`Error parsing JSON for localStorage key ${localKey}: ${error}`);
         }
     }
-
-    chooseNote(); // Anropar funktionen för att möjliggöra val av en anteckning efter att listan har uppdaterats.   
+    chooseNote();
 }
-
-// Event listeners
-document.querySelector('.favorite-button').addEventListener('click', toggleFavorite);
-document.querySelector('.stars-icon').addEventListener('click', findFavorites);

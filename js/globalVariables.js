@@ -1,17 +1,6 @@
 // Global savedNote object
 let savedNote;
 
-
-// {
-//     title: "",
-//     content: "",
-//     noteId: 0,
-//     font: "",
-//     hashtags: [],
-//     favorite: false
-//     // size: 12
-// };
-
 // Addbuttons, saved-notes for sidebar, text-area 
 const addBtnSeveral = document.querySelector(".add-btn");
 const addBtnMobile = document.querySelector(".add");

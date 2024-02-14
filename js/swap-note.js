@@ -9,6 +9,7 @@ import { chooseNoteTemplate } from "./moduls/note-template.js"
 // Hittar igen alla anteckningar i sidebaren
 // Lägger till eventlistener för att kunna visa anteckningen som klickas på
 // Eventlistener för att kunna uppdatera anteckningens titel
+// DESSA SKULLE VI KUNNA LÄGGA IN NÄR VI SKAPAR NOTES
 export function chooseNote() {
     const allNotes = document.querySelectorAll('.notes'); 
     allNotes.forEach(note => {

@@ -1,8 +1,4 @@
 /*--- Som användare vill jag kunna skapa egna mallar där jag kan ställa in valfria typsnitt utifrån de som finns i Google fonts ---*/
-
-
-// Kan man göra så att de mest använda typsnitten hamnar högst upp i listan?
-
 // API key: AIzaSyD9u1DRArZCKthVW8zoz2g1jVhveiaqjYQ
 
 // Hämta Google Web Fonts
