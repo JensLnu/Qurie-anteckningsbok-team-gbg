@@ -1,35 +1,30 @@
-## Start
+# Qurie - En anteckningsbok för dina idéer
 
-- Navigera till foldern där du vill att projektmappen ska ligga
-- git clone https://github.com/JensLnu/Qurie-anteckningsbok-team-gbg.git
-- cd Qurie-anteckningsbok-team-gbg
-- git checkout -b feature/{namn på branch med kebab-case}
+Välkommen till Qurie, din personliga anteckningsbok på nätet! Med Qurie kan du enkelt skapa, organisera och redigera dina anteckningar online.
 
-## Under tiden
+## Funktioner
 
-- se till att vara i din branch när du jobbar / git checkout feature/{namn på branch med kebab-case}
-- git add .
-- git commit kort meddelande, högst 100tecken, inled med vad du har gjort i bestämd form (add, fix, delete, m.m.)
-- git push -u origin feature/{namn på branch med kebab-case} (efter att -u är satt första gången kan man använda sig av bara git push)
+- **Skapa Anteckningar:** Lägg till nya anteckningar och organisera dem efter ämne eller kategori.
+- **Redigera Text:** Använd vår intuitiva textredigerare för att formatera och anpassa din text.
+- **Byt Tema:** Välj mellan olika färgteman för att anpassa din upplevelse.
+- **Responsiv Design:** Qurie är optimerad för användning på alla enheter, från datorer till mobiler.
 
-## Vid färdig feature
+## Hur man använder Qurie
 
-- se till att vara i main / git checkout main
-- git pull
-- git checkout feature/{namn på branch med kebab-case}
-- git pull origin main
-- lös merge-conflicts
-- gå till main / git checkout main
-- git merge feature/{namn på branch med kebab-case}
-- Inga konflikter här eftersom du mergade main till din branch först...visst?
-- git push -u origin main
+1. **Skapa anteckningar:** Klicka på "Ny anteckning" för att börja skriva ner dina idéer.
+2. **Redigera anteckningar:** Klicka på en anteckning för att öppna den i redigeringsläge och gör dina ändringar.
+3. **Byt tema:** Utforska olika färgteman genom att gå till inställningarna och välj det tema som passar dig bäst.
 
-## När storyn är färdig
+## Bidragande
 
-- Upprepa steg för färdig feature om du inte redan gjort det
-- git branch -d feature/{namn på branch med kebab-case} eller -D om den inte vill med sig
+Vi välkomnar bidrag från utvecklare! Om du vill bidra till Qurie, följ dessa steg:
 
-## För att jobba i samma branch (hint: gör en local kopia av branchen)
+1. Forka detta repository.
+2. Skapa en ny gren för dina ändringar: `git checkout -b feature/ny-funktion`
+3. Gör dina ändringar och commita dem: `git commit -m "Beskrivning av ändringar"`
+4. Pusha dina ändringar till din gren: `git push origin feature/ny-funktion`
+5. Skapa en pull-förfrågan till huvudgrenen.
 
-- git branch -r (listar alla branches på github)
-- git checkout -b {namn på din nya lokala branch} {namn på den listade branchen du vill kopiera}
+
+Tack för att du valde Qurie för dina anteckningar! Vi hoppas att det hjälper dig att organisera och förverkliga dina idéer.
+

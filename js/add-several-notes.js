@@ -18,7 +18,15 @@ textarea.addEventListener("input", () => {
 });
 
 // Eventlisteners för båda lägg till-knapparna
-addBtnSeveral.addEventListener("click", createNote);
+addBtnSeveral.addEventListener("click", () => {
+    // Jens gtag
+    gtag('event', 'clicked_new_note_btn_browser', {
+        'event-category': 'click',
+        'event_label': 'clicked_new_note_btn_browser',
+        'event-author' : 'Jens'
+      });
+    createNote();
+});
 addBtnMobile.addEventListener("click", createNote);
 
 // Hämta antecknings-ID från lS, och låt aldrig ID:t vara mindre än 1

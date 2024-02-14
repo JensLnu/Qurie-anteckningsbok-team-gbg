@@ -40,10 +40,10 @@ function lightmodeTheme() {
     rootColors.style.setProperty("--logo-color", "rgb(255, 255, 255)")
     rootColors.style.setProperty("--displayed-note-color", "rgb(255, 255, 255)")
     rootColors.style.setProperty("--edit-buttons-primary", "rgb(255, 255, 255)")
-    rootColors.style.setProperty("--dialog-background-color", "rgb(255, 255, 255)")
+    rootColors.style.setProperty("--note-bg-color", "rgb(255, 255, 255)")
     rootColors.style.setProperty("--sidebar-color", "rgb(202,210,197)")
     rootColors.style.setProperty("--toolbar-color", "rgba(0, 0, 0, 0.253)")
-    rootColors.style.setProperty("--default-text-color", "rgb(0, 0, 0)")
+    rootColors.style.setProperty("--note-text-color", "rgb(0, 0, 0)")
     rootColors.style.setProperty("--delete-btn-color", "rgb(132, 169, 140)")
     rootColors.style.setProperty("--hashtag-button-color", "rgb(132, 169, 140)")
     rootColors.style.setProperty("--sidebar-addbtn", "rgb(132, 169, 140)")
@@ -71,13 +71,13 @@ function neonTheme() {
     rootColors.style.setProperty("--hashtag-button-color", "rgb(131, 56, 236)")
     rootColors.style.setProperty("--sidebar-addbtn", "rgba(35,35,35)")
     rootColors.style.setProperty("--toolbar-color", "rgb(17,17,17)")
-    rootColors.style.setProperty("--default-text-color", "rgb(58, 134, 255)")
+    rootColors.style.setProperty("--note-text-color", "rgb(58, 134, 255)")
     rootColors.style.setProperty("--displayed-note-color", "rgb(52, 52, 52)")
     rootColors.style.setProperty("--edit-buttons-primary", "rgb(35,35,35)")
     rootColors.style.setProperty("--edit-buttons-secondary", "rgb(85,85,85)")
     rootColors.style.setProperty("--edit-buttons-hover", "rgb(255,0,110)")
     rootColors.style.setProperty("--first-visit-primary", "rgb(34,84,110)")
-    rootColors.style.setProperty("--dialog-background-color", "rgb(35,35,35)")
+    rootColors.style.setProperty("--note-bg-color", "rgb(35,35,35)")
     rootColors.style.setProperty("--neon-text-shadow", "10 0 10px #fff")
     rootColors.style.setProperty("--bgColor", "rgb(35,35,35)")
     rootColors.style.setProperty("--notes-text-color", "rgb(251,86,7)")
@@ -98,13 +98,13 @@ function darkmodeTheme() {
     rootColors.style.setProperty("--hashtag-button-color", "rgb(35,35,35)")
     rootColors.style.setProperty("--sidebar-addbtn", "rgba(35,35,35)")
     rootColors.style.setProperty("--toolbar-color", "rgb(17,17,17)")
-    rootColors.style.setProperty("--default-text-color", "white")
+    rootColors.style.setProperty("--note-text-color", "white")
     rootColors.style.setProperty("--displayed-note-color", "rgb(52, 52, 52)")
     rootColors.style.setProperty("--edit-buttons-primary", "rgb(35,35,35)")
     rootColors.style.setProperty("--edit-buttons-secondary", "rgb(85,85,85)")
     rootColors.style.setProperty("--edit-buttons-hover", "rgb(89, 89, 89)")
     rootColors.style.setProperty("--first-visit-primary", "rgb(221, 221, 221)")
-    rootColors.style.setProperty("--dialog-background-color", "rgb(35,35,35)")
+    rootColors.style.setProperty("--note-bg-color", "rgb(35,35,35)")
     rootColors.style.setProperty("--neon-text-shadow", "10 0 10px #fff")
     rootColors.style.setProperty("--bgColor", "rgb(35,35,35)")
     rootColors.style.setProperty("--notes-text-color", "white")
@@ -122,10 +122,10 @@ function quireTheme() {
    rootColors.style.setProperty("--logo-color", "rgb(30, 136, 229)"); 
    rootColors.style.setProperty("--displayed-note-color", "rgb(227, 242, 253)");
    rootColors.style.setProperty("--edit-buttons-primary", "rgb(144, 202, 249)"); 
-   rootColors.style.setProperty("--dialog-background-color", "rgb(207, 216, 220)"); 
+   rootColors.style.setProperty("--note-bg-color", "rgb(207, 216, 220)"); 
    rootColors.style.setProperty("--sidebar-color", "rgb(225, 230, 240)"); 
    rootColors.style.setProperty("--toolbar-color", "rgba(100, 181, 246, 0.8)"); 
-   rootColors.style.setProperty("--default-text-color", "rgb(26, 35, 126)"); 
+   rootColors.style.setProperty("--note-text-color", "rgb(26, 35, 126)"); 
    rootColors.style.setProperty("--delete-btn-color", "rgb(144, 202, 249)"); 
    rootColors.style.setProperty("--hashtag-button-color", "rgb(144, 202, 249)"); 
    rootColors.style.setProperty("--sidebar-addbtn", "rgb(144, 202, 249)"); 

@@ -16,16 +16,6 @@
   scrollbar-width: none; /* Firefox */
 }
 
-/* David redigerade lite */
-#text-area {
-  width: min(100%, 1300px);
-  /* margin: 0 auto; */
-  padding-left: 1.5rem;
-  padding-top: 2rem;
-  background-color: var(--dialog-background-color);
-  color: var(--default-text-color);
-}
-
 #first-rubrik {
   align-self: center;
   margin: 1rem 0;
