@@ -21,8 +21,8 @@ textarea.addEventListener("input", () => {
 addBtnSeveral.addEventListener("click", () => {
     // Jens gtag
     gtag('event', 'clicked_new_note_btn_browser', {
-        'app_name': 'new_note_browser',
-        'screen_name': 'new_note_browser',
+        'app_name': 'clicked_new_note_btn_browser',
+        'screen_name': 'clicked_new_note_btn_browser',
         'event-author' : 'Jens'
       });
     createNote();
