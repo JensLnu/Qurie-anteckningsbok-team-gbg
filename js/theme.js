@@ -4,34 +4,26 @@ document.addEventListener('DOMContentLoaded', setTheme);
 // Öppnar modalen
 openThemeModal.addEventListener("click", () => dialog.showModal());
 
-// Media query
+// matchMedia query
 // Skapa en mediaquery som kontrollerar om användaren använder dark mode
-// let darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+let darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
 // Funktion som körs när användarens färgschema ändras
 function handleColorSchemeChange(e) {
   if (e.matches) {
     // Användaren använder dark mode
-    console.log("Användaren använder dark mode");
     darkmodeTheme();
   } else {
     // Användaren använder light mode
-    console.log("Användaren använder light mode");
     lightmodeTheme();
   }
 }
-
-// Lyssna på förändringar i användarens färgschema
-// darkModeQuery.addListener(handleColorSchemeChange);
-
-// Kör funktionen en gång vid sidans laddning för att anpassa innehållet
-// handleColorSchemeChange(darkModeQuery);
-
 
 // STANDARD THEME
 standardTheme.onclick = function () {
     lightmodeTheme();
 }
+// En funktion som ändrar färg på varje färg-variabel
 function lightmodeTheme() {
     rootColors.style.setProperty("--header-color", "rgb(53, 79, 82)")
     rootColors.style.setProperty("--logo-container-color", "rgb(47, 62, 70)")
@@ -138,7 +130,7 @@ function quireTheme() {
  
 }
 
-
+// Skapar switch-sats för att enkelt kunna ändra tema
 function setTheme() {
   const theme = localStorage.getItem('theme');
 
@@ -156,7 +148,7 @@ function setTheme() {
       quireTheme();
       break;
     default:
-      lightmodeTheme();
+      handleColorSchemeChange(darkModeQuery);
 
   }
 }
