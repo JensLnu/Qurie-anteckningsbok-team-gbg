@@ -2,7 +2,17 @@
 document.addEventListener('DOMContentLoaded', setTheme);
 
 // Öppnar modalen
-openThemeModal.addEventListener("click", () => dialog.showModal());
+// openThemeModal.addEventListener("click", () => dialog.showModal());
+
+openThemeModal.addEventListener("click", () => {
+  dialog.showModal(); // Anropa först showModal() utan extra argument
+  gtag('event', 'new_theme', { // Sedan anropa gtag för att spåra händelsen
+      'event_category': 'theme_setting',
+      'event_label': 'change the theme',
+      'value': 'David' // Observera att 'author' inte är ett standardfält för gtag händelser. Använd 'value' eller en annan relevant parameter istället.
+  });
+});
+
 
 // matchMedia query
 // Skapa en mediaquery som kontrollerar om användaren använder dark mode
