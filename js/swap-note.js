@@ -34,13 +34,12 @@ export function displayNote(noteId) {
     const selectedNote = document.querySelector(`[data-noteId="${noteId}"]`).parentElement.parentElement;
     let source = JSON.parse(localStorage.getItem(noteId));
     savedNote = Object.assign(new Note(), source)
-    savedNote.updateHtmlReference(selectedNote); // borde kanske inte ligga här men känns gött att ha den någonstans
     textarea.innerHTML = savedNote.content;
     textarea.setAttribute('data-Id', savedNote.noteId)
     removeAllFonts();
-    highLightTargedNote(savedNote.htmlReference);
-    highLightTargedTag(savedNote.htmlReference);
-    chooseNoteTemplate(savedNote.noteTemplate);
+    highLightTargedNote(selectedNote);
+    highLightTargedTag(selectedNote);
+    chooseNoteTemplate(savedNote.template);
     if(savedNote.font != ''){
         loadFont(savedNote.fonts);
         fontDropdown.value = textarea.style.font;

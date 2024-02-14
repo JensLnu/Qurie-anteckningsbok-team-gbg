@@ -188,11 +188,12 @@ main {
 }
 
 #text-area {
+  width: min(100%, 1300px);
   height: 98%;
   overflow: auto;
   padding: 3rem;
-  color: var(--note-text-color); /* för note-template */
   background-color: var(--note-bg-color); /* för note-template */
+  color: var(--note-text-color); /* för note-template */
 }
 
 #text-area h1, #text-area h2, #text-area h3 { /* för note-template */

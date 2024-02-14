@@ -67,7 +67,7 @@ export function chooseNoteTemplate(selectedTemplate) {
             break;
         default: return;
     }
-    savedNote.updateNoteTemplate(selectedTemplate); // spara i class objektet och i ls
+    savedNote.updateTemplate(selectedTemplate); // spara i class objektet och i ls
     applyNoteTemplate(template);
     // console.log('slut chooseNoteTemplate');
 }

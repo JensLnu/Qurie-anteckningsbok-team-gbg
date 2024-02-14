@@ -32,21 +32,18 @@ const main = document.querySelector('main');
 const body = document.querySelector('body');
 
 // Toolbar-knappar
-const boldBtn = document.getElementById('bold'); //<strong></strong>
-const italicBtn = document.getElementById('italic'); //<em> </em>
-const heading1Btn = document.getElementById('heading-1'); //<h1></h1>
-const heading2Btn = document.getElementById('heading-2');//<h2></h2>
-const heading3Btn = document.getElementById('heading-3');//<h3></h3>
-const ulBtn = document.getElementById('unordered-list'); //<ul><li></li></ul>
-const olBtn = document.getElementById('ordered-list'); //<ol><li></li></ol>
-const regularBtn = document.getElementById('regular'); // <p></p>
+const boldBtn = document.getElementById('bold');
+const italicBtn = document.getElementById('italic');
+const heading1Btn = document.getElementById('heading-1');
+const heading2Btn = document.getElementById('heading-2');
+const heading3Btn = document.getElementById('heading-3');
+const ulBtn = document.getElementById('unordered-list');
+const olBtn = document.getElementById('ordered-list');
+const regularBtn = document.getElementById('regular');
 const selectFormat = document.getElementById('text-type');
 const headings = document.querySelectorAll('.headings')
 const toolbarButtons = document.querySelectorAll('.toolbar-button')
 const fontSelection = document.getElementById('font-size');
-
-// Settings-button
-const settingBtn = document.getElementById('test');
 
 // note-templates.js
 const noteTemplateDropdown = document.getElementById('note-template-btn');
