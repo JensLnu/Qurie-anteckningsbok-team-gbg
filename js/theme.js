@@ -65,7 +65,7 @@ function neonTheme() {
     rootColors.style.setProperty("--displayed-note-color", "rgb(52, 52, 52)")
     rootColors.style.setProperty("--edit-buttons-primary", "rgb(35,35,35)")
     rootColors.style.setProperty("--edit-buttons-secondary", "rgb(85,85,85)")
-    rootColors.style.setProperty("--edit-buttons-hover", "rgb(255,0,110)")
+    rootColors.style.setProperty("--edit-buttons-hover", "#F5F4F5")
     rootColors.style.setProperty("--first-visit-primary", "rgb(34,84,110)")
     rootColors.style.setProperty("--dialog-background-color", "rgb(35,35,35)")
     rootColors.style.setProperty("--neon-text-shadow", "10 0 10px #fff")
@@ -98,7 +98,8 @@ function darkmodeTheme() {
     rootColors.style.setProperty("--neon-text-shadow", "10 0 10px #fff")
     rootColors.style.setProperty("--bgColor", "rgb(35,35,35)")
     rootColors.style.setProperty("--notes-text-color", "white")
-
+    rootColors.style.setProperty("--print-icon", "white")
+  
     localStorage.setItem('theme', 'dark');
 }
 
@@ -125,6 +126,7 @@ function quireTheme() {
    rootColors.style.setProperty("--neon-text-shadow", "none"); 
    rootColors.style.setProperty("--bgColor", "rgb(237, 247, 255)"); 
    rootColors.style.setProperty("--notes-text-color", "rgb(30, 136, 229)");
+  rootColors.style.setProperty("--print-icon", "rgb(26, 35, 126))");
 
    localStorage.setItem('theme', 'quire');
  

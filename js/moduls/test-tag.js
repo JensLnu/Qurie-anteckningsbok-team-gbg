@@ -37,10 +37,14 @@ export function createTags(hashtagValue, hashtagDiv ) {
     const singleTag = createHtmlElem('h6', '#' + hashtagValue, savedTagsDiv, 'single-tag');
 
     //skapa dltBtn till varje tagg och appenda till savedTagsDiv
-    const dltTag = createHtmlElem('button', 'x', savedTagsDiv, 'dlt-tag');
+    // const dltTag = createHtmlElem('button', 'x', savedTagsDiv, 'dlt-tag');
+    // const dltTag = createHtmlElem('button', '', savedTagsDiv, 'dlt-tag');
+    const img = createHtmlElem('img', '', savedTagsDiv, 'x-img');
+    img.src = "./image/delete-button.png"; 
+
 
     // ta bort taggen med evntlyssnare på dltTag
-    dltTag.addEventListener('click', () => {
+    img.addEventListener('click', () => {
         // tar bort hashtag från objektet/klassen(?).
         savedNote.removeTag(hashtagValue);
         //ta bort hashtag från domen

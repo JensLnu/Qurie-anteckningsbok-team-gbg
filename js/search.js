@@ -6,6 +6,7 @@ const openSearchModal = document.getElementById("open-search-modal");
 const hashtagsOrNot = document.getElementById('search-for-hashtag');
 const savedInput = document.getElementById('input-search-bar');
 const resultList = document.getElementById('result-list');
+const htImg = document.getElementById('ht-img');
 
 let searchForHashtag = false; // håller reda på ifall man söker efter hashtags eller inte
 
@@ -13,9 +14,11 @@ hashtagsOrNot.addEventListener('click', () => {
   if (!searchForHashtag) {
     searchForHashtag = true;
     hashtagsOrNot.classList.add('hashtag-marked');
+    htImg.src = "./image/hashtag-(2).png";
   } else {
     searchForHashtag = false;
     hashtagsOrNot.classList.remove('hashtag-marked');
+    htImg.src = "./image/hashtag.png"
   }
 });
 
