@@ -22,15 +22,12 @@ document.getElementById('logo-container').addEventListener('click', () => {
         'event-category': 'click',
         'event-label': 'Någon stackare har försökt ta sig tillbaka till startsidan på det här viset',
         'event-author' : 'Emil :-)'
-    })
-    
-})
+    });
+});
     } else {
         console.log('Error:', response.status);
     }
 })();
-
-
 
 window.addEventListener('DOMContentLoaded', () => {
     createFunctionalityNoteTemplate(); // aktiverar knappen för att välja antecknings mall

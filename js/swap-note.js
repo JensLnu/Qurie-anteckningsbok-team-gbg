@@ -28,6 +28,7 @@ export function chooseNote() {
 // Hämta anteckningen från LS med IDt från previewn
 // Lägg till innehållet i textarean
 // Lägg till id till textarean
+// Lägg till senaste använda note-mallen till textarean
 // Lägg till fonten till textarean
 // Uppdatera font-selection efter om det finns en använd font eller inte
 export function displayNote(noteId) {  
