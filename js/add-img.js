@@ -22,11 +22,12 @@ imgBtn.addEventListener('change', (event) => {
 
 });
 
-// David gtag
+// Davids gtag
 const myInput = document.getElementById('imgBtn');
-myInput.addEventListener('click', function (argument) {
+myInput.addEventListener('click', function () {
     gtag('event', 'new_button_click'), {
-        'image_click': 'new_click'
+        'event_category':'image_click',
+        'event_label': 'new_click'
     }
 });
 
