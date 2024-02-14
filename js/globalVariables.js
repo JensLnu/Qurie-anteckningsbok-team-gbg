@@ -1,6 +1,17 @@
 // Global savedNote object
 let savedNote;
 
+
+// {
+//     title: "",
+//     content: "",
+//     noteId: 0,
+//     font: "",
+//     hashtags: [],
+//     favorite: false
+//     // size: 12
+// };
+
 // Addbuttons, saved-notes for sidebar, text-area 
 const addBtnSeveral = document.querySelector(".add-btn");
 const addBtnMobile = document.querySelector(".add");
@@ -22,8 +33,8 @@ const body = document.querySelector('body');
 
 // Toolbar-knappar
 const boldBtn = document.getElementById('bold');
-const italicBtn = document.getElementById('italic'); 
-const heading1Btn = document.getElementById('heading-1'); 
+const italicBtn = document.getElementById('italic');
+const heading1Btn = document.getElementById('heading-1');
 const heading2Btn = document.getElementById('heading-2');
 const heading3Btn = document.getElementById('heading-3');
 const ulBtn = document.getElementById('unordered-list');
@@ -33,9 +44,6 @@ const selectFormat = document.getElementById('text-type');
 const headings = document.querySelectorAll('.headings')
 const toolbarButtons = document.querySelectorAll('.toolbar-button')
 const fontSelection = document.getElementById('font-size');
-
-// Settings-button
-const settingBtn = document.getElementById('test');
 
 // note-templates.js
 const noteTemplateDropdown = document.getElementById('note-template-btn');
