@@ -1,4 +1,5 @@
 // Om displayFirstMessage ligger i en annan funktion får vi göra denna till en modul och importera/exportera funktionen
+
 import { createFunctionalityNoteTemplate } from "./moduls/note-template.js"
 
 // Fetch content from JSON

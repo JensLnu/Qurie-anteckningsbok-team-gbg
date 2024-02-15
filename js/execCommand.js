@@ -9,7 +9,7 @@ fontSelection.addEventListener('change', function() {
     }
 });
 
-// POPULATE FONT SIZE SELECTION
+// funktion för att fylla på med font-size alternativ
 function populateFontSelection() {
     for(let i = 6; i < 41; i += 2){
         fontSelection.innerHTML += `<option value='${i}'>${i} px</option>`
@@ -42,12 +42,13 @@ function changeSize(fontSize){
     textarea.focus();
 }
 
-// FUNCTION FOR EXECCOMMAND
+// Funktion för att köra execCommand(överflödigt då det är en line med kod och inte sparar någon plats)
 function modifyText(command, defaultUi, value) {
     document.execCommand(command, defaultUi, value);
 }
 
-// THIS SHOULD BE ONLY FOR STATIC BUTTONS (BOLD, ITALIC AND NOT FOR THE LISTS)
+// Funktion för att ändra knappar som är aktiva 
+// (Borde bara vara för knappar som man inte kan klicka på enter för att bryta ut ur (bold,italic))
 function toggleButtonState(buttonId) {
     const button = document.getElementById(buttonId);
     button.classList.toggle('active');

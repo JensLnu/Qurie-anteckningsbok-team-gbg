@@ -8,8 +8,9 @@ const savedInput = document.getElementById('input-search-bar');
 const resultList = document.getElementById('result-list');
 const htImg = document.getElementById('ht-img');
 
-let searchForHashtag = false; // håller reda på ifall man söker efter hashtags eller inte
-
+// variabel för att hålla reda på ifall man söker efter hashtags eller inte
+// Eventlistener för att toggla sökfunktionen efter tag-sök eller vanligt
+let searchForHashtag = false; 
 hashtagsOrNot.addEventListener('click', () => {
   if (!searchForHashtag) {
     searchForHashtag = true;
@@ -45,19 +46,22 @@ dialog.addEventListener("click", e => {
   }
 });
 
-savedInput.addEventListener("input", () => {
-  let savedValue = savedInput.value.trim(); // Ta bort mellanslag från början och slutet av inputvärdet
+// Ta bort mellanslag från början och slutet av inputvärdet
+// If-sats för att ta bort resultat om man tar bort den sökta texten och avsluta funktionen
+// Ta bort allt innehåll på input
+// For-loop som kollar igenom alla anteckningar i LS
 
-  // Om savedValue är tomt, rensa resultList och avsluta funktionen
+savedInput.addEventListener("input", () => {
+  let savedValue = savedInput.value.trim(); 
+
   if (savedValue === '') {
     resultList.innerHTML = '';
     return;
   }
-
   resultList.innerHTML = '';
-  let localKey;
+
   for (let i = 0; i < localStorage.length; i++) {
-    localKey = localStorage.key(i);
+    const localKey = localStorage.key(i);
     
     // Kollar i localstorage om localKey är en siffra eller inte
     if(!isNaN(localKey)) {

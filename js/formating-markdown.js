@@ -2,8 +2,8 @@
 // Byt ut rader som startar med # mot deras resp hN
 // Byt ut en rad som innefattas av ** ** till bold-tags
 // Byt ut en rad som innefattas av * * mot italic
- //En rad som startar med - byts ut mot en ul där texten hamnar i li
- //För att förhindra att varje -/1. blir ny lista så tas stängnings och öppningstaggar som ligger brevid varandra bort
+// En rad som startar med - byts ut mot en ul där texten hamnar i li
+// För att förhindra att varje -/1. blir ny lista så tas stängnings och öppningstaggar som ligger brevid varandra bort
 function parseMarkdown(text){
     const toHTML = text
     .replace(/^### (.*$)/gim, '<h3>$1</h3>') 

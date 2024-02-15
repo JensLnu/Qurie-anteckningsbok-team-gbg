@@ -1,5 +1,3 @@
-/* ----- Som användare vill jag kunna exportera en anteckning som markdown -----*/
-
 const markdownBtn = document.querySelector(".markdown-btn");
 
 // Vid klick på markdown-knappen

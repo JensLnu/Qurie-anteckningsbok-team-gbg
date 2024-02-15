@@ -1,4 +1,3 @@
-/*--- Som användare vill jag kunna skapa egna mallar där jag kan ställa in valfria typsnitt utifrån de som finns i Google fonts ---*/
 // API key: AIzaSyD9u1DRArZCKthVW8zoz2g1jVhveiaqjYQ
 
 // Hämta Google Web Fonts
@@ -40,16 +39,14 @@ function displayFontDropdown(fonts) {
 // Funktion för att applicera valt typsnitt på textContainer
 // Lägger till vald font i Note-objektet
 // Länkar till vald font
-
 // Om användaren har något markerat på sidan skapas ett span med valda fonten,
 // Den markerade klipps ut ut dokumentet, klistras in i spanet och sedan läggs spannet in som en node i rangen
-
 // Om ingenting är markerat tas alla existerande spans i dokumentet bort för att inte krocka 
 // Sedan ändras stilen på textdokumentet till den valda fonten
 // Alla andra fonts tas bort från Note-Objektet
+
 // DET ÄR HÄR BUGGEN DYKER UPP MED ATT FONT-SIZE SKRIVS ÖVER NÄR MAN APPLICERAR FONT PÅ HELA DOKUMENTET
 // ÄNDRAS GENOM ATT BARA TA BORT FONT-FAMILY PROPERTY PÅ ALLA SPANS
-
 function applyFont(fontName) {
     savedNote.updateFont(fontName);
     linkFont(fontName)

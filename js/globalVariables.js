@@ -1,3 +1,5 @@
+// Denna fil är överflödig när vi använder oss av moduler men sparade mycket huvudvärk innan vi visste bättre
+
 // Global savedNote object
 let savedNote;
 
