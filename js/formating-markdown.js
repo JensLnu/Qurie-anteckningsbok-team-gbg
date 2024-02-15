@@ -1,4 +1,3 @@
-
 // Hela dokumentets innehåll kommer med text-parametern
 // Byt ut rader som startar med # mot deras resp hN
 // Byt ut en rad som innefattas av ** ** till bold-tags
