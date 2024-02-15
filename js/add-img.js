@@ -1,11 +1,10 @@
-// Get input button
-// Image counter, needs to be fixed to get number of images after page refresh
+// Kolla om det finns något ID i LS annars är ID = 0
 let imgCounter = Math.max(0, localStorage.getItem('img-counter'));
 
-// When file is selected get the note area
-// Convert file to URL
-// Add image-tag to document with unique ID and source
-// Update counter
+// Eventlistener på file-input
+// Konvertera valda filen till en URL
+// Lägg till bild med korrekt src och ID
+// Uppdatera imgCounter (även i localstorage)
 imgBtn.addEventListener('change', (event) => {
     if (event.target.files && event.target.files[0]) {
         const noteTextArea = document.getElementById('text-area');
@@ -17,9 +16,7 @@ imgBtn.addEventListener('change', (event) => {
         `;
         imgCounter++;
         localStorage.setItem('img-counter', imgCounter);
-        saveNoteToLocalStorage(textarea.getAttribute('data-id'), textarea, textarea.style.fontFamily);
     }
-
 });
 
 // Davids gtag
@@ -30,5 +27,3 @@ myInput.addEventListener('click', function () {
         'event_label': 'new_click'
     }
 });
-
-// innerHTML saves on input. Adding img does not count as input. Find other listener
