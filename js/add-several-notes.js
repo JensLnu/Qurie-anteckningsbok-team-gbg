@@ -1,5 +1,3 @@
-/*--- Som användare vill jag kunna skapa flera olika anteckningar ---*/
-
 import { addHashtag, createTags } from "./moduls/tags.js";
 import { createHtmlElem } from "./moduls/createHtmlElem.js";
 import Note from "../js/classes/newNote.js"
@@ -8,14 +6,13 @@ import { chooseNote, displayNote } from "./swap-note.js";
 // Visa alla sparade anteckningar när sidan laddas om
 window.addEventListener("DOMContentLoaded", displayAllNotes);
 
-// HÄR DET STRULAR MED BILDERNA DÅ EN TILLAGD BILD INTE RÄKNAS SOM INPUT
-// Sammas problem med att ändra fonts då content endast uppdateras vid input
+// HÄR DET STRULAR MED BILDERNA DÅ EN TILLAGD BILD, FONT OCH FONT SIZE INTE RÄKNAS SOM INPUT
 // Lyssna på ändringar i main text-area och spara i lS
 textarea.addEventListener("input", () => {
     savedNote.updateContent(textarea.innerHTML);
 });
 
-// Eventlisteners för båda lägg till-knapparna
+// Eventlisteners för båda lägg till-knapparna för att skapa nya anteckningar
 addBtnSeveral.addEventListener("click", () => {
     // Jens gtag
     gtag('event', 'clicked_new_note_btn_browser', {
@@ -27,10 +24,9 @@ addBtnSeveral.addEventListener("click", () => {
 });
 addBtnMobile.addEventListener("click", createNote);
 
-// Hämta antecknings-ID från lS, och låt aldrig ID:t vara mindre än 1
-let noteCounter = Math.max(0, getLatestNoteId());
-
+// Hämta antecknings-ID från LS om det finns annars är startindex 0
 // Går igenom alla ID:n och uppdaterar latestID om den hittar en större siffra
+let noteCounter = Math.max(0, getLatestNoteId());
 function getLatestNoteId() {
     let latestId = 0;
     for (let i = 0; i < localStorage.length; i++) {
@@ -42,12 +38,12 @@ function getLatestNoteId() {
     return latestId;
 }
 
-// Ta bort tidigare note
-// Sätt standard-font
-// Lägg till ID till anteckningen
-// Skapa en ny anteckning
-// Spara ner den nya anteckningen till LS
-// Highlighta den nya anteckningen
+// Sätt note index till ett högre än förra
+// Skapa ny note med Note-klassen
+// Spara den nya noten till LS
+// Töm dokumentet
+// Lägg till font och uppdatera dokumentets data-id
+// Skapa en anteckning i sidebaren och lägg till eventlisteners
 // Fokusera muspekaren till nya fönstret
 function createNote() {
     const noteId = ++noteCounter;
@@ -57,33 +53,28 @@ function createNote() {
     textarea.style.fontFamily = "";
     textarea.setAttribute("data-id", noteId);
     createNotesContainer(noteId);
-
-    // saveNoteToLocalStorage(noteId, textarea, "");
     chooseNote();
     textarea.focus();
 }
 
-// Skapa en ny anteckning
-// Highlighta den nya anteckningen
-// Lägg till ta-bort-knapp
-// Skapar en textruta för anteckningen, ger unikt ID och bestämmer innehållet efter om det finns motsvarande ID i LS
-// Append till sparade anteckningar
+// Funktion för att skapa en anteckning i sidebar
+// Skapa en divar med respektive klassnamn och ID för note, innehåll och hashtags
+// Gå igenom LS och kolla efter existerande tags och skapa tags om några
+// Lägg till innehållet (titeln i noten) med motsvarande "Note" eller sparade namnet i LS
+// Skapa en knapp för hashtags
+// Skapa en ta-bort-knapp
+// Visa den nya noten
 export function createNotesContainer(noteId) {
     gtag("event", "add_note", { app_name: "add_note_button", screen_name: "add_note_name", }); // G-tag gjord av Oscar Donaldson
 
-    const notes = document.createElement("div");
-    notes.classList.add("notes");
-
+    // const notes = document.createElement("div");
+    // notes.classList.add("notes");
+    const notes = createHtmlElem('div', null, null, 'notes')
     const noteHeaderContainer = createHtmlElem("div", null, notes, "note-header-container", "flex");
-    // Visa antecknings-ID i notes
-    let jsonObj = JSON.parse(localStorage.getItem(noteId)); // hämtar sparad note för att bestämma vilket namn rubriken ska ha
-
-    // Visa tags i sidebaren efter reload
-    // Skapa en hashtagContainer (samma klass som i tags.js) som innehåller alla tags under varje note
     const hashtagContainer = createHtmlElem("div", null, notes, "hashtag-container");
-    // Kolla om den sparade noten existerar och innehåller hashtags
+    let jsonObj = JSON.parse(localStorage.getItem(noteId));
+
     if (jsonObj && jsonObj.hashtags && jsonObj.hashtags.length > 0) {
-        // Gå igenom varje hashtag i sparade notes
         jsonObj.hashtags.forEach(tag => {
             createTags(tag, hashtagContainer);
         });
@@ -94,22 +85,20 @@ export function createNotesContainer(noteId) {
     ${jsonObj === null ? `Note ${noteId}` : jsonObj.title}</div>`;
     noteHeaderContainer.innerHTML += noteKeyDisplay;
 
-    // hashtags hantering
     const displayHashtagBtn = createHtmlElem("button", "#", noteHeaderContainer, "hashtag-btn");
     displayHashtagBtn.addEventListener("click", (e) => {
         addHashtag(e);
     });
 
-    createDeleteButton(noteId, noteHeaderContainer); // Knapp för att ta bort anteckning
+    createDeleteButton(noteId, noteHeaderContainer);
     savedNotes.appendChild(notes);
     displayNote(noteId);
 }
 
-// Funktion för att ta bort anteckning
+// Funktion för att ta skapa ta-bort-knapp
 function createDeleteButton(noteId, noteHeaderContainer) {
     const deleteBtn = createHtmlElem("button", "-", noteHeaderContainer, "delete-btn");
 
-    // Ta bort anteckning från DOM och lS
     deleteBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         savedNotes.removeChild(deleteBtn.parentElement.parentElement);
@@ -127,6 +116,7 @@ function compareNumber(a, b) {
 // Skapa en tom array och lägg till alla ID:n som är siffror
 // Sortera i nummerordning
 // Skapa note-previews för alla element i arrayen
+// Lägg till eventlisteners på alla notes i sidebar och visa senaste anteckningen
 function displayAllNotes() {
     let arr = [];
     for (let i = 0; i < localStorage.length; i++) {
@@ -138,7 +128,6 @@ function displayAllNotes() {
     for (let i = 0; i < arr.length; i++) {
         createNotesContainer(arr[i]);
     }
-    // Kalla på chooseNote för att kunna bläddra bland anteckningarna
     chooseNote();
     displayNote(noteCounter);
 }
