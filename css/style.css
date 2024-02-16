@@ -107,7 +107,7 @@ header {
   transition: scale 0.5s;
 }
 
-.add {
+.add, .show-notes {
   display: var(--toggle-add);
 }
 
@@ -236,4 +236,11 @@ main {
 .toolbar-button:hover {
   background-color: #f0f0f0;
   color: #555;
+}
+
+#side-bar-active {
+  display: block;
+  width: 100vw;
+  z-index: 999;
+  position: absolute;
 }
