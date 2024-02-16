@@ -53,5 +53,5 @@ function convertListItems(listItems, prefix) {
             }
             return item;
         })
-        .join('\n')
+        .join('<br>')
 }

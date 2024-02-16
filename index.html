@@ -16,6 +16,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Qurie</title>
 
+  <!-- Meta titel -->
+  <meta name="title" content="Quire Notebook">
+
+  <!-- Meta description -->
+  <meta name="description" content="Welcome to Qurie, your personal online notebook! With Qurie, you can easily create, organize, and edit your notes online.">
+
   <!-- CSS -->
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="stylesheet" href="./css/media.css" />
@@ -80,14 +86,14 @@
   </header>
 
   <!-- SIDEBAR -->
-  <section id="sidebar" class="">
+  <aside id="sidebar">
     <!-- ADD NOTE BUTTON -->
     <button class="add-btn sidebar-border-right">
       <span class="material-symbols-outlined md-40">add_circle</span>
     </button>
     <!-- CONTAINER FOR STORING NOTES -->
     <div class="saved-notes"></div>
-  </section>
+  </aside>
 
   <!-- TOOLBAR -->
   <section id="toolbar">
@@ -111,18 +117,20 @@
       <option value="h3" id="heading-3">Rubrik 3</option>
     </select>
     <!-- BOLD, ITALIC, UL AND OL - BUTTONS  -->
-    <button class="toolbar-button" id="bold" title="Fetstil">B</button>
-    <button class="toolbar-button" id="italic" title="Kursiv">I</button>
-    <button class="toolbar-button" id="insertOrderedList" title="Numererad lista">OL</button>
-    <button class="toolbar-button" id="insertUnorderedList" title="Punktlista">UL</button>
+    <button class="toolbar-button" id="bold" title="Bold">B</button>
+    <button class="toolbar-button" id="italic" title="Italic">I</button>
+    <button class="toolbar-button" id="insertOrderedList" title="Ordered List">OL</button>
+    <button class="toolbar-button" id="insertUnorderedList" title="Unordered list">UL</button>
     <!-- IMAGE INPUT -->
-    <input type="file" id="imgBtn"/>
+    <input type="file" id="imgBtn" title= "Add Image"/>
     <!-- FAVORITE BUTTON -->
-    <button class="favorite-button">⭐</button>
+    <button class="favorite-button" title="Add To Favorite">⭐</button>
     <!-- PRINT BUTTON -->
-    <button class="toolbar-button"><span class="print-icon material-symbols-outlined">print</span></button>
+    <button class="toolbar-button"><span class="print-icon material-symbols-outlined" title="Print">print</span></button>
     <!-- TOGGLE MARKDOWN -->
-    <button class="markdown-btn"><span class="material-symbols-outlined">markdown_copy</span></button>
+    <button class="markdown-btn"><span class="material-symbols-outlined" title="View Markdown Page">markdown_copy</span></button>
+
+    <button class="toolbar-button" id="convert-from-markdown" title="Convert From Markdown">MD</button>
   </section>
 
   <main>
@@ -151,7 +159,7 @@
         <div class="theme" id="standard-theme"><img src="./image/lightmode-icon.jpg" alt="LIGHTMODE-ICON"></div>
         <div class="theme" id="second-theme"><img src="./image/neon-icon.jpg" alt="NEON-ICON"></div>
         <div class="theme" id="third-theme"><img src="./image/darkmode-icon.jpg" alt="DARKMODE-ICON"></div>
-        <div class="theme" id="fourth-theme"><img src="./image/quire.jpg" alt="quire"></div>
+        <div class="theme" id="fourth-theme"><img src="./image/quire.jpg" alt="QUIRE-ICON"></div>
       </div>
     </dialog>
     
@@ -165,7 +173,7 @@
   <script src="./js/firstVisit.js"></script>
   <script type="module" src="./js/font-template.js"></script>
   <script src="./js/dropdown.js"></script>
-  <script src="./js/formating-markdown.js"></script>
+  <script src="./js/convert-from-markdown.js"></script>
   <script src="./js/add-img.js"></script>
   <script src="./js/execCommand.js"></script>
   <script type="module" src="./js/favorite.js"></script>

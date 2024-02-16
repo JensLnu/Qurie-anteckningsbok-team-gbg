@@ -1,6 +1,7 @@
 # Qurie - En anteckningsbok för dina idéer
 
 Välkommen till Qurie, din personliga anteckningsbok på nätet! Med Qurie kan du enkelt skapa, organisera och redigera dina anteckningar online.
+Arbetet gjort av team Göteborg, Oscar, Jens, Emil, Toleen, David, Tova och Nyat. 
 
 ## Funktioner
 
