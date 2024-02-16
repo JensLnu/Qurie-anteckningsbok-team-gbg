@@ -1,3 +1,9 @@
+const convertFromMarkdown = document.getElementById('convert-from-markdown');
+
+convertFromMarkdown.addEventListener('click', () => {
+    textarea.innerHTML = parseMarkdown(textarea.innerText);
+});
+
 // Hela dokumentets innehåll kommer med text-parametern
 // Byt ut rader som startar med # mot deras resp hN
 // Byt ut en rad som innefattas av ** ** till bold-tags
