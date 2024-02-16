@@ -8,3 +8,4 @@ export function createHtmlElem(htmlElem, content, appendTo, className1, classNam
     appendTo.append(elem);
     return elem
 }
+
