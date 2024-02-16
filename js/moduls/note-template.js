@@ -5,9 +5,9 @@ const rootColors = document.querySelector(':root');
 // skapar de olika valen i dropdown menyn och lägger på eventListner när menyn ändras
 export function createFunctionalityNoteTemplate() {
     createHtmlElem('option', 'Standard', noteTemplateDropdown);
-    createHtmlElem('option', 'Mall 1', noteTemplateDropdown);
-    createHtmlElem('option', 'Mall 2', noteTemplateDropdown);
-    createHtmlElem('option', 'Mall 3', noteTemplateDropdown);
+    createHtmlElem('option', 'Brown', noteTemplateDropdown);
+    createHtmlElem('option', 'Gray', noteTemplateDropdown);
+    createHtmlElem('option', 'Pink', noteTemplateDropdown);
     noteTemplateDropdown.addEventListener('change', (e) => {
         const selectedTemplate = e.target.value;
         localStorage.setItem('latest-note-template', JSON.stringify(selectedTemplate)); // sparar den senaste valda mallen så att den används när man skapar en ny note
@@ -25,28 +25,28 @@ export function chooseNoteTemplate(selectedTemplate) {
     let template;
     switch (selectedTemplate) {
         case 'Standard':
-        case 'Mallar':
+        case 'Template':
             template = {
                 textColor: "black",
                 headerColor: "black",
                 bgColor: "white"
             }
             break;
-        case 'Mall 1':
+        case 'Brown':
             template = {
                 textColor: "#ffb703",
                 headerColor: "#fb8500",
                 bgColor: "#bb9457"
             }
             break;
-        case 'Mall 2':
+        case 'Gray':
             template = {
                 textColor: "#4895ef",
                 headerColor: "#4361ee",
                 bgColor: "#d9d9d9"
             }
             break;
-        case 'Mall 3':
+        case 'Pink':
             template = {
                 textColor: "#bfd200",
                 headerColor: "#80b918",

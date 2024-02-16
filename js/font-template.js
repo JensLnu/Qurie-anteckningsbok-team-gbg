@@ -29,7 +29,7 @@ fontDropdown.addEventListener('change', function() {
 // En default option i pedagogiskt syfte
 // Gå igenom alla fonts från API och skapa options för varje font
 function displayFontDropdown(fonts) {
-    fontDropdown.innerHTML = '<option>Välj en font</option>';
+    fontDropdown.innerHTML = '<option>Choose Font</option>';
     fonts.forEach(font => {
         const option = new Option(font.family, font.family);
         fontDropdown.appendChild(option);
