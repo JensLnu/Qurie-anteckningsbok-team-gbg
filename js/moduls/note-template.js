@@ -8,6 +8,8 @@ export function createFunctionalityNoteTemplate() {
     createHtmlElem('option', 'Brown', noteTemplateDropdown);
     createHtmlElem('option', 'Gray', noteTemplateDropdown);
     createHtmlElem('option', 'Pink', noteTemplateDropdown);
+    createHtmlElem('option', 'Neon', noteTemplateDropdown);
+    createHtmlElem('option', 'Dark', noteTemplateDropdown);
     noteTemplateDropdown.addEventListener('change', (e) => {
         const selectedTemplate = e.target.value;
         localStorage.setItem('latest-note-template', JSON.stringify(selectedTemplate)); // sparar den senaste valda mallen så att den används när man skapar en ny note
@@ -53,6 +55,20 @@ export function chooseNoteTemplate(selectedTemplate) {
                 bgColor: "#ffccd5"
             }
             break;
+            case 'Neon':
+                template = {
+                    textColor: "rgb(58, 134, 255)",
+                    headerColor: "rgb(58, 134, 255)",
+                    bgColor: "rgb(35,35,35)"
+                }
+                break;
+                case 'Dark':
+                    template = {
+                        textColor: "white",
+                        headerColor: "white",
+                        bgColor: "rgb(35,35,35)"
+                    }
+                    break;
         default: return;
     }
     savedNote.updateTemplate(selectedTemplate); // spara i class objektet och i ls
