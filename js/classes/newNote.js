@@ -1,5 +1,4 @@
 //Class with functions to manipulate title, content, fonts, tags, favorite, font-sizes and template plus a save function to store everything in LS
-
 export default class Note {
     constructor(noteId, title){
         this.noteId = noteId,
@@ -9,9 +8,7 @@ export default class Note {
         this.hashtags = [],
         this.favorite = false,
         this.size = 16,
-        this.htmlReference;
-        this.template;
-        
+        this.template;        
     }
     updateTitle(title){
         this.title = title;
