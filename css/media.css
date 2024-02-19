@@ -45,31 +45,29 @@
     overflow: scroll;
   }
 
-
-.dialog {
-  min-width: 85vw;
-  margin: 0;   
-  
-}
-#input-search-bar{
-  min-width: 55vw;
-}
-#result-list {
-  min-width: 80vw;
-  margin-top: 50px;
-}
-.result-item:hover {
-  scale: 1;
-}
-}
-  
-@media only screen and (width < 501px){
-  :root{
-      --toggle-sidebar: none;
-      --toggle-dropdown: flex;
-      --toggle-add: flex
+  .dialog {
+    min-width: 85vw;
+    margin: 0;
   }
-  
+  #input-search-bar {
+    min-width: 55vw;
+  }
+  #result-list {
+    min-width: 80vw;
+    margin-top: 50px;
+  }
+  .result-item:hover {
+    scale: 1;
+  }
+}
+
+@media only screen and (width < 501px) {
+  :root {
+    --toggle-sidebar: none;
+    --toggle-dropdown: flex;
+    --toggle-add: flex;
+  }
+
   main {
     top: 105px;
     left: 0;
@@ -78,9 +76,9 @@
   }
 
   .background {
-    z-index: -1
+    z-index: -1;
   }
-  
+
   #title {
     width: calc(100%);
     border: none;
@@ -119,54 +117,54 @@
   #toolbar {
     left: 0;
     width: 100%;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
+    overflow-x: scroll;
   }
-  
-   #text-area{
-    margin: 35px 0 ;
+
+  #text-area {
+    margin: 35px 0;
   }
-  
 }
 
 @media only screen and (500px <= width < 600px) {
-  :root{
-      --toggle-sidebar: none;
-      --toggle-dropdown: none;
-      --toggle-header-icons: flex;
-      --toggle-add: flex;
+  :root {
+    --toggle-sidebar: none;
+    --toggle-dropdown: none;
+    --toggle-header-icons: flex;
+    --toggle-add: flex;
   }
   main {
-      top: 100px;
-      left: 0;
-      width: 100%;
-      height: calc(100% - 105px);
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 105px);
   }
   #title {
-      width: 100%;
-      border: none;
+    width: 100%;
+    border: none;
   }
   #toolbar {
     left: 0;
     top: 75px;
     width: 100%;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
   }
-  
-  #text-area{
-    margin: 35px 0 ;
+
+  #text-area {
+    margin: 35px 0;
   }
 }
 
-@media only screen and (width > 699px){
+@media only screen and (width > 699px) {
   .add-btn:hover {
     background-color: rgba(132, 169, 140, 0.685);
     cursor: pointer;
   }
-  
+
   .add-btn:hover .material-symbols-outlined.md-40 {
     scale: 1.15;
   }
-  
+
   .add-btn:active .material-symbols-outlined.md-40 {
     scale: 1;
     transition: 20ms;
@@ -176,11 +174,9 @@
     scale: 1.2;
     cursor: pointer;
   }
-  
+
   .icon:active {
     scale: 1;
     transition: 20ms;
   }
-
-  
 }
