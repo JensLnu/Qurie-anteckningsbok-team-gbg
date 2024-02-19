@@ -52,7 +52,8 @@ function lightmodeTheme() {
     rootColors.style.setProperty("--first-visit-primary", "rgb(34,84,110)")
     rootColors.style.setProperty("--neon-text-shadow", "none")
     rootColors.style.setProperty("--bgColor", "white")
-    rootColors.style.setProperty("--notes-text-color", "rgb(47, 62, 70)")
+  rootColors.style.setProperty("--notes-text-color", "rgb(47, 62, 70)")
+  rootColors.style.setProperty("--toolbar-text-color", "rgb(0,0,0)")
   
     localStorage.setItem('theme', 'default');
 }
@@ -81,6 +82,8 @@ function neonTheme() {
     rootColors.style.setProperty("--neon-text-shadow", "10 0 10px #fff")
     rootColors.style.setProperty("--bgColor", "rgb(35,35,35)")
     rootColors.style.setProperty("--notes-text-color", "rgb(251,86,7)")
+    rootColors.style.setProperty("--toolbar-text-color", "rgb(251,86,7)")
+  
   
   localStorage.setItem('theme', 'neon');
 }
@@ -107,7 +110,8 @@ function darkmodeTheme() {
     rootColors.style.setProperty("--note-bg-color", "rgb(35,35,35)")
     rootColors.style.setProperty("--neon-text-shadow", "10 0 10px #fff")
     rootColors.style.setProperty("--bgColor", "rgb(35,35,35)")
-    rootColors.style.setProperty("--notes-text-color", "white")
+  rootColors.style.setProperty("--notes-text-color", "white")
+  rootColors.style.setProperty("--toolbar-text-color", "rgb(255, 255, 255)")
 
     localStorage.setItem('theme', 'dark');
 }
@@ -134,7 +138,8 @@ function quireTheme() {
    rootColors.style.setProperty("--first-visit-primary", "rgb(30, 136, 229)"); 
    rootColors.style.setProperty("--neon-text-shadow", "none"); 
    rootColors.style.setProperty("--bgColor", "rgb(237, 247, 255)"); 
-   rootColors.style.setProperty("--notes-text-color", "rgb(30, 136, 229)");
+  rootColors.style.setProperty("--notes-text-color", "rgb(30, 136, 229)");
+  rootColors.style.setProperty("--toolbar-text-color", "rgb(255, 255, 255)")
 
    localStorage.setItem('theme', 'quire');
  

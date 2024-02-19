@@ -22,20 +22,20 @@
   --displayed-note-color: rgb(255, 255, 255);
   --delete-btn-color: rgb(132, 169, 140);
   --edit-buttons-primary: rgb(255, 255, 255);
-  --edit-buttons-secondary: rgb(85,85,85);
-  --edit-buttons-hover: rgb(240,240,240);
-  --first-visit-primary: rgb(34,84,110);
+  --edit-buttons-secondary: rgb(85, 85, 85);
+  --edit-buttons-hover: rgb(240, 240, 240);
+  --first-visit-primary: rgb(34, 84, 110);
   --dialog-background-color: rgb(255, 255, 255);
   --hashtag-button-color: rgb(132, 169, 140);
   --notes-text-color: rgb(47, 62, 70);
   --neon-text-shadow: none;
+  --toolbar-text-color: rgb(0, 0, 0);
   /* note-template-colors */ /* Oscar ge FAN i mina note grejer mvh utvecklar */
   /* du är bränd jens, mvh en lite bättre cssare */
   --note-text-color: black;
   --note-header-color: black;
   --note-bg-color: white;
 }
-
 
 .material-symbols-outlined.md-40 {
   color: var(--logo-color);
@@ -53,12 +53,9 @@ body {
   text-shadow: var(--neon-text-shadow);
 }
 
-
 .hidden {
   display: none;
 }
-
-
 
 /* HEADER CONTENT */
 header {
@@ -107,7 +104,8 @@ header {
   transition: scale 0.5s;
 }
 
-.add, .show-notes {
+.add,
+.show-notes {
   display: var(--toggle-add);
 }
 
@@ -126,12 +124,12 @@ header {
   background-color: var(--sidebar-color);
   border-right: 5px solid rgba(66, 66, 66, 0.17);
   overflow: auto;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 #stars-icon.active .stars {
-  color: #FFD700;
+  color: #ffd700;
 }
 
 #stars-icon:not(.active) .stars {
@@ -172,9 +170,13 @@ header {
   gap: 0.5rem;
 }
 
+#toolbar > * {
+  color: var(--toolbar-text-color);
+}
 
 .toolbar-button {
   width: 20px;
+  color: var(--toolbar-text-color);
 }
 
 /* TEXTAREA CONTENT */
@@ -196,7 +198,10 @@ main {
   color: var(--note-text-color); /* för note-template */
 }
 
-#text-area h1, #text-area h2, #text-area h3 { /* för note-template */
+#text-area h1,
+#text-area h2,
+#text-area h3 {
+  /* för note-template */
   color: var(--note-header-color);
 }
 
